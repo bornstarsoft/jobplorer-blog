@@ -1,0 +1,10 @@
+
+baseURL = "https://jobplorer-blog.pages.dev/"
+languageCode = "en-us"
+title = "Jobplorer Blog"
+theme = "ananke"
+buildFuture = true
+paginate = 10
+
+[params]
+  mainSections = ["posts"]
