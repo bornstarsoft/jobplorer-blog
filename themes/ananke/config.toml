@@ -1,10 +1,11 @@
 
-baseURL = "https://jobplorer-blog.pages.dev/"
+baseURL = "https://jobplorer.com/"
 languageCode = "en-us"
-title = "Jobplorer - 취업 뉴스 브리핑"
+title = "Jobplorer"
 theme = "ananke"
-buildFuture = true
-paginate = 10
+paginate = 12
+enableRobotsTXT = true
+buildFuture = false
 
 [params]
   mainSections = ["posts"]
