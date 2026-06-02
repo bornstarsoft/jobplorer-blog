@@ -3,9 +3,11 @@ baseURL = "https://jobplorer.com/"
 languageCode = "en-us"
 title = "Jobplorer"
 theme = "ananke"
-paginate = 12
 enableRobotsTXT = true
 buildFuture = false
+
+[pagination]
+  pagerSize = 12
 
 [params]
   mainSections = ["posts"]
