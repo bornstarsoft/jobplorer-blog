@@ -12,6 +12,9 @@ buildFuture = false
 [params]
   mainSections = ["posts"]
 
+[params.ananke]
+  show_recent_posts = false
+
 [[menu.main]]
   name = "Job Sites"
   url = "/job-sites/"
