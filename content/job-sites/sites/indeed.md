@@ -1,6 +1,6 @@
 ---
 title: "Indeed"
-description: "A reviewed draft Jobplorer profile for Indeed as a job search platform. This page remains unpublished until final owner approval."
+description: "A reviewed Jobplorer profile for Indeed as a job search platform. Check Indeed's official pages for current details."
 siteType: "Job Search Platform"
 officialUrl: "https://www.indeed.com/"
 countryRegion:
@@ -38,10 +38,10 @@ draft: true
 
 # Indeed
 
-Reviewed draft note: this Jobplorer profile has had an official-source review pass, but it remains unpublished until final owner approval.
+This profile is reviewed using official-source checks, but features, pricing, availability, and policies can change. Always check Indeed's official website for current details.
 
-Indeed may be useful as a starting point for researching job postings, companies, and application paths. Official Indeed pages reviewed for this draft describe Indeed job search, applications completed on Indeed, applications that redirect to employer websites, remote job search guidance, and employer-side free or sponsored posting options.
+Indeed may be useful as a starting point for researching job postings, companies, and application paths. Official Indeed pages reviewed for this profile describe Indeed job search, applications completed on Indeed, applications that redirect to employer websites, remote job search guidance, and employer-side free or sponsored posting options.
 
-This draft avoids exact pricing, country-specific availability, feature availability, job availability, and live job count claims. Those details can change and should be checked directly on Indeed's official pages, employer pages, and current job postings.
+This profile avoids exact pricing, country-specific availability, feature availability, job availability, and live job count claims. Those details can change and should be checked directly on Indeed's official pages, employer pages, and current job postings.
 
 Check official Indeed pages and current job postings for current details. Jobplorer does not provide live job listings and does not promise jobs, interviews, hiring outcomes, salary outcomes, visa eligibility, legal compliance, labor-law outcomes, or tax outcomes.
