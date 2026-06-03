@@ -1,6 +1,6 @@
 ---
 title: "Job Sites for Game Developers: Where to Start"
-description: "A reviewed draft Jobplorer career guide for researching job search starting points for game developer and game design roles. This page remains unpublished until owner approval."
+description: "A reviewed Jobplorer career guide for researching job search starting points for game developer and game design roles."
 careerArea: "Game Developers"
 guideType: "Career Guide"
 targetAudience:
@@ -40,10 +40,10 @@ draft: true
 
 # Job Sites for Game Developers: Where to Start
 
-Reviewed draft note: this career guide has had an official-source review pass, but it remains unpublished until owner approval.
+Review note: this career guide has had an official-source review pass, but job titles, responsibilities, tools, requirements, and market conditions can change.
 
-This draft may be useful for job search research around game developer and game design roles. It can be a starting point for comparing broad search channels such as general job sites, studio career pages, professional networking platforms, official occupation research resources, and game development community resources.
+This guide may be useful for job search research around game developer and game design roles. It can be a starting point for comparing broad search channels such as general job sites, studio career pages, professional networking platforms, official occupation research resources, and game development community resources.
 
-Official occupation resources reviewed for this draft describe related software development work and video game design work, but job titles and responsibilities can vary by studio, employer, project, and posting. Portfolio, demo, resume, tool, and role expectations can also vary. Check official sources, employer career pages, and current job postings for current details.
+Official occupation resources reviewed for this guide describe related software development work and video game design work, but job titles and responsibilities can vary by studio, employer, project, and posting. Portfolio, demo, resume, tool, and role expectations can also vary. Check official sources, employer career pages, and current job postings for current details.
 
 Jobplorer does not provide career counseling, live job listings, salary advice, legal advice, visa advice, labor advice, tax advice, certification advice, hiring guarantees, interview guarantees, job guarantees, or career outcome guarantees.
