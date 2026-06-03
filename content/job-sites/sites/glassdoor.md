@@ -1,6 +1,6 @@
 ---
 title: "Glassdoor"
-description: "A reviewed draft Jobplorer profile for Glassdoor as a job search and workplace research platform. This page remains unpublished until final owner approval."
+description: "A reviewed Jobplorer profile for Glassdoor as a job search and workplace research platform."
 siteType: "Job Search / Workplace Research Platform"
 officialUrl: "https://www.glassdoor.com/"
 countryRegion:
@@ -38,10 +38,10 @@ draft: true
 
 # Glassdoor
 
-Reviewed draft note: this Jobplorer profile has had an official-source review pass, but it remains unpublished until final owner approval.
+Review note: this Jobplorer profile has had an official-source review pass, but features, pricing, availability, and policies can change.
 
-Glassdoor may be useful as a starting point for researching jobs, companies, workplace information, and salary information. Official Glassdoor pages reviewed for this draft describe Glassdoor job search, company reviews, salaries, student resources, and job-alert guidance.
+Glassdoor may be useful as a starting point for researching jobs, companies, workplace information, and salary information. Official Glassdoor pages reviewed for this profile describe Glassdoor job search, company reviews, salaries, student resources, and job-alert guidance.
 
-This draft avoids exact pricing, country-specific availability, feature availability, live job count, review accuracy, salary outcome, and job availability claims. Those details can change and should be checked directly on Glassdoor's official pages, employer pages, and current job postings.
+This profile avoids exact pricing, country-specific availability, feature availability, live job count, review accuracy, salary outcome, and job availability claims. Those details can change and should be checked directly on Glassdoor's official pages, employer pages, and current job postings.
 
 Check official Glassdoor pages and current job postings for current details. Jobplorer does not provide live job listings and does not promise jobs, interviews, hiring outcomes, salary outcomes, visa eligibility, legal compliance, labor-law outcomes, or tax outcomes.
