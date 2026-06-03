@@ -1,6 +1,6 @@
 ---
 title: "LinkedIn"
-description: "A reviewed draft Jobplorer profile for LinkedIn Jobs and LinkedIn's professional network. This page remains unpublished until owner approval."
+description: "A reviewed Jobplorer profile for LinkedIn Jobs and LinkedIn's professional network. Check LinkedIn's official pages for current details."
 siteType: "Job Search / Professional Network"
 officialUrl: "https://www.linkedin.com/jobs/"
 countryRegion:
@@ -38,10 +38,10 @@ draft: false
 
 # LinkedIn
 
-Draft note: this reviewed draft is still unpublished and will not be published until owner approval.
+This profile is reviewed using official-source checks, but features, pricing, availability, and policies can change. Always check LinkedIn's official website for current details.
 
-LinkedIn may be useful as a starting point for researching job opportunities, professional profiles, companies, and career paths. Official LinkedIn pages reviewed for this draft describe LinkedIn Jobs, LinkedIn's professional network, job applications, guest applications, Premium subscriptions, and remote job search guidance.
+LinkedIn may be useful as a starting point for researching job opportunities, professional profiles, companies, and career paths. Official LinkedIn pages reviewed for this profile describe LinkedIn Jobs, LinkedIn's professional network, job applications, guest applications, Premium subscriptions, and remote job search guidance.
 
-This draft avoids exact pricing, country-specific availability, feature availability, and live job count claims. Those details can change and should be checked directly on LinkedIn's official pages and current job postings.
+This profile avoids exact pricing, country-specific availability, feature availability, and live job count claims. Those details can change and should be checked directly on LinkedIn's official pages and current job postings.
 
-Check official LinkedIn pages and current job postings for current details. Jobplorer does not provide live job listings, job guarantees, interview guarantees, hiring guarantees, salary guarantees, visa advice, legal advice, labor advice, or tax advice.
+Check official LinkedIn pages and current job postings for current details. Jobplorer does not provide live job listings and does not promise jobs, interviews, hiring outcomes, salary outcomes, visa eligibility, legal compliance, labor-law outcomes, or tax outcomes.
