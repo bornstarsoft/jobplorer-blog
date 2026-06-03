@@ -1,43 +1,47 @@
 ---
 title: "Glassdoor"
-description: "A draft Jobplorer profile for a job search and workplace research platform. This page requires official-source review before publication."
-siteType: "Job Site / Workplace Research Platform"
+description: "A reviewed draft Jobplorer profile for Glassdoor as a job search and workplace research platform. This page remains unpublished until final owner approval."
+siteType: "Job Search / Workplace Research Platform"
 officialUrl: "https://www.glassdoor.com/"
 countryRegion:
-  - "needs-official-review"
+  - "Glassdoor pages and job availability can vary by country, location, and current postings; verify directly on Glassdoor"
 bestFor:
   - "Company research"
   - "Job search research"
   - "Workplace information research"
+  - "Salary information research, with official details checked directly"
 jobTypes:
-  - "needs-official-review"
-remoteJobs: "needs-official-review"
-beginnerFriendly: "needs-official-review"
-accountRequired: "needs-official-review"
-pricingNote: "Free and paid features may be available. Check the official website for current details."
+  - "Varies by current postings; verify each posting on Glassdoor or the employer's official site"
+remoteJobs: "Not fully assessed; verify current remote, hybrid, and location filters directly on Glassdoor and current postings."
+beginnerFriendly: "Glassdoor has official student resources, but beginner suitability should be verified against current postings and employer requirements."
+accountRequired: "Glassdoor Help describes signing in to create job alerts; other account requirements can vary by workflow and should be verified on official pages."
+pricingNote: "Job seeker and employer product terms can change. Check official Glassdoor pages for current details."
 strengths:
   - "May be useful for researching companies and roles"
-  - "Can be a starting point for comparing workplace information after official details are verified"
+  - "Can be a starting point for comparing workplace information after checking official details"
+  - "May help users research salary information cautiously, while verifying current details on official pages"
 limitations:
   - "Features, availability, and policies can change"
   - "Users should verify details on the official website and current job postings"
+  - "Salary information, reviews, and company details should be treated as research inputs, not guarantees or advice"
 usefulFor:
   - "Job seekers researching employers"
   - "Users comparing job search and workplace research starting points"
+  - "Users researching salary information cautiously before checking official employer and posting details"
 similarSites:
   - "LinkedIn"
   - "Indeed"
-lastReviewed: ""
-reviewStatus: "needs-official-review"
+lastReviewed: "2026-06-03"
+reviewStatus: "reviewed"
 draft: true
 ---
 
 # Glassdoor
 
-Draft note: this Jobplorer profile is a starter draft and requires official-source review before publication.
+Reviewed draft note: this Jobplorer profile has had an official-source review pass, but it remains unpublished until final owner approval.
 
-Glassdoor may be useful as a starting point for researching jobs, companies, and workplace information. This draft does not verify current features, pricing, availability, account requirements, country support, or job posting details.
+Glassdoor may be useful as a starting point for researching jobs, companies, workplace information, and salary information. Official Glassdoor pages reviewed for this draft describe Glassdoor job search, company reviews, salaries, student resources, and job-alert guidance.
 
-Before this page can be published, Jobplorer should verify stable public facts from official Glassdoor pages and update this draft with cautious, source-based wording.
+This draft avoids exact pricing, country-specific availability, feature availability, live job count, review accuracy, salary outcome, and job availability claims. Those details can change and should be checked directly on Glassdoor's official pages, employer pages, and current job postings.
 
-Check the official website for current details. Jobplorer does not provide live job listings, job guarantees, interview guarantees, hiring guarantees, salary guarantees, visa advice, legal advice, labor advice, or tax advice.
+Check official Glassdoor pages and current job postings for current details. Jobplorer does not provide live job listings and does not promise jobs, interviews, hiring outcomes, salary outcomes, visa eligibility, legal compliance, labor-law outcomes, or tax outcomes.
