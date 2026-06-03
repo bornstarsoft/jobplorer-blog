@@ -34,7 +34,7 @@ limitations:
   - "Job titles, tools, requirements, and market conditions can change."
 lastReviewed: "2026-06-03"
 reviewStatus: "reviewed"
-draft: true
+draft: false
 ---
 
 # Software Developer Job Search: Where to Start
