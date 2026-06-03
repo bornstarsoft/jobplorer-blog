@@ -1,6 +1,6 @@
 ---
 title: "Remote Work Job Search: Where to Start"
-description: "A reviewed draft Jobplorer career guide for researching job search starting points for remote work opportunities. This page remains unpublished until owner approval."
+description: "A reviewed Jobplorer career guide for researching job search starting points for remote work opportunities."
 careerArea: "Remote Workers"
 guideType: "Career Guide"
 targetAudience:
@@ -11,7 +11,7 @@ jobSearchStartingPoints:
   - "General job sites with remote filters"
   - "Professional networking platforms with remote filters"
   - "Company career pages"
-  - "Official labor and telework research resources"
+  - "Official workforce and telework research resources"
 commonJobSiteCategories:
   - "General job sites"
   - "Remote work search filters and location settings"
@@ -38,11 +38,11 @@ draft: true
 
 # Remote Work Job Search: Where to Start
 
-Reviewed draft note: this career guide has had an official-source review pass, but it remains unpublished until owner approval.
+Review note: this career guide has had an official-source review pass, but remote-work policies, locations, tools, and role requirements can change.
 
-This reviewed draft may be useful for job search research around remote work. It can be a starting point for comparing broad search channels such as general job sites with remote filters, professional networking platforms with remote filters, company career pages, and official labor or telework research resources.
+This reviewed guide may be useful for job search research around remote work. It can be a starting point for comparing broad search channels such as general job sites with remote filters, professional networking platforms with remote filters, company career pages, and official workforce or telework research resources.
 
-Official labor resources can help readers understand telework and work-at-home as work arrangements. Official job-site help pages can also show how some platforms describe remote search filters, location fields, job alerts, and job posting details. Employer career pages and official job postings should still be checked directly for current work-location details, application expectations, remote-work policies, tools, and role requirements.
+Official workforce resources can help readers understand telework and work-at-home as work arrangements. Official job-site help pages can also show how some platforms describe remote search filters, location fields, job alerts, and job posting details. Employer career pages and official job postings should still be checked directly for current work-location details, application expectations, remote-work policies, tools, and role requirements.
 
 Remote-work expectations can vary by employer, role, location, policy, and job posting. Check official sources and employer pages for current details. Requirements, tools, job titles, remote-work policies, locations, and market conditions can change.
 
