@@ -12,4 +12,6 @@ These guides should help readers ask better questions and verify details with em
 
 Career guides will be added gradually. Future topics may include software developers, game developers, designers, remote workers, entry-level job seekers, resume preparation, interviews, portfolio planning, and skill research.
 
+For related legacy guidance, see [entry-level job search starting points](/posts/the-struggles-of-young-job-seekers/).
+
 Jobplorer does not provide hiring guarantees, legal advice, visa advice, labor advice, tax advice, salary advice, or career outcome guarantees. Requirements, tools, job postings, and job-market conditions can change, so readers should verify official and current sources before applying, enrolling, or making decisions.

@@ -47,4 +47,6 @@ Official occupation resources such as the U.S. Bureau of Labor Statistics Occupa
 
 Portfolio, resume, tool, and role expectations can vary by employer and job posting. Check official sources and employer pages for current details. Requirements, tools, job titles, and market conditions can change.
 
+Related Jobplorer guidance: [AI-assisted game development role research](/posts/ai-creators-future-game-development/).
+
 Jobplorer does not provide career counseling, live job listings, compensation guidance, legal guidance, visa guidance, labor guidance, tax guidance, or credential guidance, and it does not promise hiring, interviews, jobs, or career outcomes.
