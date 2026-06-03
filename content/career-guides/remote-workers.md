@@ -1,6 +1,6 @@
 ---
-title: "Job Sites for Remote Workers: Where to Start"
-description: "A draft Jobplorer career guide for researching job search starting points for remote work opportunities. This page requires official-source review before publication."
+title: "Remote Work Job Search: Where to Start"
+description: "A reviewed draft Jobplorer career guide for researching job search starting points for remote work opportunities. This page remains unpublished until owner approval."
 careerArea: "Remote Workers"
 guideType: "Career Guide"
 targetAudience:
@@ -9,38 +9,41 @@ targetAudience:
   - "People reviewing employer remote-work information"
 jobSearchStartingPoints:
   - "General job sites with remote filters"
-  - "Remote job search platforms"
-  - "Professional networking platforms"
+  - "Professional networking platforms with remote filters"
   - "Company career pages"
+  - "Official labor and telework research resources"
 commonJobSiteCategories:
   - "General job sites"
-  - "Remote job search"
+  - "Remote work search filters and location settings"
   - "Professional networking"
   - "Company career pages"
 portfolioOrResumeNotes:
-  - "Remote-work expectations can vary by employer, role, location, and job posting."
-  - "Users should verify current requirements and work-location details from employer career pages and official job postings."
+  - "Remote-work expectations can vary by employer, role, location, policy, and job posting."
+  - "Users should verify current work-location details, application expectations, and employer requirements from employer career pages and official job postings."
 officialSourcesToCheck:
+  - "BLS telework and work-at-home research pages"
+  - "Official job site help pages for remote search filters"
   - "Employer career pages"
-  - "Official job site help pages"
   - "Official remote-work policy pages, when available"
 usefulFor:
   - "Job seekers researching where to start"
   - "People comparing remote job search channels"
 limitations:
-  - "This guide does not provide hiring, salary, legal, visa, labor, tax, relocation, certification, or career outcome guarantees."
-  - "Remote-work policies, job titles, requirements, and market conditions can change."
-lastReviewed: ""
-reviewStatus: "needs-official-review"
+  - "This guide does not promise hiring, compensation, legal, visa, labor, tax, relocation, credential, or career outcomes."
+  - "Remote-work policies, locations, tools, requirements, job titles, and market conditions can change."
+lastReviewed: "2026-06-03"
+reviewStatus: "reviewed"
 draft: true
 ---
 
-# Job Sites for Remote Workers: Where to Start
+# Remote Work Job Search: Where to Start
 
-Draft note: this career guide is a starter draft and requires official-source review before publication.
+Reviewed draft note: this career guide has had an official-source review pass, but it remains unpublished until owner approval.
 
-This draft may be useful for job search research around remote work. It can be a starting point for comparing broad search channels such as general job sites with remote filters, remote job search platforms, professional networking platforms, and company career pages.
+This reviewed draft may be useful for job search research around remote work. It can be a starting point for comparing broad search channels such as general job sites with remote filters, professional networking platforms with remote filters, company career pages, and official labor or telework research resources.
 
-Remote-work expectations can vary by employer, role, location, and job posting. Check official sources and employer pages for current details. Requirements, tools, job titles, remote-work policies, and market conditions can change.
+Official labor resources can help readers understand telework and work-at-home as work arrangements. Official job-site help pages can also show how some platforms describe remote search filters, location fields, job alerts, and job posting details. Employer career pages and official job postings should still be checked directly for current work-location details, application expectations, remote-work policies, tools, and role requirements.
+
+Remote-work expectations can vary by employer, role, location, policy, and job posting. Check official sources and employer pages for current details. Requirements, tools, job titles, remote-work policies, locations, and market conditions can change.
 
 Jobplorer does not provide career counseling, live job listings, salary advice, legal advice, visa advice, immigration advice, labor advice, tax advice, relocation advice, certification advice, hiring guarantees, interview guarantees, job guarantees, or career outcome guarantees.
