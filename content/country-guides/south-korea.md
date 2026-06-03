@@ -30,7 +30,7 @@ limitations:
   - "Job site availability, public employment resources, policies, language support, account requirements, and features can change."
 lastReviewed: "2026-06-03"
 reviewStatus: "reviewed"
-draft: true
+draft: false
 ---
 
 # Job Search in South Korea: Where to Start
