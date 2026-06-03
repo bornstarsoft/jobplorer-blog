@@ -1,6 +1,6 @@
 ---
 title: "Job Search in South Korea: Where to Start"
-description: "A reviewed draft Jobplorer country guide for researching job search starting points and official employment resources in South Korea. This page remains unpublished until owner approval."
+description: "A reviewed Jobplorer country guide for researching job search starting points and official employment resources in South Korea."
 country: "South Korea"
 region: "East Asia"
 primaryLanguage:
@@ -35,9 +35,9 @@ draft: true
 
 # Job Search in South Korea: Where to Start
 
-Reviewed draft note: this country guide has had an official-source review pass, but it remains unpublished until owner approval.
+Review note: this country guide has had an official-source review pass, but public resources, job-site availability, employer requirements, and application processes can change.
 
-This reviewed draft may be useful for planning job search research in South Korea. It can be a starting point for comparing broad search channels such as general job sites, professional networking platforms, company career pages, and official public employment resources.
+This reviewed guide may be useful for planning job search research in South Korea. It can be a starting point for comparing broad search channels such as general job sites, professional networking platforms, company career pages, and official public employment resources.
 
 Official public resources such as Employment24, WorkNet, Ministry of Employment and Labor pages, and Korea Employment Information Service pages can help readers identify employment-service starting points. Job seekers should still check each official resource, employer career page, and job posting directly for current details.
 
