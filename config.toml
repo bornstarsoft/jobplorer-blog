@@ -11,3 +11,33 @@ buildFuture = false
 
 [params]
   mainSections = ["posts"]
+
+[[menu.main]]
+  name = "Job Sites"
+  url = "/job-sites/"
+  weight = 10
+
+[[menu.main]]
+  name = "Country Guides"
+  url = "/country-guides/"
+  weight = 20
+
+[[menu.main]]
+  name = "Career Guides"
+  url = "/career-guides/"
+  weight = 30
+
+[[menu.main]]
+  name = "Tools"
+  url = "/job-seeker-tools/"
+  weight = 40
+
+[[menu.main]]
+  name = "Guides"
+  url = "/guides/"
+  weight = 50
+
+[[menu.main]]
+  name = "Archive"
+  url = "/posts/"
+  weight = 60
