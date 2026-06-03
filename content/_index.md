@@ -29,9 +29,10 @@ These reviewed profiles can be useful starting points for comparing job search p
 - [Indeed](/job-sites/sites/indeed/) - Explore a reviewed profile for job search research, applications, and employer posting workflows.
 - [Glassdoor](/job-sites/sites/glassdoor/) - Compare job search, company research, workplace information, and salary information cautiously.
 
-## Featured Career Guide
+## Featured Career Guides
 
 - [Software Developer Job Search: Where to Start](/career-guides/software-developers/) - Use this reviewed career guide as a starting point for researching software developer job search channels.
+- [Game Developer Job Search: Where to Start](/career-guides/game-developers/) - Compare cautious starting points for game developer and game design job search research.
 
 ## Practical Job Search Guides
 
