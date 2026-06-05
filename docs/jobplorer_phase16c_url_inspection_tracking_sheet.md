@@ -92,16 +92,16 @@ URL:
 https://jobplorer.com/job-sites/sites/glassdoor/
 ```
 
-- URL Inspection date:
-- Indexed status:
-- Google-selected canonical:
-- User-declared canonical if visible:
-- Last crawl date if visible:
-- Mobile usability status if visible:
-- Page fetch status:
-- Crawl/index warnings:
-- Request indexing submitted? yes/no:
-- Notes:
+- URL Inspection date: not shown
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
+- Mobile usability status if visible: not shown
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: no
+- Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
 ### 5. Software Developers Career Guide
 
@@ -130,16 +130,16 @@ URL:
 https://jobplorer.com/career-guides/game-developers/
 ```
 
-- URL Inspection date:
-- Indexed status:
-- Google-selected canonical:
-- User-declared canonical if visible:
-- Last crawl date if visible:
-- Mobile usability status if visible:
-- Page fetch status:
-- Crawl/index warnings:
-- Request indexing submitted? yes/no:
-- Notes:
+- URL Inspection date: not shown
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
+- Mobile usability status if visible: not shown
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: no
+- Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
 ### 7. Remote Workers Career Guide
 
@@ -149,16 +149,16 @@ URL:
 https://jobplorer.com/career-guides/remote-workers/
 ```
 
-- URL Inspection date:
-- Indexed status:
-- Google-selected canonical:
-- User-declared canonical if visible:
-- Last crawl date if visible:
-- Mobile usability status if visible:
-- Page fetch status:
-- Crawl/index warnings:
-- Request indexing submitted? yes/no:
-- Notes:
+- URL Inspection date: not shown
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
+- Mobile usability status if visible: not shown
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: no
+- Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
 ### 8. South Korea Country Guide
 
@@ -187,16 +187,16 @@ URL:
 https://jobplorer.com/country-guides/canada/
 ```
 
-- URL Inspection date:
-- Indexed status:
-- Google-selected canonical:
-- User-declared canonical if visible:
-- Last crawl date if visible:
-- Mobile usability status if visible:
-- Page fetch status:
-- Crawl/index warnings:
-- Request indexing submitted? yes/no:
-- Notes:
+- URL Inspection date: not shown
+- Indexed status: URL is not on Google
+- Google-selected canonical: not available
+- User-declared canonical if visible: not available
+- Last crawl date if visible: 2026-06-05 11:29:57
+- Mobile usability status if visible: not shown
+- Page fetch status: successful
+- Crawl/index warnings: Page is not indexed: Crawled - currently not indexed.
+- Request indexing submitted? yes/no: yes
+- Notes: Sitemap: `https://jobplorer.com/sitemap.xml`. Referring page: None detected. Crawled as Googlebot smartphone. Crawl allowed: yes. Indexing allowed: not applicable / not shown. Do not change content yet.
 
 ### 10. AI In Recruitment Legacy Rewrite
 
@@ -206,16 +206,16 @@ URL:
 https://jobplorer.com/posts/the-rise-of-ai-in-recruitment/
 ```
 
-- URL Inspection date:
-- Indexed status:
-- Google-selected canonical:
-- User-declared canonical if visible:
-- Last crawl date if visible:
-- Mobile usability status if visible:
-- Page fetch status:
-- Crawl/index warnings:
-- Request indexing submitted? yes/no:
-- Notes:
+- URL Inspection date: not shown
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
+- Mobile usability status if visible: not shown
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: no
+- Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
 ### 11. Entry-Level Job Search Legacy Rewrite
 
@@ -225,16 +225,16 @@ URL:
 https://jobplorer.com/posts/the-struggles-of-young-job-seekers/
 ```
 
-- URL Inspection date:
-- Indexed status:
-- Google-selected canonical:
-- User-declared canonical if visible:
-- Last crawl date if visible:
-- Mobile usability status if visible:
-- Page fetch status:
-- Crawl/index warnings:
-- Request indexing submitted? yes/no:
-- Notes:
+- URL Inspection date: not shown
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
+- Mobile usability status if visible: not shown
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: no
+- Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
 ### 12. Resume Blockers Legacy Rewrite
 
@@ -244,16 +244,16 @@ URL:
 https://jobplorer.com/posts/why-87-percent-of-job-seekers-abandon-their-resumes/
 ```
 
-- URL Inspection date:
-- Indexed status:
-- Google-selected canonical:
-- User-declared canonical if visible:
-- Last crawl date if visible:
-- Mobile usability status if visible:
-- Page fetch status:
-- Crawl/index warnings:
-- Request indexing submitted? yes/no:
-- Notes:
+- URL Inspection date: not shown
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
+- Mobile usability status if visible: not shown
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: no
+- Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
 ### 13. AI-Assisted Game Development Roles Legacy Rewrite
 
@@ -263,16 +263,16 @@ URL:
 https://jobplorer.com/posts/ai-creators-future-game-development/
 ```
 
-- URL Inspection date:
-- Indexed status:
-- Google-selected canonical:
-- User-declared canonical if visible:
-- Last crawl date if visible:
-- Mobile usability status if visible:
-- Page fetch status:
-- Crawl/index warnings:
-- Request indexing submitted? yes/no:
-- Notes:
+- URL Inspection date: not shown
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
+- Mobile usability status if visible: not shown
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: no
+- Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
 ## Decision Rules
 
