@@ -55,15 +55,15 @@ https://jobplorer.com/job-sites/sites/linkedin/
 ```
 
 - URL Inspection date: 2026-06-04
-- Indexed status: URL is not on Google
-- Google-selected canonical: Not available
-- User-declared canonical if visible: Not available
-- Last crawl date if visible: Not available
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
 - Mobile usability status if visible: Not recorded
-- Page fetch status: Not available
-- Crawl/index warnings: Discovered via sitemap, not currently indexed
-- Request indexing submitted? yes/no: Not recorded; run live URL test, then request indexing if live test passes.
-- Notes: Found in submitted sitemap but not indexed yet.
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: not shown; no new request needed because URL is now indexed.
+- Notes: Re-check screenshot shows URL is on Google, Page is indexed, and HTTPS shows Page is served over HTTPS.
 
 ### 3. Indeed Job Site Profile
 
@@ -112,15 +112,15 @@ https://jobplorer.com/career-guides/software-developers/
 ```
 
 - URL Inspection date: 2026-06-04
-- Indexed status: URL is not on Google
-- Google-selected canonical: Not available
-- User-declared canonical if visible: Not available
-- Last crawl date if visible: Not available
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
 - Mobile usability status if visible: Not recorded
-- Page fetch status: Not available
-- Crawl/index warnings: Discovered via sitemap, not currently indexed
-- Request indexing submitted? yes/no: Not recorded; run live URL test, then request indexing if live test passes.
-- Notes: Found in submitted sitemap but not indexed yet.
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: not shown; no new request needed because URL is now indexed.
+- Notes: Re-check screenshot shows URL is on Google, Page is indexed, and HTTPS shows Page is served over HTTPS.
 
 ### 6. Game Developers Career Guide
 
@@ -169,15 +169,15 @@ https://jobplorer.com/country-guides/south-korea/
 ```
 
 - URL Inspection date: 2026-06-04
-- Indexed status: URL is not on Google
-- Google-selected canonical: Not available
-- User-declared canonical if visible: Not available
-- Last crawl date if visible: Not available
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
 - Mobile usability status if visible: Not recorded
-- Page fetch status: Not available
-- Crawl/index warnings: Discovered via sitemap, not currently indexed
-- Request indexing submitted? yes/no: Not recorded; run live URL test, then request indexing if live test passes.
-- Notes: Found in submitted sitemap but not indexed yet.
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: not shown; no new request needed because URL is now indexed.
+- Notes: Re-check screenshot shows URL is on Google, Page is indexed, and HTTPS shows Page is served over HTTPS.
 
 ### 9. Canada Country Guide
 
@@ -188,15 +188,15 @@ https://jobplorer.com/country-guides/canada/
 ```
 
 - URL Inspection date: not shown
-- Indexed status: URL is not on Google
-- Google-selected canonical: not available
-- User-declared canonical if visible: not available
-- Last crawl date if visible: 2026-06-05 11:29:57
+- Indexed status: URL is on Google
+- Google-selected canonical: not shown
+- User-declared canonical if visible: not shown
+- Last crawl date if visible: not shown
 - Mobile usability status if visible: not shown
-- Page fetch status: successful
-- Crawl/index warnings: Page is not indexed: Crawled - currently not indexed.
-- Request indexing submitted? yes/no: yes
-- Notes: Sitemap: `https://jobplorer.com/sitemap.xml`. Referring page: None detected. Crawled as Googlebot smartphone. Crawl allowed: yes. Indexing allowed: not applicable / not shown. Do not change content yet.
+- Page fetch status: not shown
+- Crawl/index warnings: None shown; page indexing shows Page is indexed.
+- Request indexing submitted? yes/no: not shown; no new request needed because URL is now indexed.
+- Notes: Re-check screenshot shows URL is on Google, Page is indexed, and HTTPS shows Page is served over HTTPS.
 
 ### 10. AI In Recruitment Legacy Rewrite
 
