@@ -14,8 +14,9 @@ These guides should help readers ask better questions and verify details with em
 
 - [Software Developer Job Search: Where to Start](/career-guides/software-developers/) - Research software developer job search channels, employer pages, and official occupation resources.
 - [Game Developer Job Search: Where to Start](/career-guides/game-developers/) - Compare starting points for game developer and game design job search research.
+- [Remote Work Job Search: Where to Start](/career-guides/remote-workers/) - Review cautious starting points for remote job searches, employer policies, location limits, and application research.
 
-Career guides will be added gradually. Future topics may include remote workers, designers, entry-level job seekers, resume preparation, interviews, portfolio planning, and skill research.
+Career guides will be added gradually. Future topics may include designers, entry-level job seekers, resume preparation, interviews, portfolio planning, and skill research.
 
 For related legacy guidance, see [entry-level job search starting points](/posts/the-struggles-of-young-job-seekers/).
 
