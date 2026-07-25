@@ -28,6 +28,7 @@ Use an exact page URL filter for each URL when collecting page-level performance
 | `https://jobplorer.com/career-guides/remote-workers/` |  |  |  |  |  |  |  |  |  |
 | `https://jobplorer.com/country-guides/south-korea/` |  |  |  |  |  |  |  |  |  |
 | `https://jobplorer.com/country-guides/canada/` |  |  |  |  |  |  |  |  |  |
+| `https://jobplorer.com/country-guides/united-states/` |  |  |  |  |  |  |  |  |  |
 | `https://jobplorer.com/posts/the-rise-of-ai-in-recruitment/` |  |  |  |  |  |  |  |  |  |
 | `https://jobplorer.com/posts/the-struggles-of-young-job-seekers/` |  |  |  |  |  |  |  |  |  |
 | `https://jobplorer.com/posts/why-87-percent-of-job-seekers-abandon-their-resumes/` |  |  |  |  |  |  |  |  |  |

@@ -198,7 +198,26 @@ https://jobplorer.com/country-guides/canada/
 - Request indexing submitted? yes/no: not shown; no new request needed because URL is now indexed.
 - Notes: Re-check screenshot shows URL is on Google, Page is indexed, and HTTPS shows Page is served over HTTPS.
 
-### 10. AI In Recruitment Legacy Rewrite
+### 10. United States Country Guide
+
+URL:
+
+```text
+https://jobplorer.com/country-guides/united-states/
+```
+
+- URL Inspection date: not checked
+- Indexed status: not checked
+- Google-selected canonical: not checked
+- User-declared canonical if visible: not checked
+- Last crawl date if visible: not checked
+- Mobile usability status if visible: not checked
+- Page fetch status: not checked
+- Crawl/index warnings: not checked
+- Request indexing submitted? yes/no: no
+- Notes: Published after the original Phase 16C tracking set. Owner URL Inspection data is required.
+
+### 11. AI In Recruitment Legacy Rewrite
 
 URL:
 
@@ -217,7 +236,7 @@ https://jobplorer.com/posts/the-rise-of-ai-in-recruitment/
 - Request indexing submitted? yes/no: no
 - Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
-### 11. Entry-Level Job Search Legacy Rewrite
+### 12. Entry-Level Job Search Legacy Rewrite
 
 URL:
 
@@ -236,7 +255,7 @@ https://jobplorer.com/posts/the-struggles-of-young-job-seekers/
 - Request indexing submitted? yes/no: no
 - Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
-### 12. Resume Blockers Legacy Rewrite
+### 13. Resume Blockers Legacy Rewrite
 
 URL:
 
@@ -255,7 +274,7 @@ https://jobplorer.com/posts/why-87-percent-of-job-seekers-abandon-their-resumes/
 - Request indexing submitted? yes/no: no
 - Notes: Indexed normally. HTTPS shows Page is served over HTTPS.
 
-### 13. AI-Assisted Game Development Roles Legacy Rewrite
+### 14. AI-Assisted Game Development Roles Legacy Rewrite
 
 URL:
 
