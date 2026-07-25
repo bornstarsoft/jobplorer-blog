@@ -1,6 +1,6 @@
 ---
 title: "Job Search in the United States: Where to Start"
-description: "A draft Jobplorer country guide for researching job search starting points and official resources in the United States. This page requires additional official-source review before publication."
+description: "A reviewed Jobplorer country guide for researching job search starting points and official employment resources in the United States."
 country: "United States"
 region: "North America"
 primaryLanguage:
@@ -14,8 +14,9 @@ jobSearchStartingPoints:
 officialSourcesToCheck:
   - "U.S. Department of Labor pages"
   - "Employment and Training Administration resources"
-  - "USAJOBS official pages, pending direct verification"
-  - "CareerOneStop and state workforce resources, pending direct verification"
+  - "USAJOBS official pages and Help Center"
+  - "CareerOneStop job search, career exploration, American Job Center, and state job bank pages"
+  - "Official state workforce resources such as California EDD"
   - "Employer career pages"
 majorJobSiteCategories:
   - "General job sites"
@@ -28,17 +29,21 @@ usefulFor:
 limitations:
   - "This guide does not provide visa, immigration, legal, tax, labor, relocation, or government-benefit advice."
   - "Job site availability, policies, and features can change."
-lastReviewed: ""
-reviewStatus: "needs-official-review"
+lastReviewed: "2026-07-25"
+reviewStatus: "reviewed"
 draft: true
 ---
 
 # Job Search in the United States: Where to Start
 
-Draft note: this country guide is a starter draft and requires official-source review before publication.
+Publication note: this reviewed country guide remains unpublished until final owner approval.
 
-This draft may be useful for planning job search research in the United States. It can be a starting point for identifying broad job search channels, company career pages, and official public resources to verify directly.
+This reviewed guide may be useful for planning job search research in the United States. It can be a starting point for identifying broad job search channels, company career pages, and official public employment resources to verify directly.
 
-An initial official-source check confirmed access to U.S. Department of Labor pages. USAJOBS, CareerOneStop, and state workforce resource pages still need direct verification before publication because access from this environment was blocked or incomplete.
+[USAJOBS](https://www.usajobs.gov/) is the U.S. federal government's official employment site, operated by the U.S. Office of Personnel Management. Its official site and [Help Center](https://help.usajobs.gov/) provide current information about federal job searches, profiles, resumes, applications, and job announcements.
+
+[CareerOneStop](https://www.careeronestop.org/) is sponsored by the U.S. Department of Labor's Employment and Training Administration. Its official pages provide career exploration, job search, [American Job Center](https://www.careeronestop.org/LocalHelp/AmericanJobCenters/american-job-centers.aspx), and [state job bank](https://www.careeronestop.org/JobSearch/FindJobs/state-job-banks.aspx) starting points. Available services, registration processes, and local details can vary, so readers should verify the relevant official page directly.
+
+Official state workforce resources can provide additional local starting points. For example, the California Employment Development Department describes [CalJOBS](https://edd.ca.gov/en/Jobs_and_Training/caljobs) as California's online resource for job seekers and employers. Resources and processes differ by state.
 
 Check official government, employer, and job-site sources for current details. Requirements, policies, job postings, and availability can change. Jobplorer does not provide live job listings and does not promise jobs, interviews, hiring outcomes, salary outcomes, visa eligibility, immigration eligibility, legal compliance, tax outcomes, labor-law outcomes, or relocation outcomes.
