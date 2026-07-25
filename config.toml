@@ -11,6 +11,7 @@ buildFuture = false
 
 [params]
   mainSections = ["posts"]
+  favicon = "favicon.ico"
 
 [params.ananke]
   show_recent_posts = false
