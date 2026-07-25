@@ -34,8 +34,6 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
-# Job Search in Canada: Where to Start
-
 Review note: this country guide has had an official-source review pass, but public resources, job-site availability, employer requirements, and application processes can change.
 
 This reviewed guide may be useful for planning job search research in Canada. It can be a starting point for comparing broad search channels such as general job sites, professional networking platforms, company career pages, and official public employment resources.

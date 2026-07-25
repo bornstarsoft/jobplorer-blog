@@ -36,8 +36,6 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
-# LinkedIn
-
 This profile is reviewed using official-source checks, but features, pricing, availability, and policies can change. Always check LinkedIn's official website for current details.
 
 LinkedIn may be useful as a starting point for researching job opportunities, professional profiles, companies, and career paths. Official LinkedIn pages reviewed for this profile describe LinkedIn Jobs, LinkedIn's professional network, job applications, guest applications, Premium subscriptions, and remote job search guidance.

@@ -36,8 +36,6 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
-# Remote Work Job Search: Where to Start
-
 Review note: this career guide has had an official-source review pass, but remote-work policies, locations, tools, and role requirements can change.
 
 This reviewed guide may be useful for job search research around remote work. It can be a starting point for comparing broad search channels such as general job sites with remote filters, professional networking platforms with remote filters, company career pages, and official workforce or telework research resources.

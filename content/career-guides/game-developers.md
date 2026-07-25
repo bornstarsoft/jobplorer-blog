@@ -38,8 +38,6 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
-# Job Sites for Game Developers: Where to Start
-
 Review note: this career guide has had an official-source review pass, but job titles, responsibilities, tools, requirements, and market conditions can change.
 
 This guide may be useful for job search research around game developer and game design roles. It can be a starting point for comparing broad search channels such as general job sites, studio career pages, professional networking platforms, official occupation research resources, and game development community resources.

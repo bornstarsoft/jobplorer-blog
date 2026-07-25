@@ -37,8 +37,6 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
-# Software Developer Job Search: Where to Start
-
 Review note: this guide was reviewed using official occupation resources, but requirements, tools, job titles, and market conditions can change. Check official sources and employer postings for current details.
 
 This guide may be useful for job search research around software developer roles. It can be a starting point for comparing broad search channels such as general job sites, professional networking platforms, company career pages, and developer community resources.

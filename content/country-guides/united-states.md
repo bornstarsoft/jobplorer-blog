@@ -34,8 +34,6 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
-# Job Search in the United States: Where to Start
-
 Review note: this country guide has completed an official-source review, but public resources, employer requirements, and application processes can change.
 
 This reviewed guide may be useful for planning job search research in the United States. It can be a starting point for identifying broad job search channels, company career pages, and official public employment resources to verify directly.

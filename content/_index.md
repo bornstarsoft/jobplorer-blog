@@ -1,10 +1,10 @@
 ---
-title: "Jobplorer"
+title: ""
 description: "Explore job sites, country guides, career resources, and practical job search starting points around the world."
 draft: false
 ---
 
-# Explore Job Sites and Career Paths Around the World
+## Explore Job Sites and Career Paths Around the World
 
 Jobplorer is a global job information hub for people comparing job search starting points, country-specific resources, career paths, remote work options, and practical job seeker tools.
 

@@ -36,8 +36,6 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
-# Indeed
-
 This profile is reviewed using official-source checks, but features, pricing, availability, and policies can change. Always check Indeed's official website for current details.
 
 Indeed may be useful as a starting point for researching job postings, companies, and application paths. Official Indeed pages reviewed for this profile describe Indeed job search, applications completed on Indeed, applications that redirect to employer websites, remote job search guidance, and employer-side free or sponsored posting options.

@@ -36,8 +36,6 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
-# Glassdoor
-
 Review note: this Jobplorer profile has had an official-source review pass, but features, pricing, availability, and policies can change.
 
 Glassdoor may be useful as a starting point for researching jobs, companies, workplace information, and salary information. Official Glassdoor pages reviewed for this profile describe Glassdoor job search, company reviews, salaries, student resources, and job-alert guidance.
