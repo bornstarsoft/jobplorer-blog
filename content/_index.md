@@ -29,6 +29,14 @@ These reviewed profiles can be useful starting points for comparing job search p
 - [Indeed](/job-sites/sites/indeed/) - Explore a reviewed profile for job search research, applications, and employer posting workflows.
 - [Glassdoor](/job-sites/sites/glassdoor/) - Compare job search, company research, workplace information, and salary information cautiously.
 
+## Reviewed Country Guides
+
+These reviewed guides may be useful starting points for country-specific job search research. Public employment resources, job-site availability, and employer processes can change, so check official websites for current details.
+
+- [Job Search in South Korea: Where to Start](/country-guides/south-korea/) - Review public employment resources, job sites, employer pages, and language considerations cautiously.
+- [Job Search in Canada: Where to Start](/country-guides/canada/) - Explore official public employment resources, job search channels, and employer information to verify directly.
+- [Job Search in the United States: Where to Start](/country-guides/united-states/) - Review official public employment resources, state workforce starting points, job search channels, and employer information to verify directly.
+
 ## Featured Career Guides
 
 - [Software Developer Job Search: Where to Start](/career-guides/software-developers/) - Use this reviewed career guide as a starting point for researching software developer job search channels.
