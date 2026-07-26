@@ -1,0 +1,42 @@
+{{ define "header" }}
+  {{ partials.Include "site-header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<article class="jp-list-page">
+  <div class="jp-container">
+    {{ with .Content }}
+      <section class="jp-list-intro nested-links">
+        {{ . }}
+      </section>
+    {{ end }}
+
+    {{ if .Paginator.Pages }}
+      <section class="jp-listing-grid" aria-label="{{ .Title }} pages">
+        {{ range .Paginator.Pages }}
+          <article class="jp-listing-card">
+            <div class="jp-listing-meta">
+              <span>{{ .Params.siteType | compare.Default (.Params.guideType | compare.Default (.Section | humanize)) }}</span>
+              {{ if eq .Params.reviewStatus "reviewed" }}
+                <span class="jp-reviewed-badge"><i data-lucide="circle-check" aria-hidden="true"></i> Reviewed</span>
+              {{ end }}
+            </div>
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            {{ with .Description }}
+              <p>{{ . }}</p>
+            {{ else }}
+              <p>{{ .Summary | plainify | truncate 180 }}</p>
+            {{ end }}
+            <a class="jp-card-action" href="{{ .RelPermalink }}">
+              Open resource <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+        {{ end }}
+      </section>
+      <div class="jp-pagination">
+        {{ template "_internal/pagination.html" . }}
+      </div>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

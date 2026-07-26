@@ -1,0 +1,30 @@
+<header class="jp-site-header">
+  <div class="jp-container jp-nav-shell">
+    <a class="jp-brand" href="{{ .Site.Home.RelPermalink }}" aria-label="Jobplorer home">
+      <span class="jp-brand-mark" aria-hidden="true"><i data-lucide="compass"></i></span>
+      <span>Jobplorer</span>
+    </a>
+
+    <button
+      class="jp-menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="jp-primary-navigation"
+    >
+      <i data-lucide="menu" aria-hidden="true"></i>
+      <span>Menu</span>
+    </button>
+
+    <nav class="jp-primary-nav" id="jp-primary-navigation" aria-label="Primary navigation">
+      <ul>
+        {{ range .Site.Menus.main }}
+          <li>
+            <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>

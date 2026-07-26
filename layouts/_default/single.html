@@ -1,0 +1,48 @@
+{{ define "main" }}
+<article class="jp-article-page">
+  <div class="jp-container jp-article-shell">
+    <header class="jp-article-header">
+      <a class="jp-back-link" href="{{ .CurrentSection.RelPermalink }}">
+        <i data-lucide="arrow-left" aria-hidden="true"></i>
+        {{ .CurrentSection.Title | compare.Default (.Section | humanize) }}
+      </a>
+      <p class="jp-eyebrow">{{ .Params.siteType | compare.Default (.Params.guideType | compare.Default (.Section | humanize)) }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}
+        <p class="jp-article-description">{{ . }}</p>
+      {{ end }}
+
+      <div class="jp-article-meta">
+        {{ if eq .Params.reviewStatus "reviewed" }}
+          <span class="jp-reviewed-badge"><i data-lucide="circle-check" aria-hidden="true"></i> Reviewed resource</span>
+        {{ end }}
+        {{ with .Params.lastReviewed }}
+          <span><i data-lucide="calendar-check" aria-hidden="true"></i> Reviewed {{ . }}</span>
+        {{ end }}
+        {{ if and (eq .Section "posts") (not .Date.IsZero) }}
+          <span><i data-lucide="calendar" aria-hidden="true"></i> Published {{ .Date.Format "January 2, 2006" }}</span>
+        {{ end }}
+      </div>
+
+      {{ with .Params.officialUrl }}
+        <a class="jp-official-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          Visit official website <i data-lucide="external-link" aria-hidden="true"></i>
+        </a>
+      {{ end }}
+    </header>
+
+    <div class="jp-article-layout">
+      <div class="jp-article-body nested-links">
+        {{ .Content }}
+        {{ partials.Include "tags.html" . }}
+      </div>
+
+      <aside class="jp-source-reminder">
+        <i data-lucide="shield-check" aria-hidden="true"></i>
+        <h2>Verify current details</h2>
+        <p>Use this page as a research starting point. Confirm features, requirements, availability, and application details on official sources and current postings.</p>
+      </aside>
+    </div>
+  </div>
+</article>
+{{ end }}
