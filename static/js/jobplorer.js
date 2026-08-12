@@ -12,6 +12,20 @@
     }
   }
 
+  function trackEvent(eventName, parameters) {
+    window.dataLayer = window.dataLayer || [];
+
+    if (typeof window.gtag !== "function") {
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+    }
+
+    window.gtag("event", eventName, Object.assign({
+      event_category: "resource_finder"
+    }, parameters || {}));
+  }
+
   function initializeNavigation() {
     var toggle = document.querySelector(".jp-menu-toggle");
     var navigation = document.querySelector(".jp-primary-nav");
@@ -58,6 +72,7 @@
     var clearButton = document.getElementById("jp-clear-search");
     var resourceGrid = document.getElementById("jp-resource-grid");
     var guidesSection = document.querySelector(".jp-guides-section");
+    var pathLinks = Array.prototype.slice.call(document.querySelectorAll(".jp-path-link"));
     var activeFilter = "all";
 
     if (!form || !input || !items.length) {
@@ -113,6 +128,11 @@
           status.textContent = visibleCount + (visibleCount === 1 ? " result shown" : " results shown");
         }
       }
+
+      return {
+        queryLength: query.length,
+        visibleCount: visibleCount
+      };
     }
 
     function setFilter(filter) {
@@ -122,26 +142,46 @@
         button.classList.toggle("is-active", isActive);
         button.setAttribute("aria-pressed", String(isActive));
       });
-      applyFilters();
+      return applyFilters();
     }
 
     filterButtons.forEach(function (button) {
       button.addEventListener("click", function () {
-        setFilter(button.getAttribute("data-resource-filter") || "all");
+        var filter = button.getAttribute("data-resource-filter") || "all";
+        var result = setFilter(filter);
+        trackEvent("resource_filter", {
+          filter_name: filter,
+          result_count: result.visibleCount
+        });
       });
     });
 
     exampleButtons.forEach(function (button) {
       button.addEventListener("click", function () {
-        input.value = button.getAttribute("data-search-example") || "";
-        setFilter("all");
+        var example = button.getAttribute("data-search-example") || "";
+        input.value = example;
+        var result = setFilter("all");
+        trackEvent("resource_search", {
+          search_method: "example",
+          search_example: example,
+          query_length: result.queryLength,
+          result_count: result.visibleCount,
+          has_results: result.visibleCount > 0
+        });
         input.focus();
       });
     });
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();
-      applyFilters();
+      var result = applyFilters();
+      trackEvent("resource_search", {
+        search_method: "form_submit",
+        query_length: result.queryLength,
+        result_count: result.visibleCount,
+        has_results: result.visibleCount > 0,
+        active_filter: activeFilter
+      });
       var target = document.getElementById("jp-reviewed-title");
       if (target) {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -152,11 +192,36 @@
 
     if (clearButton) {
       clearButton.addEventListener("click", function () {
+        var previousQueryLength = normalized(input.value).length;
         input.value = "";
         setFilter("all");
+        trackEvent("resource_search_clear", {
+          previous_query_length: previousQueryLength
+        });
         input.focus();
       });
     }
+
+    items.forEach(function (item) {
+      item.addEventListener("click", function () {
+        var label = item.querySelector("h3, strong");
+        trackEvent("resource_open", {
+          resource_name: label ? label.textContent.trim() : "unknown",
+          resource_category: item.getAttribute("data-category") || "unknown",
+          destination_path: item.pathname || ""
+        });
+      });
+    });
+
+    pathLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        var label = link.querySelector("strong");
+        trackEvent("resource_path_open", {
+          path_name: label ? label.textContent.trim() : "unknown",
+          destination_path: link.pathname || ""
+        });
+      });
+    });
 
     document.addEventListener("keydown", function (event) {
       var target = event.target;

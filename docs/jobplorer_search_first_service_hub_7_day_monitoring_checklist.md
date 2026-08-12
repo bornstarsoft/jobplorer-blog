@@ -10,6 +10,7 @@ making premature content, SEO, URL, or performance changes.
 - Deployment commit: `7cf47b6 Renew Jobplorer as search-first service hub`
 - Deployment date: 2026-07-26
 - Observation window: 2026-07-26 through 2026-08-02
+- Interaction event baseline window: 2026-08-12 through 2026-08-19
 - Primary domain: `https://jobplorer.com/`
 - Comparison references:
   - `docs/jobplorer_phase16j_search_console_performance_tracking_sheet.md`
@@ -17,14 +18,39 @@ making premature content, SEO, URL, or performance changes.
 
 ## Measurement Boundary
 
-Cloudflare Web Analytics and the current GA4 installation can show page-level
-traffic and navigation outcomes. The homepage search terms and resource-filter
-clicks are client-side interactions and are not currently sent as custom
-analytics events.
+Cloudflare Web Analytics and GA4 show page-level traffic and navigation
+outcomes. Starting on 2026-08-12, the homepage also sends privacy-conscious
+custom events for search submissions, example searches, filter selection,
+resource opens, path opens, and search clearing.
 
-Use destination-page traffic as a cautious proxy for discovery. Do not report
-search or filter usage counts unless dedicated event tracking is added and
-validated in a separately approved phase.
+User-entered search text is not sent. Search events contain only query length,
+result count, result availability, search method, and active filter. Fixed
+example labels may be recorded because they are predefined site controls.
+
+Use destination-page traffic and custom events together as directional
+discovery evidence. Do not combine Cloudflare, GA4, and Search Console totals as
+if they used the same definitions.
+
+## GA4 Resource Finder Events
+
+Use the GA4 Events report for the interaction event baseline window.
+
+| Event | Count | Useful parameters | Notes |
+| --- | ---: | --- | --- |
+| `resource_search` |  | `search_method`, `query_length`, `result_count`, `has_results`, `active_filter` | No user-entered query text |
+| `resource_filter` |  | `filter_name`, `result_count` |  |
+| `resource_open` |  | `resource_name`, `resource_category`, `destination_path` |  |
+| `resource_path_open` |  | `path_name`, `destination_path` |  |
+| `resource_search_clear` |  | `previous_query_length` |  |
+
+Record:
+
+- GA4 data collection date:
+- Interaction window:
+- Most-used resource category:
+- Most-opened reviewed resource:
+- Searches with no results:
+- Data too small for interpretation: yes / no
 
 ## Daily Operations Check
 
@@ -125,8 +151,8 @@ Console. Do not invent totals by combining incompatible tools.
 - Do not change titles or metadata from tiny or blank query samples.
 - Do not expand legacy rewrites until Search Console Performance data is stable
   enough to compare the four rewritten posts.
-- Do not claim that homepage search or filter engagement was measured without
-  validated custom analytics events.
+- Interpret custom event counts only after GA4 has processed the events and the
+  event parameters are visible in the selected report.
 
 ## End-of-Window Decision
 
