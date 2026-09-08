@@ -6,9 +6,19 @@ draft: false
 
 # Job Sites
 
-Jobplorer collects cautious starting points for researching job sites and career platforms around the world.
+Choose a starting point based on the question you need to answer. These editorial comparisons are not rankings, and Jobplorer does not host live vacancies.
 
-This section is not a live job board and does not rank or rate platforms. Job site features, coverage, fees, and posting quality can change, so always check each official website directly before relying on it.
+## Choose Your Starting Point
+
+- **Find roles and research professional backgrounds:** [LinkedIn](/job-sites/sites/linkedin/). Compare a posting with the employer's own career page.
+- **Compare postings and application destinations:** [Indeed](/job-sites/sites/indeed/). Check whether the application stays on the platform or moves to another site.
+- **Prepare questions about an employer:** [Glassdoor](/job-sites/sites/glassdoor/). Read workplace information as research input, then verify details relevant to the particular team.
+
+## Compare the Same Role Across Sources
+
+Record the employer, job reference, location, date checked, and application destination. Two listings may refer to the same vacancy; compare the details before submitting duplicate applications. Mark anything you cannot verify as unknown.
+
+Features, fees, access, and posting availability can change. Use the official sources linked in each profile for current details.
 
 ## Explore Job Site Resources
 
@@ -16,4 +26,6 @@ This section is not a live job board and does not rank or rate platforms. Job si
 - [Job Sites by Country](/job-sites/by-country/)
 - [Job Sites by Career](/job-sites/by-career/)
 
-Future Jobplorer job site pages should use official sources, avoid partnership claims, and clearly separate factual platform information from editorial notes.
+## Keep Your Search Organized
+
+Use the [application record template](/job-seeker-tools/#application-record-template) to track your shortlist and the [weekly review](/job-seeker-tools/#your-weekly-job-search-review) to decide what to revisit.

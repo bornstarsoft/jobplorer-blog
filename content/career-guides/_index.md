@@ -16,7 +16,13 @@ These guides should help readers ask better questions and verify details with em
 - [Game Developer Job Search: Where to Start](/career-guides/game-developers/) - Compare starting points for game developer and game design job search research.
 - [Remote Work Job Search: Where to Start](/career-guides/remote-workers/) - Review cautious starting points for remote job searches, employer policies, location limits, and application research.
 
-Career guides will be added gradually. Future topics may include designers, entry-level job seekers, resume preparation, interviews, portfolio planning, and skill research.
+## Compare Responsibilities Before Titles
+
+Read a few current postings for the role you are considering. Note the work described, tools named, evidence requested, and questions left unanswered. Similar titles can describe different responsibilities; keep your comparison tied to the actual posting.
+
+## Prepare One Clear Example
+
+Choose a project or experience that relates to a stated responsibility. Write down the problem, your contribution, the result, and what you learned. Use the [pre-submission checklist](/job-seeker-tools/#before-you-submit) to review your materials.
 
 For related legacy guidance, see [entry-level job search starting points](/posts/the-struggles-of-young-job-seekers/).
 

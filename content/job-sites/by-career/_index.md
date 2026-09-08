@@ -6,6 +6,16 @@ draft: false
 
 # Job Sites by Career
 
-Different career areas often use different job search channels. This section will organize starting points by broad fields such as technology, design, healthcare, education, hospitality, logistics, and public sector work.
+Start with a role guide, then compare current postings. A platform's broad coverage does not establish whether it has a suitable opening for you.
 
-The resources here should be treated as research starting points, not endorsements or guarantees. Always confirm current posting rules, employer details, and application requirements on official websites.
+## Choose a Search Focus
+
+- [Software Developers](/career-guides/software-developers/): compare responsibilities, technical context, and examples of work you can discuss.
+- [Game Developers](/career-guides/game-developers/): separate programming, design, and other studio roles before choosing search terms.
+- [Remote Workers](/career-guides/remote-workers/): use your occupation as the starting point, then check the work arrangement and location details. Remote work is not a single occupation.
+
+## Compare Channels
+
+Use [LinkedIn](/job-sites/sites/linkedin/) or [Indeed](/job-sites/sites/indeed/) for role discovery and [Glassdoor](/job-sites/sites/glassdoor/) for employer research. Check the employer's current career page before preparing an application.
+
+Keep a short list of responsibilities that recur across the postings you read. Separate explicit requirements from preferences and unanswered questions using the [job seeker worksheets](/job-seeker-tools/).

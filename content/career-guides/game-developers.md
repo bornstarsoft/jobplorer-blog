@@ -38,6 +38,24 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
+## Separate Design From Development Tasks
+
+[O*NET's Video Game Designers page](https://www.onetonline.org/link/summary/15-1255.01) describes design tasks including game systems, mechanics, and documentation. It is occupation context, not a description of every studio vacancy. Compare a design posting with programming or tools roles by reading the actual responsibilities.
+
+## Prepare Evidence for the Role
+
+- Identify whether the posting emphasizes code, systems design, content, tools, or another area.
+- Choose a relevant example and describe what you personally contributed.
+- For a team project, distinguish your work from the team's overall result.
+- When a demo or portfolio is requested, check the requested format and test the link. Include context that makes your example understandable.
+- Treat engine names and AI tools as posting-specific details, not universal requirements.
+
+## Build Your Shortlist
+
+Compare studio career pages with [LinkedIn](/job-sites/sites/linkedin/) and [Indeed](/job-sites/sites/indeed/). Use the [application worksheet](/job-seeker-tools/) to record each studio's instructions. For adjacent work, read the [Software Developers guide](/career-guides/software-developers/) and [AI-assisted game role research](/posts/ai-creators-future-game-development/).
+
+## Scope and Limitations
+
 Review note: this career guide has had an official-source review pass, but job titles, responsibilities, tools, requirements, and market conditions can change.
 
 This guide may be useful for job search research around game developer and game design roles. It can be a starting point for comparing broad search channels such as general job sites, studio career pages, professional networking platforms, official occupation research resources, and game development community resources.

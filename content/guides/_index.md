@@ -6,8 +6,17 @@ draft: false
 
 # Guides
 
-Guides collect general Jobplorer resources for job search research, career planning, and evaluating information sources.
+Choose the question closest to your next step. Each guide connects to resources you can check directly.
 
-Use these pages as starting points. Details about employers, platforms, hiring processes, and local rules can change, so official sources should be checked before taking action.
+## Find Your Next Action
 
-Future guide topics may include choosing job search channels, checking employer information, comparing job platforms, and preparing application materials.
+- **I am starting my search:** [Entry-Level Job Search](/posts/the-struggles-of-young-job-seekers/) covers reading postings and comparing starting points.
+- **I want to review my application:** [Resume Blockers](/posts/why-87-percent-of-job-seekers-abandon-their-resumes/) helps you check materials before submitting.
+- **I am unsure about AI in recruitment:** [AI in Recruitment](/posts/the-rise-of-ai-in-recruitment/) explains questions to ask about tools and application processes.
+- **I am researching AI-related game work:** [AI-Assisted Game Development Roles](/posts/ai-creators-future-game-development/) offers role-research starting points.
+
+## Put the Reading to Work
+
+Use the [job seeker worksheets](/job-seeker-tools/) to record a shortlist, prepare questions, and review progress each week. For a more specific starting point, browse [career guides](/career-guides/) or [country guides](/country-guides/).
+
+The four guides above retain their original archive URLs. The wider [legacy news archive](/posts/) includes older material and should be read in its historical context. Confirm current facts with official sources.

@@ -33,6 +33,24 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
+## Start With Employment24
+
+[Employment24 (Work24)](https://www.work24.go.kr/) is an official Korean government portal. Its Korean-language navigation includes job information organized by occupation and region, as well as career resources. Check the current portal for the scope and access requirements of a particular service.
+
+## Read the Original Posting
+
+1. Choose a role and region, then compare the original job title and responsibilities.
+2. Keep the original Korean wording alongside your notes when translation leaves a term unclear.
+3. Record any language expectations stated by the employer. Do not infer them from the language of a search interface.
+4. Check the employer's own career page for the posting reference, application destination, and closing date if given.
+5. Confirm whether the chosen service needs an account before preparing documents. Leave uncertain requirements as questions.
+
+## Organize Your Research
+
+Compare [career guides](/career-guides/) for role-specific questions and use the [application record template](/job-seeker-tools/#application-record-template) to track official URLs and dates. A public-resource listing or translation does not establish personal eligibility or an employment outcome.
+
+## Scope and Limitations
+
 Review note: this country guide has had an official-source review pass, but public resources, job-site availability, employer requirements, and application processes can change.
 
 This reviewed guide may be useful for planning job search research in South Korea. It can be a starting point for comparing broad search channels such as general job sites, professional networking platforms, company career pages, and official public employment resources.

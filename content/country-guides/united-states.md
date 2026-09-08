@@ -34,6 +34,24 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
+## Choose the Right Resource Scope
+
+- **Federal job search:** [USAJOBS search help](https://help.usajobs.gov/how-to/search) explains search terms and filters for its listings. Read each announcement's instructions directly.
+- **Local employment-service research:** the [Department of Labor's American Job Centers page](https://www.dol.gov/agencies/eta/american-job-centers) provides an official starting point for learning about the network and locating services.
+- **Broader career and state resources:** the CareerOneStop and state workforce links below offer additional starting points. Confirm each resource's geographic scope and current access details.
+
+## Build a Consistent Shortlist
+
+1. Record the employer, role title, location, source URL, and date checked.
+2. Separate federal, state, and private-employer postings in your notes; their application instructions are not interchangeable.
+3. Compare responsibilities and requested documents with the original announcement.
+4. Keep application questions separate from facts you have confirmed.
+5. Use the [application worksheet](/job-seeker-tools/) to record your next action.
+
+For additional channel comparisons, see [job site profiles](/job-sites/sites/). For occupation-focused questions, see [career guides](/career-guides/).
+
+## Scope and Official Resources
+
 Review note: this country guide has completed an official-source review, but public resources, employer requirements, and application processes can change.
 
 This reviewed guide may be useful for planning job search research in the United States. It can be a starting point for identifying broad job search channels, company career pages, and official public employment resources to verify directly.

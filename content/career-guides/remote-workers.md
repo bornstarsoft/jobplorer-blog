@@ -36,6 +36,27 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
+## Start With Your Occupation
+
+Remote work describes a work arrangement. Choose the responsibilities you want to investigate first, then narrow your search. [Indeed's remote-search guidance](https://www.indeed.com/help/job-seekers/articles/115005875163-searching-for-remote-jobs?hl=en&co=US) is a platform-specific starting point; confirm the details in each employer's posting.
+
+## Check Each Posting
+
+- **Location:** which country, region, or office is named?
+- **Arrangement:** does the posting describe remote, hybrid, or office attendance, and does it explain what that means?
+- **Schedule:** are time-zone overlap, fixed hours, or occasional travel mentioned?
+- **Collaboration:** what communication, documentation, or handover expectations are stated?
+- **Equipment and tools:** what does the employer explicitly provide or request?
+- **Application:** where do you apply, and what evidence of relevant work is requested?
+
+Mark missing answers as unknown. A remote filter alone does not establish that a role can be performed from any location.
+
+## Keep a Verifiable Record
+
+Record the source URL, date checked, work arrangement, and questions in the [application worksheet](/job-seeker-tools/#application-record-template). Compare [software](/career-guides/software-developers/) or [game development](/career-guides/game-developers/) responsibilities separately from the work arrangement.
+
+## Scope and Limitations
+
 Review note: this career guide has had an official-source review pass, but remote-work policies, locations, tools, and role requirements can change.
 
 This reviewed guide may be useful for job search research around remote work. It can be a starting point for comparing broad search channels such as general job sites with remote filters, professional networking platforms with remote filters, company career pages, and official workforce or telework research resources.

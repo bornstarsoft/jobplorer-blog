@@ -6,8 +6,16 @@ draft: false
 
 # Job Sites by Country
 
-Use this section to organize job search starting points by country. Country-specific job search rules, common platforms, posting practices, and public employment resources can change over time.
+Choose a country guide to find official resource links and a short research checklist.
 
-Jobplorer does not provide visa, legal, labor, tax, or immigration advice. Check official government websites, employer pages, and platform documentation for current details before making decisions.
+- [South Korea](/country-guides/south-korea/): start with Employment24 and verify the original posting's language, location, and application route.
+- [Canada](/country-guides/canada/): use Canada.ca and Job Bank as public-resource starting points, then compare employer postings.
+- [United States](/country-guides/united-states/): distinguish federal job searches from broader career resources and state workforce services.
 
-Future pages may group resources by country and explain what each resource can help with, without implying rankings, guarantees, or official partnerships.
+## Keep Comparisons Consistent
+
+Record the city or region, role title, source URL, language shown, and date checked. A country selector or a remote label alone does not confirm that a particular role matches your circumstances.
+
+For platform comparisons, see [reviewed job site profiles](/job-sites/sites/). For record keeping, use the [application worksheet](/job-seeker-tools/#application-record-template).
+
+This directory covers research starting points, not eligibility, relocation, immigration, or legal advice. Confirm current details on official sources.

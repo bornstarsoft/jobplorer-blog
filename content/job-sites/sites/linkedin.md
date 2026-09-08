@@ -36,6 +36,24 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
+## Start With a Role and a Location
+
+[LinkedIn's current search help](https://www.linkedin.com/help/linkedin/answer/a511260/) describes searching Jobs, refining results, saving postings, and creating alerts. It distinguishes Easy Apply on LinkedIn from applications that open a company or third-party site.
+
+## A Practical Research Session
+
+1. Search for work you can describe clearly, then inspect the location and responsibilities in each result.
+2. Open the employer's career page and compare the role title or reference number.
+3. Check the application destination before uploading documents. A saved posting is not a submitted application.
+4. Note one relevant example from your experience and one question about the role.
+5. Record your next action in the [application worksheet](/job-seeker-tools/#application-record-template).
+
+## Compare With Other Sources
+
+Use [Indeed](/job-sites/sites/indeed/) to compare posting details and [Glassdoor](/job-sites/sites/glassdoor/) to prepare employer-research questions. For work-location questions, see the [Remote Workers guide](/career-guides/remote-workers/).
+
+## Scope and Limitations
+
 This profile is reviewed using official-source checks, but features, pricing, availability, and policies can change. Always check LinkedIn's official website for current details.
 
 LinkedIn may be useful as a starting point for researching job opportunities, professional profiles, companies, and career paths. Official LinkedIn pages reviewed for this profile describe LinkedIn Jobs, LinkedIn's professional network, job applications, guest applications, Premium subscriptions, and remote job search guidance.

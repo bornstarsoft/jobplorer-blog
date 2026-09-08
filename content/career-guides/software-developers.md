@@ -37,6 +37,24 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
+## Compare the Work Behind the Title
+
+The [BLS software development overview](https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm) describes development alongside quality assurance and testing occupations. Use it for broad role context; an individual employer's posting defines the role you are considering.
+
+## Build a Role Shortlist
+
+1. Select a focus to investigate, such as application development, backend services, or testing. These are search prompts, not a universal job taxonomy.
+2. Read several current postings and list responsibilities separately from preferred tools.
+3. Match a responsibility to a project you can explain: the problem, your contribution, testing, and a tradeoff you made.
+4. Check whether the employer asks for a portfolio, repository, assessment, or another form of evidence. Do not assume every role requires a public repository.
+5. Use the [application worksheet](/job-seeker-tools/) to record missing information and next steps.
+
+## Research Channels
+
+Compare [LinkedIn](/job-sites/sites/linkedin/) and [Indeed](/job-sites/sites/indeed/) with employer career pages. For remote roles, also check the [work-location checklist](/career-guides/remote-workers/).
+
+## Scope and Limitations
+
 Review note: this guide was reviewed using official occupation resources, but requirements, tools, job titles, and market conditions can change. Check official sources and employer postings for current details.
 
 This guide may be useful for job search research around software developer roles. It can be a starting point for comparing broad search channels such as general job sites, professional networking platforms, company career pages, and developer community resources.

@@ -36,6 +36,26 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
+## Turn Workplace Research Into Questions
+
+[Glassdoor's company reviews directory](https://www.glassdoor.com/Reviews/index.htm) provides a starting point for finding company information and reviews. Use it to identify topics to investigate, not to predict what your own experience will be.
+
+## A Practical Research Session
+
+1. Match the company name and location to the employer you are researching.
+2. Where shown, note the review date, role, and location. Keep comments about different teams separate.
+3. Write down recurring topics as questions, such as how feedback works or how a team plans its workload.
+4. Compare those questions with the employer's current posting and information provided during the application process.
+5. Record unresolved points in your [interview research notes](/job-seeker-tools/#interview-research-prompts).
+
+One review or a displayed score cannot establish conditions for every team. Missing detail should remain unknown.
+
+## Continue Your Search
+
+Compare role discovery through [LinkedIn](/job-sites/sites/linkedin/) and [Indeed](/job-sites/sites/indeed/), then verify the application route with the employer.
+
+## Scope and Limitations
+
 Review note: this Jobplorer profile has had an official-source review pass, but features, pricing, availability, and policies can change.
 
 Glassdoor may be useful as a starting point for researching jobs, companies, workplace information, and salary information. Official Glassdoor pages reviewed for this profile describe Glassdoor job search, company reviews, salaries, student resources, and job-alert guidance.

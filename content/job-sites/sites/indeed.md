@@ -36,6 +36,26 @@ reviewStatus: "reviewed"
 draft: false
 ---
 
+## Check Where the Application Goes
+
+[Indeed's application help](https://www.indeed.com/help/job-seekers/articles/204652920-applying-for-a-job-on-indeed?hl=en&co=US) distinguishes applications completed on Indeed from those that open an employer website. Its guidance also asks applicants to review resume details before submitting.
+
+## A Practical Research Session
+
+1. Pick a role and location, then read the full posting rather than relying on the result summary.
+2. Compare the employer name and job reference with the employer's career page when available.
+3. Check the destination and documents requested before starting the application.
+4. Review imported resume fields for accuracy and record the version you submitted.
+5. Keep the confirmation and next action in your [application record](/job-seeker-tools/#application-record-template).
+
+For remote searches, read [Indeed's remote-search help](https://www.indeed.com/help/job-seekers/articles/115005875163-searching-for-remote-jobs?hl=en&co=US) and the [Remote Workers checklist](/career-guides/remote-workers/). Confirm location details in the posting itself.
+
+## Compare With Other Sources
+
+[LinkedIn](/job-sites/sites/linkedin/) offers another starting point for role and company research. [Glassdoor](/job-sites/sites/glassdoor/) can help frame questions about a workplace. Treat differences as items to verify with the employer.
+
+## Scope and Limitations
+
 This profile is reviewed using official-source checks, but features, pricing, availability, and policies can change. Always check Indeed's official website for current details.
 
 Indeed may be useful as a starting point for researching job postings, companies, and application paths. Official Indeed pages reviewed for this profile describe Indeed job search, applications completed on Indeed, applications that redirect to employer websites, remote job search guidance, and employer-side free or sponsored posting options.
