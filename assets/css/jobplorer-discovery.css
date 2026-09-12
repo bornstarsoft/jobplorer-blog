@@ -1,0 +1,56 @@
+.jp-discovery-page { padding: 40px 0 64px; }
+.jp-discovery-heading { margin-bottom: 28px; max-width: 820px; }
+.jp-discovery-heading h1 { font-size: 32px; line-height: 1.25; margin: 12px 0; }
+.jp-discovery-heading p { color: var(--jp-muted); line-height: 1.7; }
+.jp-discovery-page a { color: var(--jp-blue); }
+.jp-discovery-page svg { width: 20px; height: 20px; flex-shrink: 0; vertical-align: middle; }
+.jp-discovery-page :is(a, button, select):focus-visible { outline: 3px solid #92b8f5; outline-offset: 3px; }
+.jp-comparison { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 14px; line-height: 1.65; }
+.jp-comparison caption { text-align: left; padding: 0 0 16px; color: var(--jp-muted); font-size: 13px; }
+.jp-comparison th, .jp-comparison td { text-align: left; vertical-align: top; padding: 20px 18px; border-bottom: 1px solid var(--jp-line); overflow-wrap: anywhere; }
+.jp-comparison thead th { font-size: 13px; background: #edf3ef; }
+.jp-comparison thead th:first-child { width: 19%; }
+.jp-comparison tbody th { font-size: 18px; background: white; }
+.jp-comparison td { background: white; }
+.jp-discovery-symbol { display: block; margin-bottom: 10px; color: var(--jp-green); }
+.jp-comparison-profile, .jp-comparison-source { display: block; margin-top: 12px; font-size: 13px; font-weight: 500; }
+.jp-cell-label { display: none; }
+.jp-discovery-notes { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--jp-line); max-width: 880px; font-size: 15px; line-height: 1.8; }
+.jp-discovery-notes h2 { font-size: 21px; margin: 26px 0 12px; }
+.jp-guide-controls { display: grid; grid-template-columns: 1.2fr 1fr 1.2fr 44px; gap: 16px; align-items: end; padding: 22px 0; border-block: 1px solid var(--jp-line); }
+.jp-guide-controls[hidden], .jp-guide-result[hidden] { display: none; }
+.jp-guide-controls label { font-size: 14px; font-weight: 600; min-width: 0; }
+.jp-guide-controls select { display: block; width: 100%; min-width: 0; height: 48px; margin-top: 8px; padding: 10px 30px 10px 10px; border: 1px solid #aebdb2; border-radius: 5px; color: var(--jp-ink); background: white; font: inherit; font-size: 14px; }
+.jp-guide-controls button { width: 44px; height: 48px; border: 1px solid var(--jp-line); border-radius: 5px; background: white; color: var(--jp-blue); cursor: pointer; }
+.jp-guide-controls button:hover { background: var(--jp-blue-soft); }
+.jp-guide-status { min-height: 44px; color: var(--jp-muted); font-size: 13px; line-height: 1.6; margin: 18px 0; overflow-wrap: anywhere; }
+.jp-guide-results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.jp-guide-group h2 { display: flex; gap: 8px; align-items: center; font-size: 15px; margin: 0 0 16px; color: var(--jp-green); }
+.jp-guide-group:nth-child(2) h2 { color: var(--jp-blue); }
+.jp-guide-group:nth-child(3) h2 { color: #a43121; }
+.jp-guide-result { padding: 18px 0; border-top: 2px solid var(--jp-line); }
+.jp-guide-result h3 { margin: 0 0 12px; font-size: 20px; line-height: 1.4; overflow-wrap: anywhere; }
+.jp-guide-result h3 a { text-decoration: none; }
+.jp-guide-result h3 a:hover { text-decoration: underline; }
+.jp-guide-result p { font-size: 15px; color: var(--jp-muted); line-height: 1.7; margin: 0; }
+@media (max-width: 800px) {
+  .jp-guide-controls { grid-template-columns: 1fr 1fr; }
+  .jp-guide-controls button { justify-self: end; }
+  .jp-guide-results { grid-template-columns: 1fr; gap: 24px; }
+  .jp-comparison, .jp-comparison tbody { display: block; }
+  .jp-comparison caption { display: block; }
+  .jp-comparison thead { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); }
+  .jp-comparison tr { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 24px; border: 1px solid var(--jp-line); border-radius: 6px; overflow: hidden; }
+  .jp-comparison tbody th { grid-column: 1 / -1; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .jp-discovery-symbol, .jp-comparison-profile { margin: 0; }
+  .jp-comparison td:last-child { grid-column: 1 / -1; border: 0; }
+  .jp-cell-label { display: block; font-weight: 650; color: var(--jp-ink); margin-bottom: 6px; }
+}
+@media (max-width: 480px) {
+  .jp-discovery-page { padding-top: 24px; }
+  .jp-discovery-heading h1 { font-size: 28px; }
+  .jp-guide-controls { grid-template-columns: minmax(0, 1fr); }
+  .jp-guide-controls select { font-size: 13px; }
+  .jp-comparison tr { grid-template-columns: minmax(0, 1fr); }
+  .jp-comparison th, .jp-comparison td { padding: 16px; }
+}

@@ -16,6 +16,12 @@ Jobplorer may use basic site analytics, such as Cloudflare Web Analytics or simi
 
 Analytics information may include general usage data such as page views, referrers, device or browser information, approximate region, and performance signals. This information is used to improve the website and understand how pages are used.
 
+## Guide Finder and Job Site Comparison
+
+The Guide Finder offers fixed choices for a research goal, role topic, and country resource. It does not ask for your name, contact details, resume, application records, or free-text answers. Its code filters links on the page without submitting or saving these selections, and it does not place them in the page URL.
+
+Jobplorer's GA4 tag is excluded from the Guide Finder and Job Site Comparison pages. Other pages retain their analytics configuration. Hosting services may still receive ordinary page requests, and linked external sites have their own policies. These statements describe the two pages' implementation, not a claim of zero data processing across the whole site.
+
 ## Contact Information
 
 If you contact the site owner, information you choose to provide may be used to respond to the inquiry, review corrections, evaluate feedback, or handle related communication.

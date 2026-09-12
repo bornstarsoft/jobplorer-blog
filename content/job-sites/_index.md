@@ -1,18 +1,37 @@
 ---
 title: "Job Sites"
 description: "Explore job search websites and career platforms as starting points for your own research."
+layout: "job-site-comparison"
+resourceDiscovery: true
+aliases:
+  - "/job-sites/page/1/"
+comparisonChecked: "2026-09-12"
+comparisons:
+  - path: "/job-sites/sites/linkedin/"
+    icon: "network"
+    focus: "Role search and professional-background research."
+    application: "Easy Apply stays on LinkedIn; Apply can open a company or third-party site."
+    check: "Confirm the employer, job reference, location, and destination before sending documents."
+    source: "https://www.linkedin.com/help/linkedin/answer/a511260/"
+    sourceLabel: "LinkedIn search help"
+  - path: "/job-sites/sites/indeed/"
+    icon: "search"
+    focus: "Posting details and application-route research."
+    application: "Some applications take place on Indeed; others open an employer website."
+    check: "Review imported resume fields and the requested documents before submitting."
+    source: "https://www.indeed.com/help/job-seekers/articles/204652920-applying-for-a-job-on-indeed?hl=en&co=US"
+    sourceLabel: "Indeed application help"
+  - path: "/job-sites/sites/glassdoor/"
+    icon: "building-2"
+    focus: "Company reviews and workplace-research questions."
+    application: "The source below covers company research, not a single application workflow."
+    check: "Consider review date, role, and location where shown; a review does not establish conditions for every team."
+    source: "https://www.glassdoor.com/Reviews/index.htm"
+    sourceLabel: "Glassdoor company reviews"
 draft: false
 ---
 
-# Job Sites
-
 Choose a starting point based on the question you need to answer. These editorial comparisons are not rankings, and Jobplorer does not host live vacancies.
-
-## Choose Your Starting Point
-
-- **Find roles and research professional backgrounds:** [LinkedIn](/job-sites/sites/linkedin/). Compare a posting with the employer's own career page.
-- **Compare postings and application destinations:** [Indeed](/job-sites/sites/indeed/). Check whether the application stays on the platform or moves to another site.
-- **Prepare questions about an employer:** [Glassdoor](/job-sites/sites/glassdoor/). Read workplace information as research input, then verify details relevant to the particular team.
 
 ## Compare the Same Role Across Sources
 

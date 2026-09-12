@@ -8,6 +8,8 @@ draft: false
 
 Choose the question closest to your next step. Each guide connects to resources you can check directly.
 
+[Find guides by your next step, role, and country](/job-seeker-tools/guide-finder/) or [compare job sites](/job-sites/).
+
 ## Find Your Next Action
 
 - **I am starting my search:** [Entry-Level Job Search](/posts/the-struggles-of-young-job-seekers/) covers reading postings and comparing starting points.

@@ -8,6 +8,10 @@ draft: false
 
 Turn a promising posting into a clear next action. Use these planning worksheets alongside the employer's current instructions.
 
+## Find Your Next Resource
+
+[Find a guide for your next step](/job-seeker-tools/guide-finder/) or [compare LinkedIn, Indeed, and Glassdoor](/job-sites/). No application details or personal profile are needed.
+
 ## Your Weekly Job Search Review
 
 1. Choose a role family and location to focus on this week.
@@ -20,7 +24,7 @@ Start with [job site comparisons](/job-sites/), a [career guide](/career-guides/
 
 ## Application Record Template
 
-Keep one record per role in your own private notes or spreadsheet. This page does not store application records.
+Keep one record per role in your own private notes or spreadsheet.
 
 - Employer and role:
 - Official posting URL and reference number:

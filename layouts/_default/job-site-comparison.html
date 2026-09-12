@@ -1,0 +1,29 @@
+{{ define "main" }}
+<article class="jp-discovery-page">
+  <div class="jp-container">
+    <header class="jp-discovery-heading">
+      <p class="jp-eyebrow">Job Sites</p>
+      <h1>Compare job search starting points</h1>
+      <p>LinkedIn, Indeed, and Glassdoor serve different research needs. Start with the task in front of you.</p>
+      <a class="jp-text-link" href="{{ "job-seeker-tools/guide-finder/" | relURL }}">Find a guide for your next step <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+    </header>
+    <table class="jp-comparison">
+      <caption>Editorial comparison. Official source pages checked {{ .Params.comparisonChecked }}. No rankings or live vacancy counts.</caption>
+      <thead><tr><th scope="col">Platform</th><th scope="col">Research focus</th><th scope="col">Application context</th><th scope="col">What to verify</th></tr></thead>
+      <tbody>
+      {{ range .Params.comparisons }}
+        {{ $profile := site.GetPage .path }}
+        {{ if not $profile }}{{ errorf "Missing comparison profile: %s" .path }}{{ end }}
+        <tr>
+          <th scope="row"><span class="jp-discovery-symbol"><i data-lucide="{{ .icon }}" aria-hidden="true"></i></span><a href="{{ $profile.RelPermalink }}">{{ $profile.Title }}</a><a class="jp-comparison-profile" href="{{ $profile.RelPermalink }}">Read profile <i data-lucide="arrow-right" aria-hidden="true"></i></a></th>
+          <td><span class="jp-cell-label" aria-hidden="true">Research focus</span>{{ .focus }}</td>
+          <td><span class="jp-cell-label" aria-hidden="true">Application context</span>{{ .application }}<a class="jp-comparison-source" href="{{ .source }}" target="_blank" rel="noopener noreferrer">{{ .sourceLabel }} <i data-lucide="external-link" aria-hidden="true"></i></a></td>
+          <td><span class="jp-cell-label" aria-hidden="true">What to verify</span>{{ .check }}</td>
+        </tr>
+      {{ end }}
+      </tbody>
+    </table>
+    <div class="jp-discovery-notes nested-links">{{ .Content }}</div>
+  </div>
+</article>
+{{ end }}

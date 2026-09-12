@@ -1,0 +1,41 @@
+{{ define "main" }}
+<article class="jp-discovery-page" id="jp-guide-finder">
+  <div class="jp-container">
+    <header class="jp-discovery-heading">
+      <a class="jp-back-link" href="{{ "job-seeker-tools/" | relURL }}"><i data-lucide="arrow-left" aria-hidden="true"></i> Job Seeker Tools</a>
+      <h1>{{ .Title }}</h1>
+      <p>A starting point for your next question, with role and country resources alongside it.</p>
+    </header>
+    <div class="jp-guide-controls" hidden>
+      {{ range .Params.groups }}
+      <label for="guide-{{ .id }}">{{ .label }}<select id="guide-{{ .id }}" data-guide-choice="{{ .id }}" autocomplete="off">
+        {{ range .items }}<option value="{{ .value }}">{{ .label }}</option>{{ end }}
+      </select></label>
+      {{ end }}
+      <button type="button" id="guide-reset" title="Reset selections" aria-label="Reset selections"><i data-lucide="rotate-ccw" aria-hidden="true"></i></button>
+    </div>
+    <p class="jp-guide-status" id="guide-status" role="status" aria-live="polite">All reading paths</p>
+    <noscript><p>All reading paths are listed below.</p></noscript>
+    <div class="jp-guide-results">
+    {{ range .Params.groups }}
+      {{ $group := . }}
+      <section class="jp-guide-group" aria-labelledby="guide-heading-{{ .id }}">
+        <h2 id="guide-heading-{{ .id }}"><i data-lucide="{{ .icon }}" aria-hidden="true"></i>{{ .label }}</h2>
+        {{ range .items }}
+          {{ $page := false }}
+          {{ range where site.Pages "RelPermalink" .path }}{{ $page = . }}{{ end }}
+          {{ if not $page }}{{ errorf "Missing guide destination: %s" .path }}{{ end }}
+          {{ $href := $page.RelPermalink }}
+          {{ with .anchor }}{{ $href = printf "%s#%s" $href . }}{{ end }}
+          <article class="jp-guide-result" data-guide-group="{{ $group.id }}" data-guide-value="{{ .value }}">
+            <h3><a href="{{ $href }}">{{ .title }} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></h3>
+            <p>{{ .reason }}</p>
+          </article>
+        {{ end }}
+      </section>
+    {{ end }}
+    </div>
+    <div class="jp-discovery-notes nested-links">{{ .Content }}<p>No account or personal details needed. <a href="{{ "privacy/#guide-finder-and-job-site-comparison" | relURL }}">Privacy details</a></p></div>
+  </div>
+</article>
+{{ end }}

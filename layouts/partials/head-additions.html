@@ -3,6 +3,13 @@
 <script defer src="{{ "vendor/lucide.min.js" | relURL }}"></script>
 <script defer src="{{ "js/jobplorer.js" | relURL }}?v=20260812"></script>
 
+{{ if .Params.resourceDiscovery }}
+{{ $discoveryStyle := resources.Get "css/jobplorer-discovery.css" | fingerprint }}
+{{ $discoveryScript := resources.Get "js/jobplorer-discovery.js" | fingerprint }}
+<link rel="stylesheet" href="{{ $discoveryStyle.RelPermalink }}">
+<script defer src="{{ $discoveryScript.RelPermalink }}"></script>
+{{ end }}
+{{ if not (or .Params.localOnlyTool .Params.resourceDiscovery) }}
 <!-- GA4 (Jobplorer.com - Web) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZE5Y04BYQ"></script>
 <script>
@@ -12,3 +19,4 @@
 
     window.gtag('config', 'G-NZE5Y04BYQ');
 </script>
+{{ end }}
