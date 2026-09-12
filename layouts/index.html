@@ -3,8 +3,8 @@
   <section class="jp-home-hero" aria-labelledby="jp-home-title">
     <div class="jp-container">
       <p class="jp-eyebrow">Reviewed job-search resources</p>
-      <h1 id="jp-home-title">Find trusted starting points for your career journey.</h1>
-      <p class="jp-hero-copy">Search job sites, career guides, and countries to find practical resources and official starting points.</p>
+      <h1 id="jp-home-title">Jobplorer</h1>
+      <p class="jp-hero-copy">What would you like to explore next?</p>
 
       <form class="jp-resource-search" id="jp-resource-search" role="search">
         <i data-lucide="search" aria-hidden="true"></i>
@@ -14,10 +14,10 @@
           name="resource-search"
           type="search"
           autocomplete="off"
-          placeholder="Search job sites, career guides, and countries"
+          placeholder="Search topics"
         >
         <span class="jp-search-shortcut" aria-hidden="true">/</span>
-        <button type="submit">Search</button>
+        <button type="submit" aria-label="Search" title="Search"><span>Search</span><i data-lucide="arrow-right" aria-hidden="true"></i></button>
       </form>
 
       <p class="jp-search-examples">
@@ -27,32 +27,23 @@
         <button type="button" data-search-example="South Korea">South Korea</button>
       </p>
 
-      <div class="jp-path-grid" aria-label="Explore Jobplorer by goal">
-        <a href="/job-sites/" class="jp-path-link">
-          <span class="jp-path-icon jp-icon-blue"><i data-lucide="search-check" aria-hidden="true"></i></span>
-          <span>
-            <strong>Compare job sites</strong>
-            <small>Compare reviewed platforms and official resources.</small>
-          </span>
-          <i data-lucide="arrow-right" aria-hidden="true"></i>
-        </a>
-        <a href="/career-guides/" class="jp-path-link">
-          <span class="jp-path-icon jp-icon-green"><i data-lucide="briefcase-business" aria-hidden="true"></i></span>
-          <span>
-            <strong>Choose a career path</strong>
-            <small>Research roles, skills, and search channels.</small>
-          </span>
-          <i data-lucide="arrow-right" aria-hidden="true"></i>
-        </a>
-        <a href="/country-guides/" class="jp-path-link">
-          <span class="jp-path-icon jp-icon-coral"><i data-lucide="map" aria-hidden="true"></i></span>
-          <span>
-            <strong>Research a country</strong>
-            <small>Start with reviewed public and employment resources.</small>
-          </span>
-          <i data-lucide="arrow-right" aria-hidden="true"></i>
-        </a>
-      </div>
+      <nav class="jp-quick-routes" aria-label="Research starting points">
+        <a href="/job-sites/"><i data-lucide="columns-3" aria-hidden="true"></i> Compare job sites</a>
+        <a href="/career-guides/"><i data-lucide="briefcase-business" aria-hidden="true"></i> Career guides</a>
+        <a href="/country-guides/"><i data-lucide="map-pinned" aria-hidden="true"></i> Country guides</a>
+      </nav>
+      <div class="jp-topic-heading"><h2 id="jp-topics-title">Follow your curiosity</h2><a class="jp-text-link" href="/job-seeker-tools/guide-finder/">Find a guide <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+      <nav aria-labelledby="jp-topics-title">
+        <ul class="jp-topic-strip">
+          {{ range $index, $key := site.Data.topic_visuals.homeOrder }}
+          {{ $topic := index site.Data.topic_visuals.topics $key }}
+          <li><a class="jp-topic-link" href="{{ $topic.path }}">
+            {{ partial "topic-image.html" (dict "key" $key "sizes" "(max-width: 700px) 158px, (max-width: 1220px) 19vw, 224px" "loading" (cond (lt $index 2) "eager" "lazy")) }}
+            <strong>{{ $topic.title }}</strong><small>{{ $topic.question }}</small>
+          </a></li>
+          {{ end }}
+        </ul>
+      </nav>
     </div>
   </section>
 
@@ -72,6 +63,7 @@
         <button type="button" data-resource-filter="job-site" aria-pressed="false">Job Sites</button>
         <button type="button" data-resource-filter="career" aria-pressed="false">Career Paths</button>
         <button type="button" data-resource-filter="country" aria-pressed="false">Countries</button>
+        <button type="button" data-resource-filter="guide" aria-pressed="false">Practical Guides</button>
       </div>
 
       <p class="jp-result-status" id="jp-result-status" role="status" aria-live="polite">9 reviewed resources shown</p>
@@ -105,7 +97,7 @@
         </a>
 
         <a class="jp-resource-card" href="/career-guides/software-developers/" data-search-item data-category="career" data-search-text="Software Developers career guide programming technology roles">
-          <span class="jp-resource-icon jp-icon-blue"><i data-lucide="code-2" aria-hidden="true"></i></span>
+          {{ partial "topic-image.html" (dict "key" "software" "class" "jp-resource-media") }}
           <span class="jp-resource-type">Career Guide</span>
           <h3>Software Developers</h3>
           <p>Compare responsibilities and prepare examples of your technical work.</p>
@@ -113,8 +105,8 @@
           <span class="jp-card-action">Open guide <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
         </a>
 
-        <a class="jp-resource-card" href="/career-guides/game-developers/" data-search-item data-category="career" data-search-text="Game Developers game design career guide studios roles">
-          <span class="jp-resource-icon jp-icon-coral"><i data-lucide="gamepad-2" aria-hidden="true"></i></span>
+        <a class="jp-resource-card" href="/career-guides/game-developers/" data-search-item data-category="career" data-search-text="Game Developers game development design career guide studios roles">
+          {{ partial "topic-image.html" (dict "key" "games" "class" "jp-resource-media") }}
           <span class="jp-resource-type">Career Guide</span>
           <h3>Game Developers</h3>
           <p>Research game development roles, studios, and search channels.</p>
@@ -123,7 +115,7 @@
         </a>
 
         <a class="jp-resource-card" href="/career-guides/remote-workers/" data-search-item data-category="career" data-search-text="Remote Workers remote work career guide telework jobs">
-          <span class="jp-resource-icon jp-icon-green"><i data-lucide="laptop" aria-hidden="true"></i></span>
+          {{ partial "topic-image.html" (dict "key" "remote" "class" "jp-resource-media") }}
           <span class="jp-resource-type">Career Guide</span>
           <h3>Remote Workers</h3>
           <p>Check location, time zones, office attendance, and communication expectations.</p>
@@ -164,6 +156,7 @@
         <h3>No matching starting points</h3>
         <p>Try a broader term or choose another resource type.</p>
         <button type="button" id="jp-clear-search">Clear search</button>
+        <div class="jp-no-result-links"><a href="/job-sites/">Compare job sites</a><a href="/job-seeker-tools/guide-finder/">Find a guide by topic</a></div>
       </div>
     </div>
   </section>
@@ -179,24 +172,24 @@
         <a class="jp-text-link" href="/guides/">Browse all guides <i data-lucide="arrow-right" aria-hidden="true"></i></a>
       </div>
 
-      <div class="jp-guide-list">
+      <div class="jp-guide-list jp-visual-guide-list">
         <a href="/posts/the-rise-of-ai-in-recruitment/" data-search-item data-category="guide" data-search-text="AI in Recruitment hiring tools job seekers">
-          <span class="jp-guide-icon"><i data-lucide="brain-circuit" aria-hidden="true"></i></span>
+          {{ partial "topic-image.html" (dict "key" "ai" "sizes" "(max-width: 700px) calc(100vw - 40px), 560px") }}
           <span><strong>AI in Recruitment</strong><small>Understand where AI-assisted hiring tools may appear.</small></span>
           <i data-lucide="arrow-right" aria-hidden="true"></i>
         </a>
-        <a href="/posts/the-struggles-of-young-job-seekers/" data-search-item data-category="guide" data-search-text="Entry-Level Job Search young job seekers starting point">
-          <span class="jp-guide-icon"><i data-lucide="route" aria-hidden="true"></i></span>
+        <a href="/posts/the-struggles-of-young-job-seekers/" data-search-item data-category="guide" data-search-text="Entry Level Job Search young job seekers starting point first job beginners">
+          {{ partial "topic-image.html" (dict "key" "applications" "sizes" "(max-width: 700px) calc(100vw - 40px), 560px") }}
           <span><strong>Entry-Level Job Search</strong><small>Build a practical starting path and verify each posting.</small></span>
           <i data-lucide="arrow-right" aria-hidden="true"></i>
         </a>
-        <a href="/posts/why-87-percent-of-job-seekers-abandon-their-resumes/" data-search-item data-category="guide" data-search-text="Resume Blockers application materials resume review">
-          <span class="jp-guide-icon"><i data-lucide="file-check-2" aria-hidden="true"></i></span>
+        <a href="/posts/why-87-percent-of-job-seekers-abandon-their-resumes/" data-search-item data-category="guide" data-search-text="Resume Blockers application materials resume review cv checklist">
+          {{ partial "topic-image.html" (dict "key" "applications" "sizes" "(max-width: 700px) calc(100vw - 40px), 560px") }}
           <span><strong>Resume Blockers</strong><small>Review application materials before applying.</small></span>
           <i data-lucide="arrow-right" aria-hidden="true"></i>
         </a>
         <a href="/posts/ai-creators-future-game-development/" data-search-item data-category="guide" data-search-text="AI-Assisted Game Development Roles careers game developers">
-          <span class="jp-guide-icon"><i data-lucide="sparkles" aria-hidden="true"></i></span>
+          {{ partial "topic-image.html" (dict "key" "games" "sizes" "(max-width: 700px) calc(100vw - 40px), 560px") }}
           <span><strong>AI-Assisted Game Development Roles</strong><small>Research changing roles and verify employer requirements.</small></span>
           <i data-lucide="arrow-right" aria-hidden="true"></i>
         </a>

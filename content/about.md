@@ -17,3 +17,7 @@ Information about job sites, employers, job postings, platform policies, pricing
 Jobplorer does not guarantee employment, interviews, hiring outcomes, salary outcomes, visa eligibility, legal compliance, labor-law outcomes, or tax outcomes. Jobplorer does not provide visa advice, legal advice, labor advice, or tax advice.
 
 For contact options, see [Contact](/contact/). You may also review the [Privacy Policy](/privacy/) and [Terms of Use](/terms/).
+
+## About the Illustrations
+
+Jobplorer's topic illustrations are AI-generated editorial artwork. They represent research topics, not real employers, job listings, people, or product screenshots. Official-source links and written review notes are separate from these illustrations.

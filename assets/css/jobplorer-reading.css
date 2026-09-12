@@ -1,0 +1,41 @@
+.jp-reading-layout > .jp-article-body { grid-area: 1 / 1; }
+.jp-reading-rail { grid-area: 1 / 2; position: sticky; top: 24px; min-width: 0; max-height: calc(100vh - 48px); overflow-y: auto; scrollbar-gutter: stable; padding: 4px; }
+.jp-page-outline { border-block: 1px solid var(--jp-line); }
+.jp-page-outline summary { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 10px 2px; color: var(--jp-ink); font-size: 14px; font-weight: 700; cursor: pointer; list-style: none; }
+.jp-page-outline summary::-webkit-details-marker { display: none; }
+.jp-page-outline svg, .jp-reading-next svg { flex: 0 0 18px; width: 18px; height: 18px; }
+.jp-outline-chevron { margin-left: auto; }
+.jp-page-outline[open] .jp-outline-chevron { transform: rotate(180deg); }
+.jp-page-outline #TableOfContents { padding: 0 0 12px; }
+.jp-page-outline ul { list-style: none; padding: 0; margin: 0; }
+.jp-page-outline a { display: block; padding: 10px 8px; border-left: 2px solid var(--jp-line); color: var(--jp-muted); font-size: 14px; line-height: 1.5; text-decoration: none; overflow-wrap: anywhere; }
+.jp-page-outline a:hover { border-left-color: var(--jp-blue); color: var(--jp-blue); background: var(--jp-blue-soft); }
+.jp-page-outline :is(summary, a):focus-visible, .jp-reading-next a:focus-visible { outline: 3px solid var(--jp-focus); outline-offset: 1px; }
+.jp-reading-rail .jp-source-reminder { position: static; margin-top: 24px; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.jp-reading-layout .jp-article-body :is(h2, h3), #jp-article-title { scroll-margin-top: 24px; }
+.jp-reading-layout .jp-article-body h2:target { text-decoration: underline; text-decoration-color: var(--jp-green); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.jp-article-body .jp-reading-next { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--jp-line); }
+.jp-reading-next-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.jp-article-body .jp-reading-next h2 { margin: 0; font-size: 22px; line-height: 1.35; }
+.jp-reading-next .jp-reading-top { display: inline-flex; flex: 0 0 44px; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--jp-blue); border: 1px solid var(--jp-line); border-radius: 5px; }
+.jp-reading-next .jp-reading-top:hover { background: var(--jp-blue-soft); }
+.jp-article-body .jp-reading-next ul { list-style: none; padding: 0; margin: 12px 0 0; }
+.jp-article-body .jp-reading-next li + li { margin: 0; }
+.jp-reading-next li a { display: flex; gap: 14px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--jp-line); text-decoration: none; }
+.jp-reading-next li a:hover strong { text-decoration: underline; }
+.jp-reading-next li a > span { flex: 1; min-width: 0; }
+.jp-reading-next strong { display: block; color: var(--jp-blue); font-size: 16px; line-height: 1.5; overflow-wrap: anywhere; }
+.jp-reading-next small { display: block; margin-top: 4px; color: var(--jp-muted); font-size: 14px; line-height: 1.6; }
+@media (max-width: 979px) {
+  .jp-reading-rail { display: contents; }
+  .jp-page-outline { grid-area: 1 / 1; }
+  .jp-reading-layout > .jp-article-body { grid-area: 2 / 1; }
+  .jp-reading-rail .jp-source-reminder { grid-area: 3 / 1; margin: 0; padding-top: 20px; border-top: 1px solid var(--jp-line); }
+  .jp-page-outline #TableOfContents { max-height: 240px; overflow-y: auto; padding-inline: 3px; }
+  .jp-page-outline a { min-height: 44px; }
+}
+@media print {
+  .jp-reading-layout { display: block; }
+  .jp-reading-rail { display: none; }
+  .jp-reading-next { display: none; }
+}

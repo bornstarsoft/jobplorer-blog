@@ -15,6 +15,7 @@
       <section class="jp-listing-grid" aria-label="{{ .Title }} pages">
         {{ range .Paginator.Pages }}
           <article class="jp-listing-card">
+            {{ partial "topic-image.html" (dict "path" .RelPermalink "class" "jp-listing-visual") }}
             <div class="jp-listing-meta">
               <span>{{ .Params.siteType | compare.Default (.Params.guideType | compare.Default (.Section | humanize)) }}</span>
               {{ if eq .Params.reviewStatus "reviewed" }}

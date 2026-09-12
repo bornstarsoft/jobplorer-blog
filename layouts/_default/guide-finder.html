@@ -28,6 +28,7 @@
           {{ $href := $page.RelPermalink }}
           {{ with .anchor }}{{ $href = printf "%s#%s" $href . }}{{ end }}
           <article class="jp-guide-result" data-guide-group="{{ $group.id }}" data-guide-value="{{ .value }}">
+            {{ partial "topic-image.html" (dict "path" .path "loading" "eager") }}
             <h3><a href="{{ $href }}">{{ .title }} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></h3>
             <p>{{ .reason }}</p>
           </article>

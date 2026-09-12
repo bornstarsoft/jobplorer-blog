@@ -1,7 +1,16 @@
 <script>document.documentElement.classList.add('jp-js');</script>
 <link rel="stylesheet" href="{{ "css/jobplorer.css" | relURL }}">
 <script defer src="{{ "vendor/lucide.min.js" | relURL }}"></script>
-<script defer src="{{ "js/jobplorer.js" | relURL }}?v=20260812"></script>
+{{ $siteScript := resources.FromString "js/jobplorer.js" (readFile "static/js/jobplorer.js") | fingerprint }}
+<script defer src="{{ $siteScript.RelPermalink }}"></script>
+
+{{ if .IsPage }}
+{{ $readingStyle := resources.Get "css/jobplorer-reading.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $readingStyle.RelPermalink }}">
+{{ end }}
+
+{{ $topicStyle := resources.Get "css/jobplorer-topics.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $topicStyle.RelPermalink }}">
 
 {{ if .Params.resourceDiscovery }}
 {{ $discoveryStyle := resources.Get "css/jobplorer-discovery.css" | fingerprint }}

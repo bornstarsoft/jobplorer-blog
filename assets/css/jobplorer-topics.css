@@ -1,0 +1,61 @@
+.jp-topic-image { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; background: #edf3f7; }
+.jp-home-hero { padding: 28px 0 24px; }
+.jp-home-hero h1 { font-size: 36px; line-height: 1.2; }
+.jp-home-hero .jp-hero-copy { margin-top: 8px; }
+.jp-resource-search button svg { display: none; }
+.jp-quick-routes { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 24px; margin: 18px 0; }
+.jp-quick-routes a { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; color: var(--jp-blue); font-size: 14px; font-weight: 650; text-decoration: none; }
+.jp-quick-routes a:hover { text-decoration: underline; }
+.jp-quick-routes svg { width: 18px; height: 18px; }
+.jp-topic-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 18px 0 12px; }
+.jp-topic-heading h2 { margin: 0; font-size: 17px; }
+.jp-topic-strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; padding: 4px 4px 12px; margin: 0 -4px; list-style: none; }
+.jp-topic-link { display: block; color: var(--jp-ink); text-decoration: none; }
+.jp-topic-link img { border-radius: 6px; }
+.jp-topic-link strong { display: block; font-size: 15px; line-height: 1.4; margin-top: 10px; }
+.jp-topic-link small { display: block; font-size: 13px; line-height: 1.5; color: var(--jp-muted); margin-top: 4px; }
+.jp-topic-link:hover strong { text-decoration: underline; text-underline-offset: 3px; color: var(--jp-blue); }
+.jp-topic-link:focus-visible, .jp-quick-routes a:focus-visible { outline: 3px solid var(--jp-focus); outline-offset: 2px; }
+.jp-resource-card .jp-resource-media { width: calc(100% + 40px); max-width: none; margin: -20px -20px 18px; border-radius: 7px 7px 0 0; }
+.jp-listing-visual { margin-bottom: 18px; border-radius: 5px; }
+.jp-guide-list.jp-visual-guide-list { gap: 24px; border: 0; }
+.jp-visual-guide-list a, .jp-visual-guide-list a:nth-child(even) { grid-template-columns: minmax(0, 1fr) auto; gap: 14px; padding: 0 0 20px; border-left: 0; align-items: start; }
+.jp-visual-guide-list .jp-topic-image { grid-column: 1 / -1; border-radius: 6px; }
+.jp-visual-guide-list strong { font-size: 18px; }
+.jp-visual-guide-list small { font-size: 14px; }
+.jp-visual-guide-list a > svg { margin-top: 3px; }
+.jp-guide-result .jp-topic-image { margin-bottom: 16px; border-radius: 5px; }
+.jp-article-topic-image { margin: 0 0 20px; }
+.jp-article-topic-image img { border-radius: 5px; }
+.jp-no-results .jp-no-result-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 24px; margin: 18px 0 0; }
+.jp-no-result-links a { color: var(--jp-blue); min-height: 44px; display: inline-flex; align-items: center; }
+.jp-filter-bar { scroll-margin-top: 24px; }
+html:not(.jp-js) :is(.jp-resource-search, .jp-search-examples, .jp-filter-bar) { display: none; }
+@media (max-width: 979px) {
+  html:not(.jp-js) .jp-nav-shell { flex-wrap: wrap; gap: 12px; padding-block: 14px; }
+  html:not(.jp-js) .jp-menu-toggle { display: none; }
+  html:not(.jp-js) .jp-primary-nav { position: static; flex: 1 0 100%; padding: 0; border: 0; box-shadow: none; }
+  html:not(.jp-js) .jp-primary-nav ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .jp-reading-illustrated .jp-article-topic-image { grid-area: 1 / 1; margin: 0; max-width: 360px; width: 100%; }
+  .jp-reading-illustrated .jp-page-outline { grid-area: 2 / 1; }
+  .jp-reading-illustrated > .jp-article-body { grid-area: 3 / 1; }
+  .jp-reading-illustrated .jp-reading-rail .jp-source-reminder { grid-area: 4 / 1; }
+}
+@media (max-width: 700px) {
+  .jp-home-hero { padding: 24px 0 16px; }
+  .jp-home-hero h1 { font-size: 32px; }
+  .jp-home .jp-resource-search { grid-template-columns: 20px minmax(0, 1fr) 44px; gap: 10px; padding: 7px 7px 7px 14px; }
+  .jp-home .jp-resource-search input { font-size: 16px; }
+  .jp-home .jp-resource-search button { grid-column: auto; width: 44px; min-width: 44px; height: 44px; padding: 0; display: grid; place-items: center; }
+  .jp-resource-search button span { display: none; }
+  .jp-resource-search button svg { display: block; width: 20px; height: 20px; }
+  .jp-home-hero .jp-search-examples { display: none; }
+  .jp-quick-routes { justify-content: flex-start; gap: 4px 18px; }
+  .jp-topic-strip { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 158px; overflow-x: auto; scroll-snap-type: x proximity; }
+  .jp-topic-strip li { scroll-snap-align: start; }
+  .jp-topic-heading { margin-top: 14px; }
+  .jp-topic-heading h2 { font-size: 16px; }
+  .jp-topic-heading .jp-text-link { font-size: 13px; }
+  .jp-visual-guide-list a, .jp-visual-guide-list a:nth-child(even) { padding-top: 0; }
+}
+@media print { .jp-article-topic-image { display: none; } }

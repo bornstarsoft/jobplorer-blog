@@ -1,0 +1,40 @@
+topics:
+  remote:
+    image: "remote-work.png"
+    alt: "Illustration of a remote workspace with a video-call laptop, headphones, and clocks."
+    title: "Remote work"
+    question: "What should I check?"
+    path: "/career-guides/remote-workers/"
+  games:
+    image: "game-development.png"
+    alt: "Illustration of a game-development desk with a puzzle-level sketch and controller."
+    title: "Game development"
+    question: "Which work interests me?"
+    path: "/career-guides/game-developers/"
+  ai:
+    image: "ai-recruitment.png"
+    alt: "Illustration of a magnifying glass examining a document beside an abstract AI diagram."
+    title: "AI & job search"
+    question: "What should I question?"
+    path: "/posts/the-rise-of-ai-in-recruitment/"
+  applications:
+    image: "application-preparation.png"
+    alt: "Illustration of application documents, work examples, and a review checklist."
+    title: "Application prep"
+    question: "What might I be missing?"
+    path: "/posts/why-87-percent-of-job-seekers-abandon-their-resumes/"
+  software:
+    image: "software-development.png"
+    alt: "Illustration of a software workspace with code blocks and a system diagram."
+    title: "Software careers"
+    question: "Where can I begin?"
+    path: "/career-guides/software-developers/"
+homeOrder: [remote, games, ai, applications, software]
+pages:
+  /career-guides/remote-workers/: remote
+  /career-guides/game-developers/: games
+  /career-guides/software-developers/: software
+  /posts/the-rise-of-ai-in-recruitment/: ai
+  /posts/the-struggles-of-young-job-seekers/: applications
+  /posts/why-87-percent-of-job-seekers-abandon-their-resumes/: applications
+  /posts/ai-creators-future-game-development/: games

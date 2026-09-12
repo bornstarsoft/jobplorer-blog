@@ -1,0 +1,9 @@
+{{ $key := .key }}
+{{ if not $key }}{{ $key = index site.Data.topic_visuals.pages (.path | default "") }}{{ end }}
+{{ with index site.Data.topic_visuals.topics ($key | default "") }}
+  {{ $image := resources.Get (printf "images/topics/%s" .image) }}
+  {{ if not $image }}{{ errorf "Missing topic illustration: %s" .image }}{{ end }}
+  {{ $small := $image.Resize "360x webp q78" }}
+  {{ $large := $image.Resize "720x webp q78" }}
+  <img class="jp-topic-image {{ $.class }}" src="{{ $small.RelPermalink }}" srcset="{{ $small.RelPermalink }} 360w, {{ $large.RelPermalink }} 720w" sizes="{{ $.sizes | default "(max-width: 700px) calc(100vw - 40px), 360px" }}" width="720" height="480" alt="{{ .alt }}" loading="{{ $.loading | default "lazy" }}" decoding="async">
+{{ end }}

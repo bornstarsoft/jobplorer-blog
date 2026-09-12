@@ -80,11 +80,12 @@
     }
 
     function normalized(value) {
-      return value.toLowerCase().trim();
+      return value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
     }
 
     function applyFilters() {
       var query = normalized(input.value);
+      var tokens = query.split(/\s+/).filter(Boolean);
       var visibleCount = 0;
       var visibleResources = 0;
       var visibleGuides = 0;
@@ -93,7 +94,7 @@
         var category = item.getAttribute("data-category") || "";
         var searchable = normalized(item.getAttribute("data-search-text") || item.textContent);
         var categoryMatch = activeFilter === "all" || category === activeFilter;
-        var queryMatch = !query || searchable.indexOf(query) !== -1;
+        var queryMatch = !query || tokens.every(function (token) { return searchable.indexOf(token) !== -1; });
         var visible = categoryMatch && queryMatch;
 
         item.hidden = !visible;
@@ -123,7 +124,7 @@
         if (visibleCount === 0) {
           status.textContent = "No matching resources";
         } else if (activeFilter === "all" && !query) {
-          status.textContent = "9 reviewed resources and 4 practical guides shown";
+          status.textContent = visibleResources + " reviewed resources and " + visibleGuides + " practical guides shown";
         } else {
           status.textContent = visibleCount + (visibleCount === 1 ? " result shown" : " results shown");
         }
@@ -228,6 +229,7 @@
       var isEditing = target && (
         target.tagName === "INPUT" ||
         target.tagName === "TEXTAREA" ||
+        target.tagName === "SELECT" ||
         target.isContentEditable
       );
 

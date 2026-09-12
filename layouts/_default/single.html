@@ -1,4 +1,7 @@
 {{ define "main" }}
+{{ $practicalGuides := slice "the-rise-of-ai-in-recruitment" "the-struggles-of-young-job-seekers" "why-87-percent-of-job-seekers-abandon-their-resumes" "ai-creators-future-game-development" }}
+{{ $reviewedResource := and (eq .Params.reviewStatus "reviewed") (in (slice "job-sites" "career-guides" "country-guides") .Section) }}
+{{ $readingPage := or $reviewedResource (and (eq .Section "posts") (in $practicalGuides .Slug)) }}
 <article class="jp-article-page">
   <div class="jp-container jp-article-shell">
     <header class="jp-article-header">
@@ -7,7 +10,7 @@
         {{ .CurrentSection.Title | compare.Default (.Section | humanize) }}
       </a>
       <p class="jp-eyebrow">{{ .Params.siteType | compare.Default (.Params.guideType | compare.Default (.Section | humanize)) }}</p>
-      <h1>{{ .Title }}</h1>
+      <h1 id="jp-article-title">{{ .Title }}</h1>
       {{ with .Description }}
         <p class="jp-article-description">{{ . }}</p>
       {{ end }}
@@ -31,17 +34,52 @@
       {{ end }}
     </header>
 
-    <div class="jp-article-layout">
+    {{ $topic := index site.Data.topic_visuals.pages .RelPermalink }}
+    <div class="jp-article-layout{{ if $readingPage }} jp-reading-layout{{ end }}{{ if $topic }} jp-reading-illustrated{{ end }}">
+      {{ if $readingPage }}
+      <div class="jp-reading-rail">
+        {{ if $topic }}<figure class="jp-article-topic-image">{{ partial "topic-image.html" (dict "key" $topic "sizes" "(max-width: 979px) 360px, 280px") }}</figure>{{ end }}
+        {{ $outline := .Fragments.ToHTML 2 2 false }}
+        {{ if strings.Contains $outline "<a " }}
+        <details class="jp-page-outline" open>
+          <summary><i data-lucide="list" aria-hidden="true"></i> On this page <i class="jp-outline-chevron" data-lucide="chevron-down" aria-hidden="true"></i></summary>
+          {{ $outline }}
+        </details>
+        {{ end }}
+        <aside class="jp-source-reminder">
+          <i data-lucide="shield-check" aria-hidden="true"></i>
+          <h2>Verify current details</h2>
+          <p>Use this page as a research starting point. Confirm features, requirements, availability, and application details on official sources and current postings.</p>
+        </aside>
+      </div>
+      {{ end }}
       <div class="jp-article-body nested-links">
         {{ .Content }}
         {{ partials.Include "tags.html" . }}
+        {{ if $readingPage }}
+        <nav class="jp-reading-next" aria-labelledby="jp-reading-next-title">
+          <div class="jp-reading-next-heading">
+            <h2 id="jp-reading-next-title">Continue your research</h2>
+            <a class="jp-reading-top" href="#jp-article-title" title="Back to top" aria-label="Back to top"><i data-lucide="arrow-up" aria-hidden="true"></i></a>
+          </div>
+          <ul>
+            {{ range slice (dict "path" "/job-sites" "title" "Compare job sites" "note" "Research uses, application routes, and details to verify." "icon" "columns-3") (dict "path" "/job-seeker-tools/guide-finder" "title" "Find your next guide" "note" "Reading paths by question, role topic, and country." "icon" "route") }}
+              {{ $destination := site.GetPage .path }}
+              {{ if not $destination }}{{ errorf "Missing reading destination: %s" .path }}{{ end }}
+              <li><a href="{{ $destination.RelPermalink }}"><i data-lucide="{{ .icon }}" aria-hidden="true"></i><span><strong>{{ .title }}</strong><small>{{ .note }}</small></span><i data-lucide="arrow-right" aria-hidden="true"></i></a></li>
+            {{ end }}
+          </ul>
+        </nav>
+        {{ end }}
       </div>
 
+      {{ if not $readingPage }}
       <aside class="jp-source-reminder">
         <i data-lucide="shield-check" aria-hidden="true"></i>
         <h2>Verify current details</h2>
         <p>Use this page as a research starting point. Confirm features, requirements, availability, and application details on official sources and current postings.</p>
       </aside>
+      {{ end }}
     </div>
   </div>
 </article>
