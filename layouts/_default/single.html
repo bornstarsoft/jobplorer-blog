@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $practicalGuides := slice "the-rise-of-ai-in-recruitment" "the-struggles-of-young-job-seekers" "why-87-percent-of-job-seekers-abandon-their-resumes" "ai-creators-future-game-development" }}
-{{ $reviewedResource := and (eq .Params.reviewStatus "reviewed") (in (slice "job-sites" "career-guides" "country-guides") .Section) }}
+{{ $reviewedResource := and (eq .Params.reviewStatus "reviewed") (in (slice "job-sites" "career-guides" "country-guides" "guides") .Section) }}
 {{ $readingPage := or $reviewedResource (and (eq .Section "posts") (in $practicalGuides .Slug)) }}
 <article class="jp-article-page">
   <div class="jp-container jp-article-shell">

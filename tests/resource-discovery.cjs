@@ -48,11 +48,19 @@ const finder = base + '/job-seeker-tools/guide-finder/';
       assert.deepEqual(visible, [['goal', goal], ['role', role], ['country', country]]);
       combinations++;
     }
-    assert.equal(combinations, 72);
+    assert.equal(combinations, 216);
     assert.equal(requests.length, baselineRequests, 'Selections must not make requests');
     assert.equal(page.url(), finder, 'Selections must not enter the URL');
     assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
     assert.equal((await context.cookies()).length, 0);
+    for (const [value, destination] of [['verify', '/guides/check-job-offers-and-recruiters/'], ['interview', '/guides/prepare-for-an-interview/'], ['posting', '/guides/read-a-job-posting/'], ['portfolio', '/guides/build-a-project-case-study/'], ['cover-letter', '/guides/write-a-focused-cover-letter/'], ['follow-up', '/guides/follow-up-after-an-interview/'], ['employer', '/guides/research-an-employer/'], ['ai-preparation', '/guides/use-ai-for-job-search-preparation/'], ['conversation', '/guides/plan-an-informational-conversation/'], ['learning', '/guides/choose-what-to-learn-next/'], ['search', '/guides/refine-your-job-search-terms/'], ['ai', '/posts/the-rise-of-ai-in-recruitment/']]) {
+      await page.locator('#guide-goal').selectOption(value);
+      assert.equal(await page.locator('.jp-guide-result[data-guide-group="goal"]:visible a').getAttribute('href'), destination);
+    }
+    await page.locator('#guide-goal').selectOption('assessment');
+    assert.equal(await page.locator('.jp-guide-result[data-guide-group="goal"]:visible a').getAttribute('href'), '/guides/prepare-for-a-work-sample-task/');
+    await page.locator('#guide-goal').selectOption('weekly');
+    assert.equal(await page.locator('.jp-guide-result[data-guide-group="goal"]:visible a').getAttribute('href'), '/job-seeker-tools/weekly-practice/');
     await page.getByRole('button', { name: 'Reset selections' }).click();
     assert.equal(await page.locator('#guide-goal').inputValue(), 'start');
     assert.equal(await page.locator('#guide-role').inputValue(), 'all');
@@ -112,10 +120,10 @@ const finder = base + '/job-seeker-tools/guide-finder/';
     const plain = await noJS.newPage();
     await plain.goto(finder);
     assert.equal(await plain.locator('.jp-guide-controls').isVisible(), false);
-    assert.equal(await plain.locator('.jp-guide-result:visible').count(), 13);
+    assert.equal(await plain.locator('.jp-guide-result:visible').count(), 25);
     await plain.goto(base + '/job-sites/');
     assert.equal(await plain.locator('.jp-comparison tbody tr:visible').count(), 3);
     await noJS.close();
-    console.log('PASS: 72 guide combinations, reset/keyboard navigation, no selection requests/storage/cookies, internal links and anchor, 3 comparison profiles, 1440/390/320px layouts, tracker exclusion, homepage regression, no-JS fallback.');
+    console.log('PASS: 216 guide combinations, weekly practice, twelve practical-guide destinations and legacy AI destination, reset/keyboard navigation, no selection requests/storage/cookies, internal links and anchor, 3 comparison profiles, 1440/390/320px layouts, tracker exclusion, homepage regression, no-JS fallback.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

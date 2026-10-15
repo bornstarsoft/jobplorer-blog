@@ -18,6 +18,12 @@
 <link rel="stylesheet" href="{{ $discoveryStyle.RelPermalink }}">
 <script defer src="{{ $discoveryScript.RelPermalink }}"></script>
 {{ end }}
+{{ if eq .Layout "weekly-practice" }}
+{{ $weeklyStyle := resources.Get "css/jobplorer-weekly.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $weeklyStyle.RelPermalink }}">
+{{ $weeklyScript := resources.Get "js/jobplorer-weekly.js" | js.Build (dict "minify" true "target" "es2018" "format" "iife") | fingerprint }}
+<script defer src="{{ $weeklyScript.RelPermalink }}"></script>
+{{ end }}
 {{ if not (or .Params.localOnlyTool .Params.resourceDiscovery) }}
 <!-- GA4 (Jobplorer.com - Web) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZE5Y04BYQ"></script>

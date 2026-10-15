@@ -1,0 +1,87 @@
+{{ define "main" }}
+{{ $series := site.Data.weekly_practice }}
+{{ $pack := printf "%s\n%s\n\nAll scenarios are fictional. Work in your own private notes; this pack does not submit or store answers in Jobplorer. No live employer assessment or outcome guarantee is implied.\n\n" .Title $series.edition }}
+{{ range $series.weeks }}
+  {{ $pack = printf "%sWEEK %v: %s\n%s | %s\n\n%s\n\nSUPPLIED FACTS\n" $pack .number .title .minutes .situation .scenario }}
+  {{ range .evidence }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
+  {{ $pack = printf "%s\nYOUR TASK\n%s\n\nONE POSSIBLE RESPONSE\n" $pack .prompt }}
+  {{ range .answer }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
+  {{ $pack = printf "%s\nWHY\n%s\n\nSELF-CHECK\n%s\n\nNEXT ACTION\n%s\nRelated guide: %s\n\n" $pack .why .check .next (printf "https://jobplorer.com%s" .guide) }}
+{{ end }}
+{{ $download := resources.FromString "downloads/jobplorer-four-week-practice.txt" $pack }}
+<article class="jp-weekly" id="weekly-top">
+  <div class="jp-container">
+    <header class="jp-weekly-heading">
+      <a class="jp-back-link" href="/job-seeker-tools/"><i data-lucide="arrow-left" aria-hidden="true"></i> Job Seeker Tools</a>
+      <p class="jp-eyebrow">{{ $series.edition }}</p>
+      <h1>{{ .Title }}</h1>
+      <p>One small exercise. A clearer next step.</p>
+      <div class="jp-weekly-actions">
+        <a href="#week-1" class="jp-weekly-start">Start week 1 <i data-lucide="arrow-down" aria-hidden="true"></i></a>
+        <a href="{{ $download.RelPermalink }}" download="jobplorer-four-week-practice.txt"><i data-lucide="download" aria-hidden="true"></i> Download all four weeks (.txt)</a>
+      </div>
+    </header>
+    <div class="jp-weekly-intro">
+      <div><p>Four fictional exercises, at your own pace. No account, answer submission, or saved progress.</p><a href="#practice-details">About this series &amp; privacy</a></div>
+      <figure>{{ partial "topic-image.html" (dict "key" "applications" "loading" "eager" "sizes" "(max-width: 760px) 120px, 180px") }}</figure>
+    </div>
+    <nav class="jp-weekly-nav" aria-label="Four-week practice">
+      {{ range $series.weeks }}<a href="#week-{{ .number }}"><span>Week {{ .number }}</span><strong>{{ .title }}</strong><small>{{ .minutes }}</small></a>{{ end }}
+    </nav>
+    <details id="jp-weekly-planner" class="jp-weekly-planner" hidden>
+      <summary><i data-lucide="calendar-plus" aria-hidden="true"></i> Plan four short visits <i data-lucide="chevron-down" aria-hidden="true"></i></summary>
+      <div class="jp-weekly-plan-body">
+        <div>
+          <h2>Your next four weeks</h2>
+          <p>Four optional all-day calendar entries, one week apart. Each opens its own exercise. No account or email address.</p>
+          <form autocomplete="off">
+            <label for="jp-practice-date">First practice day</label>
+            <input type="date" id="jp-practice-date" required max="2099-12-31" aria-describedby="jp-calendar-privacy">
+            <button type="submit"><i data-lucide="download" aria-hidden="true"></i> Download calendar (.ics)</button>
+          </form>
+          <p id="jp-calendar-privacy" class="jp-weekly-plan-note">Your date stays in this tab. Jobplorer does not save it or access your calendar. Importing the file lets your chosen calendar provider store the events; check its sharing and alert settings. Jobplorer sends no reminders.</p>
+          <p role="status" aria-live="polite"></p>
+        </div>
+        <div><h3>Planned visits</h3><ol aria-label="Four planned practice dates"></ol></div>
+      </div>
+    </details>
+    {{ range $index, $week := $series.weeks }}
+    {{ $guide := site.GetPage .guide }}
+    {{ if not $guide }}{{ errorf "Missing weekly practice destination: %s" .guide }}{{ end }}
+    <section class="jp-weekly-session" id="week-{{ .number }}" aria-labelledby="week-title-{{ .number }}">
+      <header>
+        <p class="jp-eyebrow">Week {{ .number }} <span>{{ .minutes }}</span></p>
+        <h2 id="week-title-{{ .number }}">{{ .title }}</h2>
+        <p class="jp-weekly-situation">{{ .situation }}</p>
+        <p class="jp-weekly-outcome">{{ .outcome }}</p>
+      </header>
+      <div class="jp-weekly-work">
+        <div>
+          <h3>Fictional scenario</h3><p>{{ .scenario }}</p>
+          <ul class="jp-weekly-evidence">{{ range .evidence }}<li>{{ . }}</li>{{ end }}</ul>
+        </div>
+        <div>
+          <h3>Your task</h3><p class="jp-weekly-prompt">{{ .prompt }}</p>
+          <details class="jp-weekly-answer">
+            <summary>Compare with a worked response <i data-lucide="chevron-down" aria-hidden="true"></i></summary>
+            <div>
+              <h4>One possible response</h4>
+              <ul>{{ range .answer }}<li>{{ . }}</li>{{ end }}</ul>
+              <h4>Why this works</h4><p>{{ .why }}</p>
+              <h4>Self-check</h4><p>{{ .check }}</p>
+            </div>
+          </details>
+          <h3>Your next action</h3><p>{{ .next }}</p>
+          <a class="jp-text-link" href="{{ $guide.RelPermalink }}">{{ .guideTitle }} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav class="jp-weekly-next" aria-label="After week {{ .number }}">
+        <a href="#weekly-top"><i data-lucide="arrow-up" aria-hidden="true"></i> Back to overview</a>
+        {{ if lt .number 4 }}<a href="#week-{{ add .number 1 }}">Next: week {{ add .number 1 }} <i data-lucide="arrow-right" aria-hidden="true"></i></a>{{ else }}<a href="/job-seeker-tools/guide-finder/">Find your next guide <i data-lucide="arrow-right" aria-hidden="true"></i></a>{{ end }}
+      </nav>
+    </section>
+    {{ end }}
+    <aside id="practice-details" class="jp-weekly-notes nested-links" aria-label="About this series and privacy">{{ .Content }}</aside>
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,8 @@
+ICAL.js 2.2.1
+Copyright Philipp Kewisch and contributors. Mozilla Public License 2.0.
+License: /vendor/ical-js-LICENSE.txt
+Upstream: https://github.com/kewisch/ical.js
+Unmodified source: https://unpkg.com/ical.js@2.2.1/dist/ical.js
+Repository source: assets/vendor/ical.mjs (unmodified dist/ical.js, renamed).
+Source archive: https://registry.npmjs.org/ical.js/-/ical.js-2.2.1.tgz
+This source is bundled and minified by Hugo for the weekly practice page only.

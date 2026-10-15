@@ -30,13 +30,16 @@ const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-topic-qa';
       assert.equal((await context.request.get(link)).status(), 200);
     }
     const search = page.getByRole('searchbox');
-    for (const [query, expected] of [['work remote', 1], ['development game', 2], ['CV', 1], ['r\u00e9sum\u00e9', 1], ['entry-level', 1], ['first job', 1], ['Canada', 1], ['LinkedIn', 1]]) {
+    for (const [query, expected] of [['work remote', 1], ['development game', 2], ['CV', 1], ['r\u00e9sum\u00e9', 1], ['entry-level', 1], ['first job', 1], ['Canada', 1], ['LinkedIn', 1], ['job scams', 1], ['fake recruiter', 1], ['interview', 3], ['STAR', 2], ['job description', 1], ['requirements', 1], ['portfolio', 1], ['work sample', 2], ['cover letter', 1], ['covering letter', 1], ['supporting statement', 1], ['follow-up', 1], ['thank you', 1], ['waiting', 1], ['company research', 2], ['source credibility', 1], ['workplace culture', 1], ['generative AI', 1], ['prompts', 1], ['factual accuracy', 1], ['informational interview', 1], ['networking', 1], ['career conversations', 1], ['learning plan', 1], ['skill gap', 1], ['upskilling', 1], ['search terms', 1], ['filters', 1], ['queries', 1], ['assessment', 1], ['take-home', 1], ['task brief', 1]]) {
       await search.fill(query);
       assert.equal(await page.locator('[data-search-item]:visible').count(), expected, query);
     }
+    await search.fill('weekly practice');
+    assert.equal(await page.locator('[data-search-item]:visible').count(), 1);
+    assert.equal(await page.locator('[data-search-item]:visible').getAttribute('href'), '/job-seeker-tools/weekly-practice/');
     await search.fill('');
     await page.getByRole('button', { name: 'Practical Guides', exact: true }).click();
-    assert.equal(await page.locator('[data-search-item]:visible').count(), 4);
+    assert.equal(await page.locator('[data-search-item]:visible').count(), 17);
     assert.equal(await page.getByRole('button', { name: 'Practical Guides', exact: true }).getAttribute('aria-pressed'), 'true');
     await page.getByRole('button', { name: 'All', exact: true }).click();
     await search.fill('\uac80\uc0c9\uc5c6\uc74c');
@@ -49,14 +52,14 @@ const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-topic-qa';
     assert.equal(new URL(page.url()).search, '');
     assert.equal(await page.evaluate(query => JSON.stringify(window.dataLayer).includes(query), privateQuery), false, 'No raw query in analytics payload');
     await page.getByRole('button', { name: 'Clear search', exact: true }).click();
-    assert.equal(await page.locator('[data-search-item]:visible').count(), 13);
+    assert.equal(await page.locator('[data-search-item]:visible').count(), 26);
 
     const imageURLs = new Set();
     for (const width of [1440, 1024, 768, 390, 320]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.goto(base + '/');
       const images = page.locator('img.jp-topic-image');
-      assert.equal(await images.count(), 12);
+      assert.equal(await images.count(), 25);
       for (const img of await images.all()) {
         await img.scrollIntoViewIfNeeded();
         await img.evaluate(el => el.decode());
@@ -104,11 +107,11 @@ const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-topic-qa';
     const plain = await plainContext.newPage();
     await plain.goto(base + '/');
     assert.equal(await plain.locator('.jp-topic-link').count(), 5);
-    assert.equal(await plain.locator('[data-search-item]:visible').count(), 13);
+    assert.equal(await plain.locator('[data-search-item]:visible').count(), 26);
     assert.equal(await plain.getByRole('searchbox').isVisible(), false);
     await plain.locator('.jp-topic-link').first().click();
     assert.equal(new URL(plain.url()).pathname, '/career-guides/remote-workers/');
     await plainContext.close();
-    console.log('PASS: five topic routes, multiword/diacritic/CV searches, practical guide filter, empty-state recovery, raw-query exclusion, responsive WebP render/budget checks, five widths, keyboard carousel access, seven illustration placements, no-JS discovery, no new persistence.');
+    console.log('PASS: five topic routes, existing searches and weekly practice discovery, practical guide filter, empty-state recovery, raw-query exclusion, responsive WebP render/budget checks, five widths, keyboard carousel access, 25 homepage illustration placements, no-JS discovery, no new persistence.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

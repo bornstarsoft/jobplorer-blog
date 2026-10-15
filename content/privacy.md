@@ -22,6 +22,14 @@ The Guide Finder offers fixed choices for a research goal, role topic, and count
 
 Jobplorer's GA4 tag is excluded from the Guide Finder and Job Site Comparison pages. Other pages retain their analytics configuration. Hosting services may still receive ordinary page requests, and linked external sites have their own policies. These statements describe the two pages' implementation, not a claim of zero data processing across the whole site.
 
+## Weekly Job Search Practice
+
+Weekly practice contains fictional exercises and worked responses. It has no answer fields, account, file upload, or saved progress. Expanding a response does not submit an answer or store a selection. The optional text download contains public exercises, not your responses; your browser manages the downloaded file on your device.
+
+The optional calendar export processes a selected first practice date in the current browser tab to create four all-day events. The date is not sent to Jobplorer or placed in cookies, browser storage, or URL parameters. The calendar file is generated locally; Jobplorer does not connect to a calendar account, send invitations, or deliver reminders. If you import the file, your chosen calendar app or provider may store and sync the events under its own settings and policy. Avoid importing the same plan repeatedly because calendar apps may create duplicates.
+
+Jobplorer's GA4 tag is excluded from this page. Ordinary hosting requests and any hosting-level analytics are separate from the exercise controls. Other Jobplorer pages and external destinations retain their own analytics and privacy behavior. This is not a claim that the entire site processes no data.
+
 ## Contact Information
 
 If you contact the site owner, information you choose to provide may be used to respond to the inquiry, review corrections, evaluate feedback, or handle related communication.

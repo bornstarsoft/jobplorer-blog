@@ -31,6 +31,18 @@ topics:
     path: "/career-guides/software-developers/"
 homeOrder: [remote, games, ai, applications, software]
 pages:
+  /guides/prepare-for-a-work-sample-task/: software
+  /guides/refine-your-job-search-terms/: applications
+  /guides/choose-what-to-learn-next/: software
+  /guides/plan-an-informational-conversation/: remote
+  /guides/use-ai-for-job-search-preparation/: ai
+  /guides/research-an-employer/: applications
+  /guides/follow-up-after-an-interview/: remote
+  /guides/write-a-focused-cover-letter/: applications
+  /guides/read-a-job-posting/: applications
+  /guides/build-a-project-case-study/: software
+  /guides/check-job-offers-and-recruiters/: applications
+  /guides/prepare-for-an-interview/: remote
   /career-guides/remote-workers/: remote
   /career-guides/game-developers/: games
   /career-guides/software-developers/: software
