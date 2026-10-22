@@ -32,7 +32,9 @@
 {{ end }}
 {{ if eq .Layout "evidence-check" }}
 {{ $evidenceStyle := resources.Get "css/jobplorer-evidence.css" | fingerprint }}
+{{ $evidenceScript := resources.Get "js/jobplorer-evidence.js" | fingerprint }}
 <link rel="stylesheet" href="{{ $evidenceStyle.RelPermalink }}">
+<script defer src="{{ $evidenceScript.RelPermalink }}"></script>
 {{ end }}
 {{ if .Params.practiceMenu }}
 {{ $practiceMenuStyle := resources.Get "css/jobplorer-practice-menu.css" | fingerprint }}

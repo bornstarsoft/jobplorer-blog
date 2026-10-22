@@ -26,7 +26,7 @@
     {{ range $index, $check := $checks }}
     <section class="jp-evidence-check" id="{{ .id }}" aria-labelledby="title-{{ .id }}">
       <p class="jp-eyebrow">Situation {{ add $index 1 }} of {{ len $checks }}</p>
-      <h2 id="title-{{ .id }}">{{ .title }}</h2>
+      <h2 id="title-{{ .id }}" tabindex="-1">{{ .title }}</h2>
       <div class="jp-evidence-work">
         <div><h3>Supplied facts</h3><ul>{{ range .facts }}<li>{{ . }}</li>{{ end }}</ul></div>
         <div><h3>Which statement is supported?</h3>
@@ -37,7 +37,7 @@
       </div>
       {{ with .secondLook }}
       <div class="jp-evidence-second-look" id="{{ $check.id }}-second-look" aria-labelledby="second-title-{{ $check.id }}">
-        <h3 id="second-title-{{ $check.id }}">Second look: {{ .title }}</h3>
+        <h3 id="second-title-{{ $check.id }}" tabindex="-1">Second look: {{ .title }}</h3>
         <p class="jp-evidence-new-fact">{{ .fact }}</p>
         <p class="jp-evidence-question">{{ .question }}</p>
         <details class="jp-evidence-response"><summary>Compare with a worked response</summary><div>

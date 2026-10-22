@@ -38,6 +38,8 @@ const route = '/job-seeker-tools/evidence-check/';
       assert.equal(await page.locator('input, textarea, form, [contenteditable]').count(), 0);
       assert.equal(await page.locator('script[src*="googletagmanager"]').count(), 0);
       assert.equal(await page.locator('.jp-evidence-check').count(), 4);
+      assert.equal(await page.locator('.jp-evidence-check:visible').count(), javascript ? 1 : 4);
+      assert.equal(await page.locator('.jp-evidence-nav [aria-current="location"]').count(), javascript ? 1 : 0);
       assert.equal(await page.locator('.jp-evidence-statement').count(), 12);
       assert.equal(await page.locator('.jp-evidence-second-look').count(), 4);
       assert.equal(await page.locator('.jp-evidence-response').count(), 4);
@@ -56,6 +58,14 @@ const route = '/job-seeker-tools/evidence-check/';
       for (const text of await page.locator('.jp-evidence-check h2, .jp-evidence-work li, .jp-evidence-statement summary, .jp-evidence-statement h4, .jp-evidence-statement p, .jp-evidence-return > p').allTextContents()) assert.ok(pack.includes(text), 'HTML/download parity: ' + text);
       const baseline = requests.length;
       for (const check of await page.locator('.jp-evidence-check').all()) {
+        const id = await check.getAttribute('id');
+        await page.locator(`.jp-evidence-nav a[href="#${id}"]`).focus();
+        await page.keyboard.press('Enter');
+        await check.waitFor({ state: 'visible' });
+        if (javascript) {
+          assert.equal(await page.locator('.jp-evidence-check:visible').count(), 1);
+          assert.equal(await page.locator('.jp-evidence-nav [aria-current="location"]').getAttribute('href'), '#' + id);
+        }
         const findings = await check.locator('h4').allTextContents();
         assert.equal(findings.filter(x => x === 'Supported by the supplied facts').length, 1);
         assert.equal(findings.filter(x => x === 'Not supported by the supplied facts').length, 2);
@@ -82,12 +92,16 @@ const route = '/job-seeker-tools/evidence-check/';
         assert.ok(pack.includes('https://jobplorer.com' + route + href));
         await secondLink.click();
         assert.equal(new URL(page.url()).hash, href);
+        if (javascript) {
+          await page.waitForFunction(id => document.activeElement.id === 'second-title-' + id, id);
+        }
       }
       for (const link of await page.locator('.jp-evidence-nav a').all()) {
         const href = await link.getAttribute('href');
         await link.click();
         assert.equal(new URL(page.url()).hash, href);
-        assert.ok(await page.locator(href).isVisible());
+        await page.locator(href).waitFor({ state: 'visible' });
+        if (javascript) assert.equal(await page.locator('.jp-evidence-check:visible').count(), 1);
       }
       assert.equal(requests.length, baseline, 'Native disclosures and anchors send no requests');
       if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
@@ -101,6 +115,8 @@ const route = '/job-seeker-tools/evidence-check/';
         assert.ok(pack.includes('https://jobplorer.com' + href));
         assert.match(finder, new RegExp('id=["\']?' + href.split('#')[1] + '["\'\\s>]'));
       }
+      await page.locator('.jp-evidence-nav a').first().click();
+      await page.locator('.jp-evidence-check').first().waitFor({ state: 'visible' });
       await page.locator('.jp-evidence-statement summary').first().click();
       await page.locator('.jp-evidence-response summary').first().click();
       for (const width of [1440, 980, 760, 390, 320]) {
@@ -108,6 +124,25 @@ const route = '/job-seeker-tools/evidence-check/';
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `overflow ${width}`);
         if (javascript && [1440, 390].includes(width)) await page.locator('.jp-evidence-check').first().screenshot({ path: path.join(output, 'evidence-' + width + '.png') });
         if (javascript && [1440, 390].includes(width)) await page.locator('.jp-evidence-second-look').first().screenshot({ path: path.join(output, 'second-look-' + width + '.png') });
+        if (javascript && [1440, 390].includes(width)) {
+          await page.evaluate(() => scrollTo(0, 0));
+          await page.screenshot({ path: path.join(output, 'chooser-' + width + '.png'), fullPage: false });
+        }
+      }
+      await page.emulateMedia({ media: 'print' });
+      assert.equal(await page.locator('.jp-evidence-check:visible').count(), 4, 'Printing preserves all four situations');
+      await page.emulateMedia({ media: 'screen' });
+      if (javascript) {
+        const first = page.locator('#posting-criteria');
+        await first.locator('.jp-evidence-next').focus();
+        await page.keyboard.press('Enter');
+        await page.locator('#project-evidence').waitFor({ state: 'visible' });
+        assert.equal(await first.locator('details[open]').count(), 0, 'Hidden explanations reset for another try');
+        await page.goBack();
+        await first.waitFor({ state: 'visible' });
+        await page.goForward();
+        await page.locator('#project-evidence').waitFor({ state: 'visible' });
+        assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
       }
       const pending = page.waitForEvent('download');
       await page.locator('a[download]').click();
@@ -121,6 +156,10 @@ const route = '/job-seeker-tools/evidence-check/';
         await page.reload();
         const target = page.locator('#' + id + '-second-look');
         await target.waitFor({ state: 'visible' });
+        if (javascript) {
+          assert.equal(await page.locator('.jp-evidence-check:visible').getAttribute('id'), id);
+          assert.equal(await page.locator('.jp-evidence-nav [aria-current="location"]').getAttribute('href'), '#' + id);
+        }
         await target.locator('summary').click();
         assert.equal(await target.locator('details').evaluate(el => el.open), true);
         await page.reload();
@@ -135,6 +174,8 @@ const route = '/job-seeker-tools/evidence-check/';
       if (javascript) await page.waitForFunction(() => document.getElementById('route-experience').open);
       await page.goBack();
       await page.locator('#project-evidence').waitFor({ state: 'visible' });
+      await page.goto(base + route + '#unknown-situation');
+      assert.ok(await page.locator('#posting-criteria').isVisible());
       for (const source of ['/job-seeker-tools/', '/job-seeker-tools/guide-finder/']) {
         const result = await context.request.get(base + source);
         assert.equal(result.status(), 200);
@@ -143,6 +184,6 @@ const route = '/job-seeker-tools/evidence-check/';
       assert.deepEqual(errors, []);
       await context.close();
     }
-    console.log('PASS: four situations/12 explanations plus four second looks, keyboard/no-JS/anchors/reload/return route, no saved state or action requests, download parity, five widths and discovery.');
+    console.log('PASS: focused four-situation navigation, all second-look deep links, keyboard/back/forward/reset/no-JS/print, 12 explanations, no saved state or action requests, unchanged download parity, five widths and discovery.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });
