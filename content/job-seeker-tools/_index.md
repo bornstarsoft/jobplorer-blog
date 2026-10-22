@@ -107,6 +107,8 @@ If the next step is a task, [Prepare for a Work Sample Task](/guides/prepare-for
 
 For a complete fictional practice pack, read [Use AI for Job Search Preparation](/guides/use-ai-for-job-search-preparation/). It includes three focused prompts and an example of unsupported claims to remove.
 
+For a short sequence across visits, [check a rewritten summary against its source](/job-seeker-tools/guide-finder/#route-rewrite-review). Practice keeping preferences, planned checks and observed results distinct. All examples are fictional; no AI account or personal material is needed.
+
 Try this prompt with a non-sensitive excerpt from a posting: "Separate the stated responsibilities from preferences. Identify questions the posting leaves unanswered. Do not invent requirements or add experience to my resume."
 
 Compare the output with the original text. Keep only statements you can substantiate, and follow any employer instructions about AI use in assessments. See [AI in recruitment](/posts/the-rise-of-ai-in-recruitment/) for related reading.

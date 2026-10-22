@@ -8,7 +8,7 @@ const local = ['127.0.0.1', 'localhost'].includes(new URL(base).hostname);
 assert(local || ['jobplorer.com', 'jobplorer-blog.pages.dev'].includes(new URL(base).hostname));
 const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-routes-qa';
 const route = '/job-seeker-tools/guide-finder/';
-const ids = ['posting', 'experience', 'questions', 'task-brief'];
+const ids = ['posting', 'experience', 'questions', 'task-brief', 'rewrite-review'];
 
 (async () => {
   await fs.mkdir(output, { recursive: true });
@@ -36,14 +36,16 @@ const ids = ['posting', 'experience', 'questions', 'task-brief'];
       await page.locator('.jp-topic-image').evaluateAll(imgs => Promise.all(imgs.map(img => img.decode())));
       assert.equal(await page.locator('input, textarea, form, [contenteditable]').count(), 0);
       assert.equal(await page.locator('script[src*="googletagmanager"]').count(), 0);
-      assert.equal(await page.locator('.jp-practice-route').count(), 4);
-      assert.equal(await page.locator('.jp-practice-route ol li').count(), 12);
+      assert.equal(await page.locator('.jp-practice-route').count(), 5);
+      assert.equal(await page.locator('.jp-practice-route ol li').count(), 15);
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), local ? base + route : 'https://jobplorer.com' + route);
       const packResponse = await context.request.get(base + '/downloads/jobplorer-practice-routes.txt');
       assert.equal(packResponse.status(), 200);
       const pack = await packResponse.text();
-      assert.equal((pack.match(/^ROUTE:/gm) || []).length, 4);
-      assert.equal((pack.match(/^NEXT VISIT$/gm) || []).length, 4);
+      assert.equal((pack.match(/^ROUTE:/gm) || []).length, 5);
+      assert.equal((pack.match(/^NEXT VISIT$/gm) || []).length, 5);
+      assert.ok(pack.includes('5 editorial practice routes'));
+      assert.match(await page.locator('a[download]').textContent(), /Download 5 routes/);
       for (const text of await page.locator('.jp-practice-route summary, .jp-practice-route li p, .jp-route-next').allTextContents()) assert.ok(pack.includes(text), 'Download parity');
       const count = requests.length;
       for (const id of ids) {
@@ -86,6 +88,29 @@ const ids = ['posting', 'experience', 'questions', 'task-brief'];
       await page.goto(base + route);
       await page.reload();
       assert.equal(await page.locator('.jp-practice-route[open]').count(), 0, 'No saved progress');
+      const reviewTargets = [
+        '/guides/use-ai-for-job-search-preparation/#practice-preferences',
+        '/guides/use-ai-for-job-search-preparation/#practice-proposed-results',
+        '/job-seeker-tools/weekly-practice/#challenge-2'
+      ];
+      assert.deepEqual(await page.locator('#route-rewrite-review li a').evaluateAll(links => links.map(a => a.getAttribute('href'))), reviewTargets);
+      for (let step = 0; step < reviewTargets.length; step++) {
+        await page.goto(base + route + '#route-rewrite-review');
+        const review = page.locator('#route-rewrite-review');
+        if (javascript) await page.waitForFunction(() => document.getElementById('route-rewrite-review').open);
+        else await review.locator('summary').click();
+        await review.locator('li a').nth(step).click();
+        await page.locator('#' + reviewTargets[step].split('#')[1]).waitFor({ state: 'visible' });
+        assert.equal(page.url(), base + reviewTargets[step]);
+      }
+      for (const from of ['/job-seeker-tools/', '/guides/use-ai-for-job-search-preparation/']) {
+        await page.goto(base + from);
+        await page.locator('a[href="' + route + '#route-rewrite-review"]').click();
+        assert.equal(page.url(), base + route + '#route-rewrite-review');
+        if (javascript) await page.waitForFunction(() => document.getElementById('route-rewrite-review').open);
+      }
+      // Article pages retain their existing GA4 tag; only route-page interactions are storage-free.
+      await page.goto(base + route);
       await page.locator('#route-experience summary').click();
       await page.locator('#route-experience .jp-route-link').click();
       assert.equal(new URL(page.url()).hash, '#route-experience');
@@ -97,6 +122,7 @@ const ids = ['posting', 'experience', 'questions', 'task-brief'];
       if (javascript) await page.waitForFunction(() => document.getElementById('route-experience').open);
       const detail = page.locator('#route-experience');
       if (!(await detail.evaluate(el => el.open))) await detail.locator('summary').click();
+      await page.locator('#route-rewrite-review summary').click();
       for (const width of [1440, 980, 760, 390, 320]) {
         await page.setViewportSize({ width, height: 1000 });
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `overflow ${width}`);
@@ -113,6 +139,6 @@ const ids = ['posting', 'experience', 'questions', 'task-brief'];
       assert.deepEqual(errors, []);
       await context.close();
     }
-    console.log('PASS: four routes/12 destinations, working anchors, keyboard/no-JS, public deep links and back navigation, no saved state/requests, exact download, five widths.');
+    console.log('PASS: five routes/15 destinations, rewrite route and both entry links, keyboard/no-JS, public deep links and back navigation, no saved state/requests on route page, exact download, five widths.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

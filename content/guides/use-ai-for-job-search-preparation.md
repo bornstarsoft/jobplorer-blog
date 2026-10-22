@@ -81,6 +81,8 @@ These additional Jobplorer exercises are fictional, including the flawed rewrite
 
 {{< ai-review-practice >}}
 
+For another visit, [follow the three-step rewrite-review route](/job-seeker-tools/guide-finder/#route-rewrite-review). Start with these comparisons, then apply the same evidence check to a different fictional project summary.
+
 ## Review Before Using Anything
 
 - Can you support every action, skill, date, and result from your own records?
