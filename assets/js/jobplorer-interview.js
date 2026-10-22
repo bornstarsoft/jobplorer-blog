@@ -16,7 +16,9 @@
     current = card;
     for (const candidate of cards) {
       candidate.hidden = candidate !== current;
-      if (candidate !== current) candidate.querySelector('details').open = false;
+      if (candidate !== current) {
+        for (const detail of candidate.querySelectorAll('details')) detail.open = false;
+      }
     }
     const selected = pool();
     position.textContent = `Question ${selected.indexOf(current) + 1} of ${selected.length}`;

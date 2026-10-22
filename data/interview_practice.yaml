@@ -16,6 +16,9 @@ prompts:
       - "Name the action you took, rather than claiming the entire group's work."
       - "Keep the result to the two observed drafts; do not invent engagement growth."
     followUp: "How would you check whether the improvement continued over later drafts?"
+    followUpResponse: "I would review the next few drafts at the same stage and note whether captions were present before corrections. That would check whether the habit continued, not whether readers found the newsletter more useful. I have not done that follow-up yet."
+    followUpCheck: "Separate a proposed check from evidence already collected. Keep the observation point consistent."
+    repeatTask: "On another round, suppose one later draft is missing captions again. Explain what you would investigate before saying the checklist failed."
     guide: "/guides/build-a-project-case-study/"
     guideTitle: "Build a Project Case Study"
   - id: learn-from-a-mistake
@@ -28,6 +31,9 @@ prompts:
       - "Own the specific mistake without adding blame or a dramatic invented consequence."
       - "Distinguish a changed habit from proof that all future errors are prevented."
     followUp: "What would your final check look like on a real file?"
+    followUpResponse: "Before sending it, I would open the actual attachment, compare its date or version with the intended worksheet, and check that it contains the latest changes. Checking the filename alone would not tell me whether I attached the right contents. This is a proposed check, not evidence that later handoffs were error-free."
+    followUpCheck: "Describe a repeatable action rather than saying only that you would be more careful."
+    repeatTask: "On another round, suppose two files have the same filename. Describe what you would compare inside them before choosing which one to send."
     guide: "/guides/prepare-for-a-work-sample-task/"
     guideTitle: "Prepare for a Work Sample Task"
   - id: explain-a-disagreement
@@ -40,6 +46,9 @@ prompts:
       - "Explain the shared criterion and your contribution to reaching it."
       - "Do not turn agreement into evidence that readers preferred the result."
     followUp: "What would you want to learn from a first reader test?"
+    followUpResponse: "I would ask a reader to try one of the tasks using the checklist and observe where they needed more detail. I would note what they could do and what was unclear. One attempt could reveal a problem to investigate, but would not establish that the design works for every reader."
+    followUpCheck: "Connect the proposed observation to a reader task. Do not turn a small test into a universal conclusion."
+    repeatTask: "On another round, suppose the reader finishes the task but cannot find the detailed instructions. Explain what you would discuss with your teammate next."
     guide: "/guides/prepare-for-an-interview/"
     guideTitle: "Prepare for an Interview"
   - id: hand-over-work
@@ -52,6 +61,9 @@ prompts:
       - "Make the note's useful contents concrete."
       - "Do not claim a speed improvement or expose a real person's private details."
     followUp: "What would you clarify if the next person still could not reproduce a check?"
+    followUpResponse: "I would ask which step became unclear and compare it with the note. Then I would add the missing context, such as which page or result to look for, and ask them to try that step again. That would help us check the clarification without assuming the person had ignored the instructions."
+    followUpCheck: "Find the specific gap before proposing a fix. Keep the next check observable and avoid blame."
+    repeatTask: "On another round, suppose the page changed after you wrote the note. Explain how you would distinguish an outdated step from a missing instruction."
     guide: "/guides/build-a-project-case-study/"
     guideTitle: "Build a Project Case Study"
   - id: clarify-priorities
@@ -64,6 +76,9 @@ prompts:
       - "Ask about the decision process instead of assuming a problem."
       - "Adapt the question if the conversation has already supplied the answer."
     followUp: "If the answer is general, what work example could you ask them to describe?"
+    followUpResponse: "Could you walk me through a recent situation where an urgent request changed the weekly plan, including who agreed on the change and how the team heard about it? A concrete example would help me understand the process; it would not establish that every future request follows exactly the same path."
+    followUpCheck: "Ask for a work example without requesting confidential client or employee details. Treat it as an example, not a guarantee."
+    repeatTask: "On another round, suppose the interviewer has already explained who decides. Ask a narrower follow-up about how affected teammates learn about the change."
     guide: "/guides/research-an-employer/"
     guideTitle: "Research an Employer"
   - id: clarify-feedback
@@ -76,5 +91,8 @@ prompts:
       - "Focus on an unanswered work detail, not a generic question already covered."
       - "Treat the answer as information to understand, not a promise about every future review."
     followUp: "What would you note privately afterward as a fact versus something still unclear?"
+    followUpResponse: "If the interviewer said that reviewers leave comments on the draft, I would record that as their description of the process. I would keep review timing and how conflicting comments are resolved in an open-questions list unless they had also explained those points. I would not infer them from the name of the reporting tool."
+    followUpCheck: "Distinguish what was actually said from an inference. The example adds a hypothetical answer, not a fact about a real employer."
+    repeatTask: "On another round, suppose two reviewers give conflicting comments. Form one neutral question about how the team reaches a decision."
     guide: "/guides/follow-up-after-an-interview/"
     guideTitle: "Follow Up After an Interview"

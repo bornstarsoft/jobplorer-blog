@@ -5,7 +5,7 @@
   {{ if not (site.GetPage .guide) }}{{ errorf "Missing interview practice guide: %s" .guide }}{{ end }}
   {{ $pack = printf "%sQUESTION: %s\n\n%s\n\nYOUR PRACTICE\n%s\n\nONE POSSIBLE RESPONSE\n%s\n\nCHECK YOUR REASONING\n" $pack .title .context .task .response }}
   {{ range .checks }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
-  {{ $pack = printf "%s\nFOLLOW-UP\n%s\n\nQuestion link: https://jobplorer.com/job-seeker-tools/interview-practice/#%s\nRelated guide: https://jobplorer.com%s\n\n" $pack .followUp .id .guide }}
+  {{ $pack = printf "%s\nFOLLOW-UP\n%s\n\nONE POSSIBLE FOLLOW-UP RESPONSE\n%s\n\nREASONING CHECK\n%s\n\nANOTHER ROUND\n%s\n\nQuestion link: https://jobplorer.com/job-seeker-tools/interview-practice/#%s\nRelated guide: https://jobplorer.com%s\n\n" $pack .followUp .followUpResponse .followUpCheck .repeatTask .id .guide }}
 {{ end }}
 {{ $download := resources.FromString "downloads/jobplorer-interview-practice.txt" $pack }}
 <article class="jp-interview">
@@ -48,6 +48,13 @@
               <summary>Compare with an example <i data-lucide="chevron-down" aria-hidden="true"></i></summary>
               <div><h3>One possible response</h3><p>{{ .response }}</p>
                 <h3>Check your reasoning</h3><ul>{{ range .checks }}<li>{{ . }}</li>{{ end }}</ul>
+              </div>
+            </details>
+            <details class="jp-interview-response jp-interview-followup-response">
+              <summary>Follow-up practice <i data-lucide="chevron-down" aria-hidden="true"></i></summary>
+              <div><h3>One possible follow-up</h3><p>{{ .followUpResponse }}</p>
+                <h3>Check your reasoning</h3><p>{{ .followUpCheck }}</p>
+                <h3>Another round</h3><p>{{ .repeatTask }}</p>
               </div>
             </details>
             <a class="jp-text-link" href="{{ .guide }}">{{ .guideTitle }} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>

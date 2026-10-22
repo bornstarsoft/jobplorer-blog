@@ -38,6 +38,7 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
       assert.equal(await page.locator('h1').textContent(), 'Five-Minute Interview Practice');
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), local ? base + route : 'https://jobplorer.com' + route);
       assert.equal(await page.locator('.jp-interview-prompt').count(), 6);
+      assert.equal(await page.locator('.jp-interview-followup-response').count(), 6);
       assert.equal(await page.locator('input, textarea, form, [contenteditable]').count(), 0);
       assert.equal(await page.locator('script[src*="googletagmanager"]').count(), 0);
       const allIds = await page.locator('[id]').evaluateAll(els => els.map(el => el.id));
@@ -46,6 +47,8 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
       assert.equal(packResponse.status(), 200);
       const pack = await packResponse.text();
       assert.equal((pack.match(/^QUESTION:/gm) || []).length, 6);
+      assert.equal((pack.match(/^ONE POSSIBLE FOLLOW-UP RESPONSE$/gm) || []).length, 6);
+      assert.equal((pack.match(/^ANOTHER ROUND$/gm) || []).length, 6);
       for (const text of await page.locator('.jp-interview-context, .jp-interview-task, .jp-interview-followup, .jp-interview-response p, .jp-interview-response li').allTextContents()) assert.ok(pack.includes(text), 'HTML/download parity');
       const baseline = requests.length;
       if (javascript) {
@@ -59,9 +62,12 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
             const card = page.locator('.jp-interview-prompt:visible');
             assert.equal(await card.getAttribute('id'), expected[i]);
             assert.equal(await page.locator('#interview-position').textContent(), `Question ${i + 1} of ${expected.length}`);
-            await card.locator('summary').focus();
+            await card.locator('.jp-interview-response:not(.jp-interview-followup-response) summary').focus();
             await page.keyboard.press('Enter');
             assert.equal(await card.locator('details[open]').count(), 1);
+            await card.locator('.jp-interview-followup-response summary').focus();
+            await page.keyboard.press('Enter');
+            assert.equal(await card.locator('details[open]').count(), 2);
             await page.getByRole('button', { name: 'Next question', exact: true }).click();
           }
           assert.equal(await page.locator('.jp-interview-prompt:visible').getAttribute('id'), expected[0]);
@@ -74,6 +80,7 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
         await page.getByLabel('Practice focus').selectOption('experience');
         await page.locator('.jp-interview-library summary').click();
         await page.locator('.jp-interview-library a[href="#clarify-feedback"]').click();
+        await page.waitForFunction(() => !document.getElementById('clarify-feedback').hidden);
         assert.equal(await page.getByLabel('Practice focus').inputValue(), 'all');
         assert.equal(await page.locator('.jp-interview-prompt:visible').getAttribute('id'), 'clarify-feedback');
         await page.getByRole('button', { name: 'Next question', exact: true }).click();
@@ -84,7 +91,7 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
         assert.equal(await page.locator('.jp-interview-controls').isVisible(), false);
         assert.equal(await page.locator('.jp-interview-prompt:visible').count(), 6);
         for (const summary of await page.locator('.jp-interview-response summary').all()) await summary.click();
-        assert.equal(await page.locator('.jp-interview-response[open]').count(), 6);
+        assert.equal(await page.locator('.jp-interview-response[open]').count(), 12);
       }
       assert.equal(requests.length, baseline, 'Exercise controls must not send requests');
       if (local) {
@@ -96,6 +103,10 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
       }
       for (const width of [1440, 980, 760, 390, 320]) {
         await page.setViewportSize({ width, height: 1000 });
+        if (javascript) {
+          const followup = page.locator('.jp-interview-prompt:visible .jp-interview-followup-response');
+          if (!(await followup.evaluate(el => el.open))) await followup.locator('summary').click();
+        }
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `overflow ${width}`);
         if (javascript && [1440, 390].includes(width)) {
           await page.evaluate(() => scrollTo(0, 0));
@@ -118,6 +129,6 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
       assert.deepEqual(errors, []);
       await context.close();
     }
-    console.log('PASS: six prompts, three topics, next/previous/wrap/history/deep links, no-JS, download parity, five widths and application privacy checks.');
+    console.log('PASS: six prompts and follow-up rounds, three topics, keyboard disclosure/reset, next/previous/wrap/history/deep links, no-JS, download parity, five widths and application privacy checks.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
