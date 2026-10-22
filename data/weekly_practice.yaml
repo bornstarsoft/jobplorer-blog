@@ -14,6 +14,7 @@ revisit:
       - "Question: what office location and in-person schedule apply? The hybrid label does not supply either detail."
     why: "Keep the stated training separate from assumptions about experience requirements. Missing information remains a question."
     check: "Did you leave the office location and schedule unknown instead of filling them in?"
+    compare: "Compare with week 1: remote work left shared hours unclear; hybrid work leaves office days and location unclear here. Which exact detail would you ask about in each case? Neither label supplies a complete schedule."
     review: 1
   - number: 2
     title: "Keep a result within the evidence"
@@ -28,6 +29,7 @@ revisit:
       - "A teammate rewrote the message, and we repeated the six cases; we did not measure sign-up growth."
     why: "The revised explanation names an actual contribution and a follow-up check without turning a small test into a business result."
     check: "Are ownership and measured outcomes kept separate? Never present this fictional experience as your own."
+    compare: "Compare with week 2: a restart checklist exposed a timer issue; six form tests exposed an unclear message here. What did the applicant do in each example, and what did the teammate do? Neither example measures audience growth."
     review: 2
   - number: 3
     title: "Ask about an unanswered handoff"
@@ -41,6 +43,7 @@ revisit:
       - "What information does the team include when handing an unfinished request to a colleague in another time zone?"
     why: "Two time zones do not prove delays. This question asks about a specific process rather than assuming a problem."
     check: "Does the question address something the brief has not already answered?"
+    compare: "Compare with week 3: several request sources raised a question about prioritization; two time zones raise a question about handoffs here. How would the question change while staying neutral about a process you have not observed?"
     review: 3
   - number: 4
     title: "Catch a missing step before export"
@@ -56,6 +59,7 @@ revisit:
       - "Caution: later source changes do not update the saved report; refresh and download again for a newer copy."
     why: "The order matters: downloading before refreshing can export an older preview. The caution avoids an unsupported automatic-update promise."
     check: "Did you preserve the requested format and put the refresh before the download?"
+    compare: "Compare with week 4: Preview then Export becomes Refresh then Download here. Which supplied fact determines the first step? In both examples, later changes do not update a downloaded file."
     review: 4
 weeks:
   - number: 1

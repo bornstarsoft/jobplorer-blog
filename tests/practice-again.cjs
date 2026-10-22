@@ -5,6 +5,7 @@ const path = require('node:path');
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright');
 const base = process.env.JOBPLORER_TEST_URL || 'http://127.0.0.1:1328';
 const origin = new URL(base).origin;
+const local = ['localhost', '127.0.0.1'].includes(new URL(base).hostname);
 assert(['localhost', '127.0.0.1', 'jobplorer.com', 'jobplorer-blog.pages.dev'].includes(new URL(base).hostname));
 const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-practice-again-qa';
 const route = '/job-seeker-tools/weekly-practice/';
@@ -15,7 +16,7 @@ const route = '/job-seeker-tools/weekly-practice/';
   try {
     for (const javascript of [true, false]) {
       const context = await browser.newContext({ javaScriptEnabled: javascript, reducedMotion: 'reduce', viewport: { width: 1440, height: 1000 }, acceptDownloads: true });
-      const external = [], errors = [], requests = [];
+      const external = [], errors = [], requests = [], hostingRequests = [];
       await context.route('**/*', r => {
         if (new URL(r.request().url()).origin === origin) return r.continue();
         external.push(r.request().url()); return r.abort();
@@ -29,7 +30,12 @@ const route = '/job-seeker-tools/weekly-practice/';
       });
       const page = await context.newPage();
       page.on('pageerror', e => errors.push(e.message));
-      page.on('request', r => requests.push(r.url()));
+      page.on('request', r => {
+        const url = new URL(r.url());
+        // Live hosting can inject security scripts independently of practice actions.
+        if (!local && url.origin === origin && url.pathname.startsWith('/cdn-cgi/challenge-platform/')) hostingRequests.push(r.url());
+        else requests.push(r.url());
+      });
       assert.equal((await page.goto(base + route)).status(), 200);
       assert.equal(await page.locator('.jp-weekly-session').count(), 4);
       assert.equal(await page.locator('.jp-weekly-challenge').count(), 4);
@@ -40,8 +46,12 @@ const route = '/job-seeker-tools/weekly-practice/';
       assert.equal(packResponse.status(), 200);
       const pack = await packResponse.text();
       assert.equal((pack.match(/^CHALLENGE [1-4]:/gm) || []).length, 4);
+      assert.equal((pack.match(/^NEXT VISIT:/gm) || []).length, 4);
+      assert.equal((pack.match(/^COMPARE THE TWO SITUATIONS$/gm) || []).length, 4);
+      assert.equal(await page.locator('.jp-weekly-followup').count(), 4);
+      assert.equal(await page.locator('.jp-weekly-session .jp-challenge-comparison').count(), 0);
       const baseline = requests.length;
-      await page.locator('.jp-weekly-return a').click();
+      await page.locator('.jp-weekly-return a[href="#practice-again"]').click();
       assert.equal(new URL(page.url()).hash, '#practice-again');
       for (let i = 1; i <= 4; i++) {
         await page.locator('[aria-label="Choose a fresh scenario"] a').nth(i - 1).click();
@@ -53,6 +63,20 @@ const route = '/job-seeker-tools/weekly-practice/';
         for (const text of await section.locator('li, .jp-challenge-prompt, .jp-challenge-answer p').allTextContents()) assert.ok(pack.includes(text), 'Download content parity');
         await section.getByRole('link', { name: 'Review week ' + i, exact: true }).click();
         assert.equal(new URL(page.url()).hash, '#week-' + i);
+        const followup = page.locator('#week-' + i + ' .jp-weekly-followup');
+        assert.equal(await followup.getAttribute('href'), '#challenge-' + i);
+        const title = (await section.locator('h3').textContent()).replace(/^\d+\. /, '');
+        assert.ok((await followup.textContent()).includes(title));
+        assert.ok(pack.includes('NEXT VISIT: ' + title));
+        assert.ok(pack.includes('https://jobplorer.com' + route + '#challenge-' + i));
+        await followup.focus();
+        await page.keyboard.press('Enter');
+        assert.equal(new URL(page.url()).hash, '#challenge-' + i);
+        const comparison = section.locator('.jp-challenge-comparison');
+        assert.equal(await comparison.isVisible(), true);
+        assert.match(await comparison.textContent(), new RegExp('Compare with week ' + i + ':'));
+        await page.goBack();
+        assert.equal(new URL(page.url()).hash, '#week-' + i);
       }
       assert.equal(requests.length, baseline, 'Challenge navigation/disclosures send no requests');
       if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
@@ -60,13 +84,20 @@ const route = '/job-seeker-tools/weekly-practice/';
       assert.deepEqual(external, []);
       const ids = await page.locator('[id]').evaluateAll(els => els.map(el => el.id));
       assert.equal(new Set(ids).size, ids.length);
-      for (const width of [1440, 760, 390, 320]) {
+      for (const width of [1440, 980, 760, 390, 320]) {
         await page.setViewportSize({ width, height: 1000 });
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
         const bounds = await page.locator('.jp-weekly-challenge').evaluateAll(els => els.map(el => { const b = el.getBoundingClientRect(); return { x: b.x, right: b.right, y: b.y, bottom: b.bottom }; }));
         if (width > 760) assert.ok(bounds[0].right <= bounds[1].x);
         else assert.ok(bounds[0].bottom <= bounds[1].y);
-        if (javascript && [1440, 390].includes(width)) await page.locator('#practice-again').screenshot({ path: path.join(output, `practice-again-${width}.png`) });
+        for (const link of await page.locator('.jp-weekly-followup').all()) {
+          const b = await link.boundingBox();
+          assert.ok(b.height >= 44 && b.x >= 0 && b.x + b.width <= width, 'Follow-up link is usable and fits');
+        }
+        if (javascript && [1440, 390].includes(width)) {
+          await page.locator('#practice-again').screenshot({ path: path.join(output, `practice-again-${width}.png`) });
+          await page.locator('#week-1').screenshot({ path: path.join(output, `week-followup-${width}.png`) });
+        }
       }
       const pending = page.waitForEvent('download');
       await page.locator('a[download]').click();
@@ -82,8 +113,9 @@ const route = '/job-seeker-tools/weekly-practice/';
       await page.locator('#challenge-3 summary').click();
       assert.equal(await page.locator('#challenge-3 details[open]').count(), 1);
       assert.deepEqual(errors, []);
+      if (!local) console.log(`Hosting security requests recorded separately (JS=${javascript}): ${hostingRequests.length}`);
       await context.close();
     }
-    console.log('PASS: four fresh challenges, no-JS/keyboard/deep links, examples and download parity, no storage/telemetry, four widths, no persisted progress.');
+    console.log('PASS: four paired week/challenge loops and comparison prompts, no-JS/keyboard/back/deep links, examples and download parity, no application storage/telemetry, five widths, no persisted progress.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

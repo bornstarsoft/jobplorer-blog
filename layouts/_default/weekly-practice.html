@@ -7,6 +7,9 @@
   {{ $pack = printf "%s\nYOUR TASK\n%s\n\nONE POSSIBLE RESPONSE\n" $pack .prompt }}
   {{ range .answer }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
   {{ $pack = printf "%s\nWHY\n%s\n\nSELF-CHECK\n%s\n\nNEXT ACTION\n%s\nRelated guide: %s\n\n" $pack .why .check .next (printf "https://jobplorer.com%s" .guide) }}
+  {{ range where $series.revisit "review" .number }}
+    {{ $pack = printf "%sNEXT VISIT: %s\nhttps://jobplorer.com/job-seeker-tools/weekly-practice/#challenge-%v\n\n" $pack .title .number }}
+  {{ end }}
 {{ end }}
 {{ $pack = printf "%sPRACTICE AGAIN\nFour extra fictional challenges. Try a response in your own private notes before comparing with the example. These are not scored tests or evidence of readiness.\n\n" $pack }}
 {{ range $series.revisit }}
@@ -14,7 +17,7 @@
   {{ range .evidence }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
   {{ $pack = printf "%s\nYOUR TASK\n%s\n\nONE POSSIBLE RESPONSE\n" $pack .prompt }}
   {{ range .answer }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
-  {{ $pack = printf "%s\nWHY\n%s\n\nSELF-CHECK\n%s\nReview week %v: https://jobplorer.com/job-seeker-tools/weekly-practice/#week-%v\n\n" $pack .why .check .review .review }}
+  {{ $pack = printf "%s\nWHY\n%s\n\nSELF-CHECK\n%s\n\nCOMPARE THE TWO SITUATIONS\n%s\nReview week %v: https://jobplorer.com/job-seeker-tools/weekly-practice/#week-%v\n\n" $pack .why .check .compare .review .review }}
 {{ end }}
 {{ $download := resources.FromString "downloads/jobplorer-four-week-practice.txt" $pack }}
 <article class="jp-weekly" id="weekly-top">
@@ -57,6 +60,8 @@
     {{ range $index, $week := $series.weeks }}
     {{ $guide := site.GetPage .guide }}
     {{ if not $guide }}{{ errorf "Missing weekly practice destination: %s" .guide }}{{ end }}
+    {{ $followups := where $series.revisit "review" .number }}
+    {{ if ne (len $followups) 1 }}{{ errorf "Expected one follow-up challenge for week %v" .number }}{{ end }}
     <section class="jp-weekly-session" id="week-{{ .number }}" aria-labelledby="week-title-{{ .number }}">
       <header>
         <p class="jp-eyebrow">Week {{ .number }} <span>{{ .minutes }}</span></p>
@@ -84,6 +89,9 @@
           <a class="jp-text-link" href="{{ $guide.RelPermalink }}">{{ .guideTitle }} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
         </div>
       </div>
+      {{ range $followups }}
+      <p class="jp-weekly-return"><a class="jp-weekly-followup" href="#challenge-{{ .number }}">Next visit: {{ .title }} <i data-lucide="arrow-down" aria-hidden="true"></i></a></p>
+      {{ end }}
       <nav class="jp-weekly-next" aria-label="After week {{ .number }}">
         <a href="#weekly-top"><i data-lucide="arrow-up" aria-hidden="true"></i> Back to overview</a>
         {{ if lt .number 4 }}<a href="#week-{{ add .number 1 }}">Next: week {{ add .number 1 }} <i data-lucide="arrow-right" aria-hidden="true"></i></a>{{ else }}<a href="/job-seeker-tools/guide-finder/">Find your next guide <i data-lucide="arrow-right" aria-hidden="true"></i></a>{{ end }}
@@ -110,6 +118,7 @@
               <ul>{{ range .answer }}<li>{{ . }}</li>{{ end }}</ul>
               <h4>Why this works</h4><p>{{ .why }}</p>
               <h4>Self-check</h4><p>{{ .check }}</p>
+              <h4>Compare the two situations</h4><p class="jp-challenge-comparison">{{ .compare }}</p>
             </div>
           </details>
           <nav class="jp-weekly-next" aria-label="After challenge {{ .number }}">
