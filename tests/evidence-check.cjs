@@ -39,6 +39,8 @@ const route = '/job-seeker-tools/evidence-check/';
       assert.equal(await page.locator('script[src*="googletagmanager"]').count(), 0);
       assert.equal(await page.locator('.jp-evidence-check').count(), 4);
       assert.equal(await page.locator('.jp-evidence-statement').count(), 12);
+      assert.equal(await page.locator('.jp-evidence-second-look').count(), 4);
+      assert.equal(await page.locator('.jp-evidence-response').count(), 4);
       const ids = await page.locator('[id]').evaluateAll(els => els.map(el => el.id));
       assert.equal(new Set(ids).size, ids.length);
       const packResponse = await context.request.get(base + '/downloads/jobplorer-evidence-check.txt');
@@ -47,13 +49,17 @@ const route = '/job-seeker-tools/evidence-check/';
       assert.equal((pack.match(/^SITUATION:/gm) || []).length, 4);
       assert.equal((pack.match(/^STATEMENT:/gm) || []).length, 12);
       assert.equal((pack.match(/^ANOTHER VISIT$/gm) || []).length, 4);
+      assert.equal((pack.match(/^SECOND LOOK:/gm) || []).length, 4);
+      assert.equal((pack.match(/^WHAT STAYS UNCERTAIN$/gm) || []).length, 4);
+      for (const text of await page.locator('.jp-evidence-second-look p').allTextContents()) assert.ok(pack.includes(text), 'Second-look download parity: ' + text);
+      for (const title of await page.locator('.jp-evidence-second-look h3').allTextContents()) assert.ok(pack.includes(title.replace('Second look: ', 'SECOND LOOK: ')));
       for (const text of await page.locator('.jp-evidence-check h2, .jp-evidence-work li, .jp-evidence-statement summary, .jp-evidence-statement h4, .jp-evidence-statement p, .jp-evidence-return > p').allTextContents()) assert.ok(pack.includes(text), 'HTML/download parity: ' + text);
       const baseline = requests.length;
       for (const check of await page.locator('.jp-evidence-check').all()) {
         const findings = await check.locator('h4').allTextContents();
         assert.equal(findings.filter(x => x === 'Supported by the supplied facts').length, 1);
         assert.equal(findings.filter(x => x === 'Not supported by the supplied facts').length, 2);
-        for (const detail of await check.locator('details').all()) {
+        for (const detail of await check.locator('.jp-evidence-statement').all()) {
           await detail.locator('summary').focus();
           await page.keyboard.press('Enter');
           assert.equal(await detail.evaluate(el => el.open), true);
@@ -61,6 +67,21 @@ const route = '/job-seeker-tools/evidence-check/';
           await page.keyboard.press('Enter');
           assert.equal(await detail.evaluate(el => el.open), false);
         }
+        const second = check.locator('.jp-evidence-second-look');
+        const response = second.locator('details');
+        assert.equal(await response.evaluate(el => el.open), false);
+        await response.locator('summary').focus();
+        await page.keyboard.press('Enter');
+        assert.equal(await response.evaluate(el => el.open), true);
+        assert.deepEqual(await response.locator('h4').allTextContents(), ['What changes', 'What stays uncertain']);
+        for (const p of await response.locator('p').all()) assert.ok(await p.isVisible());
+        await page.keyboard.press('Enter');
+        assert.equal(await response.evaluate(el => el.open), false);
+        const secondLink = second.locator('a');
+        const href = await secondLink.getAttribute('href');
+        assert.ok(pack.includes('https://jobplorer.com' + route + href));
+        await secondLink.click();
+        assert.equal(new URL(page.url()).hash, href);
       }
       for (const link of await page.locator('.jp-evidence-nav a').all()) {
         const href = await link.getAttribute('href');
@@ -81,10 +102,12 @@ const route = '/job-seeker-tools/evidence-check/';
         assert.match(finder, new RegExp('id=["\']?' + href.split('#')[1] + '["\'\\s>]'));
       }
       await page.locator('.jp-evidence-statement summary').first().click();
+      await page.locator('.jp-evidence-response summary').first().click();
       for (const width of [1440, 980, 760, 390, 320]) {
         await page.setViewportSize({ width, height: 1000 });
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `overflow ${width}`);
         if (javascript && [1440, 390].includes(width)) await page.locator('.jp-evidence-check').first().screenshot({ path: path.join(output, 'evidence-' + width + '.png') });
+        if (javascript && [1440, 390].includes(width)) await page.locator('.jp-evidence-second-look').first().screenshot({ path: path.join(output, 'second-look-' + width + '.png') });
       }
       const pending = page.waitForEvent('download');
       await page.locator('a[download]').click();
@@ -93,6 +116,16 @@ const route = '/job-seeker-tools/evidence-check/';
       const saved = path.join(output, `evidence-${javascript}.txt`);
       await download.saveAs(saved);
       assert.equal(await fs.readFile(saved, 'utf8'), pack);
+      for (const id of ['posting-criteria', 'project-evidence', 'remote-details', 'deliverable-scope']) {
+        await page.goto(base + route + '#' + id + '-second-look');
+        await page.reload();
+        const target = page.locator('#' + id + '-second-look');
+        await target.waitFor({ state: 'visible' });
+        await target.locator('summary').click();
+        assert.equal(await target.locator('details').evaluate(el => el.open), true);
+        await page.reload();
+        assert.equal(await target.locator('details').evaluate(el => el.open), false);
+      }
       await page.goto(base + route + '#project-evidence');
       await page.reload();
       assert.equal(await page.locator('details[open]').count(), 0);
@@ -110,6 +143,6 @@ const route = '/job-seeker-tools/evidence-check/';
       assert.deepEqual(errors, []);
       await context.close();
     }
-    console.log('PASS: four situations/12 explanations, one supported statement each, keyboard/no-JS/anchors/return route, no saved state or action requests, download parity, five widths and discovery.');
+    console.log('PASS: four situations/12 explanations plus four second looks, keyboard/no-JS/anchors/reload/return route, no saved state or action requests, download parity, five widths and discovery.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

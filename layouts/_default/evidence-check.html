@@ -6,6 +6,8 @@
   {{ $pack = printf "%sSITUATION: %s\n\nSUPPLIED FACTS\n" $pack .title }}
   {{ range .facts }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
   {{ range .statements }}{{ $pack = printf "%s\nSTATEMENT: %s\n%s\n%s\n" $pack .text .finding .why }}{{ end }}
+  {{ with .secondLook }}{{ $pack = printf "%s\nSECOND LOOK: %s\nNEW INFORMATION\n%s\n\nQUESTION\n%s\n\nWHAT CHANGES\n%s\n\nWHAT STAYS UNCERTAIN\n%s\n" $pack .title .fact .question .changes .uncertain }}{{ end }}
+  {{ $pack = printf "%s\nSecond-look link: https://jobplorer.com/job-seeker-tools/evidence-check/#%s-second-look\n" $pack .id }}
   {{ $pack = printf "%s\nANOTHER VISIT\n%s\nSituation link: https://jobplorer.com/job-seeker-tools/evidence-check/#%s\nPractice route: https://jobplorer.com/job-seeker-tools/guide-finder/#route-%s\n\n" $pack .retry .id .route }}
 {{ end }}
 {{ $download := resources.FromString "downloads/jobplorer-evidence-check.txt" $pack }}
@@ -13,7 +15,7 @@
   <div class="jp-container">
     <a class="jp-back-link" href="/job-seeker-tools/"><i data-lucide="arrow-left" aria-hidden="true"></i> Job Seeker Tools</a>
     <header class="jp-evidence-heading">
-      <div><p class="jp-eyebrow">A short job-search warm-up</p><h1>{{ .Title }}</h1><p>Four fictional situations. Facts, assumptions and missing details.</p>
+      <div><p class="jp-eyebrow">A short job-search warm-up</p><h1>{{ .Title }}</h1><p>Four fictional situations. A first read, then one new fact.</p>
         <a href="{{ $download.RelPermalink }}" download="jobplorer-evidence-check.txt"><i data-lucide="download" aria-hidden="true"></i> Download four checks (.txt)</a>
       </div>
       <figure>{{ partial "topic-image.html" (dict "key" "applications" "loading" "eager" "sizes" "180px") }}</figure>
@@ -33,6 +35,18 @@
           {{ end }}
         </div>
       </div>
+      {{ with .secondLook }}
+      <div class="jp-evidence-second-look" id="{{ $check.id }}-second-look" aria-labelledby="second-title-{{ $check.id }}">
+        <h3 id="second-title-{{ $check.id }}">Second look: {{ .title }}</h3>
+        <p class="jp-evidence-new-fact">{{ .fact }}</p>
+        <p class="jp-evidence-question">{{ .question }}</p>
+        <details class="jp-evidence-response"><summary>Compare with a worked response</summary><div>
+          <h4>What changes</h4><p>{{ .changes }}</p>
+          <h4>What stays uncertain</h4><p>{{ .uncertain }}</p>
+        </div></details>
+        <a href="#{{ $check.id }}-second-look"><i data-lucide="link" aria-hidden="true"></i> Link to this second look</a>
+      </div>
+      {{ end }}
       <div class="jp-evidence-return"><h3>Another visit</h3><p>{{ .retry }}</p>
         <div><a href="#{{ .id }}"><i data-lucide="link" aria-hidden="true"></i> Link to this situation</a><a href="/job-seeker-tools/guide-finder/#route-{{ .route }}">Continue with a practice route <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
       </div>

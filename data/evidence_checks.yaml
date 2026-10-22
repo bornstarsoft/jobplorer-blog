@@ -16,6 +16,12 @@ checks:
         finding: "Not supported by the supplied facts"
         why: "Training on one tool does not describe every requirement for the role. The spreadsheet requirement is still stated."
     retry: "On another visit, replace one unsupported statement with a question you could check against the full posting."
+    secondLook:
+      title: "An optional qualification is clarified"
+      fact: "A later note in this fictional brief says: an analytics certificate is optional. The spreadsheet requirement remains unchanged."
+      question: "What can you now say about the certificate, and what should you avoid concluding?"
+      changes: "The certificate is explicitly optional in this brief; that is stronger evidence than its absence from the first excerpt. Comfort using a spreadsheet is still stated as a requirement."
+      uncertain: "The new note does not say that the spreadsheet requirement is the only requirement, or establish whether a particular person meets the full brief."
     route: "posting"
   - id: project-evidence
     title: "Who did what in the project?"
@@ -34,6 +40,12 @@ checks:
         finding: "Supported by the supplied facts"
         why: "This keeps your contribution, the teammate's action and the follow-up check separate. The experience is fictional and must not be presented as your own."
     retry: "On another visit, explain the same contribution in two sentences without adding a number or taking credit for the fix."
+    secondLook:
+      title: "A follow-up check adds a result"
+      fact: "A later note for this fictional project says all three test cases passed after the teammate's fix. No user or time-saving data was collected."
+      question: "Which result could the project description now include without claiming a business impact?"
+      changes: "The description can now say: I repeated the three test cases after a teammate fixed the label, and all three passed. This adds an observed check result while preserving who did what."
+      uncertain: "Passing those three cases does not establish that the entire screen is defect-free, or show a reduction in support time. This remains fictional experience, not a claim to copy as your own."
     route: "experience"
   - id: remote-details
     title: "What does a remote label leave unanswered?"
@@ -51,7 +63,13 @@ checks:
       - text: "Shared hours mean everyone works the same full-day schedule."
         finding: "Not supported by the supplied facts"
         why: "Some shared hours do not establish an identical full-day schedule. The extent of overlap is still unknown."
-    retry: "On another visit, ask one neutral question about the missing collaboration window without assuming what the answer will be."
+    retry: "On another visit, ask one neutral question about the missing work-location details without assuming what the answer will be."
+    secondLook:
+      title: "Part of the schedule becomes clear"
+      fact: "A later note in this fictional brief specifies shared collaboration hours of 14:00-16:00 UTC on Tuesdays and Thursdays. It still gives no work-location details."
+      question: "Which part of the first answer needs updating, and which detail still needs clarification?"
+      changes: "The shared collaboration window and its time zone are now stated. It would be inaccurate to keep describing those specific details as missing."
+      uncertain: "The rest of the schedule and the work-location details are still unspecified. A stated collaboration window does not establish a full-day schedule or permission to work from any location."
     route: "questions"
   - id: deliverable-scope
     title: "What belongs in the requested output?"
@@ -70,4 +88,10 @@ checks:
         finding: "Not supported by the supplied facts"
         why: "Export support alone does not establish automatic synchronization. The facts do not describe that behavior."
     retry: "On another visit, name the feature-versus-deliverable distinction and one final check you would make against the brief."
+    secondLook:
+      title: "The brief requests an additional file"
+      fact: "A revised version of this fictional task explicitly adds one exported CSV file to the screenshot and descriptive paragraph. It says nothing about automatic updates."
+      question: "What is now part of the requested output, and which earlier assumption remains unsupported?"
+      changes: "The revised brief now requests a CSV as well as the screenshot and paragraph. The new instruction, not the mere existence of an export feature, makes the CSV a deliverable."
+      uncertain: "There is still no evidence that the downloaded CSV updates automatically. A slide deck is still not requested."
     route: "task-brief"
