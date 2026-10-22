@@ -1,11 +1,17 @@
 {{ define "main" }}
 {{ $practice := site.Data.interview_practice }}
+{{ $downloads := dict }}
 {{ $pack := printf "%s\n\nSix fictional Jobplorer prompts, not employer questions or a scoring rubric. Do not present invented experience as your own. Work in private notes; this pack contains no personal answers.\n\n" .Title }}
-{{ range $practice.prompts }}
+{{ range $index, $prompt := $practice.prompts }}
   {{ if not (site.GetPage .guide) }}{{ errorf "Missing interview practice guide: %s" .guide }}{{ end }}
-  {{ $pack = printf "%sQUESTION: %s\n\n%s\n\nYOUR PRACTICE\n%s\n\nONE POSSIBLE RESPONSE\n%s\n\nCHECK YOUR REASONING\n" $pack .title .context .task .response }}
-  {{ range .checks }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
-  {{ $pack = printf "%s\nFOLLOW-UP\n%s\n\nONE POSSIBLE FOLLOW-UP RESPONSE\n%s\n\nREASONING CHECK\n%s\n\nANOTHER ROUND\n%s\n\nQuestion link: https://jobplorer.com/job-seeker-tools/interview-practice/#%s\nRelated guide: https://jobplorer.com%s\n\n" $pack .followUp .followUpResponse .followUpCheck .repeatTask .id .guide }}
+  {{ $entry := printf "QUESTION: %s\n\n%s\n\nYOUR PRACTICE\n%s\n\nONE POSSIBLE RESPONSE\n%s\n\nCHECK YOUR REASONING\n" .title .context .task .response }}
+  {{ range .checks }}{{ $entry = printf "%s- %s\n" $entry . }}{{ end }}
+  {{ $entry = printf "%s\nFOLLOW-UP\n%s\n\nONE POSSIBLE FOLLOW-UP RESPONSE\n%s\n\nREASONING CHECK\n%s\n\nANOTHER ROUND\n%s\n\nQuestion link: https://jobplorer.com/job-seeker-tools/interview-practice/#%s\nRelated guide: https://jobplorer.com%s\n\n" $entry .followUp .followUpResponse .followUpCheck .repeatTask .id .guide }}
+  {{ $pack = printf "%s%s" $pack $entry }}
+  {{ $next := index $practice.prompts (mod (add $index 1) (len $practice.prompts)) }}
+  {{ $single := printf "JOBPLORER SINGLE-PROMPT PRACTICE\n\nA fictional exercise, not an employer question or a scoring rubric. Do not present invented experience as your own. This public download contains no personal answers or saved progress.\n\n%sNEXT VISIT\n%s\nhttps://jobplorer.com/job-seeker-tools/interview-practice/#%s\n" $entry $next.title $next.id }}
+  {{ $file := resources.FromString (printf "downloads/jobplorer-interview-%s.txt" .id) $single }}
+  {{ $downloads = merge $downloads (dict .id $file.RelPermalink) }}
 {{ end }}
 {{ $download := resources.FromString "downloads/jobplorer-interview-practice.txt" $pack }}
 <article class="jp-interview">
@@ -59,6 +65,9 @@
             </details>
             <a class="jp-text-link" href="{{ .guide }}">{{ .guideTitle }} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
             <a class="jp-interview-permalink" href="#{{ .id }}"><i data-lucide="link" aria-hidden="true"></i> Link to this question</a>
+            <a class="jp-interview-download" href="{{ index $downloads .id }}" download="jobplorer-interview-{{ .id }}.txt"><i data-lucide="download" aria-hidden="true"></i> Download this practice (.txt)</a>
+            {{ $next := index $practice.prompts (mod (add $index 1) (len $practice.prompts)) }}
+            <div class="jp-interview-return"><h3>Next visit</h3><a href="#{{ $next.id }}">{{ $next.title }} <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
           </div>
         </div>
       </section>

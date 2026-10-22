@@ -30,6 +30,9 @@
 .jp-interview-response[open] summary svg, .jp-interview-library[open] summary svg { transform: rotate(180deg); }
 .jp-interview-response > div { padding-bottom: 16px; }
 .jp-interview-permalink { display: flex; align-items: center; gap: 8px; width: fit-content; min-height: 44px; margin-top: 16px; font-size: 14px; }
+.jp-interview-download { display: flex; align-items: center; gap: 8px; width: fit-content; min-height: 44px; font-size: 14px; }
+.jp-interview-return { border-top: 1px solid var(--jp-line); margin-top: 20px; padding-top: 4px; }
+.jp-interview-return a { display: flex; align-items: center; gap: 8px; min-height: 44px; }
 .jp-interview-library { margin: 16px 0; }
 .jp-interview-library nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px; }
 .jp-interview-library a { display: flex; align-items: center; min-height: 44px; font-size: 15px; }

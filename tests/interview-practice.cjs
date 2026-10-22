@@ -114,12 +114,58 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
         }
       }
       const pending = page.waitForEvent('download');
-      await page.locator('a[download]').click();
+      await page.locator('.jp-interview-heading a[download]').click();
       const download = await pending;
       assert.equal(download.suggestedFilename(), 'jobplorer-interview-practice.txt');
       const saved = path.join(output, `pack-${javascript}.txt`);
       await download.saveAs(saved);
       assert.equal(await fs.readFile(saved, 'utf8'), pack);
+      assert.equal(await page.locator('.jp-interview-download').count(), 6);
+      for (const [index, id] of ids.entries()) {
+        await page.goto(base + route + '#' + id);
+        const prompt = page.locator('#' + id);
+        await prompt.waitFor({ state: 'visible' });
+        const filename = 'jobplorer-interview-' + id + '.txt';
+        const link = prompt.locator('.jp-interview-download');
+        assert.equal(await link.getAttribute('href'), '/downloads/' + filename);
+        assert.equal(await link.getAttribute('download'), filename);
+        const singleResponse = await context.request.get(base + '/downloads/' + filename);
+        assert.equal(singleResponse.status(), 200);
+        const single = await singleResponse.text();
+        assert.equal((single.match(/^QUESTION:/gm) || []).length, 1);
+        assert.ok(single.includes('no personal answers or saved progress'));
+        const entry = single.slice(single.indexOf('QUESTION:'), single.indexOf('NEXT VISIT\n'));
+        assert.ok(pack.includes(entry), 'Single prompt matches combined pack exactly');
+        for (const text of await prompt.locator('.jp-interview-context, .jp-interview-task, .jp-interview-followup, .jp-interview-response p, .jp-interview-response li').allTextContents()) assert.ok(single.includes(text), 'Single prompt HTML/download parity');
+        const nextId = ids[(index + 1) % ids.length];
+        assert.ok(single.includes('https://jobplorer.com' + route + '#' + nextId));
+        const nextLink = prompt.locator('.jp-interview-return a');
+        assert.equal(await nextLink.getAttribute('href'), '#' + nextId);
+        const pendingSingle = page.waitForEvent('download');
+        await link.focus();
+        await page.keyboard.press('Enter');
+        const singleDownload = await pendingSingle;
+        assert.equal(singleDownload.suggestedFilename(), filename);
+        const singlePath = path.join(output, `${javascript}-${filename}`);
+        await singleDownload.saveAs(singlePath);
+        assert.equal(await fs.readFile(singlePath, 'utf8'), single);
+        for (const width of [1440, 390, 320]) {
+          await page.setViewportSize({ width, height: 1000 });
+          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+          assert.ok((await link.boundingBox()).height >= 44);
+          assert.ok((await nextLink.boundingBox()).height >= 44);
+        }
+        if (javascript && index === 0) await prompt.screenshot({ path: path.join(output, 'single-practice-mobile.png') });
+        const beforeNext = requests.length;
+        await nextLink.focus();
+        await page.keyboard.press('Enter');
+        await page.waitForURL(base + route + '#' + nextId);
+        await page.locator('#' + nextId).waitFor({ state: 'visible' });
+        assert.equal(requests.length, beforeNext, 'Next visit link must only navigate a public anchor');
+        await page.goBack();
+        await prompt.waitFor({ state: 'visible' });
+        if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
+      }
       for (const destination of new Set(await page.locator('article a[href^="/"]:not([download])').evaluateAll(els => els.map(el => el.pathname)))) assert.equal((await context.request.get(base + destination)).status(), 200, destination);
       await page.goto(base + route + '#hand-over-work');
       if (javascript) assert.equal(await page.locator('.jp-interview-prompt:visible').getAttribute('id'), 'hand-over-work');
@@ -129,6 +175,6 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
       assert.deepEqual(errors, []);
       await context.close();
     }
-    console.log('PASS: six prompts and follow-up rounds, three topics, keyboard disclosure/reset, next/previous/wrap/history/deep links, no-JS, download parity, five widths and application privacy checks.');
+    console.log('PASS: six prompts and follow-ups, six individual downloads and next-visit links, combined pack parity, topics/keyboard/history/no-JS, five widths and application privacy checks.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
