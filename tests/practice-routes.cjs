@@ -90,6 +90,7 @@ const ids = ['posting', 'experience', 'questions', 'task-brief'];
       await page.locator('#route-experience .jp-route-link').click();
       assert.equal(new URL(page.url()).hash, '#route-experience');
       await page.locator('#route-experience li a').first().click();
+      await page.locator('#week-2').waitFor({ state: 'visible' });
       assert.equal(new URL(page.url()).hash, '#week-2');
       assert.ok(await page.locator('#week-2').isVisible());
       await page.goBack();
