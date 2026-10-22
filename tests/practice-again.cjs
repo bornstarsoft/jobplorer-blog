@@ -9,6 +9,10 @@ const local = ['localhost', '127.0.0.1'].includes(new URL(base).hostname);
 assert(['localhost', '127.0.0.1', 'jobplorer.com', 'jobplorer-blog.pages.dev'].includes(new URL(base).hostname));
 const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-practice-again-qa';
 const route = '/job-seeker-tools/weekly-practice/';
+const hostingBeacon = value => {
+  const url = new URL(value);
+  return url.origin === 'https://static.cloudflareinsights.com' && /^\/beacon\.min\.js(?:\/|$)/.test(url.pathname);
+};
 
 (async () => {
   await fs.mkdir(output, { recursive: true });
@@ -41,7 +45,10 @@ const route = '/job-seeker-tools/weekly-practice/';
       assert.equal(await page.locator('.jp-weekly-challenge').count(), 4);
       assert.equal(await page.locator('.jp-challenge-answer[open]').count(), 0);
       assert.equal(await page.locator('input:not([type="date"]), textarea, select, [contenteditable]').count(), 0);
-      assert.equal(await page.locator('script[src*="googletagmanager"], script[src*="cloudflareinsights"]').count(), 0);
+      assert.equal(await page.locator('script[src*="googletagmanager"]').count(), 0);
+      const analyticsScripts = await page.locator('script[src*="cloudflareinsights"]').evaluateAll(els => els.map(el => el.src));
+      if (local) assert.deepEqual(analyticsScripts, []);
+      else assert.ok(analyticsScripts.every(hostingBeacon), 'Only the known hosting beacon may be injected');
       const packResponse = await context.request.get(base + '/downloads/jobplorer-four-week-practice.txt');
       assert.equal(packResponse.status(), 200);
       const pack = await packResponse.text();
@@ -80,8 +87,11 @@ const route = '/job-seeker-tools/weekly-practice/';
       }
       assert.equal(requests.length, baseline, 'Challenge navigation/disclosures send no requests');
       if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
-      assert.deepEqual(await context.cookies(), []);
-      assert.deepEqual(external, []);
+      const cookieMetadata = (await context.cookies()).map(({ name, domain, httpOnly, secure }) => ({ name, domain, httpOnly, secure }));
+      if (local) assert.equal(cookieMetadata.length, 0, 'No local application cookies');
+      else assert.ok(cookieMetadata.every(cookie => cookie.name === 'cf_clearance' && cookie.domain.replace(/^\./, '') === new URL(base).hostname && cookie.httpOnly && cookie.secure), 'Only a hosting-managed secure clearance cookie may exist; cookie values are never logged');
+      if (local) assert.deepEqual(external, []);
+      else assert.ok(external.every(hostingBeacon), 'Only the known hosting beacon may be blocked during live QA');
       const ids = await page.locator('[id]').evaluateAll(els => els.map(el => el.id));
       assert.equal(new Set(ids).size, ids.length);
       for (const width of [1440, 980, 760, 390, 320]) {
@@ -113,7 +123,7 @@ const route = '/job-seeker-tools/weekly-practice/';
       await page.locator('#challenge-3 summary').click();
       assert.equal(await page.locator('#challenge-3 details[open]').count(), 1);
       assert.deepEqual(errors, []);
-      if (!local) console.log(`Hosting security requests recorded separately (JS=${javascript}): ${hostingRequests.length}`);
+      if (!local) console.log(`Hosting security requests recorded separately (JS=${javascript}): ${hostingRequests.length}; blocked hosting beacon requests: ${external.length}; hosting clearance cookies: ${cookieMetadata.length}`);
       await context.close();
     }
     console.log('PASS: four paired week/challenge loops and comparison prompts, no-JS/keyboard/back/deep links, examples and download parity, no application storage/telemetry, five widths, no persisted progress.');
