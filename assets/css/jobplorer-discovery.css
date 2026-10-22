@@ -2,6 +2,10 @@
 .jp-discovery-heading { margin-bottom: 28px; max-width: 820px; }
 .jp-discovery-heading h1 { font-size: 32px; line-height: 1.25; margin: 12px 0; }
 .jp-discovery-heading p { color: var(--jp-muted); line-height: 1.7; }
+.jp-route-shortcuts { margin-top: 16px; border-block: 1px solid var(--jp-line); }
+.jp-route-shortcuts summary { min-height: 44px; padding: 12px 0; cursor: pointer; font-weight: 600; line-height: 1.5; }
+.jp-route-shortcuts nav { display: grid; gap: 4px; padding-bottom: 12px; }
+.jp-route-shortcuts a { display: flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1.6; overflow-wrap: anywhere; }
 .jp-discovery-page a { color: var(--jp-blue); }
 .jp-discovery-page svg { width: 20px; height: 20px; flex-shrink: 0; vertical-align: middle; }
 .jp-discovery-page :is(a, button, select, summary):focus-visible { outline: 3px solid #92b8f5; outline-offset: 3px; }

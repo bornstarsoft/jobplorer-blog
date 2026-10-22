@@ -24,6 +24,12 @@
       <h1>{{ .Title }}</h1>
       <p>A starting point for your next question, with role and country resources alongside it.</p>
       <a href="#practice-routes">Short practice routes <i data-lucide="arrow-down" aria-hidden="true"></i></a>
+      <details class="jp-route-shortcuts">
+        <summary>Choose a practice route</summary>
+        <nav aria-label="Practice route shortcuts">
+          {{ range $routes }}<a href="#route-{{ .id }}">{{ .title }} <i data-lucide="arrow-down" aria-hidden="true"></i></a>{{ end }}
+        </nav>
+      </details>
     </header>
     <div class="jp-guide-controls" hidden>
       {{ range .Params.groups }}

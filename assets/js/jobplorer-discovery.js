@@ -28,15 +28,26 @@
   window.addEventListener("pageshow", update);
   update();
   root.querySelector(".jp-guide-controls").hidden = false;
+  var shortcuts = root.querySelector('.jp-route-shortcuts');
   function openRoute() {
     var route = Array.from(root.querySelectorAll('.jp-practice-route')).find(function (item) {
       return '#' + item.id === window.location.hash;
     });
     if (route) {
       route.open = true;
+      if (shortcuts) shortcuts.open = false;
+      if (!route.contains(document.activeElement)) route.querySelector('summary').focus({ preventScroll: true });
       route.scrollIntoView({ block: 'start' });
     }
   }
+  if (shortcuts) shortcuts.addEventListener('click', function (event) {
+    var link = event.target.closest('a');
+    // A repeated fragment does not emit hashchange; reopen that route explicitly.
+    if (link && link.hash === window.location.hash) {
+      event.preventDefault();
+      openRoute();
+    }
+  });
   window.addEventListener('hashchange', openRoute);
   window.addEventListener('pageshow', openRoute);
   openRoute();

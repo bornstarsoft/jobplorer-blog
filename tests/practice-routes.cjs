@@ -43,6 +43,43 @@ const nextPaths = [
       await page.locator('.jp-topic-image').evaluateAll(imgs => Promise.all(imgs.map(img => img.decode())));
       assert.equal(await page.locator('input, textarea, form, [contenteditable]').count(), 0);
       assert.equal(await page.locator('script[src*="googletagmanager"]').count(), 0);
+      const shortcuts = page.locator('.jp-route-shortcuts');
+      assert.equal(await shortcuts.evaluate(el => el.open), false);
+      assert.deepEqual(await shortcuts.locator('a').evaluateAll(links => links.map(a => a.hash)), ids.map(id => '#route-' + id));
+      const shortcutRequests = requests.length;
+      for (const id of ids) {
+        if (!(await shortcuts.evaluate(el => el.open))) {
+          await shortcuts.locator('summary').focus();
+          await page.keyboard.press('Enter');
+        }
+        await shortcuts.locator('a[href="#route-' + id + '"]').focus();
+        await page.keyboard.press('Enter');
+        await page.waitForURL(base + route + '#route-' + id);
+        const target = page.locator('#route-' + id);
+        if (javascript) {
+          await page.waitForFunction(id => document.getElementById('route-' + id)?.open && document.activeElement === document.querySelector('#route-' + id + ' > summary'), id);
+          assert.equal(await shortcuts.evaluate(el => el.open), false);
+        } else if (!(await target.evaluate(el => el.open))) await target.locator('summary').click();
+        assert.ok(await target.locator('li a').first().isVisible());
+        await target.locator('summary').click();
+      }
+      // Selecting the current URL fragment must reopen a manually closed route.
+      if (!(await shortcuts.evaluate(el => el.open))) await shortcuts.locator('summary').click();
+      await shortcuts.locator('a[href="#route-rewrite-review"]').click();
+      if (javascript) await page.waitForFunction(() => document.getElementById('route-rewrite-review').open);
+      assert.equal(requests.length, shortcutRequests, 'Shortcut navigation makes no network requests');
+      if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
+      for (const width of [1440, 980, 760, 390, 320]) {
+        await page.setViewportSize({ width, height: 1000 });
+        if (!(await shortcuts.evaluate(el => el.open))) await shortcuts.locator('summary').click();
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `shortcut overflow ${width}`);
+        for (const link of await shortcuts.locator('a').all()) assert.ok((await link.boundingBox()).height >= 44);
+        if (javascript && [1440, 390].includes(width)) await page.locator('.jp-discovery-heading').screenshot({ path: path.join(output, 'shortcuts-' + width + '.png') });
+      }
+      await page.goto(base + route);
+      await page.reload();
+      await page.setViewportSize({ width: 1440, height: 1000 });
+      assert.equal(await shortcuts.evaluate(el => el.open), false, 'No saved shortcut state');
       assert.equal(await page.locator('.jp-practice-route').count(), 5);
       assert.equal(await page.locator('.jp-practice-route ol li').count(), 15);
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), local ? base + route : 'https://jobplorer.com' + route);
@@ -183,6 +220,6 @@ const nextPaths = [
       assert.deepEqual(errors, []);
       await context.close();
     }
-    console.log('PASS: five routes/15 destinations, five single-route downloads/next-visit links, combined pack, entry links, keyboard/no-JS/back navigation, no route-page storage/action requests, five widths/touch targets.');
+    console.log('PASS: five shortcuts/focused arrival/same-hash reopening, five routes/15 destinations, five single-route downloads/next-visit links, combined pack, keyboard/no-JS/back navigation, no route-page storage/action requests, five widths/touch targets.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });
