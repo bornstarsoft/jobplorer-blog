@@ -1,4 +1,62 @@
 edition: "Four-week starter series"
+revisit:
+  - number: 1
+    title: "Spot what is still unknown"
+    scenario: "A fictional Content Operations Assistant posting gives these details."
+    evidence:
+      - "Check article links and report broken ones."
+      - "Training on the team's publishing tool is provided."
+      - "The role is hybrid. The posting does not give office days or a location."
+    prompt: "Name one responsibility, one stated support, and one question. Does the hybrid label alone tell you where or when you would work?"
+    answer:
+      - "Responsibility: check article links and report broken ones."
+      - "Stated support: training on the team's publishing tool. This does not describe every requirement."
+      - "Question: what office location and in-person schedule apply? The hybrid label does not supply either detail."
+    why: "Keep the stated training separate from assumptions about experience requirements. Missing information remains a question."
+    check: "Did you leave the office location and schedule unknown instead of filling them in?"
+    review: 1
+  - number: 2
+    title: "Keep a result within the evidence"
+    scenario: "A fictional applicant helped test a student group's sign-up form."
+    evidence:
+      - "The applicant wrote six test cases."
+      - "One test exposed an unclear error message. A teammate rewrote it."
+      - "The group repeated the six cases. No completion-rate or audience data was recorded."
+    prompt: "Replace 'I redesigned the form and doubled sign-ups' with a two-sentence explanation supported by these facts."
+    answer:
+      - "I wrote six test cases for our student group's sign-up form and identified an unclear error message."
+      - "A teammate rewrote the message, and we repeated the six cases; we did not measure sign-up growth."
+    why: "The revised explanation names an actual contribution and a follow-up check without turning a small test into a business result."
+    check: "Are ownership and measured outcomes kept separate? Never present this fictional experience as your own."
+    review: 2
+  - number: 3
+    title: "Ask about an unanswered handoff"
+    scenario: "A fictional role brief and invitation contain the following information."
+    evidence:
+      - "The team supports colleagues in two time zones."
+      - "Work includes handing unfinished requests to another colleague."
+      - "The invitation already gives the interview time and meeting link."
+    prompt: "Replace 'Does working across time zones make everyone slow?' with one neutral question about the handoff."
+    answer:
+      - "What information does the team include when handing an unfinished request to a colleague in another time zone?"
+    why: "Two time zones do not prove delays. This question asks about a specific process rather than assuming a problem."
+    check: "Does the question address something the brief has not already answered?"
+    review: 3
+  - number: 4
+    title: "Catch a missing step before export"
+    scenario: "A fictional demo brief asks for two steps and one caution about downloading a report."
+    evidence:
+      - "Choose Refresh to include the latest changes in the preview."
+      - "Choose Download to export the report currently in the preview."
+      - "A downloaded report does not update when the source changes later."
+    prompt: "Correct 'Download first, then Refresh; your saved report will always update.' Keep two steps and one caution."
+    answer:
+      - "Step 1: Choose Refresh to update the preview."
+      - "Step 2: Choose Download to export the report shown."
+      - "Caution: later source changes do not update the saved report; refresh and download again for a newer copy."
+    why: "The order matters: downloading before refreshing can export an older preview. The caution avoids an unsupported automatic-update promise."
+    check: "Did you preserve the requested format and put the refresh before the download?"
+    review: 4
 weeks:
   - number: 1
     title: "Read beyond the job title"

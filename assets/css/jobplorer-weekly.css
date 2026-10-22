@@ -56,7 +56,24 @@
 .jp-weekly-plan-body time { display: block; font-weight: 600; }
 .jp-weekly-plan-body li span, .jp-weekly-plan-note { color: var(--jp-muted); font-size: 14px; }
 .jp-weekly-plan-body [role="status"] { min-height: 3em; }
+.jp-weekly-return { font-size: 15px; margin: 0 0 24px; }
+.jp-weekly-return a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.jp-weekly-revisit { padding-top: 36px; scroll-margin-top: 24px; }
+.jp-weekly-revisit > h2 { font-size: 28px; margin: 10px 0; }
+.jp-weekly-revisit > p { max-width: 820px; line-height: 1.75; }
+.jp-weekly-challenges { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 48px; }
+.jp-weekly-challenge { min-width: 0; padding: 24px 0; border-bottom: 1px solid var(--jp-line); scroll-margin-top: 24px; }
+.jp-weekly-challenge h3 { font-size: 20px; line-height: 1.5; }
+.jp-weekly-challenge h4 { font-size: 16px; margin: 20px 0 8px; }
+.jp-weekly-challenge p, .jp-weekly-challenge li { font-size: 16px; line-height: 1.75; }
+.jp-weekly-challenge ul { padding-left: 22px; }
+.jp-weekly-challenge li { margin-bottom: 10px; }
+.jp-challenge-answer { border-block: 1px solid var(--jp-line); margin-top: 24px; }
+.jp-challenge-answer summary { padding: 18px 0; cursor: pointer; font-weight: 600; color: var(--jp-green); }
+.jp-challenge-answer > div { padding-bottom: 16px; }
+.jp-challenge-answer[open] summary svg { transform: rotate(180deg); }
 @media (max-width: 760px) {
+  .jp-weekly-challenges { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .jp-weekly-plan-body { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .jp-weekly-work { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .jp-weekly-intro { grid-template-columns: minmax(0, 1fr) 120px; gap: 16px; }
@@ -69,6 +86,10 @@
   .jp-weekly-intro figure { width: 120px; }
 }
 @media print {
+  .jp-weekly-return { display: none; }
+  .jp-weekly-challenges { display: block; }
+  .jp-challenge-answer > div { display: block !important; }
+  .jp-challenge-answer::details-content { content-visibility: visible; }
   .jp-weekly { padding: 0; }
   .jp-weekly-actions, .jp-weekly-nav, .jp-weekly-next, .jp-weekly-intro figure, .jp-weekly-planner { display: none; }
   .jp-weekly-intro, .jp-weekly-work { display: block; }
