@@ -1,0 +1,19 @@
+.jp-practice-menu { padding: 8px 0 24px; scroll-margin-top: 24px; }
+.jp-practice-menu > p { color: var(--jp-muted); font-size: 15px; line-height: 1.7; }
+.jp-practice-option { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)); gap: 24px; padding: 24px 0; border-top: 1px solid var(--jp-line); }
+.jp-practice-option:last-child { border-bottom: 1px solid var(--jp-line); }
+.jp-practice-time { display: inline-flex; align-items: center; gap: 6px; color: var(--jp-green); font-size: 14px; line-height: 1.6; }
+.jp-practice-option h3 { font-size: 19px; line-height: 1.45; margin: 8px 0; }
+.jp-practice-option p { font-size: 15px; line-height: 1.7; margin: 0; }
+.jp-practice-option h4 { font-size: 13px; line-height: 1.6; font-weight: 500; color: var(--jp-muted); margin: 0 0 6px; }
+.jp-practice-option a { display: inline-flex; align-items: center; min-height: 44px; gap: 8px; font-size: 15px; line-height: 1.6; }
+.jp-practice-option svg { width: 16px; height: 16px; flex-shrink: 0; }
+.jp-practice-option :is(h3, h4, p, a, span) { overflow-wrap: anywhere; }
+.jp-practice-option a:focus-visible { outline: 3px solid var(--jp-focus); outline-offset: 4px; }
+@media (max-width: 760px) {
+  .jp-practice-option { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; }
+  .jp-practice-option-heading { grid-column: 1 / -1; }
+}
+@media (max-width: 380px) {
+  .jp-practice-option { grid-template-columns: minmax(0, 1fr); }
+}

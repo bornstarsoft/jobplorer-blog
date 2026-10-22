@@ -1,0 +1,24 @@
+<section class="jp-practice-menu" id="practice-menu" aria-labelledby="practice-menu-title">
+  <h2 id="practice-menu-title">Choose a short practice</h2>
+  <p>One fictional exercise, at your pace. Times are suggestions, not deadlines.</p>
+  {{ range .Page.Params.practiceMenu }}
+    {{ $page := site.GetPage .path }}
+    {{ if not $page }}{{ errorf "Missing practice-menu page: %s" .path }}{{ end }}
+    {{ if $page.Draft }}{{ errorf "Draft practice-menu page: %s" .path }}{{ end }}
+    <article class="jp-practice-option" aria-labelledby="practice-option-{{ .id }}">
+      <div class="jp-practice-option-heading">
+        <span class="jp-practice-time"><i data-lucide="clock" aria-hidden="true"></i> {{ .time }}</span>
+        <h3 id="practice-option-{{ .id }}">{{ $page.Title }}</h3>
+        <p>{{ .focus }}</p>
+      </div>
+      <div class="jp-practice-option-link">
+        <h4>First visit</h4>
+        <a href="{{ $page.RelPermalink }}#{{ .start_anchor }}">{{ .start_label }} <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="jp-practice-option-link">
+        <h4>Another visit</h4>
+        <a href="{{ $page.RelPermalink }}#{{ .return_anchor }}">{{ .return_label }} <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </article>
+  {{ end }}
+</section>

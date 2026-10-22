@@ -34,6 +34,10 @@
 {{ $evidenceStyle := resources.Get "css/jobplorer-evidence.css" | fingerprint }}
 <link rel="stylesheet" href="{{ $evidenceStyle.RelPermalink }}">
 {{ end }}
+{{ if .Params.practiceMenu }}
+{{ $practiceMenuStyle := resources.Get "css/jobplorer-practice-menu.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $practiceMenuStyle.RelPermalink }}">
+{{ end }}
 {{ if not (or .Params.localOnlyTool .Params.resourceDiscovery) }}
 <!-- GA4 (Jobplorer.com - Web) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZE5Y04BYQ"></script>

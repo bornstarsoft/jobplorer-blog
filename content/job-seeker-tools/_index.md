@@ -2,11 +2,38 @@
 title: "Job Seeker Tools"
 description: "Use practical checklists, templates, and research prompts for job search preparation."
 draft: false
+practiceMenu:
+  - id: evidence
+    path: /job-seeker-tools/evidence-check/
+    time: About 2 min
+    focus: Separate a stated fact from an assumption.
+    start_anchor: posting-criteria
+    start_label: Try a first check
+    return_anchor: posting-criteria-second-look
+    return_label: Try changed information
+  - id: interview
+    path: /job-seeker-tools/interview-practice/
+    time: About 5 min
+    focus: Explain a contribution without inventing a result.
+    start_anchor: improve-a-task
+    start_label: Try an experience question
+    return_anchor: learn-from-a-mistake
+    return_label: Try a different question
+  - id: weekly
+    path: /job-seeker-tools/weekly-practice/
+    time: About 5-10 min
+    focus: Work through one step of a four-week practice sequence.
+    start_anchor: week-1
+    start_label: Start with week 1
+    return_anchor: challenge-1
+    return_label: Try a fresh scenario
 ---
 
 # Job Seeker Tools
 
 Turn a promising posting into a clear next action. Use these planning worksheets alongside the employer's current instructions.
+
+{{< practice-menu >}}
 
 ## Find Your Next Resource
 
@@ -22,11 +49,7 @@ For another perspective on the work, [Plan an Informational Conversation](/guide
 
 ## Your Weekly Job Search Review
 
-For a short warm-up, try [Two-Minute Evidence Check](/job-seeker-tools/evidence-check/): four fictional situations with statements to compare and reasons grounded in the supplied facts. No score or answer submission.
-
 [Choose a short practice route](/job-seeker-tools/guide-finder/#practice-routes) for reading postings, explaining experience, preparing questions or checking a task brief. Each connects three fictional exercises with a specific next-visit task.
-
-[This Week's Job Search Practice](/job-seeker-tools/weekly-practice/) offers a four-week starter sequence: read a posting, explain experience, prepare questions, and check a task brief. Each fictional exercise has a worked response, with no personal answers to enter or save.
 
 1. Choose a role family and location to focus on this week.
 2. Revisit saved postings on the employer's website. Mark closed or changed roles in your own records.
@@ -68,8 +91,6 @@ Start with [Read a Job Posting](/guides/read-a-job-posting/) to separate respons
 Use the [resume review checklist](/posts/why-87-percent-of-job-seekers-abandon-their-resumes/) for a closer check of application materials. If a letter is requested, [Write a Focused Cover Letter](/guides/write-a-focused-cover-letter/) provides a fictional example and a final submission check.
 
 ## Interview Research Prompts
-
-For a short repeatable session, try [Five-Minute Interview Practice](/job-seeker-tools/interview-practice/): six fictional questions about experience, collaboration and clarifying the work, with examples and follow-ups. No recording or answer submission.
 
 For a complete preparation path, read [Prepare for an Interview](/guides/prepare-for-an-interview/), including a fictional STAR example and a video setup check.
 
