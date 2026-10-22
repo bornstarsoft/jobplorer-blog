@@ -1,0 +1,71 @@
+{{ define "main" }}
+{{ $practice := site.Data.interview_practice }}
+{{ $pack := printf "%s\n\nSix fictional Jobplorer prompts, not employer questions or a scoring rubric. Do not present invented experience as your own. Work in private notes; this pack contains no personal answers.\n\n" .Title }}
+{{ range $practice.prompts }}
+  {{ if not (site.GetPage .guide) }}{{ errorf "Missing interview practice guide: %s" .guide }}{{ end }}
+  {{ $pack = printf "%sQUESTION: %s\n\n%s\n\nYOUR PRACTICE\n%s\n\nONE POSSIBLE RESPONSE\n%s\n\nCHECK YOUR REASONING\n" $pack .title .context .task .response }}
+  {{ range .checks }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
+  {{ $pack = printf "%s\nFOLLOW-UP\n%s\n\nQuestion link: https://jobplorer.com/job-seeker-tools/interview-practice/#%s\nRelated guide: https://jobplorer.com%s\n\n" $pack .followUp .id .guide }}
+{{ end }}
+{{ $download := resources.FromString "downloads/jobplorer-interview-practice.txt" $pack }}
+<article class="jp-interview">
+  <div class="jp-container">
+    <a class="jp-back-link" href="/job-seeker-tools/"><i data-lucide="arrow-left" aria-hidden="true"></i> Job Seeker Tools</a>
+    <header class="jp-interview-heading">
+      <div>
+        <p class="jp-eyebrow">Interview preparation</p>
+        <h1>{{ .Title }}</h1>
+        <p>One question. A grounded answer. A useful follow-up.</p>
+        <a href="{{ $download.RelPermalink }}" download="jobplorer-interview-practice.txt"><i data-lucide="download" aria-hidden="true"></i> Download six prompts (.txt)</a>
+      </div>
+      <figure>{{ partial "topic-image.html" (dict "key" "applications" "loading" "eager" "sizes" "180px") }}</figure>
+    </header>
+    <div class="jp-interview-controls" hidden>
+      <label for="interview-topic">Practice focus</label>
+      <select id="interview-topic">
+        <option value="all">All topics</option>
+        {{ range $practice.topics }}<option value="{{ .id }}">{{ .title }}</option>{{ end }}
+      </select>
+      <span id="interview-position" role="status" aria-live="polite" aria-atomic="true"></span>
+      <div class="jp-interview-buttons">
+        <button type="button" id="interview-prev" aria-label="Previous question" title="Previous question"><i data-lucide="arrow-left" aria-hidden="true"></i></button>
+        <button type="button" id="interview-next" aria-label="Next question" title="Next question"><i data-lucide="arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div id="interview-prompts">
+      {{ range $index, $prompt := $practice.prompts }}
+      <section class="jp-interview-prompt" id="{{ .id }}" data-topic="{{ .topic }}" aria-labelledby="title-{{ .id }}">
+        <p class="jp-eyebrow">Practice {{ add $index 1 }} of {{ len $practice.prompts }}</p>
+        <h2 id="title-{{ .id }}" tabindex="-1">{{ .title }}</h2>
+        <div class="jp-interview-work">
+          <div>
+            <h3>Practice facts</h3><p class="jp-interview-context">{{ .context }}</p>
+            <h3>Your practice</h3><p class="jp-interview-task">{{ .task }}</p>
+            <h3>Follow-up to try</h3><p class="jp-interview-followup">{{ .followUp }}</p>
+          </div>
+          <div>
+            <details class="jp-interview-response">
+              <summary>Compare with an example <i data-lucide="chevron-down" aria-hidden="true"></i></summary>
+              <div><h3>One possible response</h3><p>{{ .response }}</p>
+                <h3>Check your reasoning</h3><ul>{{ range .checks }}<li>{{ . }}</li>{{ end }}</ul>
+              </div>
+            </details>
+            <a class="jp-text-link" href="{{ .guide }}">{{ .guideTitle }} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+            <a class="jp-interview-permalink" href="#{{ .id }}"><i data-lucide="link" aria-hidden="true"></i> Link to this question</a>
+          </div>
+        </div>
+      </section>
+      {{ end }}
+    </div>
+    <details class="jp-interview-library">
+      <summary>All six questions <i data-lucide="chevron-down" aria-hidden="true"></i></summary>
+      <nav aria-label="Interview questions">{{ range $practice.prompts }}<a href="#{{ .id }}">{{ .title }}</a>{{ end }}</nav>
+    </details>
+    <div class="jp-interview-next">
+      <a href="/job-seeker-tools/weekly-practice/">Try this week's job search practice <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+      <a href="/guides/prepare-for-an-interview/">Read the interview preparation guide <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    </div>
+    <aside class="jp-interview-notes nested-links" aria-label="Practice scope and privacy">{{ .Content }}</aside>
+  </div>
+</article>
+{{ end }}

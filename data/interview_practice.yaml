@@ -1,0 +1,80 @@
+topics:
+  - id: experience
+    title: "Explain experience"
+  - id: collaboration
+    title: "Work with others"
+  - id: questions
+    title: "Clarify the role"
+prompts:
+  - id: improve-a-task
+    topic: experience
+    title: "Describe a small improvement you made."
+    context: "Fictional practice facts: a student group repeatedly missed image captions in its newsletter drafts. You added a caption check to its review list. The next two drafts had captions at review; no audience data was collected."
+    task: "Explain the problem, your contribution and the observed result in three sentences."
+    response: "Our student group had been missing image captions in newsletter drafts. I added a caption check to our review list. The next two drafts had captions when we reviewed them; we did not measure a reader-impact result."
+    checks:
+      - "Name the action you took, rather than claiming the entire group's work."
+      - "Keep the result to the two observed drafts; do not invent engagement growth."
+    followUp: "How would you check whether the improvement continued over later drafts?"
+    guide: "/guides/build-a-project-case-study/"
+    guideTitle: "Build a Project Case Study"
+  - id: learn-from-a-mistake
+    topic: experience
+    title: "Describe a mistake and what you changed afterward."
+    context: "Fictional practice facts: you sent a study partner an old version of a worksheet. You noticed the mismatch, sent the corrected file and added a date/version check before your next handoff. No later outcome was recorded."
+    task: "Acknowledge the mistake and explain the correction without claiming that it could never happen again."
+    response: "I sent my study partner an outdated worksheet. When I noticed, I identified the wrong version and sent the corrected file. I then added a date/version check before handing work over; I would need later checks to know how consistently it helped."
+    checks:
+      - "Own the specific mistake without adding blame or a dramatic invented consequence."
+      - "Distinguish a changed habit from proof that all future errors are prevented."
+    followUp: "What would your final check look like on a real file?"
+    guide: "/guides/prepare-for-a-work-sample-task/"
+    guideTitle: "Prepare for a Work Sample Task"
+  - id: explain-a-disagreement
+    topic: collaboration
+    title: "Describe how you handled different ideas."
+    context: "Fictional practice facts: in a two-person project, you preferred a detailed help page and your teammate preferred a short checklist. You each listed the tasks a new reader needed to complete. Together you chose a checklist with links to details; no user test had happened yet."
+    task: "Explain how the decision was reached without labelling your teammate's approach as wrong."
+    response: "We had different ideas about how much detail to include. I suggested comparing both approaches against the tasks a new reader needed to complete, and we each listed those tasks. We agreed on a checklist with links to detail, but had not yet tested it with readers."
+    checks:
+      - "Explain the shared criterion and your contribution to reaching it."
+      - "Do not turn agreement into evidence that readers preferred the result."
+    followUp: "What would you want to learn from a first reader test?"
+    guide: "/guides/prepare-for-an-interview/"
+    guideTitle: "Prepare for an Interview"
+  - id: hand-over-work
+    topic: collaboration
+    title: "How did you make unfinished work easier to pick up?"
+    context: "Fictional practice facts: before leaving a volunteer task, you recorded which links had been checked, which remained and how to repeat the check. Another volunteer used the note to continue. You did not track time saved."
+    task: "Describe what the handoff contained and one observed result."
+    response: "I left a note separating the links already checked from those still open, with the steps to repeat the check. Another volunteer used it to continue the task. I can describe that handoff, but cannot attach a time-saving number because we did not measure one."
+    checks:
+      - "Make the note's useful contents concrete."
+      - "Do not claim a speed improvement or expose a real person's private details."
+    followUp: "What would you clarify if the next person still could not reproduce a check?"
+    guide: "/guides/build-a-project-case-study/"
+    guideTitle: "Build a Project Case Study"
+  - id: clarify-priorities
+    topic: questions
+    title: "What would you ask about competing priorities?"
+    context: "Fictional role brief: the role handles requests from several internal teams. It lists weekly planning and urgent requests, but does not explain who resolves conflicts between them."
+    task: "Ask one neutral question that resolves a missing detail, rather than assuming the process is disorganized."
+    response: "When an urgent request conflicts with the weekly plan, how does the team decide what changes and who makes that decision?"
+    checks:
+      - "Ask about the decision process instead of assuming a problem."
+      - "Adapt the question if the conversation has already supplied the answer."
+    followUp: "If the answer is general, what work example could you ask them to describe?"
+    guide: "/guides/research-an-employer/"
+    guideTitle: "Research an Employer"
+  - id: clarify-feedback
+    topic: questions
+    title: "What would you ask about reviewing work?"
+    context: "Fictional role brief: draft reports go through review before release. The brief names the reporting tool but does not explain what reviewers look for or how feedback is shared."
+    task: "Ask about one part of review that would help you understand the work."
+    response: "What does a reviewer look for in a first draft, and how is feedback usually shared with the person preparing it?"
+    checks:
+      - "Focus on an unanswered work detail, not a generic question already covered."
+      - "Treat the answer as information to understand, not a promise about every future review."
+    followUp: "What would you note privately afterward as a fact versus something still unclear?"
+    guide: "/guides/follow-up-after-an-interview/"
+    guideTitle: "Follow Up After an Interview"

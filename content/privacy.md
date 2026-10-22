@@ -30,6 +30,12 @@ The optional calendar export processes a selected first practice date in the cur
 
 Jobplorer's GA4 tag is excluded from this page. Ordinary hosting requests and any hosting-level analytics are separate from the exercise controls. Other Jobplorer pages and external destinations retain their own analytics and privacy behavior. This is not a claim that the entire site processes no data.
 
+## Interview Practice
+
+Interview practice contains six public fictional prompts and examples. It has no answer input, microphone access, recording, account, upload, scoring or saved progress. Topic selection and previous/next controls run in the current tab without sending selections or storing them in cookies or browser storage. Question links use public fragment identifiers only; your browser may retain navigation history or bookmarks.
+
+The optional text download contains public prompts and examples, not your answers. Jobplorer's GA4 tag is excluded from the page. Hosting analytics and security services may still process ordinary requests and set security cookies; linked guides may use their existing analytics. This is a description of the exercise implementation, not a whole-site zero-data-processing claim.
+
 ## Contact Information
 
 If you contact the site owner, information you choose to provide may be used to respond to the inquiry, review corrections, evaluate feedback, or handle related communication.

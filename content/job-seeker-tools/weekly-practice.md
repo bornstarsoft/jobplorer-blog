@@ -12,6 +12,8 @@ Start with the situation closest to yours. These four weeks are a starter sequen
 
 All people, postings, tasks, and results in these exercises are fictional. They are not live vacancies, employer tests, scoring criteria, or promises of an outcome. For a real application or assessment, follow its actual instructions.
 
+For a different short session, try [Five-Minute Interview Practice](/job-seeker-tools/interview-practice/): experience, collaboration and work-focused questions, with fictional examples and follow-ups.
+
 ## Keep Your Practice Private
 
 There are no answer fields, accounts, uploads, or saved progress on this page. Think through an answer, or write in your own private notes. The text pack contains all four exercises and worked responses and can be kept on your own device.

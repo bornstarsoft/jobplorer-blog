@@ -24,6 +24,12 @@
 {{ $weeklyScript := resources.Get "js/jobplorer-weekly.js" | js.Build (dict "minify" true "target" "es2018" "format" "iife") | fingerprint }}
 <script defer src="{{ $weeklyScript.RelPermalink }}"></script>
 {{ end }}
+{{ if eq .Layout "interview-practice" }}
+{{ $interviewStyle := resources.Get "css/jobplorer-interview.css" | fingerprint }}
+{{ $interviewScript := resources.Get "js/jobplorer-interview.js" | fingerprint }}
+<link rel="stylesheet" href="{{ $interviewStyle.RelPermalink }}">
+<script defer src="{{ $interviewScript.RelPermalink }}"></script>
+{{ end }}
 {{ if not (or .Params.localOnlyTool .Params.resourceDiscovery) }}
 <!-- GA4 (Jobplorer.com - Web) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZE5Y04BYQ"></script>

@@ -25,6 +25,8 @@ For example, "maintain internal tools" could lead to a question about who report
 
 ## Build an Example With STAR
 
+For a short rehearsal, try [Five-Minute Interview Practice](/job-seeker-tools/interview-practice/). Its six fictional prompts include worked responses and follow-up questions; no answers are recorded or submitted.
+
 STAR is one way to organize an answer: situation, task, action, and result. The National Careers Service also suggests being ready for follow-up questions. It is a structure to try, not a required format for every question. [National Careers Service: The STAR method](https://nationalcareers.service.gov.uk/careers-advice/interview-advice/the-star-method).
 
 Here is an invented project example, not a claim to copy into your experience:

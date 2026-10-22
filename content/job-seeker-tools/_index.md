@@ -65,6 +65,8 @@ Use the [resume review checklist](/posts/why-87-percent-of-job-seekers-abandon-t
 
 ## Interview Research Prompts
 
+For a short repeatable session, try [Five-Minute Interview Practice](/job-seeker-tools/interview-practice/): six fictional questions about experience, collaboration and clarifying the work, with examples and follow-ups. No recording or answer submission.
+
 For a complete preparation path, read [Prepare for an Interview](/guides/prepare-for-an-interview/), including a fictional STAR example and a video setup check.
 
 - Which responsibility in the posting needs clarification?
