@@ -22,6 +22,8 @@ The Guide Finder offers fixed choices for a research goal, role topic, and count
 
 Jobplorer's GA4 tag is excluded from the Guide Finder and Job Site Comparison pages. Other pages retain their analytics configuration. Hosting services may still receive ordinary page requests, and linked external sites have their own policies. These statements describe the two pages' implementation, not a claim of zero data processing across the whole site.
 
+The Guide Finder's practice routes are public reading-and-exercise sequences, not personal plans or saved progress. Opening a route does not submit an answer or store its open state. A route link contains only its public fragment identifier, not the research filters; browsers may retain normal history or bookmarks. The text download contains public route instructions and links, not your responses. Existing hosting analytics and security services remain separate from these controls.
+
 ## Weekly Job Search Practice
 
 Weekly practice contains fictional exercises and worked responses. It has no answer fields, account, file upload, or saved progress. Expanding a response does not submit an answer or store a selection. The optional text download contains public exercises, not your responses; your browser manages the downloaded file on your device.

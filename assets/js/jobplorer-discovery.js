@@ -28,4 +28,16 @@
   window.addEventListener("pageshow", update);
   update();
   root.querySelector(".jp-guide-controls").hidden = false;
+  function openRoute() {
+    var route = Array.from(root.querySelectorAll('.jp-practice-route')).find(function (item) {
+      return '#' + item.id === window.location.hash;
+    });
+    if (route) {
+      route.open = true;
+      route.scrollIntoView({ block: 'start' });
+    }
+  }
+  window.addEventListener('hashchange', openRoute);
+  window.addEventListener('pageshow', openRoute);
+  openRoute();
 }());

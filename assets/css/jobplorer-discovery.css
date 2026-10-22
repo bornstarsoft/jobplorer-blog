@@ -4,7 +4,7 @@
 .jp-discovery-heading p { color: var(--jp-muted); line-height: 1.7; }
 .jp-discovery-page a { color: var(--jp-blue); }
 .jp-discovery-page svg { width: 20px; height: 20px; flex-shrink: 0; vertical-align: middle; }
-.jp-discovery-page :is(a, button, select):focus-visible { outline: 3px solid #92b8f5; outline-offset: 3px; }
+.jp-discovery-page :is(a, button, select, summary):focus-visible { outline: 3px solid #92b8f5; outline-offset: 3px; }
 .jp-comparison { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 14px; line-height: 1.65; }
 .jp-comparison caption { text-align: left; padding: 0 0 16px; color: var(--jp-muted); font-size: 13px; }
 .jp-comparison th, .jp-comparison td { text-align: left; vertical-align: top; padding: 20px 18px; border-bottom: 1px solid var(--jp-line); overflow-wrap: anywhere; }
@@ -33,6 +33,20 @@
 .jp-guide-result h3 a { text-decoration: none; }
 .jp-guide-result h3 a:hover { text-decoration: underline; }
 .jp-guide-result p { font-size: 15px; color: var(--jp-muted); line-height: 1.7; margin: 0; }
+.jp-practice-routes { margin-top: 40px; border-top: 1px solid var(--jp-line); padding-top: 24px; scroll-margin-top: 24px; }
+.jp-practice-routes header { max-width: 820px; margin-bottom: 24px; }
+.jp-practice-routes h2 { font-size: 24px; line-height: 1.4; margin: 0 0 12px; }
+.jp-practice-routes p { font-size: 15px; line-height: 1.75; }
+.jp-practice-routes header a, .jp-route-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.jp-practice-route { border-top: 1px solid var(--jp-line); scroll-margin-top: 24px; }
+.jp-practice-route summary { padding: 20px 0; cursor: pointer; font-weight: 650; font-size: 18px; line-height: 1.5; color: var(--jp-green); }
+.jp-practice-route > div { max-width: 820px; padding-bottom: 24px; }
+.jp-practice-route ol { padding-left: 24px; margin: 24px 0; }
+.jp-practice-route li { padding: 0 0 16px 8px; }
+.jp-practice-route h3 { font-size: 17px; line-height: 1.6; margin: 0 0 8px; }
+.jp-practice-route li p { margin: 0; }
+.jp-route-note { max-width: 820px; color: var(--jp-muted); border-top: 1px solid var(--jp-line); padding-top: 20px; }
+.jp-practice-routes :is(h2, h3, p, a, summary) { overflow-wrap: anywhere; }
 @media (max-width: 800px) {
   .jp-guide-controls { grid-template-columns: 1fr 1fr; }
   .jp-guide-controls button { justify-self: end; }

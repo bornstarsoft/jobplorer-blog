@@ -1,10 +1,22 @@
 {{ define "main" }}
+{{ $routes := site.Data.practice_routes.routes }}
+{{ $pack := "JOBPLORER SHORT PRACTICE ROUTES\n\nFour editorial practice routes using fictional exercises, not assessments or guarantees. Take one step per visit or continue at your own pace. No completion or personal answers are stored by Jobplorer. This download contains public directions and links only.\n\n" }}
+{{ range $routes }}
+  {{ $pack = printf "%sROUTE: %s\nPractice focus: %s\nRoute link: https://jobplorer.com/job-seeker-tools/guide-finder/#route-%s\n\n" $pack .title .outcome .id }}
+  {{ range $index, $step := .steps }}
+    {{ if not (site.GetPage .path) }}{{ errorf "Missing practice route destination: %s" .path }}{{ end }}
+    {{ $pack = printf "%s%v. %s\n%s\nhttps://jobplorer.com%s#%s\n\n" $pack (add $index 1) .title .focus .path .anchor }}
+  {{ end }}
+  {{ $pack = printf "%sNEXT VISIT\n%s\n\n" $pack .nextVisit }}
+{{ end }}
+{{ $download := resources.FromString "downloads/jobplorer-practice-routes.txt" $pack }}
 <article class="jp-discovery-page" id="jp-guide-finder">
   <div class="jp-container">
     <header class="jp-discovery-heading">
       <a class="jp-back-link" href="{{ "job-seeker-tools/" | relURL }}"><i data-lucide="arrow-left" aria-hidden="true"></i> Job Seeker Tools</a>
       <h1>{{ .Title }}</h1>
       <p>A starting point for your next question, with role and country resources alongside it.</p>
+      <a href="#practice-routes">Short practice routes <i data-lucide="arrow-down" aria-hidden="true"></i></a>
     </header>
     <div class="jp-guide-controls" hidden>
       {{ range .Params.groups }}
@@ -36,6 +48,29 @@
       </section>
     {{ end }}
     </div>
+    <section class="jp-practice-routes" id="practice-routes" aria-labelledby="practice-routes-title">
+      <header>
+        <h2 id="practice-routes-title">Short practice routes</h2>
+        <p>One step today, another on your next visit. Four routes through fictional exercises, at your own pace.</p>
+        <a href="{{ $download.RelPermalink }}" download="jobplorer-practice-routes.txt"><i data-lucide="download" aria-hidden="true"></i> Download four routes (.txt)</a>
+      </header>
+      {{ range $routes }}
+      <details class="jp-practice-route" id="route-{{ .id }}">
+        <summary>{{ .title }}</summary>
+        <div>
+          <p class="jp-route-outcome"><strong>Practice focus:</strong> {{ .outcome }}</p>
+          <ol>
+            {{ range .steps }}
+            <li><h3><a href="{{ .path }}#{{ .anchor }}">{{ .title }} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></h3><p>{{ .focus }}</p></li>
+            {{ end }}
+          </ol>
+          <h3>Next visit</h3><p class="jp-route-next">{{ .nextVisit }}</p>
+          <a class="jp-route-link" href="#route-{{ .id }}"><i data-lucide="link" aria-hidden="true"></i> Link to this route</a>
+        </div>
+      </details>
+      {{ end }}
+      <p class="jp-route-note">No answers, selections or completion history are saved by these routes. Route links contain only a public content anchor; your browser may retain history or bookmarks. They do not preserve the filters above. The download contains public directions, not personal responses.</p>
+    </section>
     <div class="jp-discovery-notes nested-links">{{ .Content }}<p>No account or personal details needed. <a href="{{ "privacy/#guide-finder-and-job-site-comparison" | relURL }}">Privacy details</a></p></div>
   </div>
 </article>
