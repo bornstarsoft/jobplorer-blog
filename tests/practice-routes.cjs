@@ -9,6 +9,13 @@ assert(local || ['jobplorer.com', 'jobplorer-blog.pages.dev'].includes(new URL(b
 const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-routes-qa';
 const route = '/job-seeker-tools/guide-finder/';
 const ids = ['posting', 'experience', 'questions', 'task-brief', 'rewrite-review'];
+const nextPaths = [
+  '/job-seeker-tools/weekly-practice/#challenge-1',
+  '/job-seeker-tools/interview-practice/#improve-a-task',
+  '/job-seeker-tools/interview-practice/#clarify-feedback',
+  '/job-seeker-tools/weekly-practice/#challenge-4',
+  '/guides/use-ai-for-job-search-preparation/#practice-proposed-results'
+];
 
 (async () => {
   await fs.mkdir(output, { recursive: true });
@@ -45,7 +52,9 @@ const ids = ['posting', 'experience', 'questions', 'task-brief', 'rewrite-review
       assert.equal((pack.match(/^ROUTE:/gm) || []).length, 5);
       assert.equal((pack.match(/^NEXT VISIT$/gm) || []).length, 5);
       assert.ok(pack.includes('5 editorial practice routes'));
-      assert.match(await page.locator('a[download]').textContent(), /Download 5 routes/);
+      assert.match(await page.locator('a[download="jobplorer-practice-routes.txt"]').textContent(), /Download 5 routes/);
+      assert.equal(await page.locator('.jp-route-download').count(), 5);
+      assert.deepEqual(await page.locator('.jp-route-next-link').evaluateAll(links => links.map(a => a.getAttribute('href'))), nextPaths);
       for (const text of await page.locator('.jp-practice-route summary, .jp-practice-route li p, .jp-route-next').allTextContents()) assert.ok(pack.includes(text), 'Download parity');
       const count = requests.length;
       for (const id of ids) {
@@ -66,6 +75,30 @@ const ids = ['posting', 'experience', 'questions', 'task-brief', 'rewrite-review
       if (local) { assert.deepEqual(external, []); assert.equal((await context.cookies()).length, 0); }
       else assert.ok(external.every(host => host === 'static.cloudflareinsights.com'));
 
+      for (let index = 0; index < ids.length; index++) {
+        const id = ids[index];
+        const detail = page.locator('#route-' + id);
+        await detail.locator('summary').click();
+        const filename = `jobplorer-route-${id}.txt`;
+        const response = await context.request.get(base + '/downloads/' + filename);
+        assert.equal(response.status(), 200);
+        const text = await response.text();
+        assert.equal((text.match(/^ROUTE:/gm) || []).length, 1);
+        assert.ok(text.includes('not personal answers or saved completion'));
+        assert.ok(text.includes('NEXT VISIT LINK\nhttps://jobplorer.com' + nextPaths[index]));
+        for (const value of await detail.locator('summary, li h3, li p, .jp-route-next').allTextContents()) assert.ok(text.includes(value.trim()), filename);
+        assert.ok(text.includes('https://jobplorer.com' + route + '#route-' + id));
+        for (const target of await detail.locator('li a').evaluateAll(links => links.map(a => a.getAttribute('href')))) assert.ok(text.includes('https://jobplorer.com' + target));
+        const pending = page.waitForEvent('download');
+        await detail.locator('.jp-route-download').click();
+        const download = await pending;
+        assert.equal(download.suggestedFilename(), filename);
+        const saved = path.join(output, `${javascript}-${filename}`);
+        await download.saveAs(saved);
+        assert.equal(await fs.readFile(saved, 'utf8'), text);
+        await detail.locator('summary').click();
+      }
+
       const destinations = await page.locator('.jp-practice-route li a').evaluateAll(els => els.map(el => el.getAttribute('href')));
       const documents = new Map();
       for (const destination of destinations) {
@@ -84,6 +117,15 @@ const ids = ['posting', 'experience', 'questions', 'task-brief', 'rewrite-review
           await page.waitForFunction(id => document.getElementById('route-' + id).open, id);
           assert.equal(await page.locator('.jp-guide-result:visible').count(), 3);
         }
+      }
+      for (let index = 0; index < ids.length; index++) {
+        await page.goto(base + route + '#route-' + ids[index]);
+        const detail = page.locator('#route-' + ids[index]);
+        if (javascript) await page.waitForFunction(id => document.getElementById('route-' + id)?.open, ids[index]);
+        else await detail.locator('summary').click();
+        await detail.locator('.jp-route-next-link').click();
+        await page.locator('#' + nextPaths[index].split('#')[1]).waitFor({ state: 'visible' });
+        assert.equal(page.url(), base + nextPaths[index]);
       }
       await page.goto(base + route);
       await page.reload();
@@ -113,7 +155,7 @@ const ids = ['posting', 'experience', 'questions', 'task-brief', 'rewrite-review
       // Article pages retain their existing GA4 tag; only route-page interactions are storage-free.
       await page.goto(base + route);
       await page.locator('#route-experience summary').click();
-      await page.locator('#route-experience .jp-route-link').click();
+      await page.locator('#route-experience a[href="#route-experience"]').click();
       assert.equal(new URL(page.url()).hash, '#route-experience');
       await page.locator('#route-experience li a').first().click();
       await page.locator('#week-2').waitFor({ state: 'visible' });
@@ -127,10 +169,11 @@ const ids = ['posting', 'experience', 'questions', 'task-brief', 'rewrite-review
       for (const width of [1440, 980, 760, 390, 320]) {
         await page.setViewportSize({ width, height: 1000 });
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `overflow ${width}`);
+        for (const link of await page.locator('.jp-route-next-link:visible, .jp-route-download:visible').all()) assert.ok((await link.boundingBox()).height >= 44, 'Touch target');
         if (javascript && [1440, 390].includes(width)) await page.locator('#practice-routes').screenshot({ path: path.join(output, 'routes-' + width + '.png') });
       }
       const pending = page.waitForEvent('download');
-      await page.locator('a[download]').click();
+      await page.locator('a[download="jobplorer-practice-routes.txt"]').click();
       const download = await pending;
       assert.equal(download.suggestedFilename(), 'jobplorer-practice-routes.txt');
       const saved = path.join(output, `routes-${javascript}.txt`);
@@ -140,6 +183,6 @@ const ids = ['posting', 'experience', 'questions', 'task-brief', 'rewrite-review
       assert.deepEqual(errors, []);
       await context.close();
     }
-    console.log('PASS: five routes/15 destinations, rewrite route and both entry links, keyboard/no-JS, public deep links and back navigation, no saved state/requests on route page, exact download, five widths.');
+    console.log('PASS: five routes/15 destinations, five single-route downloads/next-visit links, combined pack, entry links, keyboard/no-JS/back navigation, no route-page storage/action requests, five widths/touch targets.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

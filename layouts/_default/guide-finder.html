@@ -1,13 +1,20 @@
 {{ define "main" }}
 {{ $routes := site.Data.practice_routes.routes }}
+{{ $routeDownloads := dict }}
 {{ $pack := printf "JOBPLORER SHORT PRACTICE ROUTES\n\n%d editorial practice routes using fictional exercises, not assessments or guarantees. Take one step per visit or continue at your own pace. No completion or personal answers are stored by Jobplorer. This download contains public directions and links only.\n\n" (len $routes) }}
 {{ range $routes }}
-  {{ $pack = printf "%sROUTE: %s\nPractice focus: %s\nRoute link: https://jobplorer.com/job-seeker-tools/guide-finder/#route-%s\n\n" $pack .title .outcome .id }}
+  {{ if or (lt .nextVisitStep 1) (gt .nextVisitStep (len .steps)) }}{{ errorf "Invalid next-visit step for route: %s" .id }}{{ end }}
+  {{ $next := index .steps (sub .nextVisitStep 1) }}
+  {{ $entry := printf "ROUTE: %s\nPractice focus: %s\nRoute link: https://jobplorer.com/job-seeker-tools/guide-finder/#route-%s\n\n" .title .outcome .id }}
   {{ range $index, $step := .steps }}
     {{ if not (site.GetPage .path) }}{{ errorf "Missing practice route destination: %s" .path }}{{ end }}
-    {{ $pack = printf "%s%v. %s\n%s\nhttps://jobplorer.com%s#%s\n\n" $pack (add $index 1) .title .focus .path .anchor }}
+    {{ $entry = printf "%s%v. %s\n%s\nhttps://jobplorer.com%s#%s\n\n" $entry (add $index 1) .title .focus .path .anchor }}
   {{ end }}
-  {{ $pack = printf "%sNEXT VISIT\n%s\n\n" $pack .nextVisit }}
+  {{ $entry = printf "%sNEXT VISIT\n%s\n\n" $entry .nextVisit }}
+  {{ $pack = printf "%s%s" $pack $entry }}
+  {{ $single := printf "JOBPLORER SINGLE PRACTICE ROUTE\n\nFictional editorial exercises, not assessments or guarantees. Take one step per visit or continue at your own pace. This public download contains directions and links only, not personal answers or saved completion.\n\n%sNEXT VISIT LINK\nhttps://jobplorer.com%s#%s\n" $entry $next.path $next.anchor }}
+  {{ $file := resources.FromString (printf "downloads/jobplorer-route-%s.txt" .id) $single }}
+  {{ $routeDownloads = merge $routeDownloads (dict .id $file.RelPermalink) }}
 {{ end }}
 {{ $download := resources.FromString "downloads/jobplorer-practice-routes.txt" $pack }}
 <article class="jp-discovery-page" id="jp-guide-finder">
@@ -69,6 +76,9 @@
             {{ end }}
           </ol>
           <h3>Next visit</h3><p class="jp-route-next">{{ .nextVisit }}</p>
+          {{ $next := index .steps (sub .nextVisitStep 1) }}
+          <p><a class="jp-route-link jp-route-next-link" href="{{ $next.path }}#{{ $next.anchor }}">{{ $next.title }} <i data-lucide="arrow-right" aria-hidden="true"></i></a></p>
+          <p><a class="jp-route-link jp-route-download" href="{{ index $routeDownloads .id }}" download="jobplorer-route-{{ .id }}.txt"><i data-lucide="download" aria-hidden="true"></i> Download this route (.txt)</a></p>
           <a class="jp-route-link" href="#route-{{ .id }}"><i data-lucide="link" aria-hidden="true"></i> Link to this route</a>
         </div>
       </details>

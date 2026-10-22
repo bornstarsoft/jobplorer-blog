@@ -1,5 +1,6 @@
 routes:
   - id: posting
+    nextVisitStep: 2
     title: "Read a posting with fewer assumptions"
     outcome: "A responsibility, a stated criterion and an unanswered question."
     nextVisit: "Return to the fresh posting scenario. Explain why its work-arrangement label does not supply a location or schedule."
@@ -17,6 +18,7 @@ routes:
         anchor: "clarify-priorities"
         focus: "Form one neutral question about who decides when requests conflict, then compare with the example and follow-up."
   - id: experience
+    nextVisitStep: 3
     title: "Explain your contribution clearly"
     outcome: "An action and an observed result without an invented metric."
     nextVisit: "Return to the small-improvement question. Try its follow-up and describe how you would check a later draft without claiming results you have not measured."
@@ -34,6 +36,7 @@ routes:
         anchor: "improve-a-task"
         focus: "Try a three-sentence response, then distinguish the observed drafts from a proposed follow-up check."
   - id: questions
+    nextVisitStep: 3
     title: "Prepare work-focused interview questions"
     outcome: "Two distinct questions and one useful follow-up."
     nextVisit: "Return to the review-process question. Use Another round to ask about conflicting feedback without assuming the team handles it badly."
@@ -51,6 +54,7 @@ routes:
         anchor: "clarify-feedback"
         focus: "Ask about the review process. In the follow-up example, separate what was said from what remains unknown."
   - id: task-brief
+    nextVisitStep: 2
     title: "Check a task against its brief"
     outcome: "Two supported steps and a caution that matches the supplied facts."
     nextVisit: "Return to the export challenge and explain the effect of reversing the steps. Check the requested output format as well as the order."
@@ -68,6 +72,7 @@ routes:
         anchor: "learn-from-a-mistake"
         focus: "Try the follow-up about checking a file. Name what you would inspect, rather than promising never to make another mistake."
   - id: rewrite-review
+    nextVisitStep: 2
     title: "Check a rewritten summary against its source"
     outcome: "A corrected requirement, a clearly labeled plan and a result limited to the evidence."
     nextVisit: "Return to the proposed-check exercise and try Another try: one classmate follows the step, while the other asks for clarification. Describe only those observations, without claiming universal clarity or time savings."
