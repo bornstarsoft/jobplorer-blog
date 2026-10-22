@@ -106,6 +106,7 @@ const ids = ['posting', 'experience', 'questions', 'task-brief', 'rewrite-review
       for (const from of ['/job-seeker-tools/', '/guides/use-ai-for-job-search-preparation/']) {
         await page.goto(base + from);
         await page.locator('a[href="' + route + '#route-rewrite-review"]').click();
+        await page.locator('#route-rewrite-review').waitFor({ state: 'visible' });
         assert.equal(page.url(), base + route + '#route-rewrite-review');
         if (javascript) await page.waitForFunction(() => document.getElementById('route-rewrite-review').open);
       }
