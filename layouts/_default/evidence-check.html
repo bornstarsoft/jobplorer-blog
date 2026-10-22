@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{ $checks := site.Data.evidence_checks.checks }}
+{{ $pack := "JOBPLORER TWO-MINUTE EVIDENCE CHECK\n\nFour fictional situations, not employer assessments or a scoring system. Do not present fictional experience as your own. This pack contains public practice material, not personal responses.\n\n" }}
+{{ range $checks }}
+  {{ if ne (len (where site.Data.practice_routes.routes "id" .route)) 1 }}{{ errorf "Unknown evidence-check route: %s" .route }}{{ end }}
+  {{ $pack = printf "%sSITUATION: %s\n\nSUPPLIED FACTS\n" $pack .title }}
+  {{ range .facts }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
+  {{ range .statements }}{{ $pack = printf "%s\nSTATEMENT: %s\n%s\n%s\n" $pack .text .finding .why }}{{ end }}
+  {{ $pack = printf "%s\nANOTHER VISIT\n%s\nSituation link: https://jobplorer.com/job-seeker-tools/evidence-check/#%s\nPractice route: https://jobplorer.com/job-seeker-tools/guide-finder/#route-%s\n\n" $pack .retry .id .route }}
+{{ end }}
+{{ $download := resources.FromString "downloads/jobplorer-evidence-check.txt" $pack }}
+<article class="jp-evidence">
+  <div class="jp-container">
+    <a class="jp-back-link" href="/job-seeker-tools/"><i data-lucide="arrow-left" aria-hidden="true"></i> Job Seeker Tools</a>
+    <header class="jp-evidence-heading">
+      <div><p class="jp-eyebrow">A short job-search warm-up</p><h1>{{ .Title }}</h1><p>Four fictional situations. Facts, assumptions and missing details.</p>
+        <a href="{{ $download.RelPermalink }}" download="jobplorer-evidence-check.txt"><i data-lucide="download" aria-hidden="true"></i> Download four checks (.txt)</a>
+      </div>
+      <figure>{{ partial "topic-image.html" (dict "key" "applications" "loading" "eager" "sizes" "180px") }}</figure>
+    </header>
+    <nav class="jp-evidence-nav" aria-label="Choose a situation">
+      {{ range $index, $check := $checks }}<a href="#{{ .id }}">{{ add $index 1 }}. {{ .title }}</a>{{ end }}
+    </nav>
+    {{ range $index, $check := $checks }}
+    <section class="jp-evidence-check" id="{{ .id }}" aria-labelledby="title-{{ .id }}">
+      <p class="jp-eyebrow">Situation {{ add $index 1 }} of {{ len $checks }}</p>
+      <h2 id="title-{{ .id }}">{{ .title }}</h2>
+      <div class="jp-evidence-work">
+        <div><h3>Supplied facts</h3><ul>{{ range .facts }}<li>{{ . }}</li>{{ end }}</ul></div>
+        <div><h3>Which statement is supported?</h3>
+          {{ range .statements }}
+          <details class="jp-evidence-statement"><summary>{{ .text }}</summary><div><h4>{{ .finding }}</h4><p>{{ .why }}</p></div></details>
+          {{ end }}
+        </div>
+      </div>
+      <div class="jp-evidence-return"><h3>Another visit</h3><p>{{ .retry }}</p>
+        <div><a href="#{{ .id }}"><i data-lucide="link" aria-hidden="true"></i> Link to this situation</a><a href="/job-seeker-tools/guide-finder/#route-{{ .route }}">Continue with a practice route <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+      </div>
+      {{ if lt (add $index 1) (len $checks) }}{{ $next := index $checks (add $index 1) }}<a class="jp-evidence-next" href="#{{ $next.id }}">Next situation <i data-lucide="arrow-down" aria-hidden="true"></i></a>{{ end }}
+    </section>
+    {{ end }}
+    <aside class="jp-evidence-notes nested-links" aria-label="Practice scope and privacy">{{ .Content }}</aside>
+  </div>
+</article>
+{{ end }}

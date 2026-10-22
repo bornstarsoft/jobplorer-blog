@@ -22,6 +22,8 @@ For another perspective on the work, [Plan an Informational Conversation](/guide
 
 ## Your Weekly Job Search Review
 
+For a short warm-up, try [Two-Minute Evidence Check](/job-seeker-tools/evidence-check/): four fictional situations with statements to compare and reasons grounded in the supplied facts. No score or answer submission.
+
 [Choose a short practice route](/job-seeker-tools/guide-finder/#practice-routes) for reading postings, explaining experience, preparing questions or checking a task brief. Each connects three fictional exercises with a specific next-visit task.
 
 [This Week's Job Search Practice](/job-seeker-tools/weekly-practice/) offers a four-week starter sequence: read a posting, explain experience, prepare questions, and check a task brief. Each fictional exercise has a worked response, with no personal answers to enter or save.

@@ -1,0 +1,73 @@
+checks:
+  - id: posting-criteria
+    title: "What does the posting actually ask for?"
+    facts:
+      - "Fictional Support Assistant brief: update help articles once a week."
+      - "Comfort using a spreadsheet is listed as a requirement."
+      - "Training on the team's analytics tool is provided. No certificate is mentioned."
+    statements:
+      - text: "An analytics certificate is required before applying."
+        finding: "Not supported by the supplied facts"
+        why: "The brief describes tool training, not a certificate requirement. Do not turn an unstated qualification into a stated one."
+      - text: "The brief explicitly asks for comfort using a spreadsheet."
+        finding: "Supported by the supplied facts"
+        why: "The second line says this directly. It does not establish whether any particular person meets the requirement."
+      - text: "Training means no previous experience of any kind is needed."
+        finding: "Not supported by the supplied facts"
+        why: "Training on one tool does not describe every requirement for the role. The spreadsheet requirement is still stated."
+    retry: "On another visit, replace one unsupported statement with a question you could check against the full posting."
+    route: "posting"
+  - id: project-evidence
+    title: "Who did what in the project?"
+    facts:
+      - "Fictional study project: you wrote three test cases for a settings screen."
+      - "One case exposed a label that did not match the saved setting. A teammate fixed the label."
+      - "You repeated the three cases after the fix. No user or time-saving data was collected."
+    statements:
+      - text: "I rebuilt the settings screen on my own."
+        finding: "Not supported by the supplied facts"
+        why: "Your recorded contribution was writing and repeating test cases. The teammate made the fix; the facts do not say who built the entire screen."
+      - text: "My work reduced support time by half."
+        finding: "Not supported by the supplied facts"
+        why: "No time-saving data was collected. A discovered mismatch is an observed result, not evidence of a measured business impact."
+      - text: "My test case exposed a label mismatch, and I repeated the cases after a teammate fixed it."
+        finding: "Supported by the supplied facts"
+        why: "This keeps your contribution, the teammate's action and the follow-up check separate. The experience is fictional and must not be presented as your own."
+    retry: "On another visit, explain the same contribution in two sentences without adding a number or taking credit for the fix."
+    route: "experience"
+  - id: remote-details
+    title: "What does a remote label leave unanswered?"
+    facts:
+      - "Fictional role brief: remote work, with shared collaboration hours."
+      - "The excerpt does not state the hours, time zone or permitted work locations."
+      - "No other employer information is supplied for this exercise."
+    statements:
+      - text: "The collaboration hours, time zone and work-location details still need clarification."
+        finding: "Supported by the supplied facts"
+        why: "Those details are absent from the excerpt. The word remote does not supply them, and this exercise does not determine anyone's eligibility."
+      - text: "The role can be done at any hour from any country."
+        finding: "Not supported by the supplied facts"
+        why: "The excerpt leaves locations unspecified and explicitly mentions shared hours. It cannot establish unlimited schedule or location flexibility."
+      - text: "Shared hours mean everyone works the same full-day schedule."
+        finding: "Not supported by the supplied facts"
+        why: "Some shared hours do not establish an identical full-day schedule. The extent of overlap is still unknown."
+    retry: "On another visit, ask one neutral question about the missing collaboration window without assuming what the answer will be."
+    route: "questions"
+  - id: deliverable-scope
+    title: "What belongs in the requested output?"
+    facts:
+      - "Fictional demo task: submit one screenshot and one paragraph describing what it shows."
+      - "The demo can export a CSV. No automatic updates to downloaded files are described."
+      - "No slide deck or additional file is requested."
+    statements:
+      - text: "A slide deck and CSV are required deliverables."
+        finding: "Not supported by the supplied facts"
+        why: "A feature the demo supports is not automatically a requested output. The brief asks for a screenshot and a paragraph."
+      - text: "The requested output is one screenshot with one descriptive paragraph."
+        finding: "Supported by the supplied facts"
+        why: "This follows the stated format without adding deliverables. For a real task, use its actual instructions rather than this fictional brief."
+      - text: "Any downloaded CSV automatically reflects future edits."
+        finding: "Not supported by the supplied facts"
+        why: "Export support alone does not establish automatic synchronization. The facts do not describe that behavior."
+    retry: "On another visit, name the feature-versus-deliverable distinction and one final check you would make against the brief."
+    route: "task-brief"

@@ -38,6 +38,12 @@ Interview practice contains six public fictional prompts and examples. It has no
 
 The optional text download contains public prompts and examples, not your answers. Jobplorer's GA4 tag is excluded from the page. Hosting analytics and security services may still process ordinary requests and set security cookies; linked guides may use their existing analytics. This is a description of the exercise implementation, not a whole-site zero-data-processing claim.
 
+## Evidence Check
+
+Evidence Check contains four public fictional situations and explanations. Opening a statement uses a native browser disclosure; Jobplorer does not submit or store that action. There are no answer fields, accounts, recordings, uploads, scores or saved progress. Situation links contain public anchors only; browsers may retain normal history or bookmarks. The text download contains public material, not your responses.
+
+Jobplorer's GA4 tag is excluded from the page. Ordinary hosting analytics and security services remain separate and may process requests or set security cookies. This does not describe the whole site as processing no data.
+
 ## Contact Information
 
 If you contact the site owner, information you choose to provide may be used to respond to the inquiry, review corrections, evaluate feedback, or handle related communication.

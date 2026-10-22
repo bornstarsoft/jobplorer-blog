@@ -30,6 +30,10 @@
 <link rel="stylesheet" href="{{ $interviewStyle.RelPermalink }}">
 <script defer src="{{ $interviewScript.RelPermalink }}"></script>
 {{ end }}
+{{ if eq .Layout "evidence-check" }}
+{{ $evidenceStyle := resources.Get "css/jobplorer-evidence.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $evidenceStyle.RelPermalink }}">
+{{ end }}
 {{ if not (or .Params.localOnlyTool .Params.resourceDiscovery) }}
 <!-- GA4 (Jobplorer.com - Web) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZE5Y04BYQ"></script>
