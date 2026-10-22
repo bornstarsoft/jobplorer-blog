@@ -1,0 +1,26 @@
+{{ $exercises := site.Data.ai_review_practice.exercises }}
+{{ $pack := "JOBPLORER REWRITE REVIEW PRACTICE\n\nTwo fictional editorial exercises, not outputs from a tested AI product or real employer assessments. Do not present invented experience as your own. No personal answers or saved progress are included.\n\n" }}
+{{ range $index, $exercise := $exercises }}
+  {{ $next := index $exercises (mod (add $index 1) (len $exercises)) }}
+  {{ $pack = printf "%sEXERCISE: %s\n\nSUPPLIED FACTS\n%s\n\nFLAWED REWRITE\n%s\n\nYOUR TASK\n%s\n\nONE POSSIBLE RESPONSE\n%s\n\nWHY\n%s\n\nANOTHER TRY\n%s\n\nExercise link: https://jobplorer.com/guides/use-ai-for-job-search-preparation/#%s\nNext exercise: https://jobplorer.com/guides/use-ai-for-job-search-preparation/#%s\n\n" $pack .title .facts .rewrite .task .response .reasoning .repeat .id $next.id }}
+{{ end }}
+{{ $download := resources.FromString "downloads/jobplorer-rewrite-review-practice.txt" $pack }}
+<div class="jp-rewrite-practice">
+  <p class="jp-rewrite-download"><a href="{{ $download.RelPermalink }}" download="jobplorer-rewrite-review-practice.txt"><i data-lucide="download" aria-hidden="true"></i> Download both exercises (.txt)</a></p>
+  <nav aria-label="Rewrite review exercises">{{ range $exercises }}<a href="#{{ .id }}">{{ .title }}</a>{{ end }}</nav>
+  {{ range $index, $exercise := $exercises }}
+  {{ $next := index $exercises (mod (add $index 1) (len $exercises)) }}
+  <section id="{{ .id }}" aria-labelledby="title-{{ .id }}">
+    <h3 id="title-{{ .id }}">{{ add $index 1 }}. {{ .title }}</h3>
+    <h4>Supplied facts</h4><p class="jp-rewrite-facts">{{ .facts }}</p>
+    <h4>Flawed rewrite</h4><p class="jp-rewrite-flawed">{{ .rewrite }}</p>
+    <h4>Your task</h4><p class="jp-rewrite-task">{{ .task }}</p>
+    <details><summary>Compare with a worked response <i data-lucide="chevron-down" aria-hidden="true"></i></summary><div>
+      <h4>One possible response</h4><p>{{ .response }}</p>
+      <h4>Why</h4><p>{{ .reasoning }}</p>
+      <h4>Another try</h4><p>{{ .repeat }}</p>
+    </div></details>
+    <div class="jp-rewrite-links"><a href="#{{ .id }}"><i data-lucide="link" aria-hidden="true"></i> Link to this exercise</a><a href="#{{ $next.id }}">Next visit: {{ $next.title }} <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+  </section>
+  {{ end }}
+</div>

@@ -27,6 +27,8 @@ Start with the fictional material below. It does not require a resume upload, em
 
 You can also do every comparison in this guide yourself without using an AI tool.
 
+For a short revisit, [try two rewrite reviews](#two-short-rewrite-reviews): keep a preference from becoming a requirement, then keep a planned check separate from an observed result.
+
 ## A Fictional Practice Pack
 
 Both items below are invented. They are not a real vacancy or a reader's work history.
@@ -72,6 +74,12 @@ A fact-preserving alternative for this fictional note is:
 > Wrote a study-project installation checklist and added a missing setup step after a teammate tested it.
 
 This sentence is supported by the invented input, not a claim anyone should copy as their own experience. The [project case study guide](/guides/build-a-project-case-study/) explains how to connect a real contribution to evidence and limits.
+
+## Two Short Rewrite Reviews
+
+These additional Jobplorer exercises are fictional, including the flawed rewrites. They are not outputs from a tested AI product, real vacancies, or personal experience to copy. Try one comparison before opening its response; return for the other when useful. No AI account, upload, or personal information is needed.
+
+{{< ai-review-practice >}}
 
 ## Review Before Using Anything
 

@@ -1,0 +1,17 @@
+exercises:
+  - id: practice-preferences
+    title: "Keep a preference from becoming a requirement"
+    facts: "Fictional posting: maintain a shared task list and send a weekly update. Familiarity with spreadsheets is helpful. Training on the reporting tool is provided. The excerpt says nothing about certificates."
+    rewrite: "Applicants must hold a spreadsheet certificate and already know the reporting tool."
+    task: "Find two unsupported requirements. Write a replacement that keeps the stated responsibilities separate from the preference."
+    response: "The role involves maintaining a shared task list and sending a weekly update. Spreadsheet familiarity is described as helpful, and training on the reporting tool is provided. The excerpt does not state a certificate requirement."
+    reasoning: "Helpful is not the same as required. Training being provided does not establish that prior tool knowledge is required, or that all experience requirements are waived. The excerpt is incomplete, so it cannot establish anyone's eligibility."
+    repeat: "On your next try, suppose an updated fictional posting explicitly requires spreadsheet familiarity. Revise only that part of the description; do not add a certificate requirement."
+  - id: practice-proposed-results
+    title: "Keep a proposed check separate from a result"
+    facts: "Fictional study project: you added a link-check step to a handoff note. You plan to try the revised note with two classmates next week. No one has tried it yet, and no time-saving data has been collected."
+    rewrite: "My improved handoff process helped two classmates finish faster and eliminated broken links."
+    task: "Identify the results that have not been observed. Rewrite the contribution and describe the planned check without presenting it as completed work."
+    response: "I added a link-check step to a study-project handoff note. I plan to try the revised note with two classmates next week and observe whether they can follow the step. I do not yet have results from that check."
+    reasoning: "The note was changed, but the trial is still planned. Naming two intended participants does not turn them into observed users. Neither faster completion nor the elimination of broken links follows from the supplied facts."
+    repeat: "On your next try, suppose one classmate follows the step and the other asks for clarification. Describe those two observations without claiming that all users find the note clear or that it saves time."

@@ -40,6 +40,10 @@
 {{ $practiceMenuStyle := resources.Get "css/jobplorer-practice-menu.css" | fingerprint }}
 <link rel="stylesheet" href="{{ $practiceMenuStyle.RelPermalink }}">
 {{ end }}
+{{ if .HasShortcode "ai-review-practice" }}
+{{ $rewriteStyle := resources.Get "css/jobplorer-rewrite-practice.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $rewriteStyle.RelPermalink }}">
+{{ end }}
 {{ if not (or .Params.localOnlyTool .Params.resourceDiscovery) }}
 <!-- GA4 (Jobplorer.com - Web) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZE5Y04BYQ"></script>
