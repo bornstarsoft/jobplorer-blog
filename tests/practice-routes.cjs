@@ -23,7 +23,7 @@ const nextPaths = [
   try {
     for (const javascript of [true, false]) {
       const context = await browser.newContext({ javaScriptEnabled: javascript, reducedMotion: 'reduce', viewport: { width: 1440, height: 1000 }, acceptDownloads: true });
-      const external = [], errors = [], requests = [];
+      const external = [], errors = [], requests = [], hostingRequests = [];
       await context.route('**/*', r => {
         if (new URL(r.request().url()).origin === origin) return r.continue();
         external.push(new URL(r.request().url()).hostname);
@@ -38,7 +38,12 @@ const nextPaths = [
       });
       const page = await context.newPage();
       page.on('pageerror', e => errors.push(e.message));
-      page.on('request', r => requests.push(r.url()));
+      page.on('request', r => {
+        const url = new URL(r.url());
+        // Hosting-injected security checks are separate from application interactions.
+        if (!local && url.origin === origin && url.pathname.startsWith('/cdn-cgi/challenge-platform/')) hostingRequests.push(url.pathname);
+        else requests.push(r.url());
+      });
       assert.equal((await page.goto(base + route)).status(), 200);
       await page.locator('.jp-topic-image').evaluateAll(imgs => Promise.all(imgs.map(img => img.decode())));
       assert.equal(await page.locator('input, textarea, form, [contenteditable]').count(), 0);
@@ -67,7 +72,7 @@ const nextPaths = [
       if (!(await shortcuts.evaluate(el => el.open))) await shortcuts.locator('summary').click();
       await shortcuts.locator('a[href="#route-rewrite-review"]').click();
       if (javascript) await page.waitForFunction(() => document.getElementById('route-rewrite-review').open);
-      assert.equal(requests.length, shortcutRequests, 'Shortcut navigation makes no network requests');
+      assert.equal(requests.length, shortcutRequests, 'Shortcut navigation makes no application requests: ' + JSON.stringify(requests.slice(shortcutRequests)));
       if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
       for (const width of [1440, 980, 760, 390, 320]) {
         await page.setViewportSize({ width, height: 1000 });
@@ -218,6 +223,7 @@ const nextPaths = [
       assert.equal(await fs.readFile(saved, 'utf8'), pack);
       if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
       assert.deepEqual(errors, []);
+      if (!local) console.log(`Hosting-managed security requests observed separately: ${hostingRequests.length} (JS ${javascript})`);
       await context.close();
     }
     console.log('PASS: five shortcuts/focused arrival/same-hash reopening, five routes/15 destinations, five single-route downloads/next-visit links, combined pack, keyboard/no-JS/back navigation, no route-page storage/action requests, five widths/touch targets.');
