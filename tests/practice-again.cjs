@@ -100,7 +100,7 @@ const hostingBeacon = value => {
         const bounds = await page.locator('.jp-weekly-challenge').evaluateAll(els => els.map(el => { const b = el.getBoundingClientRect(); return { x: b.x, right: b.right, y: b.y, bottom: b.bottom }; }));
         if (width > 760) assert.ok(bounds[0].right <= bounds[1].x);
         else assert.ok(bounds[0].bottom <= bounds[1].y);
-        for (const link of await page.locator('.jp-weekly-followup').all()) {
+        for (const link of await page.locator('.jp-weekly-followup, .jp-weekly-pair-download').all()) {
           const b = await link.boundingBox();
           assert.ok(b.height >= 44 && b.x >= 0 && b.x + b.width <= width, 'Follow-up link is usable and fits');
         }
@@ -109,8 +109,40 @@ const hostingBeacon = value => {
           await page.locator('#week-1').screenshot({ path: path.join(output, `week-followup-${width}.png`) });
         }
       }
+      assert.equal(await page.locator('.jp-weekly-pair-download').count(), 4);
+      for (let i = 1; i <= 4; i++) {
+        const link = page.locator('#week-' + i + ' .jp-weekly-pair-download');
+        const filename = `jobplorer-week-${i}-practice-pair.txt`;
+        assert.equal(await link.getAttribute('download'), filename);
+        assert.equal(await link.getAttribute('href'), '/downloads/' + filename);
+        const response = await context.request.get(base + '/downloads/' + filename);
+        assert.equal(response.status(), 200);
+        const pair = await response.text();
+        assert.equal((pair.match(/^WEEK [1-4]:/gm) || []).length, 1);
+        assert.equal((pair.match(/^CHALLENGE [1-4]:/gm) || []).length, 1);
+        assert.ok(pair.includes(`WEEK ${i}:`) && pair.includes(`CHALLENGE ${i}:`));
+        assert.ok(pair.includes('All scenarios are fictional'));
+        assert.ok(pair.includes('No personal answers or progress are included.'));
+        for (const hash of [`#week-${i}`, `#challenge-${i}`]) assert.ok(pair.includes('https://jobplorer.com' + route + hash));
+        for (const text of await page.locator(`#week-${i} .jp-weekly-evidence li, #week-${i} .jp-weekly-prompt, #week-${i} .jp-weekly-answer li, #week-${i} .jp-weekly-answer p, #challenge-${i} li, #challenge-${i} .jp-challenge-prompt, #challenge-${i} .jp-challenge-answer p`).allTextContents()) {
+          assert.ok(pair.includes(text), 'Paired pack matches displayed facts, answers and comparisons');
+        }
+        // Single packs reuse exact original sections, not independently maintained copies.
+        const originalWeek = pack.slice(pack.indexOf(`WEEK ${i}:`), i < 4 ? pack.indexOf(`WEEK ${i + 1}:`) : pack.indexOf('PRACTICE AGAIN\n'));
+        const originalChallenge = pack.slice(pack.indexOf(`CHALLENGE ${i}:`), i < 4 ? pack.indexOf(`CHALLENGE ${i + 1}:`) : undefined);
+        assert.ok(pair.includes(originalWeek) && pair.includes(originalChallenge));
+        const event = page.waitForEvent('download');
+        await link.focus();
+        await page.keyboard.press('Enter');
+        const saved = await event;
+        assert.equal(saved.suggestedFilename(), filename);
+        const destination = path.join(output, `${javascript}-${filename}`);
+        await saved.saveAs(destination);
+        assert.equal(await fs.readFile(destination, 'utf8'), pair);
+      }
+      if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
       const pending = page.waitForEvent('download');
-      await page.locator('a[download]').click();
+      await page.locator('a[download="jobplorer-four-week-practice.txt"]').click();
       const download = await pending;
       const file = path.join(output, `pack-${javascript}.txt`);
       await download.saveAs(file);
@@ -126,6 +158,6 @@ const hostingBeacon = value => {
       if (!local) console.log(`Hosting security requests recorded separately (JS=${javascript}): ${hostingRequests.length}; blocked hosting beacon requests: ${external.length}; hosting clearance cookies: ${cookieMetadata.length}`);
       await context.close();
     }
-    console.log('PASS: four paired week/challenge loops and comparison prompts, no-JS/keyboard/back/deep links, examples and download parity, no application storage/telemetry, five widths, no persisted progress.');
+    console.log('PASS: four individual paired downloads and full pack, week/challenge loops and comparison prompts, no-JS/keyboard/back/deep links, exact download parity, no application storage/telemetry, five widths, no persisted progress.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

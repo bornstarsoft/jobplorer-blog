@@ -1,23 +1,35 @@
 {{ define "main" }}
 {{ $series := site.Data.weekly_practice }}
 {{ $pack := printf "%s\n%s\n\nAll scenarios are fictional. Work in your own private notes; this pack does not submit or store answers in Jobplorer. No live employer assessment or outcome guarantee is implied.\n\n" .Title $series.edition }}
+{{ $intro := $pack }}
+{{ $weekTexts := dict }}
+{{ $pairDownloads := dict }}
 {{ range $series.weeks }}
-  {{ $pack = printf "%sWEEK %v: %s\n%s | %s\n\n%s\n\nSUPPLIED FACTS\n" $pack .number .title .minutes .situation .scenario }}
-  {{ range .evidence }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
-  {{ $pack = printf "%s\nYOUR TASK\n%s\n\nONE POSSIBLE RESPONSE\n" $pack .prompt }}
-  {{ range .answer }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
-  {{ $pack = printf "%s\nWHY\n%s\n\nSELF-CHECK\n%s\n\nNEXT ACTION\n%s\nRelated guide: %s\n\n" $pack .why .check .next (printf "https://jobplorer.com%s" .guide) }}
+  {{ $text := printf "WEEK %v: %s\n%s | %s\n\n%s\n\nSUPPLIED FACTS\n" .number .title .minutes .situation .scenario }}
+  {{ range .evidence }}{{ $text = printf "%s- %s\n" $text . }}{{ end }}
+  {{ $text = printf "%s\nYOUR TASK\n%s\n\nONE POSSIBLE RESPONSE\n" $text .prompt }}
+  {{ range .answer }}{{ $text = printf "%s- %s\n" $text . }}{{ end }}
+  {{ $text = printf "%s\nWHY\n%s\n\nSELF-CHECK\n%s\n\nNEXT ACTION\n%s\nRelated guide: %s\n\n" $text .why .check .next (printf "https://jobplorer.com%s" .guide) }}
   {{ range where $series.revisit "review" .number }}
-    {{ $pack = printf "%sNEXT VISIT: %s\nhttps://jobplorer.com/job-seeker-tools/weekly-practice/#challenge-%v\n\n" $pack .title .number }}
+    {{ $text = printf "%sNEXT VISIT: %s\nhttps://jobplorer.com/job-seeker-tools/weekly-practice/#challenge-%v\n\n" $text .title .number }}
   {{ end }}
+  {{ $weekTexts = merge $weekTexts (dict (printf "%v" .number) $text) }}
+  {{ $pack = printf "%s%s" $pack $text }}
 {{ end }}
 {{ $pack = printf "%sPRACTICE AGAIN\nFour extra fictional challenges. Try a response in your own private notes before comparing with the example. These are not scored tests or evidence of readiness.\n\n" $pack }}
 {{ range $series.revisit }}
-  {{ $pack = printf "%sCHALLENGE %v: %s\n\n%s\n\nSUPPLIED FACTS\n" $pack .number .title .scenario }}
-  {{ range .evidence }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
-  {{ $pack = printf "%s\nYOUR TASK\n%s\n\nONE POSSIBLE RESPONSE\n" $pack .prompt }}
-  {{ range .answer }}{{ $pack = printf "%s- %s\n" $pack . }}{{ end }}
-  {{ $pack = printf "%s\nWHY\n%s\n\nSELF-CHECK\n%s\n\nCOMPARE THE TWO SITUATIONS\n%s\nReview week %v: https://jobplorer.com/job-seeker-tools/weekly-practice/#week-%v\n\n" $pack .why .check .compare .review .review }}
+  {{ $text := printf "CHALLENGE %v: %s\n\n%s\n\nSUPPLIED FACTS\n" .number .title .scenario }}
+  {{ range .evidence }}{{ $text = printf "%s- %s\n" $text . }}{{ end }}
+  {{ $text = printf "%s\nYOUR TASK\n%s\n\nONE POSSIBLE RESPONSE\n" $text .prompt }}
+  {{ range .answer }}{{ $text = printf "%s- %s\n" $text . }}{{ end }}
+  {{ $text = printf "%s\nWHY\n%s\n\nSELF-CHECK\n%s\n\nCOMPARE THE TWO SITUATIONS\n%s\nReview week %v: https://jobplorer.com/job-seeker-tools/weekly-practice/#week-%v\n\n" $text .why .check .compare .review .review }}
+  {{ $pack = printf "%s%s" $pack $text }}
+  {{ $key := printf "%v" .review }}
+  {{ $weekText := index $weekTexts $key }}
+  {{ if not $weekText }}{{ errorf "Missing week %v for challenge %v" .review .number }}{{ end }}
+  {{ $pairText := printf "%sWEEK %v PRACTICE PAIR\nOne original exercise and one follow-up challenge. Try each in private notes before reading its worked response. These are not scored tests or evidence of readiness. No personal answers or progress are included.\n\nSTART HERE\nhttps://jobplorer.com/job-seeker-tools/weekly-practice/#week-%v\n\n%s%s" $intro .review .review $weekText $text }}
+  {{ $pair := resources.FromString (printf "downloads/jobplorer-week-%v-practice-pair.txt" .review) $pairText }}
+  {{ $pairDownloads = merge $pairDownloads (dict $key $pair) }}
 {{ end }}
 {{ $download := resources.FromString "downloads/jobplorer-four-week-practice.txt" $pack }}
 <article class="jp-weekly" id="weekly-top">
@@ -92,6 +104,8 @@
       {{ range $followups }}
       <p class="jp-weekly-return"><a class="jp-weekly-followup" href="#challenge-{{ .number }}">Next visit: {{ .title }} <i data-lucide="arrow-down" aria-hidden="true"></i></a></p>
       {{ end }}
+      {{ $pair := index $pairDownloads (printf "%v" .number) }}
+      <p class="jp-weekly-return"><a class="jp-weekly-pair-download" href="{{ $pair.RelPermalink }}" download="{{ path.Base $pair.RelPermalink }}"><i data-lucide="download" aria-hidden="true"></i> Download week {{ .number }} + follow-up (.txt)</a></p>
       <nav class="jp-weekly-next" aria-label="After week {{ .number }}">
         <a href="#weekly-top"><i data-lucide="arrow-up" aria-hidden="true"></i> Back to overview</a>
         {{ if lt .number 4 }}<a href="#week-{{ add .number 1 }}">Next: week {{ add .number 1 }} <i data-lucide="arrow-right" aria-hidden="true"></i></a>{{ else }}<a href="/job-seeker-tools/guide-finder/">Find your next guide <i data-lucide="arrow-right" aria-hidden="true"></i></a>{{ end }}

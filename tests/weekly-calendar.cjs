@@ -120,7 +120,7 @@ const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-calendar-qa'
     const page = await plain.newPage(); await page.goto(base + route);
     assert.equal(await page.locator('#jp-weekly-planner').isVisible(), false);
     assert.equal(await page.locator('.jp-weekly-session').count(), 4);
-    assert.equal(await page.locator('a[download]').count(), 1);
+    assert.equal(await page.locator('a[download="jobplorer-four-week-practice.txt"]').count(), 1);
     await plain.close();
     console.log('PASS: calendar serialization/escaping, four date-only events, leap/year/DST boundaries, stable UIDs, invalid input, two time zones, download, no date transmission/persistence/analytics, four responsive widths, keyboard and no-JS fallback.');
   } finally { await browser.close(); }

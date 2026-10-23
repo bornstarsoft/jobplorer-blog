@@ -46,7 +46,7 @@ const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-weekly-qa';
     assert.equal(await page.locator('.jp-weekly-answer[open]').count(), 0);
     const ids = await page.locator('[id]').evaluateAll(items => items.map(el => el.id));
     assert.equal(new Set(ids).size, ids.length);
-    const packHref = await page.locator('a[download]').getAttribute('href');
+    const packHref = await page.locator('a[download="jobplorer-four-week-practice.txt"]').getAttribute('href');
     const response = await context.request.get(base + packHref);
     assert.equal(response.status(), 200);
     const pack = await response.text();
@@ -90,7 +90,7 @@ const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-weekly-qa';
     assert.match(week4, /cloud backup is not described/);
 
     const downloadEvent = page.waitForEvent('download');
-    await page.locator('a[download]').click();
+    await page.locator('a[download="jobplorer-four-week-practice.txt"]').click();
     const download = await downloadEvent;
     assert.equal(download.suggestedFilename(), 'jobplorer-four-week-practice.txt');
     await download.saveAs(path.join(output, download.suggestedFilename()));
@@ -135,7 +135,7 @@ const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-weekly-qa';
     }
     assert.equal(await plain.locator('.jp-weekly-answer[open]').count(), 4);
     const plainDownload = plain.waitForEvent('download');
-    await plain.locator('a[download]').click();
+    await plain.locator('a[download="jobplorer-four-week-practice.txt"]').click();
     assert.equal((await plainDownload).suggestedFilename(), 'jobplorer-four-week-practice.txt');
     assert.equal(await plain.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     for (const entry of ['/', '/guides/', '/job-seeker-tools/', '/job-seeker-tools/guide-finder/']) {
