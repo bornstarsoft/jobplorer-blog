@@ -44,7 +44,12 @@
         <a href="{{ $download.RelPermalink }}" download="jobplorer-four-week-practice.txt"><i data-lucide="download" aria-hidden="true"></i> Download all four weeks (.txt)</a>
       </div>
     </header>
-    <p class="jp-weekly-return"><a href="#practice-again">Back for another try? Four fresh scenarios <i data-lucide="arrow-down" aria-hidden="true"></i></a></p>
+    <details class="jp-weekly-revisit-chooser">
+      <summary>Back for another try? Choose a scenario</summary>
+      <nav class="jp-weekly-challenge-nav" aria-label="Return-visit shortcuts">
+        {{ range $series.revisit }}<a href="#challenge-{{ .number }}"><span>Challenge {{ .number }}</span><strong>{{ .title }}</strong></a>{{ end }}
+      </nav>
+    </details>
     <div class="jp-weekly-intro">
       <div><p>Four fictional exercises, at your own pace. No account, answer submission, or saved progress.</p><a href="#practice-details">About this series &amp; privacy</a></div>
       <figure>{{ partial "topic-image.html" (dict "key" "applications" "loading" "eager" "sizes" "(max-width: 760px) 120px, 180px") }}</figure>
@@ -115,8 +120,8 @@
     <section id="practice-again" class="jp-weekly-revisit" aria-labelledby="practice-again-title">
       <h2 id="practice-again-title">Practice again</h2>
       <p>Already tried the four weeks? Pick a fresh scenario for a 3-5 minute revisit. Try your own response before opening the example. All scenarios are fictional; these are not scored tests.</p>
-      <nav class="jp-weekly-next" aria-label="Choose a fresh scenario">
-        {{ range $series.revisit }}<a href="#challenge-{{ .number }}">Challenge {{ .number }} <i data-lucide="arrow-down" aria-hidden="true"></i></a>{{ end }}
+      <nav class="jp-weekly-challenge-nav" aria-label="Choose a fresh scenario">
+        {{ range $series.revisit }}<a href="#challenge-{{ .number }}"><span>Challenge {{ .number }}</span><strong>{{ .title }}</strong></a>{{ end }}
       </nav>
       <div class="jp-weekly-challenges">
         {{ range $series.revisit }}

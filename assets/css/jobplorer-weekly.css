@@ -58,6 +58,13 @@
 .jp-weekly-plan-body [role="status"] { min-height: 3em; }
 .jp-weekly-return { font-size: 15px; margin: 0 0 24px; }
 .jp-weekly-return a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.jp-weekly-revisit-chooser { margin-bottom: 24px; }
+.jp-weekly-revisit-chooser > summary { padding: 12px 0; min-height: 44px; cursor: pointer; color: var(--jp-green); font-size: 15px; line-height: 1.5; font-weight: 600; }
+.jp-weekly-challenge-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px; padding: 16px 0; }
+.jp-weekly-challenge-nav a { display: block; min-width: 0; min-height: 44px; padding: 8px 0; text-decoration: none; }
+.jp-weekly-challenge-nav span { display: block; font-size: 13px; color: var(--jp-muted); margin-bottom: 4px; }
+.jp-weekly-challenge-nav strong { font-size: 16px; line-height: 1.5; }
+.jp-weekly-challenge-nav a:hover strong { text-decoration: underline; }
 .jp-weekly-revisit { padding-top: 36px; scroll-margin-top: 24px; }
 .jp-weekly-revisit > h2 { font-size: 28px; margin: 10px 0; }
 .jp-weekly-revisit > p { max-width: 820px; line-height: 1.75; }
@@ -73,6 +80,7 @@
 .jp-challenge-answer > div { padding-bottom: 16px; }
 .jp-challenge-answer[open] summary svg { transform: rotate(180deg); }
 @media (max-width: 760px) {
+  .jp-weekly-challenge-nav { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .jp-weekly-challenges { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .jp-weekly-plan-body { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .jp-weekly-work { grid-template-columns: minmax(0, 1fr); gap: 16px; }
@@ -86,6 +94,7 @@
   .jp-weekly-intro figure { width: 120px; }
 }
 @media print {
+  .jp-weekly-revisit-chooser, .jp-weekly-challenge-nav { display: none; }
   .jp-weekly-return { display: none; }
   .jp-weekly-challenges { display: block; }
   .jp-challenge-answer > div { display: block !important; }

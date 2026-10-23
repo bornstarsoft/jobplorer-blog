@@ -58,8 +58,26 @@ const hostingBeacon = value => {
       assert.equal(await page.locator('.jp-weekly-followup').count(), 4);
       assert.equal(await page.locator('.jp-weekly-session .jp-challenge-comparison').count(), 0);
       const baseline = requests.length;
-      await page.locator('.jp-weekly-return a[href="#practice-again"]').click();
-      assert.equal(new URL(page.url()).hash, '#practice-again');
+      const chooser = page.locator('.jp-weekly-revisit-chooser');
+      assert.equal(await chooser.getAttribute('open'), null);
+      await chooser.locator('summary').focus();
+      await page.keyboard.press('Enter');
+      assert.equal(await chooser.locator('nav').isVisible(), true);
+      const shortcuts = chooser.locator('a');
+      assert.equal(await shortcuts.count(), 4);
+      for (let i = 1; i <= 4; i++) {
+        const title = (await page.locator('#challenge-title-' + i).textContent()).replace(/^\d+\. /, '');
+        const shortcut = shortcuts.nth(i - 1);
+        const bottom = page.locator('[aria-label="Choose a fresh scenario"] a').nth(i - 1);
+        assert.equal(await shortcut.locator('strong').textContent(), title);
+        assert.equal(await bottom.locator('strong').textContent(), title);
+        assert.equal(await shortcut.getAttribute('href'), '#challenge-' + i);
+        await shortcut.focus();
+        await page.keyboard.press('Enter');
+        assert.equal(new URL(page.url()).hash, '#challenge-' + i);
+        assert.equal(await page.locator('#challenge-title-' + i).isVisible(), true);
+        await page.goBack();
+      }
       for (let i = 1; i <= 4; i++) {
         await page.locator('[aria-label="Choose a fresh scenario"] a').nth(i - 1).click();
         assert.equal(new URL(page.url()).hash, '#challenge-' + i);
@@ -104,7 +122,17 @@ const hostingBeacon = value => {
           const b = await link.boundingBox();
           assert.ok(b.height >= 44 && b.x >= 0 && b.x + b.width <= width, 'Follow-up link is usable and fits');
         }
+        for (const nav of await page.locator('.jp-weekly-challenge-nav').all()) {
+          const boxes = await nav.locator('a').evaluateAll(els => els.map(el => {
+            const b = el.getBoundingClientRect();
+            return { x: b.x, right: b.right, y: b.y, bottom: b.bottom, height: b.height };
+          }));
+          assert.ok(boxes.every(b => b.height >= 44 && b.x >= 0 && b.right <= width));
+          if (width > 760) assert.ok(boxes[0].right <= boxes[1].x && boxes[1].bottom <= boxes[2].y);
+          else assert.ok(boxes.every((b, i) => i === 0 || boxes[i - 1].bottom <= b.y));
+        }
         if (javascript && [1440, 390].includes(width)) {
+          await chooser.screenshot({ path: path.join(output, `revisit-chooser-${width}.png`) });
           await page.locator('#practice-again').screenshot({ path: path.join(output, `practice-again-${width}.png`) });
           await page.locator('#week-1').screenshot({ path: path.join(output, `week-followup-${width}.png`) });
         }
@@ -158,6 +186,6 @@ const hostingBeacon = value => {
       if (!local) console.log(`Hosting security requests recorded separately (JS=${javascript}): ${hostingRequests.length}; blocked hosting beacon requests: ${external.length}; hosting clearance cookies: ${cookieMetadata.length}`);
       await context.close();
     }
-    console.log('PASS: four individual paired downloads and full pack, week/challenge loops and comparison prompts, no-JS/keyboard/back/deep links, exact download parity, no application storage/telemetry, five widths, no persisted progress.');
+    console.log('PASS: named native return-visit chooser and bottom navigation, keyboard/no-JS/history, four paired downloads and full pack, week/challenge loops, exact content parity, no application storage/telemetry, five widths, no persisted progress.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
