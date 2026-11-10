@@ -83,6 +83,24 @@ Try one narrow revision in private:
 
 This is a fictional reflection, not an explanation of why any applicant was selected or rejected. Use [Build a Project Case Study](/guides/build-a-project-case-study/) and [Prepare for an Interview](/guides/prepare-for-an-interview/) to improve the example rather than inventing stronger results.
 
+## Try a Two-Pass Interview Debrief
+
+In this fictional interview, the interviewer asked, "How did you know the change helped?" The applicant said, "We made handoffs faster." The team had tried a new handoff note on two tasks, and a teammate found the next action in both notes. Nobody measured handoff time. The interviewer said to check the application portal for updates but gave no date.
+
+### First Pass: Separate the Facts
+
+1. **What happened:** The interviewer asked how the team checked the change and named the portal as the update channel.
+2. **What remains unknown:** Whether handoffs became faster, when an update will arrive, and what the interviewer thought of the answer.
+3. **What to practice:** Replace the speed claim with the actual check and its limits.
+
+One possible revision: "We tried the new handoff note on two tasks. A teammate could find the next action in both notes. We did not time either handoff, so I can't say it made the work faster."
+
+### Next Visit: Change One Fact
+
+Suppose the teammate found the next action in only one of the two notes. What would you keep, and what would you change? The trial still happened, but the result is now mixed. A useful next check would be to compare how the next action was written in the two notes, not to claim the note worked every time.
+
+For your own interview, keep three short lines in private notes: the question you were asked, the strongest evidence you can share, and one thing you still cannot claim. Then [practice describing a small improvement](/job-seeker-tools/interview-practice/#improve-a-task).
+
 ## Keep the Rest of Your Search Moving
 
 Record a next review point in your own notes and return to other research. No reply alone does not confirm a rejection, an offer, or the cause of a delay. Avoid repeatedly sending the same request while waiting.

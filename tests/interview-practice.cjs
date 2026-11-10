@@ -172,9 +172,30 @@ const ids = ['improve-a-task', 'learn-from-a-mistake', 'explain-a-disagreement',
       if (javascript) assert.equal(await page.locator('.jp-interview-response[open]').count(), 0);
       await page.goto(base + route + '#unknown-question');
       assert.ok(await page.locator('.jp-interview-prompt:visible').count() > 0);
+      const debrief = '/guides/follow-up-after-an-interview/#try-a-two-pass-interview-debrief';
+      const reflection = page.getByRole('link', { name: 'Reflect after an interview', exact: true });
+      assert.equal(await reflection.getAttribute('href'), debrief);
+      assert.ok((await reflection.boundingBox()).height >= 44);
+      await reflection.focus();
+      await page.keyboard.press('Enter');
+      await page.waitForURL(base + debrief);
+      const heading = page.getByRole('heading', { name: 'Try a Two-Pass Interview Debrief', exact: true });
+      await heading.waitFor({ state: 'visible' });
+      assert.equal(await page.locator('.jp-article-body input, .jp-article-body textarea, .jp-article-body form, .jp-article-body [contenteditable]').count(), 0);
+      for (const width of [1440, 390, 320]) {
+        await page.setViewportSize({ width, height: 1000 });
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Debrief overflow: ' + width);
+        if (javascript && width !== 320) {
+          await heading.evaluate(el => el.scrollIntoView());
+          await page.screenshot({ path: path.join(output, `debrief-${width}.png`) });
+        }
+      }
+      await page.getByRole('link', { name: 'practice describing a small improvement', exact: true }).click();
+      await page.waitForURL(base + route + '#improve-a-task');
+      await page.locator('#improve-a-task').waitFor({ state: 'visible' });
       assert.deepEqual(errors, []);
       await context.close();
     }
-    console.log('PASS: six prompts and follow-ups, six individual downloads and next-visit links, combined pack parity, topics/keyboard/history/no-JS, five widths and application privacy checks.');
+    console.log('PASS: six prompts and follow-ups, individual and combined download parity, topics/keyboard/history/no-JS, five widths, privacy checks and the debrief return path.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
