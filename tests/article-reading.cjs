@@ -167,6 +167,8 @@ const routes = [
     assert.match(searchBody, /not a controlled experiment on a search algorithm/);
     assert.match(searchBody, /do not treat these invented titles as a fixed classification/);
     assert.deepEqual(await page.locator('#notes-for-the-next-visit + ul strong').allTextContents(), ['Keep:', 'Change:', 'Check:']);
+    assert.deepEqual(await page.locator('#two-visit-search-log + p + ul strong').allTextContents(), ['Work I want to find:', 'Visit 1:', 'Visit 2:', 'Next action:']);
+    assert.equal(await page.locator('.jp-article-body [contenteditable]').count(), 0);
     assert.match(searchBody, /Do not count the repeated posting as a second opening/);
     await page.getByRole('link', { name: 'weekly job search review', exact: true }).click();
     assert.equal(new URL(page.url()).pathname, '/job-seeker-tools/');
@@ -180,7 +182,7 @@ const routes = [
       await page.setViewportSize({ width, height: 960 });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Search review overflow: ' + width);
       if (width !== 320) {
-        await page.locator('#compare-two-search-visits').evaluate(el => el.scrollIntoView());
+        await page.locator('#two-visit-search-log').evaluate(el => el.scrollIntoView());
         await page.screenshot({ path: path.join(output, 'search-review-' + width + '.png') });
       }
     }

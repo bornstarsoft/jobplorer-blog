@@ -104,7 +104,16 @@ These are fictional visits, not actual search results. Both visits use the same 
 - **Change:** One term or filter to try next. Note the date and what stayed the same.
 - **Check:** One uncertain detail to verify in a full posting, such as whether writing instructions is part of the job.
 
-Keep these lines in your own notes. On your next visit, mark whether you found a different relevant posting, saw the same one again, or still need to clarify the work. Bring that observation to your [next weekly review](/job-seeker-tools/#your-weekly-job-search-review).
+### Two-Visit Search Log
+
+Keep this short log in your own notes. Leave an entry blank if you have not checked it yet.
+
+- **Work I want to find:** [one task I want to see in a description]
+- **Visit 1:** [date, site, query and settings] | [one useful observation]
+- **Visit 2:** [date, what changed and what stayed fixed] | [new, repeated or unclear posting]
+- **Next action:** [keep one term, try one change or verify one detail]
+
+If the same posting comes back, check whether the description or status changed on the employer's site. If nothing relevant appears, use one description to identify a different task phrase to try. If a promising result is unclear, verify that detail before changing the search again. Bring one next action to your [next weekly review](/job-seeker-tools/#your-weekly-job-search-review).
 
 ## Sources and Review Scope
 

@@ -57,7 +57,7 @@ For another perspective on the work, [Plan an Informational Conversation](/guide
 4. Select the applications you can prepare carefully. Record a next action and date for each.
 5. Review responses and unanswered questions before changing your search terms.
 
-[Compare two search visits](/guides/refine-your-job-search-terms/#compare-two-search-visits) to decide which query to keep, what to change, and which detail to verify next.
+Bring one search note from last week. [Compare two search visits](/guides/refine-your-job-search-terms/#compare-two-search-visits) to decide whether to keep a query, test one change, or verify a detail before searching again.
 
 Start with [job site comparisons](/job-sites/), a [career guide](/career-guides/), or a [country guide](/country-guides/).
 
