@@ -86,6 +86,26 @@ You can instead keep a short note in your own private document: query, site, set
 
 At your [weekly job search review](/job-seeker-tools/#your-weekly-job-search-review), revisit the useful phrases and remove assumptions that did not hold up. Keep the next step concrete: inspect a posting, clarify a detail, or try one different term.
 
+## Compare Two Search Visits
+
+Use a small sample of descriptions on each visit. Compare what you learned about the work, not the number of results. Note any change in site, location, or filters before comparing the wording.
+
+### Worked Example: Keep a Useful Term
+
+These are fictional visits, not actual search results. Both visits use the same site, location, and filters. The aim is to find work that includes writing product setup instructions.
+
+1. **First visit, `product support`:** One description mentions writing setup articles. Another focuses on answering calls without mentioning documentation.
+2. **Second visit, `product support documentation`:** The setup-articles posting appears again. A different description mentions internal policy documents, not product setup.
+3. **Next decision:** Keep `product support` as a starting term and check the setup-articles role on the employer's site. Do not count the repeated posting as a second opening. The narrower phrase did not add another relevant example in this small sample; it does not prove the phrase will never be useful.
+
+### Notes for the Next Visit
+
+- **Keep:** One query or setting worth revisiting, and the task in a description that made it useful.
+- **Change:** One term or filter to try next. Note the date and what stayed the same.
+- **Check:** One uncertain detail to verify in a full posting, such as whether writing instructions is part of the job.
+
+Keep these lines in your own notes. On your next visit, mark whether you found a different relevant posting, saw the same one again, or still need to clarify the work. Bring that observation to your [next weekly review](/job-seeker-tools/#your-weekly-job-search-review).
+
 ## Sources and Review Scope
 
 The two linked primary sources were checked on September 22, 2026. Indeed's guidance is provider- and locale-specific; National Careers Service guidance is from England's public careers service. The trials, invented snippets, and one-setting-at-a-time workflow are original Jobplorer exercises, not measured search results. No live job count, guaranteed discovery, employer endorsement, or hiring outcome is implied.

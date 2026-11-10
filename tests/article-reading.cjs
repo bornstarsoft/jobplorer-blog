@@ -166,10 +166,26 @@ const routes = [
     assert.match(searchBody, /All three snippets below are invented/);
     assert.match(searchBody, /not a controlled experiment on a search algorithm/);
     assert.match(searchBody, /do not treat these invented titles as a fixed classification/);
+    assert.deepEqual(await page.locator('#notes-for-the-next-visit + ul strong').allTextContents(), ['Keep:', 'Change:', 'Check:']);
+    assert.match(searchBody, /Do not count the repeated posting as a second opening/);
     await page.getByRole('link', { name: 'weekly job search review', exact: true }).click();
     assert.equal(new URL(page.url()).pathname, '/job-seeker-tools/');
     assert.equal(new URL(page.url()).hash, '#your-weekly-job-search-review');
     assert.equal(await page.locator('#your-weekly-job-search-review').count(), 1);
+    await page.getByRole('link', { name: 'Compare two search visits', exact: true }).focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + '/guides/refine-your-job-search-terms/#compare-two-search-visits');
+    await page.locator('#compare-two-search-visits').waitFor({ state: 'visible' });
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Search review overflow: ' + width);
+      if (width !== 320) {
+        await page.locator('#compare-two-search-visits').evaluate(el => el.scrollIntoView());
+        await page.screenshot({ path: path.join(output, 'search-review-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'next weekly review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
 
     await page.goto(base + addedGuides[0]);
     const taskFacts = await page.locator('#given-facts + ol > li').allTextContents();
@@ -257,6 +273,11 @@ const routes = [
     assert.equal(new URL(plain.url()).hash, '#scope-and-limitations');
     await plain.locator('.jp-reading-next li a').first().click();
     assert.equal(new URL(plain.url()).pathname, '/job-sites/');
+    await plain.goto(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'Compare two search visits', exact: true }).click();
+    await plain.waitForURL(base + '/guides/refine-your-job-search-terms/#compare-two-search-visits');
+    await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plainContext.close();
     console.log('PASS: 25 article outlines, existing body preservation, twelve practical guide sources/internal links/images, fictional examples and weekly-review anchors, employer-research scope, AI output checks, career-conversation privacy, learning exercise records and worked result, search trials and fictional posting snippets, work-sample brief/facts/response consistency, landing-page discoverability, 5 viewport widths, keyboard and no-JS navigation, small-screen/short-height reachability, no new inputs/storage, unrelated-page and tracker exclusion.');
   } finally { await browser.close(); }
