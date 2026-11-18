@@ -67,6 +67,8 @@ You have time to start one draft today. Both fictional postings say "Support Ass
 
 For your own shortlist, keep **what I know / what would change my next action / one next step** in your notes. At your [weekly shortlist review](/job-seeker-tools/#your-weekly-job-search-review), update the action only where you learned something new. Use the [saved-posting recheck](#recheck-a-saved-posting) before working from old instructions.
 
+If the next posting requests a letter, [adapt one example for the new role](/guides/write-a-focused-cover-letter/#adapt-one-example-for-another-role) only if the example fits the work described.
+
 ## Recheck a Saved Posting
 
 Before reusing an application draft, open the current posting through the employer's careers site. Compare the employer, role reference if shown, and location before deciding that two listings are the same role. Then check what changed in the responsibilities, application instructions, and deadline if one is given.

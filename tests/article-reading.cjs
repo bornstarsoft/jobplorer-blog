@@ -303,6 +303,36 @@ const routes = [
     await page.getByRole('link', { name: 'weekly shortlist review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
 
+    await page.goto(base + shortlistRoute);
+    const adaptLink = page.getByRole('link', { name: 'adapt one example for the new role', exact: true });
+    await adaptLink.focus();
+    await page.keyboard.press('Enter');
+    const adaptRoute = '/guides/write-a-focused-cover-letter/#adapt-one-example-for-another-role';
+    await page.waitForURL(base + adaptRoute);
+    const adaptHeading = page.locator('#adapt-one-example-for-another-role');
+    await adaptHeading.waitFor({ state: 'visible' });
+    const exampleChoices = page.locator('#adapt-one-example-for-another-role + p + p + ul');
+    assert.deepEqual(await exampleChoices.locator('li > strong').allTextContents(), [
+      'For a role focused on clear instructions:', 'For a role focused on finding documentation gaps:'
+    ]);
+    assert.match(await exampleChoices.locator('li').first().textContent(), /revised it after a teammate tried the steps/);
+    assert.match(await exampleChoices.locator('li').last().textContent(), /environment setting was missing/);
+    assert.match(await page.locator('#adapt-one-example-for-another-role + p + p + ul + p').textContent(), /Neither version supports.*built the prototype.*resolved a customer incident.*measured/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Application evidence overflow: ' + width);
+      if (width !== 320) {
+        await adaptHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'adapt-application-evidence-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'the final letter check', exact: true }).click();
+    await page.waitForURL(base + '/guides/write-a-focused-cover-letter/#before-sending');
+    await page.getByRole('link', { name: 'weekly application review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+
     const postingRecheck = page.getByRole('link', { name: 'Recheck a saved posting', exact: true });
     await postingRecheck.focus();
     await page.keyboard.press('Enter');
@@ -619,6 +649,12 @@ const routes = [
     await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');
     await plain.goBack();
     await plain.getByRole('link', { name: 'weekly shortlist review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'compare two saved roles', exact: true }).click();
+    await plain.waitForURL(base + shortlistRoute);
+    await plain.getByRole('link', { name: 'adapt one example for the new role', exact: true }).click();
+    await plain.waitForURL(base + adaptRoute);
+    await plain.getByRole('link', { name: 'weekly application review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Recheck a saved posting', exact: true }).click();
     await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');

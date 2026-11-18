@@ -63,6 +63,19 @@ The greeting and structure are editorial examples, not required wording. Use the
 
 The second sentence gives the reader something to ask about. It does not prove suitability on its own. Remove a claim you cannot support instead of adding stronger adjectives or invented outcomes.
 
+## Adapt One Example for Another Role
+
+Before reusing a draft, check what the new posting asks you to show. Keep the facts about your contribution and the result. Change the detail you lead with, not the work you claim to have done. If the example cannot answer the new prompt, choose a different one rather than stretching it.
+
+**Fictional return visit:** Use the same study project from the letter above. The applicant wrote a setup guide, a teammate tried it, and the applicant added a missing environment setting. The teammate built the prototype.
+
+- **For a role focused on clear instructions:** "I wrote a setup guide for a study project and revised it after a teammate tried the steps." Lead with what you wrote and how you checked it.
+- **For a role focused on finding documentation gaps:** "When a teammate tried the setup guide, their questions showed that an environment setting was missing. I added that setting to the guide." Lead with how you spotted and addressed the gap.
+
+Neither version supports saying the applicant built the prototype, resolved a customer incident, or measured how much time the guide saved. Use [the final letter check](#before-sending) to remove details carried over from a different application.
+
+Keep **facts I can reuse / why they fit this role / claims to leave out** in your own notes. At your [weekly application review](/job-seeker-tools/#your-weekly-job-search-review), compare the note with one current posting before opening another draft.
+
 ## Before Sending
 
 Check the employer, role reference, requested format, and every factual example. Remove placeholders such as DOC-EXAMPLE and Example Applicant. Make sure the letter and resume describe the same dates and responsibilities.
@@ -73,4 +86,4 @@ Use the [resume checklist](/posts/why-87-percent-of-job-seekers-abandon-their-re
 
 ## Sources and Review Scope
 
-The two linked National Careers Service pages were checked on September 22, 2026. This England-based service supports the general preparation guidance, not worldwide application conventions. The decision prompts, fictional letter, annotations, and editing example are Jobplorer editorial material. No hiring guarantee or eligibility judgment is implied.
+The two linked National Careers Service pages were checked on September 22, 2026. This England-based service supports the general preparation guidance, not worldwide application conventions. The decision prompts and fictional writing exercises are Jobplorer editorial material. No hiring guarantee or eligibility judgment is implied.
