@@ -96,15 +96,26 @@ If the employer sends a defined task instead of asking for an existing sample, [
 
 ## Before You Submit
 
-Start with [Read a Job Posting](/guides/read-a-job-posting/) to separate responsibilities from preferences. If work samples are relevant, use [Build a Project Case Study](/guides/build-a-project-case-study/) to explain your contribution and evidence.
+Check the files and fields you are about to send, not just the draft you worked on. If the instructions changed or you are still waiting for a detail, return to the [application draft review](#update-your-application-draft).
 
-- Match the employer name, role title, and posting reference across the application.
-- Check the requested file format and open each attachment before uploading.
-- Test your portfolio links and describe your own contribution to team projects.
-- Review any automatically filled fields against your original information.
-- Keep a note of the confirmation and the employer's stated next steps.
+1. **Match the destination.** Compare the employer, role and reference with the current posting. Use the verified application route and recheck any stated deadline and time zone.
+2. **Open the actual files.** Match each file to a requested item and format. Open the final copies, check that they are readable and for the right role, and remove comments or confidential material that should not be shared. Include links only if appropriate; check that the intended reader can open them without making private work public.
+3. **Review what will be sent.** Compare automatically filled fields with your information. Check the selected filenames or attachments in the employer's preview if one is available. If a requested item, file version or destination is still unclear, resolve it before sending.
 
-Use the [resume review checklist](/posts/why-87-percent-of-job-seekers-abandon-their-resumes/) for a closer check of application materials. If a letter is requested, [Write a Focused Cover Letter](/guides/write-a-focused-cover-letter/) provides a fictional example and a final submission check.
+### Final Check: A Fictional Example
+
+In the fictional `DEMO-204` example, the employer's current instructions now confirm that an existing writing sample is allowed as a PDF attachment. The preview shows the updated resume but an older sample draft. Replace that attachment with the intended PDF, open the final copy and check the selected filename again. A saved draft or a preview is not a submission confirmation.
+
+### Pick Up at Your Next Review
+
+In your own notes, keep one line for this role:
+
+- **Not sent yet:** Record the remaining check and when you will return to it. For `DEMO-204`: replace and verify the sample PDF before sending.
+- **Sent:** Note the date, final file versions, and any confirmation or next step the employer actually provided. If the submission status is unclear, check the stated application channel before sending a duplicate.
+
+Bring that note to your [weekly job search review](#your-weekly-job-search-review). No files or notes need to be entered in Jobplorer.
+
+If you need to compare responsibilities and preferences again, see [Read a Job Posting](/guides/read-a-job-posting/). For a specific document, use the [resume review checklist](/posts/why-87-percent-of-job-seekers-abandon-their-resumes/), [Build a Project Case Study](/guides/build-a-project-case-study/) for evidence of your contribution, or [Write a Focused Cover Letter](/guides/write-a-focused-cover-letter/) when a letter is requested.
 
 ## Interview Research Prompts
 

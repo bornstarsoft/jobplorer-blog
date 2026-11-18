@@ -233,6 +233,24 @@ const routes = [
     await page.getByRole('link', { name: 'final submission checklist', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await page.locator('#before-you-submit').waitFor({ state: 'visible' });
+    assert.deepEqual(await page.locator('#before-you-submit + p + ol strong').allTextContents(), [
+      'Match the destination.', 'Open the actual files.', 'Review what will be sent.'
+    ]);
+    assert.match(await page.locator('#final-check-a-fictional-example + p').textContent(), /PDF attachment.*not a submission confirmation/);
+    assert.deepEqual(await page.locator('#pick-up-at-your-next-review + p + ul strong').allTextContents(), [
+      'Not sent yet:', 'Sent:'
+    ]);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Final check overflow: ' + width);
+      if (width !== 320) {
+        await page.locator('#before-you-submit').evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'submission-check-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'weekly job search review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
     await page.getByRole('link', { name: 'check the work sample brief', exact: true }).click();
     await page.waitForURL(base + '/guides/prepare-for-a-work-sample-task/#read-the-brief-before-starting');
     await page.locator('#read-the-brief-before-starting').waitFor({ state: 'visible' });
@@ -331,6 +349,10 @@ const routes = [
     await plain.getByRole('link', { name: 'Recheck a saved posting', exact: true }).click();
     await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');
     await plain.getByRole('link', { name: 'update your application draft', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#update-your-application-draft');
+    await plain.getByRole('link', { name: 'final submission checklist', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await plain.getByRole('link', { name: 'application draft review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#update-your-application-draft');
     await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
