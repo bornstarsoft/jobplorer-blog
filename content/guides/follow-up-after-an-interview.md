@@ -113,6 +113,18 @@ If the employer only described what a later round might involve, keep it in your
 
 In your private notes, keep **confirmed round / answer to keep / one change to rehearse**. At the [next weekly review](/job-seeker-tools/#your-weekly-job-search-review), check whether a new instruction changes that plan or whether the one rehearsal is enough.
 
+## Recheck What You Learned About the Role
+
+Pick one detail that could change how you prepare: the first assignment, a recurring responsibility, or who reviews the work. Compare the posting with what was said in the conversation. Check that both descriptions refer to the same role and time period. A first-month assignment and an ongoing duty can both be true.
+
+- **Confirmed:** Keep what the employer explicitly clarified, with enough context to remember when it applies.
+- **Different scope:** Keep both descriptions if they cover different teams, periods, or tasks. Do not turn a single example into a recurring duty.
+- **Still unclear:** Mark the difference as unresolved. Ask one focused question at the next appropriate opportunity, through the employer's stated channel.
+
+**Fictional example:** The posting says you will update help articles. In the interview, someone mentions joining a support queue in the first month. Before assuming the job has changed, ask: "Is the first-month support queue for learning what users ask, or is queue coverage an ongoing responsibility?" At the next conversation, the employer clarifies that you will observe the queue during onboarding and that another team owns daily coverage. Update that detail; do not infer how all future tasks will be assigned.
+
+Keep **earlier description / what was clarified / one open question** in your own notes. At your [weekly role review](/job-seeker-tools/#your-weekly-job-search-review), update only what you learned. If there is no new information, carry forward the question rather than rewriting the whole note.
+
 ## Keep the Rest of Your Search Moving
 
 Record a next review point in your own notes and return to other research. No reply alone does not confirm a rejection, an offer, or the cause of a delay. Avoid repeatedly sending the same request while waiting.

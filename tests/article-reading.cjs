@@ -146,6 +146,31 @@ const routes = [
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await page.setViewportSize({ width: 1440, height: 960 });
 
+    await page.goto(base + '/guides/prepare-for-an-interview/#questions-that-make-the-role-clearer');
+    const roleRecheckLink = page.getByRole('link', { name: 'compare the role details after the interview', exact: true });
+    await roleRecheckLink.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + '/guides/follow-up-after-an-interview/#recheck-what-you-learned-about-the-role');
+    const roleRecheck = page.locator('#recheck-what-you-learned-about-the-role');
+    await roleRecheck.waitFor({ state: 'visible' });
+    assert.deepEqual(await page.locator('#recheck-what-you-learned-about-the-role + p + ul li > strong').allTextContents(), [
+      'Confirmed:', 'Different scope:', 'Still unclear:'
+    ]);
+    assert.match(await page.locator('#recheck-what-you-learned-about-the-role + p + ul + p').textContent(), /first-month support queue.*ongoing responsibility.*another team owns daily coverage/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Role recheck overflow: ' + width);
+      if (width !== 320) {
+        await roleRecheck.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'role-detail-recheck-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'weekly role review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await page.setViewportSize({ width: 1440, height: 960 });
+
     await page.goto(base + '/guides/research-an-employer/');
     assert.match(await page.locator('.jp-article-body').textContent(), /All three details below are invented/);
     assert.match(await page.locator('.jp-article-body').textContent(), /Do not convert missing information into a positive or negative score/);
@@ -510,6 +535,11 @@ const routes = [
     await plain.locator('.jp-page-outline').getByRole('link', { name: 'Prepare for a Confirmed Next Round', exact: true }).click();
     await plain.waitForURL(base + '/guides/follow-up-after-an-interview/#prepare-for-a-confirmed-next-round');
     await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.goto(base + '/guides/prepare-for-an-interview/#questions-that-make-the-role-clearer');
+    await plain.getByRole('link', { name: 'compare the role details after the interview', exact: true }).click();
+    await plain.waitForURL(base + '/guides/follow-up-after-an-interview/#recheck-what-you-learned-about-the-role');
+    await plain.getByRole('link', { name: 'weekly role review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.goto(base + '/job-seeker-tools/#act-on-an-application-reply');
     await plain.getByRole('link', { name: 'return to the weekly review', exact: true }).click();

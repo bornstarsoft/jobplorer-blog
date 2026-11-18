@@ -50,6 +50,8 @@ Pick questions that the posting and conversation have not already answered. Thes
 
 A question is useful when its answer changes your understanding, not because it appears on a list. The [Remote Workers guide](/career-guides/remote-workers/) offers more work-arrangement research prompts.
 
+If the conversation gives you a different picture of the work, [compare the role details after the interview](/guides/follow-up-after-an-interview/#recheck-what-you-learned-about-the-role) before drawing a conclusion.
+
 ## Check the Video Setup
 
 The National Careers Service distinguishes live conversations from recorded interviews and recommends testing equipment and following the supplied instructions. For a recorded assessment, check the practice area or guidance for time limits and retry options rather than assuming they exist. [National Careers Service: Video interview tips](https://nationalcareers.service.gov.uk/careers-advice/how-to-do-well-in-video-interviews).
