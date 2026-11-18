@@ -56,6 +56,17 @@ Use the same four headings for each posting. Compare the work described and the 
 
 Finish with one next action: verify an unclear detail, prepare a relevant example, or review the application instructions. The [resume checklist](/posts/why-87-percent-of-job-seekers-abandon-their-resumes/) and [interview preparation guide](/guides/prepare-for-an-interview/) cover those later steps.
 
+### Practice With Two Saved Roles
+
+You have time to start one draft today. Both fictional postings say "Support Assistant," but the work and the unanswered questions differ. In this example, you have a free weekday but cannot commit to regular evening shifts.
+
+- **DEMO-411: Draft today.** The posting lists maintaining help articles and one weekday on site that fits your schedule. Start with a truthful example of making instructions easier to follow. That does not establish that you meet every requirement.
+- **DEMO-412: Verify before drafting.** The posting lists triaging product issues and covering a rotating schedule, but gives no hours. Ask through the stated channel whether the rotation includes evenings. Leave the schedule unknown until confirmed; do not read silence as an answer.
+
+**Next visit:** A clarification for `DEMO-412` confirms that its rotation is during weekday daytime hours. Check the current posting and instructions again. If the role is still open and the schedule works for you, replace "verify hours" with "prepare one example of triaging a product issue." The clarification changes your next action, not your chances of selection.
+
+For your own shortlist, keep **what I know / what would change my next action / one next step** in your notes. At your [weekly shortlist review](/job-seeker-tools/#your-weekly-job-search-review), update the action only where you learned something new. Use the [saved-posting recheck](#recheck-a-saved-posting) before working from old instructions.
+
 ## Recheck a Saved Posting
 
 Before reusing an application draft, open the current posting through the employer's careers site. Compare the employer, role reference if shown, and location before deciding that two listings are the same role. Then check what changed in the responsibilities, application instructions, and deadline if one is given.
@@ -78,4 +89,4 @@ If you confirmed it is the same role and the instructions changed, [update your 
 
 ## Sources and Review Scope
 
-The two National Careers Service pages linked above were checked on September 22, 2026. They are from England's public careers service; this page does not generalize national application or qualification rules. The four-part reading method, invented posting, and fictional recheck are Jobplorer editorial material. No application outcome, hiring threshold, or eligibility judgment is implied.
+The two National Careers Service pages linked above were checked on September 22, 2026. They are from England's public careers service; this page does not generalize national application or qualification rules. The reading method and fictional exercises are Jobplorer editorial material. No application outcome, hiring threshold, or eligibility judgment is implied.

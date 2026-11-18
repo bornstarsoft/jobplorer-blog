@@ -61,6 +61,8 @@ Choose the stage you can verify for one role in your own notes.
 
 **Two items to review?** In this fictional review, one application has a verified request for a replacement file by tomorrow, and another has only reached your own check date. Check the requested file first. Then review the second application's stated channel once and leave its status unchanged if there is no update. A personal check date is not an employer deadline.
 
+If you have two saved postings but time for only one draft, [compare two saved roles](/guides/read-a-job-posting/#practice-with-two-saved-roles) to decide what to prepare now and what to verify first.
+
 If there is no open application to act on, choose a role family and location to explore through [job site comparisons](/job-sites/), a [career guide](/career-guides/), or a [country guide](/country-guides/). To rehearse instead, [choose a short practice route](/job-seeker-tools/guide-finder/#practice-routes) or use [Choose What to Learn Next](/guides/choose-what-to-learn-next/).
 
 ### Keep One Note for Next Time

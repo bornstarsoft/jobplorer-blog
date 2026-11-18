@@ -279,6 +279,30 @@ const routes = [
     await page.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
 
+    const shortlistLink = page.getByRole('link', { name: 'compare two saved roles', exact: true });
+    await shortlistLink.focus();
+    await page.keyboard.press('Enter');
+    const shortlistRoute = '/guides/read-a-job-posting/#practice-with-two-saved-roles';
+    await page.waitForURL(base + shortlistRoute);
+    const shortlist = page.locator('#practice-with-two-saved-roles');
+    await shortlist.waitFor({ state: 'visible' });
+    assert.deepEqual(await page.locator('#practice-with-two-saved-roles + p + ul li > strong').allTextContents(), [
+      'DEMO-411: Draft today.', 'DEMO-412: Verify before drafting.'
+    ]);
+    assert.match(await page.locator('#practice-with-two-saved-roles + p + ul + p').textContent(), /DEMO-412.*weekday daytime hours.*role is still open.*prepare one example/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Saved role comparison overflow: ' + width);
+      if (width !== 320) {
+        await shortlist.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'saved-role-comparison-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'weekly shortlist review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+
     const postingRecheck = page.getByRole('link', { name: 'Recheck a saved posting', exact: true });
     await postingRecheck.focus();
     await page.keyboard.press('Enter');
@@ -588,6 +612,13 @@ const routes = [
     await plain.getByRole('link', { name: 'Compare two search visits', exact: true }).click();
     await plain.waitForURL(base + '/guides/refine-your-job-search-terms/#compare-two-search-visits');
     await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'compare two saved roles', exact: true }).click();
+    await plain.waitForURL(base + shortlistRoute);
+    await plain.getByRole('link', { name: 'saved-posting recheck', exact: true }).click();
+    await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');
+    await plain.goBack();
+    await plain.getByRole('link', { name: 'weekly shortlist review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Recheck a saved posting', exact: true }).click();
     await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');
