@@ -56,6 +56,18 @@ The National Careers Service distinguishes live conversations from recorded inte
 
 Before the session, confirm the time zone, meeting method, and contact for technical problems. Test the microphone, camera, and connection. Close private windows and notifications before any planned screen sharing. Do not expose account details or confidential work to demonstrate a skill.
 
+## Recheck a Changed Interview Invitation
+
+Before your next practice, compare the latest verified invitation with the one you prepared for. Use the employer's stated channel. Check whether the update changes the date or time zone, the format or location, or what you need to bring or show. If two confirmed messages conflict, clarify which instruction applies through that channel; do not assume a tentative change is final.
+
+- **Only the time or joining details changed:** Update your private calendar after confirmation and recheck the joining method. Keep your role examples if the interview format and instructions are unchanged.
+- **The format or preparation changed:** Keep the work that still fits, then rehearse one new requirement. For a requested walkthrough, practice explaining what you did and showing only material you are allowed to share. For a recorded interview, [check the video instructions](#check-the-video-setup) before assuming there will be a live interviewer.
+- **Nothing changed:** Rehearse the one answer or question you marked as unfinished last time, instead of starting over.
+
+**Fictional second visit:** The verified invitation for `DEMO-204` still says Tuesday at 14:00 UTC, but now asks for a short project walkthrough. Keep the time and the project example. Replace the general rehearsal with one pass through the project: what was the problem, what did you do, and what could you verify? Use [the small-improvement practice prompt](/job-seeker-tools/interview-practice/#improve-a-task) if you need a fictional example to work from.
+
+In your own notes, keep **what changed / one thing to rehearse / what still needs confirmation**. Bring that back to your [weekly interview check](/job-seeker-tools/#your-weekly-job-search-review).
+
 ## After the Conversation
 
 In your private notes, separate what the employer actually said from your interpretation. Record any stated next step, one question that remains open, and one example you would explain more clearly next time. Follow the employer's communication instructions rather than assuming a universal follow-up schedule.
@@ -64,4 +76,4 @@ For earlier preparation, use the [resume review checklist](/posts/why-87-percent
 
 ## Sources and Review Scope
 
-The three official National Careers Service pages linked above were checked on September 22, 2026. This is an England-based public careers resource; the general preparation ideas are not statements about hiring rules in every country. The project example, research exercise, and suggested employer questions are Jobplorer editorial material, not official model answers.
+The three official National Careers Service pages linked above were checked on September 22, 2026. This is an England-based public careers resource; the general preparation ideas are not statements about hiring rules in every country. The exercises, fictional examples, and suggested employer questions are Jobplorer editorial material, not official model answers.

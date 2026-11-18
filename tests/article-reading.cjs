@@ -328,6 +328,32 @@ const routes = [
     await page.locator('#start-with-the-posting').waitFor({ state: 'visible' });
     await page.goBack();
     await page.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
+    const inviteRecheckLink = page.getByRole('link', { name: 'recheck what changed before rehearsing', exact: true });
+    await inviteRecheckLink.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + '/guides/prepare-for-an-interview/#recheck-a-changed-interview-invitation');
+    const inviteRecheck = page.locator('#recheck-a-changed-interview-invitation');
+    await inviteRecheck.waitFor({ state: 'visible' });
+    assert.deepEqual(await page.locator('#recheck-a-changed-interview-invitation + p + ul li > strong').allTextContents(), [
+      'Only the time or joining details changed:', 'The format or preparation changed:', 'Nothing changed:'
+    ]);
+    assert.match(await page.locator('#recheck-a-changed-interview-invitation + p + ul + p').textContent(), /DEMO-204.*14:00 UTC.*project walkthrough/);
+    assert.equal(await page.locator('main input, main textarea, main form, main [contenteditable]').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Invite recheck overflow: ' + width);
+      if (width !== 320) {
+        await inviteRecheck.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'interview-invite-recheck-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'the small-improvement practice prompt', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/interview-practice/#improve-a-task');
+    await page.locator('#improve-a-task').waitFor({ state: 'visible' });
+    await page.goBack();
+    await page.getByRole('link', { name: 'weekly interview check', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await page.getByRole('link', { name: 'check the work sample brief', exact: true }).click();
     await page.waitForURL(base + '/guides/prepare-for-a-work-sample-task/#read-the-brief-before-starting');
     await page.locator('#read-the-brief-before-starting').waitFor({ state: 'visible' });
@@ -441,6 +467,13 @@ const routes = [
     await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await plain.goBack();
     await plain.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
+    await plain.getByRole('link', { name: 'recheck what changed before rehearsing', exact: true }).click();
+    await plain.waitForURL(base + '/guides/prepare-for-an-interview/#recheck-a-changed-interview-invitation');
+    await plain.getByRole('link', { name: 'check the video instructions', exact: true }).click();
+    await plain.waitForURL(base + '/guides/prepare-for-an-interview/#check-the-video-setup');
+    await plain.getByRole('link', { name: 'weekly interview check', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.goto(base + '/job-seeker-tools/#act-on-an-application-reply');
     await plain.getByRole('link', { name: 'return to the weekly review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Review application receipts', exact: true }).click();

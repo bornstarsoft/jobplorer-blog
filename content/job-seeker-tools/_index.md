@@ -91,6 +91,8 @@ Match the message to the role or reference and the employer's stated channel. An
 
 **Fictional next review:** Last week, `DEMO-204` was waiting. This week, the verified portal asks you to choose an interview slot. Replace "check for a reply" with "choose a slot and confirm the time zone." Leave the interview marked as not booked until the employer's channel confirms it.
 
+If the invitation is later updated, [recheck what changed before rehearsing](/guides/prepare-for-an-interview/#recheck-a-changed-interview-invitation).
+
 In your own notes, keep **what changed / next action / what to verify next time**. When you [return to the weekly review](#your-weekly-job-search-review), check whether that action is complete before choosing another. For a closed application, bring forward the preparation note, not another status check.
 
 ## Application Record Template
