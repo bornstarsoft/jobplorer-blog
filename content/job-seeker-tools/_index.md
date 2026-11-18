@@ -142,6 +142,8 @@ Check the files and fields you are about to send, not just the draft you worked 
 2. **Open the actual files.** Match each file to a requested item and format. Open the final copies, check that they are readable and for the right role, and remove comments or confidential material that should not be shared. Include links only if appropriate; check that the intended reader can open them without making private work public.
 3. **Review what will be sent.** Compare automatically filled fields with your information. Check the selected filenames or attachments in the employer's preview if one is available. If a requested item, file version or destination is still unclear, resolve it before sending.
 
+Reusing a project link? [Recheck the portfolio version and access](/guides/build-a-project-case-study/#recheck-a-portfolio-link-before-reuse) from the draft you are about to send.
+
 ### Final Check: A Fictional Example
 
 In the fictional `DEMO-204` example, the employer's current instructions now confirm that an existing writing sample is allowed as a PDF attachment. The preview shows the updated resume but an older sample draft. Replace that attachment with the intended PDF, open the final copy and check the selected filename again. A saved draft or a preview is not a submission confirmation.

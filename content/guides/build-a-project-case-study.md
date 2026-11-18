@@ -69,6 +69,18 @@ Keep just enough of a practice result to explain what you checked and what you s
 
 For discussion practice, turn the example into a short answer using [Prepare for an Interview](/guides/prepare-for-an-interview/). For role context, read [Software Developers](/career-guides/software-developers/) or [Game Developers](/career-guides/game-developers/).
 
+## Recheck a Portfolio Link Before Reuse
+
+When you use a previous draft for a new application, open the exact link from the new draft, not the copy in your own files. Check version and access separately. A link that opens can still show the wrong work.
+
+- **Version:** Match the linked file or demo to the claim in your draft. Check a visible title, date, or version, and look for the specific detail you want the reader to see.
+- **Access:** If the link is meant to open without an account, try it in a signed-out browser. If access is restricted, check the intended recipient and permissions without making private material public. Access from your account does not prove recipient access.
+- **If either check fails:** Fix only what you can verify and are allowed to share. If you cannot, leave the link out or use an alternative the employer accepts, such as a permitted attachment or a short description.
+
+**Fictional recheck:** A draft describes the puzzle prototype restarting from both a finished and an unfinished level. The link still opens, but the older clip only shows the finished level. Use an allowed clip that shows both, or narrow the claim to what the existing clip shows. Open the final link or the employer's preview, if available, before sending.
+
+Keep **version checked / access checked / what to verify next** in your own notes. If you reuse the example at your [weekly portfolio review](/job-seeker-tools/#your-weekly-job-search-review), check the new draft again rather than assuming the last review still applies. Then return to the [final submission checklist](/job-seeker-tools/#before-you-submit).
+
 ## Sources and Review Scope
 
 The official National Careers Service and GitHub documentation linked above were checked on September 22, 2026. They support skills reflection and code-project documentation respectively. The outline, fictional exercises, and sharing checklist are Jobplorer editorial suggestions, not universal hiring requirements or legal advice.

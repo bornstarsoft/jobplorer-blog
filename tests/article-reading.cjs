@@ -449,6 +449,30 @@ const routes = [
         await page.screenshot({ path: path.join(output, 'submission-check-' + width + '.png') });
       }
     }
+    const portfolioLink = page.getByRole('link', { name: 'Recheck the portfolio version and access', exact: true });
+    await portfolioLink.focus();
+    await page.keyboard.press('Enter');
+    const portfolioRecheckRoute = '/guides/build-a-project-case-study/#recheck-a-portfolio-link-before-reuse';
+    await page.waitForURL(base + portfolioRecheckRoute);
+    const portfolioHeading = page.locator('#recheck-a-portfolio-link-before-reuse');
+    await portfolioHeading.waitFor({ state: 'visible' });
+    const portfolioChecks = page.locator('#recheck-a-portfolio-link-before-reuse + p + ul li');
+    assert.deepEqual(await portfolioChecks.locator('strong').allTextContents(), ['Version:', 'Access:', 'If either check fails:']);
+    assert.match(await portfolioChecks.nth(1).textContent(), /meant to open without an account.*signed-out browser.*without making private material public/);
+    assert.match(await portfolioChecks.nth(2).textContent(), /leave the link out or use an alternative the employer accepts/);
+    assert.match(await page.locator('#recheck-a-portfolio-link-before-reuse + p + ul + p').textContent(), /older clip only shows the finished level.*narrow the claim/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Portfolio link recheck overflow: ' + width);
+      if (width !== 320) {
+        await portfolioHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'portfolio-link-recheck-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'final submission checklist', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await page.getByRole('link', { name: 'weekly job search review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     assert.equal(await page.getByRole('link', { name: 'Review application receipts', exact: true }).getAttribute('href'), '#confirm-application-receipt');
@@ -774,6 +798,12 @@ const routes = [
     await plain.getByRole('link', { name: 'Review application receipts', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#confirm-application-receipt');
     await plain.getByRole('link', { name: 'check the files and submission details', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await plain.getByRole('link', { name: 'Recheck the portfolio version and access', exact: true }).click();
+    await plain.waitForURL(base + portfolioRecheckRoute);
+    await plain.getByRole('link', { name: 'weekly portfolio review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'Check the final files', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await plain.getByRole('link', { name: 'application draft review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#update-your-application-draft');
