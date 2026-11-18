@@ -72,6 +72,8 @@ In your own notes, keep **what changed / one thing to rehearse / what still need
 
 In your private notes, separate what the employer actually said from your interpretation. Record any stated next step, one question that remains open, and one example you would explain more clearly next time. Follow the employer's communication instructions rather than assuming a universal follow-up schedule.
 
+Use [the interview debrief](/guides/follow-up-after-an-interview/#record-facts-before-interpreting-them) to keep one useful question from the conversation. You can revisit it if another round is confirmed.
+
 For earlier preparation, use the [resume review checklist](/posts/why-87-percent-of-job-seekers-abandon-their-resumes/). For role research, explore [Software Developers](/career-guides/software-developers/) or [Game Developers](/career-guides/game-developers/).
 
 ## Sources and Review Scope

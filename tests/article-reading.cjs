@@ -115,6 +115,37 @@ const routes = [
     assert.equal(new URL(page.url()).hash, '#your-weekly-job-search-review');
     assert.equal(await page.locator('#your-weekly-job-search-review').count(), 1);
 
+    await page.goto(base + '/guides/prepare-for-an-interview/#after-the-conversation');
+    const debriefLink = page.getByRole('link', { name: 'the interview debrief', exact: true });
+    await debriefLink.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + '/guides/follow-up-after-an-interview/#record-facts-before-interpreting-them');
+    await page.locator('.jp-page-outline').getByRole('link', { name: 'Prepare for a Confirmed Next Round', exact: true }).click();
+    await page.waitForURL(base + '/guides/follow-up-after-an-interview/#prepare-for-a-confirmed-next-round');
+    const nextRound = page.locator('#prepare-for-a-confirmed-next-round');
+    await nextRound.waitFor({ state: 'visible' });
+    assert.match(await page.locator('#prepare-for-a-confirmed-next-round + p').textContent(), /possibility, not a booking/);
+    assert.deepEqual(await page.locator('#prepare-for-a-confirmed-next-round + p + ul li > strong').allTextContents(), [
+      'Keep:', 'Update:', 'Clarify:'
+    ]);
+    assert.match(await page.locator('#prepare-for-a-confirmed-next-round + p + ul + p').textContent(), /two-task example.*did not measure speed/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Next-round overflow: ' + width);
+      if (width !== 320) {
+        await nextRound.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'interview-next-round-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'Recheck the invitation details', exact: true }).click();
+    await page.waitForURL(base + '/guides/prepare-for-an-interview/#recheck-a-changed-interview-invitation');
+    await page.goBack();
+    await page.getByRole('link', { name: 'next weekly review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await page.setViewportSize({ width: 1440, height: 960 });
+
     await page.goto(base + '/guides/research-an-employer/');
     assert.match(await page.locator('.jp-article-body').textContent(), /All three details below are invented/);
     assert.match(await page.locator('.jp-article-body').textContent(), /Do not convert missing information into a positive or negative score/);
@@ -472,6 +503,13 @@ const routes = [
     await plain.getByRole('link', { name: 'check the video instructions', exact: true }).click();
     await plain.waitForURL(base + '/guides/prepare-for-an-interview/#check-the-video-setup');
     await plain.getByRole('link', { name: 'weekly interview check', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.goto(base + '/guides/prepare-for-an-interview/#after-the-conversation');
+    await plain.getByRole('link', { name: 'the interview debrief', exact: true }).click();
+    await plain.waitForURL(base + '/guides/follow-up-after-an-interview/#record-facts-before-interpreting-them');
+    await plain.locator('.jp-page-outline').getByRole('link', { name: 'Prepare for a Confirmed Next Round', exact: true }).click();
+    await plain.waitForURL(base + '/guides/follow-up-after-an-interview/#prepare-for-a-confirmed-next-round');
+    await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.goto(base + '/job-seeker-tools/#act-on-an-application-reply');
     await plain.getByRole('link', { name: 'return to the weekly review', exact: true }).click();

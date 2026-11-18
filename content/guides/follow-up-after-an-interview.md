@@ -85,7 +85,7 @@ This is a fictional reflection, not an explanation of why any applicant was sele
 
 ## Try a Two-Pass Interview Debrief
 
-In this fictional interview, the interviewer asked, "How did you know the change helped?" The applicant said, "We made handoffs faster." The team had tried a new handoff note on two tasks, and a teammate found the next action in both notes. Nobody measured handoff time. The interviewer said to check the application portal for updates but gave no date.
+In this fictional interview, the interviewer asked, "How did you know the change helped?" The applicant said, "We made handoffs faster." The team tried a new handoff note on two tasks to check if a teammate could find the next action. The teammate found it in both notes. Nobody measured handoff time. The interviewer said to check the application portal for updates but gave no date.
 
 ### First Pass: Separate the Facts
 
@@ -100,6 +100,18 @@ One possible revision: "We tried the new handoff note on two tasks. A teammate c
 Suppose the teammate found the next action in only one of the two notes. What would you keep, and what would you change? The trial still happened, but the result is now mixed. A useful next check would be to compare how the next action was written in the two notes, not to claim the note worked every time.
 
 For your own interview, keep three short lines in private notes: the question you were asked, the strongest evidence you can share, and one thing you still cannot claim. Then [practice describing a small improvement](/job-seeker-tools/interview-practice/#improve-a-task).
+
+## Prepare for a Confirmed Next Round
+
+If the employer only described what a later round might involve, keep it in your notes as a possibility, not a booking. If the employer confirms another round, compare the new instructions with the question and evidence you saved. [Recheck the invitation details](/guides/prepare-for-an-interview/#recheck-a-changed-interview-invitation) if the format, timing, or materials differ.
+
+- **Keep:** one answer that is still relevant and the facts you can support.
+- **Update:** one part of that answer for the new prompt or format. Rehearse the change once before deciding what else to revise.
+- **Clarify:** one missing detail that would change how you prepare. Ask through the stated channel if the instructions do not answer it.
+
+**Fictional return visit:** The portal now confirms a next round and asks for a brief explanation of why the team tried the handoff note. Keep the two-task example from the debrief. Instead of repeating the result alone, lead with what the team wanted to find out: could a teammate find the next action? Use the result you recorded, and keep the limit: you did not measure speed.
+
+In your private notes, keep **confirmed round / answer to keep / one change to rehearse**. At the [next weekly review](/job-seeker-tools/#your-weekly-job-search-review), check whether a new instruction changes that plan or whether the one rehearsal is enough.
 
 ## Keep the Rest of Your Search Moving
 
