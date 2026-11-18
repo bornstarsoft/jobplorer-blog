@@ -76,6 +76,8 @@ Neither version supports saying the applicant built the prototype, resolved a cu
 
 Keep **facts I can reuse / why they fit this role / claims to leave out** in your own notes. At your [weekly application review](/job-seeker-tools/#your-weekly-job-search-review), compare the note with one current posting before opening another draft.
 
+If several roles ask for a task you cannot yet demonstrate, [decide what is worth practising](/guides/choose-what-to-learn-next/#decide-what-is-worth-practising) instead of adding an unsupported claim to a draft.
+
 ## Before Sending
 
 Check the employer, role reference, requested format, and every factual example. Remove placeholders such as DOC-EXAMPLE and Example Applicant. Make sure the letter and resume describe the same dates and responsibilities.

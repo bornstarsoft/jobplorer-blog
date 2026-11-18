@@ -333,6 +333,35 @@ const routes = [
     await page.getByRole('link', { name: 'weekly application review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
 
+    await page.goto(base + adaptRoute);
+    const gapLink = page.getByRole('link', { name: 'decide what is worth practising', exact: true });
+    await gapLink.focus();
+    await page.keyboard.press('Enter');
+    const gapRoute = '/guides/choose-what-to-learn-next/#decide-what-is-worth-practising';
+    await page.waitForURL(base + gapRoute);
+    const gapHeading = page.locator('#decide-what-is-worth-practising');
+    await gapHeading.waitFor({ state: 'visible' });
+    const gapChoices = page.locator('#decide-what-is-worth-practising + p + ul');
+    assert.deepEqual(await gapChoices.locator('li > strong').allTextContents(), [
+      'I have done the work, but my example is vague:', 'I understand the task, but cannot do one step yet:', 'I cannot tell what the role asks for:'
+    ]);
+    assert.match(await page.locator('#decide-what-is-worth-practising + p + ul + p').textContent(), /not a third role.*flag both rows/);
+    assert.match(await page.locator('#decide-what-is-worth-practising + p + ul + p + p').textContent(), /flag every row.*not proof/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Practice gap overflow: ' + width);
+      if (width !== 320) {
+        await gapHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'choose-practice-gap-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'fictional record check', exact: true }).click();
+    await page.waitForURL(base + '/guides/choose-what-to-learn-next/#try-a-fictional-record-checking-exercise');
+    await page.getByRole('link', { name: 'weekly learning review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+
     const postingRecheck = page.getByRole('link', { name: 'Recheck a saved posting', exact: true });
     await postingRecheck.focus();
     await page.keyboard.press('Enter');
@@ -655,6 +684,13 @@ const routes = [
     await plain.getByRole('link', { name: 'adapt one example for the new role', exact: true }).click();
     await plain.waitForURL(base + adaptRoute);
     await plain.getByRole('link', { name: 'weekly application review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.goto(base + adaptRoute);
+    await plain.getByRole('link', { name: 'decide what is worth practising', exact: true }).click();
+    await plain.waitForURL(base + gapRoute);
+    await plain.getByRole('link', { name: 'fictional record check', exact: true }).click();
+    await plain.waitForURL(base + '/guides/choose-what-to-learn-next/#try-a-fictional-record-checking-exercise');
+    await plain.getByRole('link', { name: 'weekly learning review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Recheck a saved posting', exact: true }).click();
     await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');

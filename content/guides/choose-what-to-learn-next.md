@@ -25,6 +25,18 @@ Write three short lines in your own notes:
 
 You may need clearer evidence or an answer about the role rather than another course. If the work itself is unclear, start with [an informational conversation](/guides/plan-an-informational-conversation/) or the employer's public materials.
 
+## Decide What Is Worth Practising
+
+Compare one responsibility across the current postings you saved. Treat copies of the same opening as one posting. Keep preferences separate from requirements, and look for the work itself rather than a repeated tool name.
+
+- **I have done the work, but my example is vague:** Write down what you personally did and how you checked it. A clearer explanation may be the next step, not a course.
+- **I understand the task, but cannot do one step yet:** Practise just that step on a small fictional input. Choose a check you can run again next time.
+- **I cannot tell what the role asks for:** Note what you still need to verify. Hold off on choosing a course based on a guess.
+
+**Fictional comparison:** Two different postings ask for checking records for repeated IDs. One lists a spreadsheet tool as helpful; a copy of that posting on a job board is not a third role. If you can spot a repeat but cannot reliably flag both rows, start with the [fictional record check](#try-a-fictional-record-checking-exercise), not a full software course.
+
+**Next visit:** Compare your flags with the worked result. If you flagged only the later copy, repeat the check with the rule "flag every row that shares a repeated ID." Keep it as a practice result, not proof that you meet an employer's requirements. At your [weekly learning review](/job-seeker-tools/#your-weekly-job-search-review), record what you can now check and one gap still worth practising.
+
 ## Define a Small Practice Result
 
 Try this Jobplorer planning outline before collecting tutorials:
@@ -93,4 +105,4 @@ Do not turn a study exercise into employment history, claim an unmeasured improv
 
 ## Sources and Review Scope
 
-The two linked National Careers Service pages were checked on September 22, 2026. They support skills reflection and learning-resource planning in the context of England's public careers guidance. The outline, synthetic records, worked result, and review questions are original Jobplorer exercises, not an employer assessment or proof of a qualification. No hiring outcome or time-to-mastery promise is implied.
+The two linked National Careers Service pages were checked on September 22, 2026. They support skills reflection and learning-resource planning in the context of England's public careers guidance. The fictional comparisons and exercises are original Jobplorer material, not an employer assessment or proof of a qualification. No hiring outcome or time-to-mastery promise is implied.
