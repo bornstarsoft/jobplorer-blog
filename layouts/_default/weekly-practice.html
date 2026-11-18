@@ -44,8 +44,10 @@
         <a href="{{ $download.RelPermalink }}" download="jobplorer-four-week-practice.txt"><i data-lucide="download" aria-hidden="true"></i> Download all four weeks (.txt)</a>
       </div>
     </header>
-    <details class="jp-weekly-revisit-chooser">
-      <summary>Back for another try? Choose a scenario</summary>
+    <details id="pick-up-after-a-break" class="jp-weekly-revisit-chooser">
+      <summary>Pick up after a break</summary>
+      <p class="jp-weekly-plan-note">You do not need to make up missed dates. If you have an unfinished answer, reread its prompt and try one change before checking the worked response. If you already tried that exercise, choose a fresh scenario below.</p>
+      <p class="jp-weekly-return"><a href="#practice-weeks">Choose an original exercise <i data-lucide="arrow-down" aria-hidden="true"></i></a></p>
       <nav class="jp-weekly-challenge-nav" aria-label="Return-visit shortcuts">
         {{ range $series.revisit }}<a href="#challenge-{{ .number }}"><span>Challenge {{ .number }}</span><strong>{{ .title }}</strong></a>{{ end }}
       </nav>
@@ -54,7 +56,7 @@
       <div><p>Four fictional exercises, at your own pace. No account, answer submission, or saved progress.</p><a href="#practice-details">About this series &amp; privacy</a></div>
       <figure>{{ partial "topic-image.html" (dict "key" "applications" "loading" "eager" "sizes" "(max-width: 760px) 120px, 180px") }}</figure>
     </div>
-    <nav class="jp-weekly-nav" aria-label="Four-week practice">
+    <nav id="practice-weeks" class="jp-weekly-nav" aria-label="Four-week practice" tabindex="-1">
       {{ range $series.weeks }}<a href="#week-{{ .number }}"><span>Week {{ .number }}</span><strong>{{ .title }}</strong><small>{{ .minutes }}</small></a>{{ end }}
     </nav>
     <details id="jp-weekly-planner" class="jp-weekly-planner" hidden>

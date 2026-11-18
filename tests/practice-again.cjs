@@ -60,10 +60,26 @@ const hostingBeacon = value => {
       const baseline = requests.length;
       const chooser = page.locator('.jp-weekly-revisit-chooser');
       assert.equal(await chooser.getAttribute('open'), null);
+      const resume = chooser.getByRole('link', { name: 'Choose an original exercise', exact: true });
+      assert.equal(await resume.isVisible(), false);
       await chooser.locator('summary').focus();
       await page.keyboard.press('Enter');
       assert.equal(await chooser.locator('nav').isVisible(), true);
-      const shortcuts = chooser.locator('a');
+      assert.match(await chooser.locator('p').first().textContent(), /do not need to make up missed dates.*try one change.*fresh scenario/);
+      assert.equal(await chooser.locator('form, input, textarea, [contenteditable]').count(), 0);
+      await resume.focus();
+      await page.keyboard.press('Enter');
+      assert.equal(new URL(page.url()).hash, '#practice-weeks');
+      const originalWeeks = page.getByRole('navigation', { name: 'Four-week practice', exact: true });
+      assert.deepEqual(await originalWeeks.getByRole('link').evaluateAll(links => links.map(link => link.hash)), ['#week-1', '#week-2', '#week-3', '#week-4']);
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      assert.equal(new URL(page.url()).hash, '#week-2');
+      assert.equal(await page.locator('#week-2 .jp-weekly-answer').getAttribute('open'), null);
+      await page.goBack();
+      await page.goBack();
+      const shortcuts = chooser.getByRole('navigation', { name: 'Return-visit shortcuts', exact: true }).locator('a');
       assert.equal(await shortcuts.count(), 4);
       for (let i = 1; i <= 4; i++) {
         const title = (await page.locator('#challenge-title-' + i).textContent()).replace(/^\d+\. /, '');
@@ -132,6 +148,7 @@ const hostingBeacon = value => {
           else assert.ok(boxes.every((b, i) => i === 0 || boxes[i - 1].bottom <= b.y));
         }
         if (javascript && [1440, 390].includes(width)) {
+          assert.ok((await resume.boundingBox()).height >= 44, 'Resume link is a usable target');
           await chooser.screenshot({ path: path.join(output, `revisit-chooser-${width}.png`) });
           await page.locator('#practice-again').screenshot({ path: path.join(output, `practice-again-${width}.png`) });
           await page.locator('#week-1').screenshot({ path: path.join(output, `week-followup-${width}.png`) });
@@ -177,6 +194,7 @@ const hostingBeacon = value => {
       assert.equal(await fs.readFile(file, 'utf8'), pack);
       await page.reload();
       assert.equal(await page.locator('.jp-challenge-answer[open]').count(), 0);
+      assert.equal(await chooser.getAttribute('open'), null, 'Resume disclosure does not save state');
       // Deep links target an always-visible challenge, without relying on saved state.
       await page.goto(base + route + '#challenge-3');
       assert.equal(await page.locator('#challenge-title-3').isVisible(), true);
