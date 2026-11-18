@@ -40,6 +40,18 @@ Do not let the familiar company name answer the separate questions: who sent the
 
 This example is invented for practice and does not describe a named employer.
 
+## Recheck a Changed Contact or Submission Link
+
+If a later message moves your application to a new contact, messaging app, or upload page, verify the change separately from the role. A matching job reference or a previous receipt does not confirm the new route. The [FTC's job-scam guidance](https://consumer.ftc.gov/consumer-alerts/2023/12/how-spot-latest-job-scams) recommends contacting the company using contact details you already know are genuine, not details supplied in the message. Open the employer's channel independently before sharing anything.
+
+- **Change confirmed:** Follow the instructions you obtained through the verified channel. Send only the item requested for that step.
+- **Change not confirmed:** Keep the original status and mark the new route unresolved. Do not use the new link to log in or upload material while you wait for confirmation.
+- **Change contradicted:** If the verified source says to keep using the original route, do not use the new one. See [what to do when something does not add up](#when-something-still-does-not-add-up) for reporting options.
+
+**Fictional return visit:** The original portal shows receipt for `DEMO-204`. A later text quotes that reference and asks for a writing sample through a new upload page. When you open the original portal yourself, the receipt is still there, but there is no matching request. Record **application received / new upload route unconfirmed**. If the employer later confirms a sample request in the original portal, use the route it provides; do not assume the text link was confirmed too.
+
+At the [next weekly contact check](/job-seeker-tools/#your-weekly-job-search-review), review **last verified channel / what changed / what is still unconfirmed**. Keep message contents and application details in your own records.
+
 ## When Something Still Does Not Add Up
 
 Keep the message and posting URL in your own records. Use the platform's official reporting channel if the posting or contact appears suspicious. For U.S. consumer guidance, the FTC's [Job Scams page](https://consumer.ftc.gov/articles/job-scams) links to its reporting and recovery resources. Readers elsewhere should use the relevant official consumer-protection resource for their location. This page does not promise a recovery outcome.
@@ -54,4 +66,4 @@ You do not need to decide whether a message is legally fraudulent in order to pa
 
 ## Sources and Review Scope
 
-Official FTC pages were checked on September 22, 2026. The source-backed warning patterns above are separate from Jobplorer's suggested workflow and fictional example. Reporting resources are U.S.-specific; no worldwide eligibility, employment-law, or reporting-rule claims are made.
+The FTC warning-pattern sources were checked on September 22, 2026; the independent-contact guidance was checked on November 18, 2026. The source-backed advice is separate from Jobplorer's suggested workflows and fictional examples. Reporting resources are U.S.-specific; no worldwide eligibility, employment-law, or reporting-rule claims are made.

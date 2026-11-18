@@ -101,6 +101,8 @@ Match the message to the role or reference and the employer's stated channel. An
 
 If the invitation is later updated, [recheck what changed before rehearsing](/guides/prepare-for-an-interview/#recheck-a-changed-interview-invitation).
 
+If a reply points to a new contact or upload page, [verify the changed route](/guides/check-job-offers-and-recruiters/#recheck-a-changed-contact-or-submission-link) before following it.
+
 In your own notes, keep **what changed / next action / what to verify next time**. When you [return to the weekly review](#your-weekly-job-search-review), check whether that action is complete before choosing another. For a closed application, bring forward the preparation note, not another status check.
 
 ## Application Record Template

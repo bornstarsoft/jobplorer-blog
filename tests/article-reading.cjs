@@ -581,6 +581,31 @@ const routes = [
     await page.locator('#start-with-the-posting').waitFor({ state: 'visible' });
     await page.goBack();
     await page.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
+    const changedContactLink = page.getByRole('link', { name: 'verify the changed route', exact: true });
+    await changedContactLink.focus();
+    await page.keyboard.press('Enter');
+    const changedContactRoute = '/guides/check-job-offers-and-recruiters/#recheck-a-changed-contact-or-submission-link';
+    await page.waitForURL(base + changedContactRoute);
+    const contactHeading = page.locator('#recheck-a-changed-contact-or-submission-link');
+    await contactHeading.waitFor({ state: 'visible' });
+    const contactActions = page.locator('#recheck-a-changed-contact-or-submission-link + p + ul');
+    assert.deepEqual(await contactActions.locator('li > strong').allTextContents(), ['Change confirmed:', 'Change not confirmed:', 'Change contradicted:']);
+    assert.match(await contactActions.locator('li').nth(1).textContent(), /Do not use the new link to log in or upload/);
+    assert.match(await page.locator('#recheck-a-changed-contact-or-submission-link + p + ul + p').textContent(), /DEMO-204.*application received \/ new upload route unconfirmed.*do not assume the text link was confirmed/);
+    assert.equal(await page.locator('#recheck-a-changed-contact-or-submission-link + p a').getAttribute('href'), 'https://consumer.ftc.gov/consumer-alerts/2023/12/how-spot-latest-job-scams');
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Changed contact overflow: ' + width);
+      if (width !== 320) {
+        await contactHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'changed-contact-recheck-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'next weekly contact check', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await page.goto(base + '/job-seeker-tools/#act-on-an-application-reply');
     const inviteRecheckLink = page.getByRole('link', { name: 'recheck what changed before rehearsing', exact: true });
     await inviteRecheckLink.focus();
     await page.keyboard.press('Enter');
@@ -798,6 +823,13 @@ const routes = [
     await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await plain.goBack();
     await plain.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
+    await plain.getByRole('link', { name: 'verify the changed route', exact: true }).click();
+    await plain.waitForURL(base + changedContactRoute);
+    await plain.getByRole('link', { name: 'what to do when something does not add up', exact: true }).click();
+    await plain.waitForURL(base + '/guides/check-job-offers-and-recruiters/#when-something-still-does-not-add-up');
+    await plain.getByRole('link', { name: 'next weekly contact check', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.goto(base + '/job-seeker-tools/#act-on-an-application-reply');
     await plain.getByRole('link', { name: 'recheck what changed before rehearsing', exact: true }).click();
     await plain.waitForURL(base + '/guides/prepare-for-an-interview/#recheck-a-changed-interview-invitation');
     await plain.getByRole('link', { name: 'check the video instructions', exact: true }).click();
