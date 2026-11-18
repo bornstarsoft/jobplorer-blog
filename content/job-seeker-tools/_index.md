@@ -182,6 +182,8 @@ After the conversation, [Follow Up After an Interview](/guides/follow-up-after-a
 
 If the next step is a task, [Prepare for a Work Sample Task](/guides/prepare-for-a-work-sample-task/) helps check the brief and submission conditions. Try the fictional exercise before handling an employer's actual material.
 
+Already submitted a task? [Turn work sample feedback into one practice task](/guides/prepare-for-a-work-sample-task/#turn-work-sample-feedback-into-one-practice-task) before deciding what to revise or rehearse.
+
 ## Using AI to Organize Your Preparation
 
 For a complete fictional practice pack, read [Use AI for Job Search Preparation](/guides/use-ai-for-job-search-preparation/). It includes three focused prompts and an example of unsupported claims to remove.

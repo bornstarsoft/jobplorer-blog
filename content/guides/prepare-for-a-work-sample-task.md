@@ -94,6 +94,18 @@ Do not publish an employer's task or your response as a portfolio piece without 
 
 At your [weekly job search review](/job-seeker-tools/#your-weekly-job-search-review), note one preparation habit to repeat and one uncertainty to clarify next time. There is no need to store assessment material in Jobplorer.
 
+## Turn Work Sample Feedback Into One Practice Task
+
+At your next review, separate what the employer said from what you noticed yourself. A comment about the work does not necessarily ask you to send a new version.
+
+- **Specific feedback:** Pick one observable change to practice. Keep the parts that still meet the brief.
+- **General or no feedback:** Compare your own work with one requirement from the brief. Label the gap as your own observation, not a reason the employer chose an outcome.
+- **Explicit revision request:** Confirm what changed, when it is due, and how to send it. Open the actual revised file and [check it before sending](/job-seeker-tools/#before-you-submit). Otherwise, keep practice revisions private.
+
+**Fictional return visit:** A reader of the demo instructions says they did not see the Reset caution until after trying the sample. Move the existing caution above the steps so the reader sees it sooner. Leave the three steps and the unanswered saving question as they are. The feedback does not establish that a save feature exists. Compare the two versions: is the warning easier to find, and does the revised text still use only the [given facts](#given-facts)?
+
+In your own notes, keep **feedback or observation / one change to try / how to check it**. Bring that check into your [next weekly practice review](/job-seeker-tools/#your-weekly-job-search-review) without uploading an employer's brief or your submission.
+
 ## Sources and Review Scope
 
-The two linked primary sources were checked on September 22, 2026. They are England-based public careers guidance and UK university careers guidance, not universal assessment rules. The brief, demo facts, draft, worked response, and submission checklist are Jobplorer editorial material. No employer's private assessment was used, and no claim is made about scoring, selection outcomes, compensation, or rights.
+The two linked primary sources were checked on September 22, 2026. They are England-based public careers guidance and UK university careers guidance, not universal assessment rules. The fictional exercises and checklists are Jobplorer editorial material. No employer's private assessment was used, and no claim is made about scoring, selection outcomes, compensation, or rights.

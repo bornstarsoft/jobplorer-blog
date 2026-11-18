@@ -465,6 +465,33 @@ const routes = [
     assert.equal(new URL(page.url()).hash, '#your-weekly-job-search-review');
     assert.equal(await page.locator('#your-weekly-job-search-review').count(), 1);
 
+    const feedbackLink = page.getByRole('link', { name: 'Turn work sample feedback into one practice task', exact: true });
+    await feedbackLink.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + addedGuides[0] + '#turn-work-sample-feedback-into-one-practice-task');
+    const feedbackHeading = page.locator('#turn-work-sample-feedback-into-one-practice-task');
+    const feedbackChoices = page.locator('#turn-work-sample-feedback-into-one-practice-task + p + ul');
+    assert.deepEqual(await feedbackChoices.locator('li > strong').allTextContents(), [
+      'Specific feedback:', 'General or no feedback:', 'Explicit revision request:'
+    ]);
+    assert.match(await feedbackChoices.locator('li').nth(1).textContent(), /your own observation, not a reason/);
+    assert.match(await page.locator('#turn-work-sample-feedback-into-one-practice-task + p + ul + p').textContent(), /Move the existing caution above the steps.*does not establish that a save feature exists/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Work sample feedback overflow: ' + width);
+      if (width !== 320) {
+        await feedbackHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'work-sample-feedback-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'given facts', exact: true }).click();
+    await page.waitForURL(base + addedGuides[0] + '#given-facts');
+    await page.goBack();
+    await page.getByRole('link', { name: 'next weekly practice review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+
     const sample = '/career-guides/remote-workers/';
     for (const width of [1440, 980, 979, 390, 320]) {
       await page.setViewportSize({ width, height: 960 });
@@ -615,6 +642,14 @@ const routes = [
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'recheck the posting', exact: true }).click();
     await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');
+    await plain.goto(base + '/job-seeker-tools/#interview-research-prompts');
+    await plain.getByRole('link', { name: 'Turn work sample feedback into one practice task', exact: true }).click();
+    await plain.waitForURL(base + addedGuides[0] + '#turn-work-sample-feedback-into-one-practice-task');
+    await plain.getByRole('link', { name: 'check it before sending', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await plain.goBack();
+    await plain.getByRole('link', { name: 'next weekly practice review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plainContext.close();
     console.log('PASS: 25 article outlines, existing body preservation, twelve practical guide sources/internal links/images, fictional examples and weekly-review anchors, employer-research scope, AI output checks, career-conversation privacy, learning exercise records and worked result, search trials and fictional posting snippets, work-sample brief/facts/response consistency, landing-page discoverability, 5 viewport widths, keyboard and no-JS navigation, small-screen/short-height reachability, no new inputs/storage, unrelated-page and tracker exclusion.');
   } finally { await browser.close(); }
