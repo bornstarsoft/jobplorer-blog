@@ -189,6 +189,27 @@ const routes = [
     await page.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
 
+    const postingRecheck = page.getByRole('link', { name: 'Recheck a saved posting', exact: true });
+    await postingRecheck.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');
+    await page.locator('#recheck-a-saved-posting').waitFor({ state: 'visible' });
+    assert.deepEqual(await page.locator('#a-fictional-recheck + p + ul strong').allTextContents(), [
+      'Same role, updated instructions:', 'Same title, different reference:', 'Original no longer visible:'
+    ]);
+    assert.match(await page.locator('#a-fictional-recheck + p + ul').textContent(), /not found on recheck/);
+    assert.equal(await page.locator('.jp-article-body input, .jp-article-body textarea, .jp-article-body form, .jp-article-body [contenteditable]').count(), 0);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Posting recheck overflow: ' + width);
+      if (width !== 320) {
+        await page.locator('#recheck-a-saved-posting').evaluate(el => el.scrollIntoView());
+        await page.screenshot({ path: path.join(output, 'posting-recheck-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'next weekly review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+
     await page.goto(base + addedGuides[0]);
     const taskFacts = await page.locator('#given-facts + ol > li').allTextContents();
     assert.deepEqual(taskFacts, ['Open the demo workspace.', 'Inside the workspace, choose Examples.', 'In Examples, choose Try sample.', 'Reset removes changes made in the demo.', 'The supplied information does not describe a save option.']);
@@ -278,6 +299,10 @@ const routes = [
     await plain.goto(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Compare two search visits', exact: true }).click();
     await plain.waitForURL(base + '/guides/refine-your-job-search-terms/#compare-two-search-visits');
+    await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'Recheck a saved posting', exact: true }).click();
+    await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');
     await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plainContext.close();

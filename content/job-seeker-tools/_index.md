@@ -52,7 +52,7 @@ For another perspective on the work, [Plan an Informational Conversation](/guide
 [Choose a short practice route](/job-seeker-tools/guide-finder/#practice-routes) for reading postings, explaining experience, preparing questions or checking a task brief. Each connects three fictional exercises with a specific next-visit task.
 
 1. Choose a role family and location to focus on this week.
-2. Revisit saved postings on the employer's website. Mark closed or changed roles in your own records.
+2. [Recheck a saved posting](/guides/read-a-job-posting/#recheck-a-saved-posting). Note what changed, what the employer confirmed, and what remains unresolved.
 3. Compare the responsibilities with examples from your work, study, or projects.
 4. Select the applications you can prepare carefully. Record a next action and date for each.
 5. Review responses and unanswered questions before changing your search terms.

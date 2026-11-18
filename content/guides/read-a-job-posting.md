@@ -56,6 +56,24 @@ Use the same four headings for each posting. Compare the work described and the 
 
 Finish with one next action: verify an unclear detail, prepare a relevant example, or review the application instructions. The [resume checklist](/posts/why-87-percent-of-job-seekers-abandon-their-resumes/) and [interview preparation guide](/guides/prepare-for-an-interview/) cover those later steps.
 
+## Recheck a Saved Posting
+
+Before reusing an application draft, open the current posting through the employer's careers site. Compare the employer, role reference if shown, and location before deciding that two listings are the same role. Then check what changed in the responsibilities, application instructions, and deadline if one is given.
+
+### A Fictional Recheck
+
+Last week you noted a Support Assistant role, reference `DEMO-204`, and a request for a resume. This week the employer's careers page still lists `DEMO-204` at the same location, but the posting now also asks for a short writing sample. A board still shows the older instructions.
+
+- **Same role, updated instructions:** Check the employer's current instructions before sending last week's draft. In this example, the writing sample is the change to check.
+- **Same title, different reference:** A listing called Support Assistant with reference `DEMO-207` is not a replacement for `DEMO-204` in your notes. Check it separately.
+- **Original no longer visible:** If you cannot find `DEMO-204` and there is no closure notice, record "not found on recheck." A missing link alone does not confirm the role closed.
+
+### One Note for Next Time
+
+In your private notes, record the date checked, the source and reference, one change or uncertainty, and one next action. Mark a role closed only when the employer confirms closure. If you still cannot match the role or verify the application destination, leave it unresolved.
+
+Bring that note back to your [next weekly review](/job-seeker-tools/#your-weekly-job-search-review).
+
 ## Sources and Review Scope
 
-The two National Careers Service pages linked above were checked on September 22, 2026. They are from England's public careers service; this page does not generalize national application or qualification rules. The four-part reading method and invented posting are Jobplorer editorial material. No application outcome, hiring threshold, or eligibility judgment is implied.
+The two National Careers Service pages linked above were checked on September 22, 2026. They are from England's public careers service; this page does not generalize national application or qualification rules. The four-part reading method, invented posting, and fictional recheck are Jobplorer editorial material. No application outcome, hiring threshold, or eligibility judgment is implied.
