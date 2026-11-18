@@ -496,6 +496,34 @@ const routes = [
         await page.screenshot({ path: path.join(output, 'receipt-review-' + width + '.png') });
       }
     }
+    const correctionLink = page.getByRole('link', { name: 'check whether a correction is needed', exact: true });
+    await correctionLink.focus();
+    await page.keyboard.press('Enter');
+    const correctionURL = base + '/job-seeker-tools/#check-a-problem-after-submission';
+    await page.waitForURL(correctionURL);
+    const correctionHeading = page.locator('#check-a-problem-after-submission');
+    await correctionHeading.waitFor({ state: 'visible' });
+    const correctionChoices = page.locator('#check-a-problem-after-submission + p + ul li');
+    assert.deepEqual(await correctionChoices.locator('strong').allTextContents(), [
+      'You cannot tell what was sent:', 'A material problem is confirmed:', 'The detail still means the same thing:'
+    ]);
+    assert.match(await correctionChoices.nth(0).textContent(), /Do not submit a duplicate just to test/);
+    assert.match(await correctionChoices.nth(1).textContent(), /whether a correction is accepted before sending another file or application/);
+    assert.match(await page.locator('#check-a-problem-after-submission + p + ul + p').textContent(), /DEMO-204.*original application receipt alone does not confirm the replacement/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Submission correction overflow: ' + width);
+      if (width !== 320) {
+        await correctionHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'submission-correction-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'weekly correction review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await page.getByRole('link', { name: 'Review application receipts', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#confirm-application-receipt');
     await page.getByRole('link', { name: 'next weekly job search review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     const nextActionLink = page.getByRole('link', { name: 'Choose the next action for each open application', exact: true });
@@ -790,6 +818,15 @@ const routes = [
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.goto(base + '/job-seeker-tools/#act-on-an-application-reply');
     await plain.getByRole('link', { name: 'return to the weekly review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'Review application receipts', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#confirm-application-receipt');
+    await plain.getByRole('link', { name: 'check whether a correction is needed', exact: true }).click();
+    await plain.waitForURL(correctionURL);
+    await plain.getByRole('link', { name: 'Verify the replacement', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await plain.goBack();
+    await plain.getByRole('link', { name: 'weekly correction review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Review application receipts', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#confirm-application-receipt');

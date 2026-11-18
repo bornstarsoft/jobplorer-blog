@@ -167,11 +167,25 @@ Use the employer's stated confirmation channel, such as a receipt on the submiss
 - **Receipt not confirmed:** Note that you attempted to send the application. A missing email does not establish that it failed. Check the stated channel for the same role before sending again.
 - **Action requested:** If the verified channel asks for a correction or missing item, [check the files and submission details](#before-you-submit) before responding. If a request arrives unexpectedly, [verify the contact](/guides/check-job-offers-and-recruiters/) before sharing anything.
 
+If you spot a problem yourself, [check whether a correction is needed](#check-a-problem-after-submission) before sending another copy.
+
 ### Carry One Note Into Next Week
 
 In the fictional `DEMO-204` example, you attached the corrected PDF and pressed Submit. The screen closed without a receipt. In your own notes: **Submission attempted; receipt unconfirmed / check the stated portal at the next review.** At that review, the portal shows "Application received" for `DEMO-204` with no further instructions. Update the note to **Receipt confirmed / no next step stated** and use the review time for another application rather than resending this one.
 
 For your own application, record **what the source confirms / what remains unknown / one next check**. Keep receipt numbers and other application details in your private records. At your [next weekly job search review](#your-weekly-job-search-review), [choose the next action](#choose-the-next-application-action) for the items that still need it.
+
+### Check a Problem After Submission
+
+Start with what you can verify in the employer's stated channel. Match the correct role and submission before treating a local draft as the version they received.
+
+- **You cannot tell what was sent:** Check the submitted copy, receipt details, or portal history if available. Leave the file version unconfirmed if the source does not show it. Do not submit a duplicate just to test.
+- **A material problem is confirmed:** For a wrong attachment or a link that prevents review, check whether the employer allows an edit or provides a correction route for that submission. [Verify the replacement](#before-you-submit) and update only what needs changing. If there is no stated route, ask through the verified channel whether a correction is accepted before sending another file or application.
+- **The detail still means the same thing:** A small spelling error that does not change a fact or make anything unusable may only need a note for your next draft. Follow any instructions that apply; do not assume every typo needs a second submission.
+
+**Fictional recheck:** The portal's view of the submitted application for `DEMO-204` shows an older writing sample. The portal allows you to replace that attachment on the existing application. You check the new PDF and use the replacement option. A selected-file preview only shows what you picked. At the next review, mark the correction confirmed only if the stated channel confirms the update for that application. The original application receipt alone does not confirm the replacement.
+
+In your own notes, keep **problem confirmed / action taken / correction confirmed or unconfirmed**. Bring the last confirmed status to your [weekly correction review](#your-weekly-job-search-review), without uploading either copy to Jobplorer.
 
 ## Interview Research Prompts
 
