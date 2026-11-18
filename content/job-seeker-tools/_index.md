@@ -55,13 +55,29 @@ For another perspective on the work, [Plan an Informational Conversation](/guide
 2. [Recheck a saved posting](/guides/read-a-job-posting/#recheck-a-saved-posting). Note what changed, what the employer confirmed, and what remains unresolved.
 3. Compare the responsibilities with examples from your work, study, or projects.
 4. Select the applications you can prepare carefully. Record a next action and date for each.
-5. [Review application receipts](#confirm-application-receipt) for submissions that are still unclear. Set one next action before changing your search terms.
+5. [Choose the next action for each open application](#choose-the-next-application-action) before changing your search terms.
 
 Bring one search note from last week. [Compare two search visits](/guides/refine-your-job-search-terms/#compare-two-search-visits) to decide whether to keep a query, test one change, or verify a detail before searching again.
 
 Start with [job site comparisons](/job-sites/), a [career guide](/career-guides/), or a [country guide](/country-guides/).
 
 If your next step is learning rather than another application, [Choose What to Learn Next](/guides/choose-what-to-learn-next/) helps define a small practice task and check its result without using personal records.
+
+### Choose the Next Application Action
+
+Use the last status you could verify for each role. If a verified request still needs a response, handle that branch first rather than marking the application as waiting. Among requests, check any deadlines and time zones the employer actually gave.
+
+- **Receipt unconfirmed:** You tried to submit but have no matching receipt. [Review application receipts](#confirm-application-receipt) in the employer's stated channel before sending again. A missing email alone does not establish failure.
+- **Additional request:** The verified channel asks for something you have not sent. [Check the requested item, format and destination](#before-you-submit) before responding. If the request arrived unexpectedly, [verify the contact independently](/guides/check-job-offers-and-recruiters/) before sharing anything.
+- **Waiting for a reply:** Receipt is confirmed and nothing is currently requested. Note any response window the employer gave. If it has not passed, keep it as your next checkpoint. If it passed or no timing was given, check the stated status channel at your next review. Do not read silence as a decision or assume a message is required.
+
+**Three fictional review notes:**
+
+- **DEMO-301:** Submission attempted, no matching receipt. Next action: check the application history for this reference.
+- **DEMO-302:** The portal requests a readable replacement PDF. Next action: open the corrected file and compare it with the portal instructions before responding.
+- **DEMO-204:** Receipt confirmed, no further request or timing given. Next action: check the portal at the next review and spend today's preparation time on another role.
+
+For next time, keep one line per open role in your own notes: **last confirmed status / one next action / check date**. A check date is your own reminder, not an employer deadline. At the next review, start with notes whose check dates have arrived or whose verified instructions have changed.
 
 ## Application Record Template
 
@@ -129,7 +145,7 @@ Use the employer's stated confirmation channel, such as a receipt on the submiss
 
 In the fictional `DEMO-204` example, you attached the corrected PDF and pressed Submit. The screen closed without a receipt. In your own notes: **Submission attempted; receipt unconfirmed / check the stated portal at the next review.** At that review, the portal shows "Application received" for `DEMO-204` with no further instructions. Update the note to **Receipt confirmed / no next step stated** and use the review time for another application rather than resending this one.
 
-For your own application, record **what the source confirms / what remains unknown / one next check**. Keep receipt numbers and other application details in your private records. At your [next weekly job search review](#your-weekly-job-search-review), start with the items that still need action.
+For your own application, record **what the source confirms / what remains unknown / one next check**. Keep receipt numbers and other application details in your private records. At your [next weekly job search review](#your-weekly-job-search-review), [choose the next action](#choose-the-next-application-action) for the items that still need it.
 
 ## Interview Research Prompts
 
