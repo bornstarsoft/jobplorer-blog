@@ -359,6 +359,34 @@ const routes = [
     }
     await page.getByRole('link', { name: 'fictional record check', exact: true }).click();
     await page.waitForURL(base + '/guides/choose-what-to-learn-next/#try-a-fictional-record-checking-exercise');
+    const evidenceLink = page.getByRole('link', { name: 'turn the checked result into an evidence note', exact: true });
+    await evidenceLink.focus();
+    await page.keyboard.press('Enter');
+    const checkedEvidenceRoute = '/guides/build-a-project-case-study/#make-one-practice-result-verifiable';
+    await page.waitForURL(base + checkedEvidenceRoute);
+    const evidenceHeading = page.locator('#make-one-practice-result-verifiable');
+    await evidenceHeading.waitFor({ state: 'visible' });
+    const evidenceItems = page.locator('#make-one-practice-result-verifiable + p + p + ul li');
+    assert.deepEqual(await evidenceItems.locator('strong').allTextContents(), ['Original check:', 'Changed copy:', 'Limit:']);
+    assert.match(await evidenceItems.nth(0).textContent(), /rows 2 and 3 for a repeated ID and row 4 for a missing ID/);
+    assert.match(await evidenceItems.nth(1).textContent(), /DEMO-105.*Row 4 was still flagged.*neither row 2 nor row 3/);
+    assert.match(await evidenceItems.nth(2).textContent(), /Did not repair real records, automate the check, or test a larger list/);
+    assert.match(await page.locator('#make-one-practice-result-verifiable + p').textContent(), /record the difference instead of copying the expected result/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Checked evidence overflow: ' + width);
+      if (width !== 320) {
+        await evidenceHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'checked-practice-evidence-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'sharing checklist', exact: true }).click();
+    await page.waitForURL(base + '/guides/build-a-project-case-study/#a-quick-review-before-sharing');
+    await page.getByRole('link', { name: 'weekly evidence review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await page.goto(base + gapRoute);
     await page.getByRole('link', { name: 'weekly learning review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
 
@@ -690,6 +718,14 @@ const routes = [
     await plain.waitForURL(base + gapRoute);
     await plain.getByRole('link', { name: 'fictional record check', exact: true }).click();
     await plain.waitForURL(base + '/guides/choose-what-to-learn-next/#try-a-fictional-record-checking-exercise');
+    await plain.getByRole('link', { name: 'turn the checked result into an evidence note', exact: true }).click();
+    await plain.waitForURL(base + checkedEvidenceRoute);
+    await plain.getByRole('link', { name: 'record-checking exercise', exact: true }).click();
+    await plain.waitForURL(base + '/guides/choose-what-to-learn-next/#try-a-fictional-record-checking-exercise');
+    await plain.goBack();
+    await plain.getByRole('link', { name: 'weekly evidence review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.goto(base + gapRoute);
     await plain.getByRole('link', { name: 'weekly learning review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Recheck a saved posting', exact: true }).click();

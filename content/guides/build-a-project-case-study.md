@@ -47,6 +47,18 @@ Alongside a link or image, add a sentence about what the reader should notice. C
 
 Before sharing, remove credentials and personal information from screenshots and files. Do not publish employer or client material unless you have permission; this checklist does not determine ownership or replace that permission. If sharing is uncertain, choose a different example that you can safely show.
 
+## Make One Practice Result Verifiable
+
+Keep just enough of a practice result to explain what you checked and what you saw. In your own notes, label the original input and the changed copy separately. Record your actual result before comparing it with a worked answer. If the two disagree, record the difference instead of copying the expected result as your own.
+
+**Fictional example:** In the [record-checking exercise](/guides/choose-what-to-learn-next/#try-a-fictional-record-checking-exercise), a learner checks six invented records on paper and tries a second copy with one ID changed.
+
+- **Original check:** Flagged rows 2 and 3 for a repeated ID and row 4 for a missing ID.
+- **Changed copy:** Changed row 3 to `DEMO-105` for practice. Row 4 was still flagged as missing; neither row 2 nor row 3 was flagged as repeated.
+- **Limit:** Checked only missing and repeated IDs on these two small inputs. Did not repair real records, automate the check, or test a larger list.
+
+**Next visit:** Cover your earlier answers and repeat the checks on both copies. If you get a different result, identify which rule or row accounts for the difference before using the example. If the result matches, write one sentence naming the change you made and what you observed. Bring **input / observed result / limit** to your [weekly evidence review](/job-seeker-tools/#your-weekly-job-search-review). There is no need to publish or upload the file; if sharing is appropriate, use the [sharing checklist](#a-quick-review-before-sharing).
+
 ## A Quick Review Before Sharing
 
 - Does the opening explain the problem without assuming the reader knows the project?
@@ -59,4 +71,4 @@ For discussion practice, turn the example into a short answer using [Prepare for
 
 ## Sources and Review Scope
 
-The official National Careers Service and GitHub documentation linked above were checked on September 22, 2026. They support skills reflection and code-project documentation respectively. The five-part outline, fictional example, and sharing checklist are Jobplorer editorial suggestions, not universal hiring requirements or legal advice.
+The official National Careers Service and GitHub documentation linked above were checked on September 22, 2026. They support skills reflection and code-project documentation respectively. The outline, fictional exercises, and sharing checklist are Jobplorer editorial suggestions, not universal hiring requirements or legal advice.

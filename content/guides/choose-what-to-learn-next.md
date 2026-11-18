@@ -101,6 +101,8 @@ Bring one finding and one next action to your [weekly job search review](/job-se
 
 After completing your own attempt, describe what you actually did, which input you used, and what remains limited. An appropriate description might be "checked six fictional records for missing and repeated IDs" only if you performed those checks yourself.
 
+If you tried both the original and the changed practice copy, [turn the checked result into an evidence note](/guides/build-a-project-case-study/#make-one-practice-result-verifiable). Keep the two results separate so you can explain what changed on a later visit.
+
 Do not turn a study exercise into employment history, claim an unmeasured improvement, or label yourself an expert after one task. The [project case study guide](/guides/build-a-project-case-study/) helps explain a contribution and its evidence. If AI assists you, use the [AI preparation guide](/guides/use-ai-for-job-search-preparation/) to check unsupported additions and preserve your own contribution.
 
 ## Sources and Review Scope
