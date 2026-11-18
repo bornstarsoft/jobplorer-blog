@@ -210,6 +210,33 @@ const routes = [
     await page.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
 
+    await page.getByRole('link', { name: 'Recheck a saved posting', exact: true }).click();
+    const draftLink = page.getByRole('link', { name: 'update your application draft', exact: true });
+    await draftLink.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + '/job-seeker-tools/#update-your-application-draft');
+    const draftHeading = page.locator('#update-your-application-draft');
+    await draftHeading.waitFor({ state: 'visible' });
+    const draftActions = page.locator('#update-your-application-draft + p + p + ul');
+    assert.deepEqual(await draftActions.locator('strong').allTextContents(), ['Keep:', 'Prepare:', 'Verify before sending:']);
+    assert.match(await draftActions.textContent(), /Do not assume a public link is accepted/);
+    assert.equal(await page.locator('main input, main textarea, main form, main [contenteditable]').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Application prep overflow: ' + width);
+      if (width !== 320) {
+        await draftHeading.evaluate(el => el.scrollIntoView());
+        await page.screenshot({ path: path.join(output, 'application-handoff-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'final submission checklist', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await page.locator('#before-you-submit').waitFor({ state: 'visible' });
+    await page.getByRole('link', { name: 'check the work sample brief', exact: true }).click();
+    await page.waitForURL(base + '/guides/prepare-for-a-work-sample-task/#read-the-brief-before-starting');
+    await page.locator('#read-the-brief-before-starting').waitFor({ state: 'visible' });
+
     await page.goto(base + addedGuides[0]);
     const taskFacts = await page.locator('#given-facts + ol > li').allTextContents();
     assert.deepEqual(taskFacts, ['Open the demo workspace.', 'Inside the workspace, choose Examples.', 'In Examples, choose Try sample.', 'Reset removes changes made in the demo.', 'The supplied information does not describe a save option.']);
@@ -303,8 +330,12 @@ const routes = [
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Recheck a saved posting', exact: true }).click();
     await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');
+    await plain.getByRole('link', { name: 'update your application draft', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#update-your-application-draft');
     await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'recheck the posting', exact: true }).click();
+    await plain.waitForURL(base + '/guides/read-a-job-posting/#recheck-a-saved-posting');
     await plainContext.close();
     console.log('PASS: 25 article outlines, existing body preservation, twelve practical guide sources/internal links/images, fictional examples and weekly-review anchors, employer-research scope, AI output checks, career-conversation privacy, learning exercise records and worked result, search trials and fictional posting snippets, work-sample brief/facts/response consistency, landing-page discoverability, 5 viewport widths, keyboard and no-JS navigation, small-screen/short-height reachability, no new inputs/storage, unrelated-page and tracker exclusion.');
   } finally { await browser.close(); }

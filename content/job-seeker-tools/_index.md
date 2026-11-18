@@ -80,6 +80,20 @@ Keep one record per role in your own private notes or spreadsheet.
 
 Avoid including passwords, identity documents, or confidential employer information in a shared tracker.
 
+## Update Your Application Draft
+
+When a recheck confirms the same role but finds different instructions, compare the employer's current request with the draft you already have. Keep material that still fits, prepare what is newly requested, and set aside anything that depends on an unanswered question.
+
+In the fictional `DEMO-204` example, the employer still requests a resume and now asks for a short writing sample. The posting does not say whether an existing sample is acceptable or whether it should be a link or an attachment.
+
+- **Keep:** The resume example about writing setup instructions still fits the role. Keep the description of what you actually did.
+- **Prepare:** Identify one relevant sample you may share, such as instructions for a personal project. Check whether it fits once the requested scope and format are clear.
+- **Verify before sending:** Find out whether an existing sample is allowed and how to submit it. If the employer provides a verified channel for questions, ask about those two details. Do not assume a public link is accepted.
+
+In your own notes, leave one line for next time: **What is ready / what is unanswered / when I will check again.** For `DEMO-204`: resume ready; sample type and format unconfirmed; recheck the posting before sending. At your [next weekly review](#your-weekly-job-search-review), update that line if the employer clarifies the request. If instructions have changed again, [recheck the posting](/guides/read-a-job-posting/#recheck-a-saved-posting) before reusing the draft.
+
+If the employer sends a defined task instead of asking for an existing sample, [check the work sample brief](/guides/prepare-for-a-work-sample-task/#read-the-brief-before-starting). Once the requested materials and submission destination are clear, use the [final submission checklist](#before-you-submit).
+
 ## Before You Submit
 
 Start with [Read a Job Posting](/guides/read-a-job-posting/) to separate responsibilities from preferences. If work samples are relevant, use [Build a Project Case Study](/guides/build-a-project-case-study/) to explain your contribution and evidence.

@@ -74,6 +74,8 @@ In your private notes, record the date checked, the source and reference, one ch
 
 Bring that note back to your [next weekly review](/job-seeker-tools/#your-weekly-job-search-review).
 
+If you confirmed it is the same role and the instructions changed, [update your application draft](/job-seeker-tools/#update-your-application-draft). If the role or submission destination is still unresolved, verify it before sending anything.
+
 ## Sources and Review Scope
 
 The two National Careers Service pages linked above were checked on September 22, 2026. They are from England's public careers service; this page does not generalize national application or qualification rules. The four-part reading method, invented posting, and fictional recheck are Jobplorer editorial material. No application outcome, hiring threshold, or eligibility judgment is implied.
