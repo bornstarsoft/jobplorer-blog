@@ -250,6 +250,33 @@ const routes = [
     }
     await page.getByRole('link', { name: 'weekly job search review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    assert.equal(await page.getByRole('link', { name: 'Review application receipts', exact: true }).getAttribute('href'), '#confirm-application-receipt');
+    await page.getByRole('link', { name: 'final submission checklist', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await page.getByRole('link', { name: 'Check whether it was received', exact: true }).focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + '/job-seeker-tools/#confirm-application-receipt');
+    const receiptHeading = page.locator('#confirm-application-receipt');
+    await receiptHeading.waitFor({ state: 'visible' });
+    assert.deepEqual(await page.locator('#confirm-application-receipt + p + ul strong').allTextContents(), [
+      'Receipt confirmed:', 'Receipt not confirmed:', 'Action requested:'
+    ]);
+    assert.match(await page.locator('#carry-one-note-into-next-week + p').textContent(), /receipt unconfirmed.*Receipt confirmed.*no next step stated/);
+    assert.equal(await page.locator('main input, main textarea, main form, main [contenteditable]').count(), 0);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Receipt review overflow: ' + width);
+      if (width !== 320) {
+        await receiptHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'receipt-review-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'next weekly job search review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await page.getByRole('link', { name: 'Review application receipts', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#confirm-application-receipt');
+    await page.getByRole('link', { name: 'check the files and submission details', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
     await page.getByRole('link', { name: 'check the work sample brief', exact: true }).click();
     await page.waitForURL(base + '/guides/prepare-for-a-work-sample-task/#read-the-brief-before-starting');
@@ -351,6 +378,14 @@ const routes = [
     await plain.getByRole('link', { name: 'update your application draft', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#update-your-application-draft');
     await plain.getByRole('link', { name: 'final submission checklist', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await plain.getByRole('link', { name: 'Check whether it was received', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#confirm-application-receipt');
+    await plain.getByRole('link', { name: 'next weekly job search review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'Review application receipts', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#confirm-application-receipt');
+    await plain.getByRole('link', { name: 'check the files and submission details', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await plain.getByRole('link', { name: 'application draft review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#update-your-application-draft');

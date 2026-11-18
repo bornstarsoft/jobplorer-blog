@@ -55,7 +55,7 @@ For another perspective on the work, [Plan an Informational Conversation](/guide
 2. [Recheck a saved posting](/guides/read-a-job-posting/#recheck-a-saved-posting). Note what changed, what the employer confirmed, and what remains unresolved.
 3. Compare the responsibilities with examples from your work, study, or projects.
 4. Select the applications you can prepare carefully. Record a next action and date for each.
-5. Review responses and unanswered questions before changing your search terms.
+5. [Review application receipts](#confirm-application-receipt) for submissions that are still unclear. Set one next action before changing your search terms.
 
 Bring one search note from last week. [Compare two search visits](/guides/refine-your-job-search-terms/#compare-two-search-visits) to decide whether to keep a query, test one change, or verify a detail before searching again.
 
@@ -111,11 +111,25 @@ In the fictional `DEMO-204` example, the employer's current instructions now con
 In your own notes, keep one line for this role:
 
 - **Not sent yet:** Record the remaining check and when you will return to it. For `DEMO-204`: replace and verify the sample PDF before sending.
-- **Sent:** Note the date, final file versions, and any confirmation or next step the employer actually provided. If the submission status is unclear, check the stated application channel before sending a duplicate.
+- **Sent:** Note the date and final file versions. [Check whether it was received](#confirm-application-receipt) before treating the application as confirmed.
 
 Bring that note to your [weekly job search review](#your-weekly-job-search-review). No files or notes need to be entered in Jobplorer.
 
 If you need to compare responsibilities and preferences again, see [Read a Job Posting](/guides/read-a-job-posting/). For a specific document, use the [resume review checklist](/posts/why-87-percent-of-job-seekers-abandon-their-resumes/), [Build a Project Case Study](/guides/build-a-project-case-study/) for evidence of your contribution, or [Write a Focused Cover Letter](/guides/write-a-focused-cover-letter/) when a letter is requested.
+
+## Confirm Application Receipt
+
+Use the employer's stated confirmation channel, such as a receipt on the submission screen, an email, or the application portal. Match the confirmation to the role and reference if shown. A receipt confirms only what it says; it does not by itself confirm an interview or a decision.
+
+- **Receipt confirmed:** Record the confirmation date and any next step the employer states. Leave the timing unknown if none is given.
+- **Receipt not confirmed:** Note that you attempted to send the application. A missing email does not establish that it failed. Check the stated channel for the same role before sending again.
+- **Action requested:** If the verified channel asks for a correction or missing item, [check the files and submission details](#before-you-submit) before responding. If a request arrives unexpectedly, [verify the contact](/guides/check-job-offers-and-recruiters/) before sharing anything.
+
+### Carry One Note Into Next Week
+
+In the fictional `DEMO-204` example, you attached the corrected PDF and pressed Submit. The screen closed without a receipt. In your own notes: **Submission attempted; receipt unconfirmed / check the stated portal at the next review.** At that review, the portal shows "Application received" for `DEMO-204` with no further instructions. Update the note to **Receipt confirmed / no next step stated** and use the review time for another application rather than resending this one.
+
+For your own application, record **what the source confirms / what remains unknown / one next check**. Keep receipt numbers and other application details in your private records. At your [next weekly job search review](#your-weekly-job-search-review), start with the items that still need action.
 
 ## Interview Research Prompts
 
