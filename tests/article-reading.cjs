@@ -302,6 +302,32 @@ const routes = [
     await page.getByRole('link', { name: 'check the files and submission details', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    const replyLink = page.getByRole('link', { name: 'choose what to do with the reply', exact: true });
+    await replyLink.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
+    const replyHeading = page.locator('#act-on-an-application-reply');
+    await replyHeading.waitFor({ state: 'visible' });
+    const replyActions = page.locator('#act-on-an-application-reply + p + ul');
+    assert.deepEqual(await replyActions.locator('li > strong').allTextContents(), [
+      'Interview invitation:', 'Additional materials requested:', 'Process closed for this application:'
+    ]);
+    assert.match(await replyActions.locator('li').last().textContent(), /move it out of your active list/);
+    assert.match(await page.locator('#act-on-an-application-reply + p + ul + p').textContent(), /DEMO-204.*not booked/);
+    assert.equal(await page.locator('main input, main textarea, main form, main [contenteditable]').count(), 0);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Reply review overflow: ' + width);
+      if (width !== 320) {
+        await replyHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'application-reply-review-' + width + '.png') });
+      }
+    }
+    await replyActions.getByRole('link', { name: 'prepare for the interview', exact: true }).click();
+    await page.waitForURL(base + '/guides/prepare-for-an-interview/#start-with-the-posting');
+    await page.locator('#start-with-the-posting').waitFor({ state: 'visible' });
+    await page.goBack();
+    await page.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
     await page.getByRole('link', { name: 'check the work sample brief', exact: true }).click();
     await page.waitForURL(base + '/guides/prepare-for-a-work-sample-task/#read-the-brief-before-starting');
     await page.locator('#read-the-brief-before-starting').waitFor({ state: 'visible' });
@@ -409,6 +435,14 @@ const routes = [
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Choose the next action for each open application', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#choose-the-next-application-action');
+    await plain.getByRole('link', { name: 'choose what to do with the reply', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
+    await plain.getByRole('link', { name: 'Run the final file check', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await plain.goBack();
+    await plain.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
+    await plain.getByRole('link', { name: 'return to the weekly review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Review application receipts', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#confirm-application-receipt');
     await plain.getByRole('link', { name: 'choose the next action', exact: true }).click();

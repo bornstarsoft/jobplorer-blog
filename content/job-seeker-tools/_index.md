@@ -79,6 +79,20 @@ Use the last status you could verify for each role. If a verified request still 
 
 For next time, keep one line per open role in your own notes: **last confirmed status / one next action / check date**. A check date is your own reminder, not an employer deadline. At the next review, start with notes whose check dates have arrived or whose verified instructions have changed.
 
+If the employer has replied, [choose what to do with the reply](#act-on-an-application-reply) instead of leaving the role marked as waiting.
+
+### Act on an Application Reply
+
+Match the message to the role or reference and the employer's stated channel. An update such as "still reviewing" is not an invitation or a decision. If the request is unexpected or the sender is unclear, [verify the contact before replying](/guides/check-job-offers-and-recruiters/).
+
+- **Interview invitation:** Check whether you need to pick or confirm a slot. Verify the date, time zone, format, and any requested preparation. Once the arrangements are clear, [prepare for the interview](/guides/prepare-for-an-interview/#start-with-the-posting).
+- **Additional materials requested:** Note the exact item, format, destination, and any stated deadline. [Run the final file check](#before-you-submit) and send only what was verified and requested. If the instructions are incomplete, clarify the missing detail through the stated channel before sending.
+- **Process closed for this application:** If the employer explicitly says your application will not progress, move it out of your active list. Record the outcome as stated. Do not guess why; carry one question or example you want to improve into another application.
+
+**Fictional next review:** Last week, `DEMO-204` was waiting. This week, the verified portal asks you to choose an interview slot. Replace "check for a reply" with "choose a slot and confirm the time zone." Leave the interview marked as not booked until the employer's channel confirms it.
+
+In your own notes, keep **what changed / next action / what to verify next time**. When you [return to the weekly review](#your-weekly-job-search-review), check whether that action is complete before choosing another. For a closed application, bring forward the preparation note, not another status check.
+
 ## Application Record Template
 
 Keep one record per role in your own private notes or spreadsheet.
