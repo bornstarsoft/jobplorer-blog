@@ -49,19 +49,19 @@ For another perspective on the work, [Plan an Informational Conversation](/guide
 
 ## Your Weekly Job Search Review
 
-[Choose a short practice route](/job-seeker-tools/guide-finder/#practice-routes) for reading postings, explaining experience, preparing questions or checking a task brief. Each connects three fictional exercises with a specific next-visit task.
+### Pick Up Where You Left Off
 
-1. Choose a role family and location to focus on this week.
-2. [Recheck a saved posting](/guides/read-a-job-posting/#recheck-a-saved-posting). Note what changed, what the employer confirmed, and what remains unresolved.
-3. Compare the responsibilities with examples from your work, study, or projects.
-4. Select the applications you can prepare carefully. Record a next action and date for each.
-5. [Choose the next action for each open application](#choose-the-next-application-action) before changing your search terms.
+Choose the stage you can verify for one role in your own notes.
 
-Bring one search note from last week. [Compare two search visits](/guides/refine-your-job-search-terms/#compare-two-search-visits) to decide whether to keep a query, test one change, or verify a detail before searching again.
+- **Searching:** [Compare two search visits](/guides/refine-your-job-search-terms/#compare-two-search-visits) to test one change, or [Recheck a saved posting](/guides/read-a-job-posting/#recheck-a-saved-posting) before drafting.
+- **Preparing to apply:** [Update a draft](#update-your-application-draft) when instructions change, or [Check the final files](#before-you-submit) when you are ready to send.
+- **Submitted:** [Choose the next action for each open application](#choose-the-next-application-action) based on receipt, an outstanding request, or a stated response window.
+- **Received an update:** [Respond to an application reply](#act-on-an-application-reply) based on what the employer actually said.
+- **After an interview:** [Recheck what you learned about the role](/guides/follow-up-after-an-interview/#recheck-what-you-learned-about-the-role) or [Prepare for a confirmed next round](/guides/follow-up-after-an-interview/#prepare-for-a-confirmed-next-round).
 
-Start with [job site comparisons](/job-sites/), a [career guide](/career-guides/), or a [country guide](/country-guides/).
+**Two items to review?** In this fictional review, one application has a verified request for a replacement file by tomorrow, and another has only reached your own check date. Check the requested file first. Then review the second application's stated channel once and leave its status unchanged if there is no update. A personal check date is not an employer deadline.
 
-If your next step is learning rather than another application, [Choose What to Learn Next](/guides/choose-what-to-learn-next/) helps define a small practice task and check its result without using personal records.
+If there is no open application to act on, choose a role family and location to explore through [job site comparisons](/job-sites/), a [career guide](/career-guides/), or a [country guide](/country-guides/). To rehearse instead, [choose a short practice route](/job-seeker-tools/guide-finder/#practice-routes) or use [Choose What to Learn Next](/guides/choose-what-to-learn-next/).
 
 ### Choose the Next Application Action
 

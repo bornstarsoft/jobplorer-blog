@@ -169,6 +169,32 @@ const routes = [
     }
     await page.getByRole('link', { name: 'weekly role review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    const pickup = page.locator('#pick-up-where-you-left-off');
+    const stageLinks = page.locator('#pick-up-where-you-left-off + p + ul');
+    assert.deepEqual(await stageLinks.locator('li > strong').allTextContents(), [
+      'Searching:', 'Preparing to apply:', 'Submitted:', 'Received an update:', 'After an interview:'
+    ]);
+    assert.deepEqual(await stageLinks.getByRole('link').evaluateAll(links => links.map(link => link.getAttribute('href'))), [
+      '/guides/refine-your-job-search-terms/#compare-two-search-visits', '/guides/read-a-job-posting/#recheck-a-saved-posting',
+      '#update-your-application-draft', '#before-you-submit', '#choose-the-next-application-action', '#act-on-an-application-reply',
+      '/guides/follow-up-after-an-interview/#recheck-what-you-learned-about-the-role', '/guides/follow-up-after-an-interview/#prepare-for-a-confirmed-next-round'
+    ]);
+    assert.match(await page.locator('#pick-up-where-you-left-off + p + ul + p').textContent(), /Check the requested file first.*personal check date is not an employer deadline/i);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Weekly shortcuts overflow: ' + width);
+      if (width !== 320) {
+        await pickup.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'weekly-review-shortcuts-' + width + '.png') });
+      }
+    }
+    await stageLinks.getByRole('link', { name: 'Respond to an application reply', exact: true }).focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
+    await page.getByRole('link', { name: 'return to the weekly review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await page.setViewportSize({ width: 1440, height: 960 });
 
     await page.goto(base + '/guides/research-an-employer/');
@@ -501,6 +527,14 @@ const routes = [
     await plain.locator('.jp-reading-next li a').first().click();
     assert.equal(new URL(plain.url()).pathname, '/job-sites/');
     await plain.goto(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'Check the final files', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await plain.getByRole('link', { name: 'weekly job search review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'Prepare for a confirmed next round', exact: true }).click();
+    await plain.waitForURL(base + '/guides/follow-up-after-an-interview/#prepare-for-a-confirmed-next-round');
+    await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Compare two search visits', exact: true }).click();
     await plain.waitForURL(base + '/guides/refine-your-job-search-terms/#compare-two-search-visits');
     await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
