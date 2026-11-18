@@ -180,6 +180,12 @@ const routes = [
       '/guides/follow-up-after-an-interview/#recheck-what-you-learned-about-the-role', '/guides/follow-up-after-an-interview/#prepare-for-a-confirmed-next-round'
     ]);
     assert.match(await page.locator('#pick-up-where-you-left-off + p + ul + p').textContent(), /Check the requested file first.*personal check date is not an employer deadline/i);
+    const noteHeading = page.locator('#keep-one-note-for-next-time');
+    const noteLink = page.getByRole('link', { name: 'Download weekly review note (.txt)', exact: true });
+    const noteFile = 'jobplorer-weekly-review-note.txt';
+    assert.equal(await noteLink.getAttribute('href'), '/downloads/' + noteFile);
+    assert.equal(await noteLink.getAttribute('download'), noteFile);
+    assert.match(await page.locator('#keep-one-note-for-next-time + p').textContent(), /no note is entered or uploaded to Jobplorer/);
     assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
     assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
     for (const width of [1440, 390, 320]) {
@@ -188,6 +194,8 @@ const routes = [
       if (width !== 320) {
         await pickup.evaluate(el => el.scrollIntoView({ block: 'start' }));
         await page.screenshot({ path: path.join(output, 'weekly-review-shortcuts-' + width + '.png') });
+        await noteHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'weekly-review-note-' + width + '.png') });
       }
     }
     await stageLinks.getByRole('link', { name: 'Respond to an application reply', exact: true }).focus();
@@ -527,6 +535,21 @@ const routes = [
     await plain.locator('.jp-reading-next li a').first().click();
     assert.equal(new URL(plain.url()).pathname, '/job-sites/');
     await plain.goto(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    const offlineNote = plain.getByRole('link', { name: 'Download weekly review note (.txt)', exact: true });
+    await offlineNote.focus();
+    const pendingNote = plain.waitForEvent('download');
+    await plain.keyboard.press('Enter');
+    const note = await pendingNote;
+    assert.equal(note.suggestedFilename(), noteFile);
+    const noteText = await fs.readFile(await note.path(), 'utf8');
+    assert.equal(noteText, await fs.readFile(path.join(__dirname, '..', 'static', 'downloads', noteFile), 'utf8'));
+    assert.match(noteText, /^TODAY\nLast confirmed status and where I checked:\nOne next action:\n/m);
+    assert.match(noteText, /^NEXT REVIEW\nWhat changed, if anything:\nAction done, still pending, or replaced:\n/m);
+    assert.match(noteText, /FICTIONAL EXAMPLE[\s\S]*The check is done;\nthe application is still pending/);
+    const returnURL = new URL(noteText.trim().split('\n').at(-1));
+    assert.equal(returnURL.origin, 'https://jobplorer.com');
+    await plain.goto(base + returnURL.pathname + returnURL.hash);
+    await plain.locator(returnURL.hash).waitFor({ state: 'visible' });
     await plain.getByRole('link', { name: 'Check the final files', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await plain.getByRole('link', { name: 'weekly job search review', exact: true }).click();

@@ -63,6 +63,12 @@ Choose the stage you can verify for one role in your own notes.
 
 If there is no open application to act on, choose a role family and location to explore through [job site comparisons](/job-sites/), a [career guide](/career-guides/), or a [country guide](/country-guides/). To rehearse instead, [choose a short practice route](/job-seeker-tools/guide-finder/#practice-routes) or use [Choose What to Learn Next](/guides/choose-what-to-learn-next/).
 
+### Keep One Note for Next Time
+
+Keep the last confirmed status, one next action, and your own check date in a file you control. At your next review, check what changed before carrying forward the action. The blank note includes a fictional example and a link back here. Fill it in on your device; no note is entered or uploaded to Jobplorer.
+
+{{< weekly-review-note >}}
+
 ### Choose the Next Application Action
 
 Use the last status you could verify for each role. If a verified request still needs a response, handle that branch first rather than marking the application as waiting. Among requests, check any deadlines and time zones the employer actually gave.
