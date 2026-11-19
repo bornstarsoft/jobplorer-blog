@@ -57,16 +57,26 @@
         {{ .Content }}
         {{ partials.Include "tags.html" . }}
         {{ if $readingPage }}
+        {{ $nextTitle := "Continue your research" }}
+        {{ $primaryNext := dict "path" "/job-sites" "title" "Compare job sites" "note" "Research uses, application routes, and details to verify." "icon" "columns-3" }}
+        {{ if eq .Section "guides" }}
+          {{ with where site.Data.weekly_practice.weeks "guide" .RelPermalink }}
+            {{ if ne (len .) 1 }}{{ errorf "Expected one weekly exercise for guide %s" $.RelPermalink }}{{ end }}
+            {{ $week := index . 0 }}
+            {{ $nextTitle = "Put it into practice" }}
+            {{ $primaryNext = dict "path" "/job-seeker-tools/weekly-practice" "anchor" (printf "week-%v" $week.number) "title" $week.title "note" (printf "Week %v (%s). Try a fictional scenario." $week.number $week.minutes) "icon" "notebook-pen" }}
+          {{ end }}
+        {{ end }}
         <nav class="jp-reading-next" aria-labelledby="jp-reading-next-title">
           <div class="jp-reading-next-heading">
-            <h2 id="jp-reading-next-title">Continue your research</h2>
+            <h2 id="jp-reading-next-title">{{ $nextTitle }}</h2>
             <a class="jp-reading-top" href="#jp-article-title" title="Back to top" aria-label="Back to top"><i data-lucide="arrow-up" aria-hidden="true"></i></a>
           </div>
           <ul>
-            {{ range slice (dict "path" "/job-sites" "title" "Compare job sites" "note" "Research uses, application routes, and details to verify." "icon" "columns-3") (dict "path" "/job-seeker-tools/guide-finder" "title" "Find your next guide" "note" "Reading paths by question, role topic, and country." "icon" "route") }}
+            {{ range slice $primaryNext (dict "path" "/job-seeker-tools/guide-finder" "title" "Find your next guide" "note" "Reading paths by question, role topic, and country." "icon" "route") }}
               {{ $destination := site.GetPage .path }}
               {{ if not $destination }}{{ errorf "Missing reading destination: %s" .path }}{{ end }}
-              <li><a href="{{ $destination.RelPermalink }}"><i data-lucide="{{ .icon }}" aria-hidden="true"></i><span><strong>{{ .title }}</strong><small>{{ .note }}</small></span><i data-lucide="arrow-right" aria-hidden="true"></i></a></li>
+              <li><a href="{{ $destination.RelPermalink }}{{ with .anchor }}#{{ . }}{{ end }}"><i data-lucide="{{ .icon }}" aria-hidden="true"></i><span><strong>{{ .title }}</strong><small>{{ .note }}</small></span><i data-lucide="arrow-right" aria-hidden="true"></i></a></li>
             {{ end }}
           </ul>
         </nav>

@@ -8,6 +8,13 @@ assert(['127.0.0.1', 'localhost'].includes(new URL(base).hostname));
 const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-reading-qa';
 const baseline = process.env.JOBPLORER_BASELINE_BUILD;
 const addedGuides = ['/guides/prepare-for-a-work-sample-task/'];
+const weeklyPractice = '/job-seeker-tools/weekly-practice/';
+const guidePracticeWeeks = new Map([
+  ['/guides/read-a-job-posting/', 1],
+  ['/guides/build-a-project-case-study/', 2],
+  ['/guides/prepare-for-an-interview/', 3],
+  ['/guides/prepare-for-a-work-sample-task/', 4]
+]);
 const reviewedGuides = [
   '/guides/check-job-offers-and-recruiters/', '/guides/prepare-for-an-interview/',
   '/guides/read-a-job-posting/', '/guides/build-a-project-case-study/',
@@ -24,6 +31,27 @@ const routes = [
   '/posts/why-87-percent-of-job-seekers-abandon-their-resumes/', '/posts/ai-creators-future-game-development/',
   ...reviewedGuides
 ];
+
+async function verifyGuidePractice(page, guide, week) {
+  await page.goto(base + guide);
+  const footer = page.getByRole('navigation', { name: 'Put it into practice', exact: true });
+  const start = footer.locator('li a').first();
+  const title = (await start.locator('strong').textContent()).trim();
+  assert.match(await start.locator('small').textContent(), new RegExp('^Week ' + week + ' .*fictional scenario'));
+  await start.focus();
+  await page.keyboard.press('Enter');
+  await page.waitForURL(base + weeklyPractice + '#week-' + week);
+  const exercise = page.locator('#week-' + week);
+  assert.equal(await exercise.getByRole('heading', { level: 2 }).textContent(), title);
+  assert.equal(await exercise.locator('form, input, textarea, [contenteditable]').count(), 0);
+  await exercise.locator('.jp-weekly-followup').click();
+  await page.waitForURL(base + weeklyPractice + '#challenge-' + week);
+  await page.locator('#challenge-' + week).getByRole('link', { name: 'Review week ' + week, exact: true }).click();
+  await page.waitForURL(base + weeklyPractice + '#week-' + week);
+  await exercise.locator('a[href="' + guide + '"]').click();
+  await page.waitForURL(base + guide);
+  await footer.waitFor({ state: 'visible' });
+}
 
 (async () => {
   await fs.mkdir(output, { recursive: true });
@@ -51,8 +79,9 @@ const routes = [
       assert.deepEqual(invalid, []);
       const ids = await page.locator('[id]').evaluateAll(items => items.map(el => el.id));
       assert.equal(new Set(ids).size, ids.length, 'Duplicate ID: ' + route);
-      const nextLinks = await page.locator('.jp-reading-next li a').evaluateAll(items => items.map(a => a.pathname));
-      assert.deepEqual(nextLinks, ['/job-sites/', '/job-seeker-tools/guide-finder/']);
+      const week = guidePracticeWeeks.get(route);
+      const nextLinks = await page.locator('.jp-reading-next li a').evaluateAll(items => items.map(a => a.pathname + a.hash));
+      assert.deepEqual(nextLinks, [week ? weeklyPractice + '#week-' + week : '/job-sites/', '/job-seeker-tools/guide-finder/']);
       for (const destination of nextLinks) assert.equal((await context.request.get(base + destination)).status(), 200);
       assert.equal(await page.locator('input, textarea, form').count(), 0);
       assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
@@ -97,6 +126,16 @@ const routes = [
     for (const route of ['/', '/guides/', '/job-seeker-tools/']) {
       await page.goto(base + route);
       for (const destination of reviewedGuides) assert.ok(await page.locator('a[href="' + destination + '"]').count(), route + destination);
+    }
+
+    for (const [guide, week] of guidePracticeWeeks) await verifyGuidePractice(page, guide, week);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      await page.goto(base + '/guides/prepare-for-an-interview/');
+      const footer = page.getByRole('navigation', { name: 'Put it into practice', exact: true });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+      assert.equal(await footer.locator('li a').count(), 2);
+      await footer.screenshot({ path: path.join(output, 'guide-practice-footer-' + width + '.png') });
     }
 
     await page.goto(base + '/guides/write-a-focused-cover-letter/');
@@ -840,6 +879,7 @@ const routes = [
       await plain.locator('.jp-page-outline a').last().click();
       assert.equal(new URL(plain.url()).hash, '#sources-and-review-scope');
     }
+    for (const [guide, week] of guidePracticeWeeks) await verifyGuidePractice(plain, guide, week);
     await plain.goto(base + sample);
     await plain.locator('.jp-page-outline summary').click();
     assert.equal(await plain.locator('.jp-page-outline a:visible').count(), 0);
@@ -1009,6 +1049,6 @@ const routes = [
     await plain.getByRole('link', { name: 'next weekly research review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plainContext.close();
-    console.log('PASS: 25 article outlines, existing body preservation, twelve practical guide sources/internal links/images, fictional examples and weekly-review anchors, employer-research scope, AI output checks, career-conversation privacy, learning exercise records and worked result, search trials and fictional posting snippets, work-sample brief/facts/response consistency, landing-page discoverability, 5 viewport widths, keyboard and no-JS navigation, small-screen/short-height reachability, no new inputs/storage, unrelated-page and tracker exclusion.');
+    console.log('PASS: 25 article outlines, existing body preservation, twelve practical guide sources/internal links/images, four guide-to-weekly-practice round trips, fictional examples and weekly-review anchors, employer-research scope, AI output checks, career-conversation privacy, learning exercise records and worked result, search trials and fictional posting snippets, work-sample brief/facts/response consistency, landing-page discoverability, 5 viewport widths, keyboard and no-JS navigation, small-screen/short-height reachability, no new inputs/storage, unrelated-page and tracker exclusion.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });
