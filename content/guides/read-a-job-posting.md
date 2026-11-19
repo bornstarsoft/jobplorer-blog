@@ -38,6 +38,8 @@ Consider this invented excerpt: "Maintain support articles, investigate recurrin
 
 Nothing in the excerpt establishes that a candidate is qualified, that training will be provided, or that the arrangement fits a particular location. Do not fill those gaps with an optimistic assumption.
 
+On another visit, try the [posting check with a different scenario](/job-seeker-tools/weekly-practice/#challenge-1) and write one question the hybrid label does not answer.
+
 ## Connect a Responsibility to Evidence
 
 The National Careers Service's application guidance recommends relevant experience and specific examples when asked about skills. It includes examples beyond paid employment, such as volunteering and activities. [Application form advice](https://nationalcareers.service.gov.uk/careers-advice/application-forms).

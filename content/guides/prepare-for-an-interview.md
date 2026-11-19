@@ -50,6 +50,8 @@ Pick questions that the posting and conversation have not already answered. Thes
 
 A question is useful when its answer changes your understanding, not because it appears on a list. The [Remote Workers guide](/career-guides/remote-workers/) offers more work-arrangement research prompts.
 
+Try one neutral question about handing off unfinished work in [a fictional interview scenario](/job-seeker-tools/weekly-practice/#challenge-3). Compare your question with the example before writing one for a real interview.
+
 If the conversation gives you a different picture of the work, [compare the role details after the interview](/guides/follow-up-after-an-interview/#recheck-what-you-learned-about-the-role) before drawing a conclusion.
 
 ## Check the Video Setup

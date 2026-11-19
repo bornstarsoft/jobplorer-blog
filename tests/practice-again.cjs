@@ -9,6 +9,12 @@ const local = ['localhost', '127.0.0.1'].includes(new URL(base).hostname);
 assert(['localhost', '127.0.0.1', 'jobplorer.com', 'jobplorer-blog.pages.dev'].includes(new URL(base).hostname));
 const output = process.env.JOBPLORER_TEST_OUTPUT || '/tmp/jobplorer-practice-again-qa';
 const route = '/job-seeker-tools/weekly-practice/';
+const guideReturns = [
+  ['Read a Job Posting', '/guides/read-a-job-posting/', 'posting check with a different scenario'],
+  ['Build a Project Case Study', '/guides/build-a-project-case-study/', 'another contribution and evidence exercise'],
+  ['Prepare for an Interview', '/guides/prepare-for-an-interview/', 'a fictional interview scenario'],
+  ['Prepare for a Work Sample Task', '/guides/prepare-for-a-work-sample-task/', 'a different task-brief exercise']
+];
 const hostingBeacon = value => {
   const url = new URL(value);
   return url.origin === 'https://static.cloudflareinsights.com' && /^\/beacon\.min\.js(?:\/|$)/.test(url.pathname);
@@ -263,8 +269,33 @@ const hostingBeacon = value => {
       assert.equal(await page.locator('#challenge-3 details[open]').count(), 1);
       assert.deepEqual(errors, []);
       if (!local) console.log(`Hosting security requests recorded separately (JS=${javascript}): ${hostingRequests.length}; blocked hosting beacon requests: ${external.length}; hosting clearance cookies: ${cookieMetadata.length}`);
+
+      // Guides may use their own analytics. Check these round trips after the weekly-only privacy assertions.
+      for (const [index, [title, guide, label]] of guideReturns.entries()) {
+        const week = index + 1;
+        await page.goto(base + route + '#week-' + week);
+        await page.locator('#week-' + week).getByRole('link', { name: title, exact: true }).click();
+        await page.waitForURL(base + guide);
+        const nextPractice = page.getByRole('link', { name: label, exact: true });
+        assert.equal(await nextPractice.getAttribute('href'), route + '#challenge-' + week);
+        if (javascript && week === 1) {
+          for (const width of [1440, 390]) {
+            await page.setViewportSize({ width, height: 960 });
+            assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Guide practice link must fit');
+            await nextPractice.locator('..').screenshot({ path: path.join(output, `guide-practice-link-${width}.png`) });
+          }
+        }
+        await nextPractice.focus();
+        await page.keyboard.press('Enter');
+        await page.waitForURL(base + route + '#challenge-' + week);
+        const challenge = page.locator('#challenge-' + week);
+        await challenge.locator('h3').waitFor({ state: 'visible' });
+        assert.equal(await challenge.locator('.jp-challenge-answer').getAttribute('open'), null);
+        await challenge.getByRole('link', { name: 'Review week ' + week, exact: true }).click();
+        await page.waitForURL(base + route + '#week-' + week);
+      }
       await context.close();
     }
-    console.log('PASS: named native return-visit chooser and bottom navigation, keyboard/no-JS/history, four paired downloads and full pack, week/challenge loops, exact content parity, no application storage/telemetry, five widths, no persisted progress.');
+    console.log('PASS: named native return-visit chooser and bottom navigation, keyboard/no-JS/history, four paired downloads and full pack, week/challenge and guide round trips, exact content parity, no application storage/telemetry, five widths, no persisted progress.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

@@ -39,6 +39,8 @@ You do not need an invented percentage or a large user count. A narrow, verifiab
 
 This example is invented for practice. Do not copy it as personal experience. The improvement is the explanation of responsibility, a decision, evidence, and limits, not a claimed commercial result.
 
+For a second attempt, try [another contribution and evidence exercise](/job-seeker-tools/weekly-practice/#challenge-2). Separate the applicant's test work from the teammate's fix and from outcomes nobody measured.
+
 ## Make the Evidence Understandable
 
 For a code project shared through GitHub, its official README guidance describes explaining the project's purpose, usefulness, and how someone can get started. That is documentation guidance, not a statement that employers require GitHub. [GitHub Docs: About READMEs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes).

@@ -80,6 +80,8 @@ Compare the output with the brief, not with an imagined ideal submission. In the
 
 If you cannot complete something within the stated constraints, describe what is unfinished where allowed. Do not present an untested feature or a partial result as complete.
 
+On a later visit, try [a different task-brief exercise](/job-seeker-tools/weekly-practice/#challenge-4). Check the order of the two steps and remove a promise the brief does not support.
+
 ## Explain the Choices You Actually Made
 
 Prepare to describe one decision, its supporting evidence, and a remaining limitation. For this exercise: "I removed the saving claim because the brief does not describe saving. I kept the question separate so it cannot be mistaken for an instruction."
