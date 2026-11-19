@@ -60,7 +60,7 @@ Once the wording is useful, inspect the filters available on the site you are us
 
 This is an editorial troubleshooting method, not a controlled experiment on a search algorithm. Listings and result order can change between visits. A different result list does not establish that one setting caused every difference.
 
-Use a location or arrangement you genuinely want to investigate. Do not broaden a search and then assume the displayed roles meet your practical needs. In particular, inspect the location details behind a remote label using the [Remote Workers guide](/career-guides/remote-workers/).
+Use a location or arrangement you genuinely want to investigate. Do not broaden a search and then assume the displayed roles meet your practical needs. If a result is labelled remote, [recheck the work arrangement](/career-guides/remote-workers/#recheck-a-remote-or-hybrid-arrangement) before relying on the label.
 
 ## Check Syntax Before Using Search Operators
 

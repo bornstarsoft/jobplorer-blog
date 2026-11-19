@@ -260,6 +260,29 @@ const routes = [
     assert.deepEqual(await page.locator('#two-visit-search-log + p + ul strong').allTextContents(), ['Work I want to find:', 'Visit 1:', 'Visit 2:', 'Next action:']);
     assert.equal(await page.locator('.jp-article-body [contenteditable]').count(), 0);
     assert.match(searchBody, /Do not count the repeated posting as a second opening/);
+    const arrangementLink = page.getByRole('link', { name: 'recheck the work arrangement', exact: true });
+    await arrangementLink.focus();
+    await page.keyboard.press('Enter');
+    const arrangementRoute = '/career-guides/remote-workers/#recheck-a-remote-or-hybrid-arrangement';
+    await page.waitForURL(base + arrangementRoute);
+    const arrangementHeading = page.locator('#recheck-a-remote-or-hybrid-arrangement');
+    await arrangementHeading.waitFor({ state: 'visible' });
+    const arrangementChecks = page.locator('#recheck-a-remote-or-hybrid-arrangement + p + ul');
+    assert.deepEqual(await arrangementChecks.locator('li > strong').allTextContents(), ['Work location:', 'Attendance:', 'Shared hours:']);
+    assert.match(await page.locator('#recheck-a-remote-or-hybrid-arrangement + p + ul + p').textContent(), /DEMO-R09.*one meeting per month.*Update the attendance note only.*location and shared hours unknown/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Work-arrangement recheck overflow: ' + width);
+      if (width !== 320) {
+        await arrangementHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'work-arrangement-recheck-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'weekly work-arrangement review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await page.goto(base + '/guides/refine-your-job-search-terms/');
     await page.getByRole('link', { name: 'weekly job search review', exact: true }).click();
     assert.equal(new URL(page.url()).pathname, '/job-seeker-tools/');
     assert.equal(new URL(page.url()).hash, '#your-weekly-job-search-review');
@@ -774,6 +797,13 @@ const routes = [
     await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Compare two search visits', exact: true }).click();
+    await plain.waitForURL(base + '/guides/refine-your-job-search-terms/#compare-two-search-visits');
+    await plain.getByRole('link', { name: 'recheck the work arrangement', exact: true }).click();
+    await plain.waitForURL(base + arrangementRoute);
+    await plain.getByRole('link', { name: 'weekly work-arrangement review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.goBack();
+    await plain.goBack();
     await plain.waitForURL(base + '/guides/refine-your-job-search-terms/#compare-two-search-visits');
     await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');

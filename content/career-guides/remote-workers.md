@@ -51,6 +51,18 @@ Remote work describes a work arrangement. Choose the responsibilities you want t
 
 Mark missing answers as unknown. A remote filter alone does not establish that a role can be performed from any location.
 
+## Recheck a Remote or Hybrid Arrangement
+
+When you return to a saved posting, check the employer, role reference if shown, and listed locations before assuming both versions describe the same opening. Keep the search result's label separate from what the employer confirms for that role.
+
+- **Work location:** Where does the employer say you can work on remote days? A named office is not an answer about where remote work is possible.
+- **Attendance:** Which office or other location is used, and how often? Occasional visits and a weekly office schedule are different details to verify.
+- **Shared hours:** Which hours and time zone apply? Confirm these separately from office attendance.
+
+**Fictional recheck:** A board marks `DEMO-R09` as remote. The employer's posting for the same reference mentions office meetings but does not give a schedule. On a later check, the employer confirms one meeting per month at its North Office. Update the attendance note only. Keep remote-day location and shared hours unknown until they are confirmed. If hours matter first, ask: "What shared working hours and time zone apply to this role?"
+
+In your own notes, keep **last confirmed detail / what changed / one open question**. At your [weekly work-arrangement review](/job-seeker-tools/#your-weekly-job-search-review), use the new information to decide what to verify or whether to prepare a draft. If the source has not changed, leave the unknowns in place.
+
 ## Keep a Verifiable Record
 
 Record the source URL, date checked, work arrangement, and questions in the [application worksheet](/job-seeker-tools/#application-record-template). Compare [software](/career-guides/software-developers/) or [game development](/career-guides/game-developers/) responsibilities separately from the work arrangement.
