@@ -146,7 +146,7 @@ In the fictional `DEMO-204` example, the employer still requests a resume and no
 
 In your own notes, leave one line for next time: **What is ready / what is unanswered / when I will check again.** For `DEMO-204`: resume ready; sample type and format unconfirmed; recheck the posting before sending. At your [next weekly review](#your-weekly-job-search-review), update that line if the employer clarifies the request. If instructions have changed again, [recheck the posting](/guides/read-a-job-posting/#recheck-a-saved-posting) before reusing the draft.
 
-If the employer sends a defined task instead of asking for an existing sample, [check the work sample brief](/guides/prepare-for-a-work-sample-task/#read-the-brief-before-starting). Once the requested materials and submission destination are clear, use the [final submission checklist](#before-you-submit).
+If the employer sends a defined task instead of asking for an existing sample, [check the work sample brief](/guides/prepare-for-a-work-sample-task/#read-the-brief-before-starting). If the brief changes while you are drafting, [recheck the revised brief](/guides/prepare-for-a-work-sample-task/#recheck-a-revised-brief-before-sending) to see what your draft still needs. Once the requested materials and submission destination are clear, use the [final submission checklist](#before-you-submit).
 
 ## Before You Submit
 

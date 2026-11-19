@@ -82,6 +82,18 @@ If you cannot complete something within the stated constraints, describe what is
 
 On a later visit, try [a different task-brief exercise](/job-seeker-tools/weekly-practice/#challenge-4). Check the order of the two steps and remove a promise the brief does not support.
 
+### Recheck a Revised Brief Before Sending
+
+Open the current brief through the employer's stated channel and match the task reference to your draft. If two instructions conflict and you cannot verify which applies, flag that one detail for clarification rather than guessing or submitting both formats.
+
+**Fictional recheck:** You drafted two setup steps and a caution in a PDF for `DEMO-W04`. The same task in the employer's portal now explicitly asks for those steps and caution in its text field instead of a PDF. The scope has not changed.
+
+- **Keep:** The two steps and the caution, if each still matches the current brief.
+- **Change:** Move the response into the requested text field. Do not attach the old PDF as an extra.
+- **Verify:** Reread what is in the field or the submission preview, if shown. Check that both steps are in order and the caution survived the format change.
+
+In your own notes, keep **what stayed / what changed / one final check**. At your [next weekly brief check](/job-seeker-tools/#your-weekly-job-search-review), start from the current instructions instead of carrying the old format forward. When the version and route are clear, use the [final submission checklist](/job-seeker-tools/#before-you-submit).
+
 ## Explain the Choices You Actually Made
 
 Prepare to describe one decision, its supporting evidence, and a remaining limitation. For this exercise: "I removed the saving claim because the brief does not describe saving. I kept the question separate so it cannot be mistaken for an instruction."

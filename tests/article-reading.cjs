@@ -774,6 +774,35 @@ async function verifyGuidePractice(page, guide, week) {
     await page.waitForURL(base + '/guides/prepare-for-a-work-sample-task/#read-the-brief-before-starting');
     await page.locator('#read-the-brief-before-starting').waitFor({ state: 'visible' });
 
+    const revisedBriefRoute = addedGuides[0] + '#recheck-a-revised-brief-before-sending';
+    await page.goto(base + '/job-seeker-tools/#update-your-application-draft');
+    await page.getByRole('link', { name: 'recheck the revised brief', exact: true }).focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + revisedBriefRoute);
+    const revisedBriefHeading = page.locator('#recheck-a-revised-brief-before-sending');
+    await revisedBriefHeading.waitFor({ state: 'visible' });
+    assert.match(await revisedBriefHeading.locator('+ p').textContent(), /instructions conflict.*clarification rather than guessing/);
+    assert.match(await revisedBriefHeading.locator('+ p + p').textContent(), /DEMO-W04.*text field instead of a PDF.*scope has not changed/);
+    const briefChoices = revisedBriefHeading.locator('+ p + p + ul li');
+    assert.deepEqual(await briefChoices.locator('strong').allTextContents(), ['Keep:', 'Change:', 'Verify:']);
+    assert.match(await briefChoices.nth(1).textContent(), /Do not attach the old PDF/);
+    assert.match(await briefChoices.nth(2).textContent(), /both steps are in order and the caution survived/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Revised brief overflow: ' + width);
+      if (width !== 320) {
+        await revisedBriefHeading.evaluate(el => el.scrollIntoView({ block: 'start', behavior: 'instant' }));
+        await page.screenshot({ path: path.join(output, 'revised-brief-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'final submission checklist', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await page.goBack();
+    await page.getByRole('link', { name: 'next weekly brief check', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+
     await page.goto(base + addedGuides[0]);
     const taskFacts = await page.locator('#given-facts + ol > li').allTextContents();
     assert.deepEqual(taskFacts, ['Open the demo workspace.', 'Inside the workspace, choose Examples.', 'In Examples, choose Try sample.', 'Reset removes changes made in the demo.', 'The supplied information does not describe a save option.']);
@@ -1031,6 +1060,14 @@ async function verifyGuidePractice(page, guide, week) {
     await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await plain.getByRole('link', { name: 'application draft review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#update-your-application-draft');
+    await plain.getByRole('link', { name: 'recheck the revised brief', exact: true }).click();
+    await plain.waitForURL(base + revisedBriefRoute);
+    await plain.getByRole('link', { name: 'final submission checklist', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
+    await plain.goBack();
+    await plain.getByRole('link', { name: 'next weekly brief check', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.goto(base + '/job-seeker-tools/#update-your-application-draft');
     await plain.getByRole('link', { name: 'next weekly review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'recheck the posting', exact: true }).click();
