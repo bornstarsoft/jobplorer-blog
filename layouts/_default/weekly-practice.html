@@ -115,7 +115,12 @@
       <p class="jp-weekly-return"><a class="jp-weekly-pair-download" href="{{ $pair.RelPermalink }}" download="{{ path.Base $pair.RelPermalink }}"><i data-lucide="download" aria-hidden="true"></i> Download week {{ .number }} + follow-up (.txt)</a></p>
       <nav class="jp-weekly-next" aria-label="After week {{ .number }}">
         <a href="#weekly-top"><i data-lucide="arrow-up" aria-hidden="true"></i> Back to overview</a>
-        {{ if lt .number 4 }}<a href="#week-{{ add .number 1 }}">Next: week {{ add .number 1 }} <i data-lucide="arrow-right" aria-hidden="true"></i></a>{{ else }}<a href="/job-seeker-tools/guide-finder/">Find your next guide <i data-lucide="arrow-right" aria-hidden="true"></i></a>{{ end }}
+        {{ if lt .number 4 }}
+          <a href="#week-{{ add .number 1 }}">Next: week {{ add .number 1 }} <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        {{ else }}
+          <a href="#take-one-step-in-your-search">Use one exercise in your search <i data-lucide="arrow-down" aria-hidden="true"></i></a>
+          <a href="/job-seeker-tools/guide-finder/">Find your next guide <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        {{ end }}
       </nav>
     </section>
     {{ end }}
@@ -150,6 +155,18 @@
         {{ end }}
       </div>
       <p class="jp-weekly-plan-note">No answers or progress are saved. The text pack above includes these four challenges for offline practice.</p>
+      <p class="jp-weekly-return"><a href="#take-one-step-in-your-search">Take one step in your search <i data-lucide="arrow-down" aria-hidden="true"></i></a></p>
+    </section>
+    <section id="take-one-step-in-your-search" class="jp-weekly-revisit nested-links" aria-labelledby="take-one-step-title">
+      <h2 id="take-one-step-title">Take One Step in Your Search</h2>
+      <p>Choose one action for a current role. Use the real posting or invitation, not the fictional answers above. You do not need to finish all four weeks first.</p>
+      <ul>
+        <li><strong>Still deciding:</strong> <a href="/guides/read-a-job-posting/#recheck-a-saved-posting">Recheck one saved posting</a> and verify one detail that could change your next action.</li>
+        <li><strong>Preparing a draft:</strong> <a href="/guides/build-a-project-case-study/#choose-something-you-can-explain">Choose one example you can explain</a> and separate your contribution from the team's work.</li>
+        <li><strong>Preparing for a conversation:</strong> <a href="/guides/prepare-for-an-interview/#questions-that-make-the-role-clearer">Write one unanswered question</a> about how the work is done.</li>
+        <li><strong>Checking a task:</strong> <a href="/guides/prepare-for-a-work-sample-task/#check-coverage-before-polishing">Check one requested element</a> against the actual brief before polishing the rest.</li>
+      </ul>
+      <p>In your own notes, record <strong>what I checked / what I learned / one thing to revisit</strong>. At your <a href="/job-seeker-tools/#your-weekly-job-search-review">next weekly review</a>, use what changed to decide whether to keep the action or replace it.</p>
     </section>
     <aside id="practice-details" class="jp-weekly-notes nested-links" aria-label="About this series and privacy">{{ .Content }}</aside>
   </div>

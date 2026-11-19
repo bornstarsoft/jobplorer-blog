@@ -119,7 +119,24 @@ const hostingBeacon = value => {
         await page.goBack();
         assert.equal(new URL(page.url()).hash, '#week-' + i);
       }
-      assert.equal(requests.length, baseline, 'Challenge navigation/disclosures send no requests');
+      const applyPractice = page.getByRole('region', { name: 'Take One Step in Your Search', exact: true });
+      const applyLink = page.locator('#week-4').getByRole('link', { name: 'Use one exercise in your search', exact: true });
+      await applyLink.focus();
+      await page.keyboard.press('Enter');
+      assert.equal(new URL(page.url()).hash, '#take-one-step-in-your-search');
+      assert.deepEqual(await applyPractice.locator('li > strong').allTextContents(), [
+        'Still deciding:', 'Preparing a draft:', 'Preparing for a conversation:', 'Checking a task:'
+      ]);
+      assert.deepEqual(await applyPractice.getByRole('link').evaluateAll(links => links.map(link => link.getAttribute('href'))), [
+        '/guides/read-a-job-posting/#recheck-a-saved-posting', '/guides/build-a-project-case-study/#choose-something-you-can-explain',
+        '/guides/prepare-for-an-interview/#questions-that-make-the-role-clearer', '/guides/prepare-for-a-work-sample-task/#check-coverage-before-polishing',
+        '/job-seeker-tools/#your-weekly-job-search-review'
+      ]);
+      assert.match(await applyPractice.textContent(), /what I checked \/ what I learned \/ one thing to revisit/);
+      assert.equal(await applyPractice.locator('form, input, textarea, [contenteditable]').count(), 0);
+      await page.locator('#practice-again').getByRole('link', { name: 'Take one step in your search', exact: true }).click();
+      assert.equal(new URL(page.url()).hash, '#take-one-step-in-your-search');
+      assert.equal(requests.length, baseline, 'Challenge and action navigation/disclosures send no requests');
       if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
       const cookieMetadata = (await context.cookies()).map(({ name, domain, httpOnly, secure }) => ({ name, domain, httpOnly, secure }));
       if (local) assert.equal(cookieMetadata.length, 0, 'No local application cookies');
@@ -152,6 +169,7 @@ const hostingBeacon = value => {
           await chooser.screenshot({ path: path.join(output, `revisit-chooser-${width}.png`) });
           await page.locator('#practice-again').screenshot({ path: path.join(output, `practice-again-${width}.png`) });
           await page.locator('#week-1').screenshot({ path: path.join(output, `week-followup-${width}.png`) });
+          await applyPractice.screenshot({ path: path.join(output, `take-one-step-${width}.png`) });
         }
       }
       assert.equal(await page.locator('.jp-weekly-pair-download').count(), 4);
