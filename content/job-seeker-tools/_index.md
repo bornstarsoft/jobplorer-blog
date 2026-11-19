@@ -41,6 +41,8 @@ Turn a promising posting into a clear next action. Use these planning worksheets
 
 If the results are hard to use, [Refine Your Job Search Terms](/guides/refine-your-job-search-terms/) helps test related phrases and one filter at a time before reviewing a full posting.
 
+If notifications keep showing the same roles, [review a saved search or alert](/guides/refine-your-job-search-terms/#review-a-saved-search-or-alert) before adding another one.
+
 Unexpected message? Start with [Check Job Offers and Recruiters](/guides/check-job-offers-and-recruiters/) before sending documents or responding to a payment request.
 
 Before choosing where to apply, [Research an Employer Before Applying](/guides/research-an-employer/) helps turn company pages and workplace information into specific questions.

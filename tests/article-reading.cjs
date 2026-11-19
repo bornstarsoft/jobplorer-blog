@@ -282,6 +282,30 @@ const routes = [
     }
     await page.getByRole('link', { name: 'weekly work-arrangement review', exact: true }).click();
     await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    const alertLink = page.getByRole('link', { name: 'review a saved search or alert', exact: true });
+    await alertLink.focus();
+    await page.keyboard.press('Enter');
+    const alertRoute = '/guides/refine-your-job-search-terms/#review-a-saved-search-or-alert';
+    await page.waitForURL(base + alertRoute);
+    const alertHeading = page.locator('#review-a-saved-search-or-alert');
+    await alertHeading.waitFor({ state: 'visible' });
+    const alertActions = page.locator('#review-a-saved-search-or-alert + p + ul');
+    assert.deepEqual(await alertActions.locator('li > strong').allTextContents(), ['Keep:', 'Change one thing:', 'Reduce or pause:']);
+    assert.match(await alertActions.locator('li').nth(1).textContent(), /manual search before changing the alert/);
+    assert.match(await alertActions.locator('li').nth(2).textContent(), /if the provider offers that control/);
+    assert.match(await page.locator('#review-a-saved-search-or-alert + p + ul + p').textContent(), /DEMO-A17.*not two opportunities.*rerun the broad search once/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Saved alert review overflow: ' + width);
+      if (width !== 320) {
+        await alertHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'saved-alert-review-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'weekly alert review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await page.goto(base + '/guides/refine-your-job-search-terms/');
     await page.getByRole('link', { name: 'weekly job search review', exact: true }).click();
     assert.equal(new URL(page.url()).pathname, '/job-seeker-tools/');
@@ -791,6 +815,10 @@ const routes = [
     await plain.getByRole('link', { name: 'Check the final files', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await plain.getByRole('link', { name: 'weekly job search review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.getByRole('link', { name: 'review a saved search or alert', exact: true }).click();
+    await plain.waitForURL(base + alertRoute);
+    await plain.getByRole('link', { name: 'weekly alert review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plain.getByRole('link', { name: 'Prepare for a confirmed next round', exact: true }).click();
     await plain.waitForURL(base + '/guides/follow-up-after-an-interview/#prepare-for-a-confirmed-next-round');

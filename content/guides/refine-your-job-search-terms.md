@@ -86,6 +86,16 @@ You can instead keep a short note in your own private document: query, site, set
 
 At your [weekly job search review](/job-seeker-tools/#your-weekly-job-search-review), revisit the useful phrases and remove assumptions that did not hold up. Keep the next step concrete: inspect a posting, clarify a detail, or try one different term.
 
+### Review a Saved Search or Alert
+
+On your next visit, inspect a few results that prompted you to consider a role. Match repeated listings to the employer and reference if shown, and check whether the role is still visible on the employer's site. A notification count is not a count of new openings.
+
+- **Keep:** The search still helps you find distinct postings with work you want to explore. Save the wording that led you there.
+- **Change one thing:** If you keep seeing the wrong work, try one responsibility phrase or filter in a manual search before changing the alert. Keep the other settings as they were so you know what you tried.
+- **Reduce or pause:** If two alerts mostly repeat each other, or your goal changed, consider reducing one alert if the provider offers that control. You can keep the search wording in your own notes and run it manually instead.
+
+**Fictional review:** A broad support alert and a documentation alert both lead to the same opening, `DEMO-A17`, where the employer lists writing setup articles. They are not two opportunities. In this sample the broad alert adds nothing else worth checking, so pause that alert if possible but keep its wording. At the next [weekly alert review](/job-seeker-tools/#your-weekly-job-search-review), rerun the broad search once and note any different posting with work you want to explore. If none appears, there is no need to turn the alert back on yet.
+
 ## Compare Two Search Visits
 
 Use a small sample of descriptions on each visit. Compare what you learned about the work, not the number of results. Note any change in site, location, or filters before comparing the wording.
