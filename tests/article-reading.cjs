@@ -209,6 +209,32 @@ const routes = [
     assert.match(await page.locator('.jp-article-body').textContent(), /All three details below are invented/);
     assert.match(await page.locator('.jp-article-body').textContent(), /Do not convert missing information into a positive or negative score/);
     assert.equal(await page.getByRole('heading', { name: 'A Fictional Example: Different Pages, Different Scope', exact: true }).count(), 1);
+    const takeawayLink = page.getByRole('link', { name: 'recheck a conversation takeaway', exact: true });
+    await takeawayLink.focus();
+    await page.keyboard.press('Enter');
+    const takeawayRoute = '/guides/plan-an-informational-conversation/#recheck-a-conversation-takeaway';
+    await page.waitForURL(base + takeawayRoute);
+    const takeawayHeading = page.locator('#recheck-a-conversation-takeaway');
+    await takeawayHeading.waitFor({ state: 'visible' });
+    const takeawayNotes = page.locator('#recheck-a-conversation-takeaway + p + ul li');
+    assert.deepEqual(await takeawayNotes.locator('strong').allTextContents(), ['What you heard:', 'What you verified:', 'What to ask next:']);
+    assert.match(await takeawayNotes.nth(0).textContent(), /a previous team tested setup instructions/);
+    assert.match(await takeawayNotes.nth(1).textContent(), /a teammate reviews updates.*does not say whether someone tries the steps/);
+    assert.match(await takeawayNotes.nth(2).textContent(), /first-time reader.*who reviews, not how/);
+    assert.match(await page.locator('#recheck-a-conversation-takeaway + p + ul + p').textContent(), /keep it open.*neither the person.*nor their private comments/);
+    assert.equal(await page.locator('main :is(input, textarea, form, [contenteditable])').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
+    for (const width of [1440, 390, 320]) {
+      await page.setViewportSize({ width, height: 960 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Conversation recheck overflow: ' + width);
+      if (width !== 320) {
+        await takeawayHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'conversation-takeaway-' + width + '.png') });
+      }
+    }
+    await page.getByRole('link', { name: 'next weekly research review', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await page.setViewportSize({ width: 1440, height: 960 });
 
     await page.goto(base + '/guides/use-ai-for-job-search-preparation/');
     assert.equal(await page.locator('.jp-article-body blockquote').count(), 5);
@@ -945,6 +971,11 @@ const routes = [
     await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await plain.goBack();
     await plain.getByRole('link', { name: 'next weekly practice review', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
+    await plain.goto(base + '/guides/research-an-employer/#turn-broad-claims-into-specific-questions');
+    await plain.getByRole('link', { name: 'recheck a conversation takeaway', exact: true }).click();
+    await plain.waitForURL(base + takeawayRoute);
+    await plain.getByRole('link', { name: 'next weekly research review', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#your-weekly-job-search-review');
     await plainContext.close();
     console.log('PASS: 25 article outlines, existing body preservation, twelve practical guide sources/internal links/images, fictional examples and weekly-review anchors, employer-research scope, AI output checks, career-conversation privacy, learning exercise records and worked result, search trials and fictional posting snippets, work-sample brief/facts/response consistency, landing-page discoverability, 5 viewport widths, keyboard and no-JS navigation, small-screen/short-height reachability, no new inputs/storage, unrelated-page and tracker exclusion.');

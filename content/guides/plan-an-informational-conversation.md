@@ -64,6 +64,16 @@ In your own notes, record the date, role context shared, useful takeaway, uncert
 
 A conversation is not a reference, endorsement, or promise of an opportunity. Keep the person's experience separate from your conclusions.
 
+### Recheck a Conversation Takeaway
+
+At a later visit, compare one takeaway with a current source for the role you are exploring. Update only the part the new source answers. A practice one team used is not automatically the practice of another team.
+
+- **What you heard:** In the fictional conversation above, a previous team tested setup instructions before publishing them.
+- **What you verified:** The current fictional posting says a teammate reviews updates to help articles. It does not say whether someone tries the steps from scratch. Peer review does not tell you how the instructions are tested.
+- **What to ask next:** Replace "Does anyone review article updates?" with "How does this team check that a first-time reader can follow a revised setup article?" The posting answered who reviews, not how they check usability.
+
+Keep **takeaway / current source / one remaining question** in your own notes. If the source does not answer your question, keep it open instead of treating silence as a contradiction. Bring it to the [next weekly research review](/job-seeker-tools/#your-weekly-job-search-review). Share neither the person's identity nor their private comments in an application.
+
 ## Close With a Useful Next Step
 
 Finish within the agreed time. A short thank-you can name what helped without introducing an unrequested favor. This second example is also fictional; use it only when its details match what happened:

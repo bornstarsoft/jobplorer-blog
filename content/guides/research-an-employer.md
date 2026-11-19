@@ -75,6 +75,8 @@ Choose questions the posting has not already answered. These are editorial examp
 
 A useful answer adds context; one answer does not establish a complete picture of the workplace. Record what was actually said and keep any remaining uncertainty visible.
 
+If you heard about the work from someone in a different team or role, [recheck a conversation takeaway](/guides/plan-an-informational-conversation/#recheck-a-conversation-takeaway) against what the current posting actually says.
+
 ## Choose a Next Step Without Scoring the Company
 
 Finish with a short note: what the role appears to involve, what you can substantiate, and what you still need to ask. Do not convert missing information into a positive or negative score.
