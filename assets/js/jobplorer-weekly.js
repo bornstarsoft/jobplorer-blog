@@ -1,5 +1,26 @@
 import { practiceCalendar } from './weekly-calendar.mjs';
 
+if (typeof navigator.clipboard?.writeText === 'function') {
+  for (const row of document.querySelectorAll('[data-practice-return-link]')) {
+    const link = row.querySelector('a');
+    const button = row.querySelector('button');
+    const status = row.querySelector('[role="status"]');
+    link.hidden = true;
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      status.textContent = '';
+      try {
+        await navigator.clipboard.writeText(row.dataset.practiceReturnLink);
+        link.hidden = true;
+        status.textContent = 'Link copied.';
+      } catch {
+        link.hidden = false;
+        status.textContent = 'Copy unavailable. Open the link and use your address bar.';
+      }
+    });
+  }
+}
+
 const planner = document.getElementById('jp-weekly-planner');
 if (planner) {
   const form = planner.querySelector('form');

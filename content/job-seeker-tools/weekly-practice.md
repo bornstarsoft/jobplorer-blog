@@ -18,6 +18,8 @@ For a different short session, try [Five-Minute Interview Practice](/job-seeker-
 
 There are no answer fields, accounts, uploads, or saved progress on this page. Think through an answer, or write in your own private notes. The text pack contains all four exercises and worked responses and can be kept on your own device.
 
+A return link contains only the public exercise address. Copying it writes to your device clipboard; it does not send answers or save progress in Jobplorer. You can also bookmark the exercise using its section link.
+
 The optional calendar plan uses only a first practice date in this tab. Jobplorer does not store that date or send reminders. The downloaded calendar file contains four all-day entries with exercise links. Import it once into your chosen calendar, check the dates, and set alerts there if useful. Your calendar provider may store or sync imported events. Without JavaScript, the exercises, week links, and text download still work.
 
 Jobplorer's GA4 tag is excluded from this page. Hosting services still receive ordinary page requests, and linked guides may use their existing analytics. See the [weekly practice privacy note](/privacy/#weekly-job-search-practice) for scope.

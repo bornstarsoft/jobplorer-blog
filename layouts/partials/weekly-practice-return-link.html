@@ -1,0 +1,6 @@
+{{ $href := printf "%s#%s" .path .anchor }}
+<p class="jp-weekly-copy-link" data-practice-return-link="https://jobplorer.com{{ $href }}">
+  <a href="{{ $href }}"><i data-lucide="link" aria-hidden="true"></i> Open link to {{ .label }}</a>
+  <button type="button" aria-label="Copy return link to {{ .label }}" hidden><i data-lucide="copy" aria-hidden="true"></i> Copy return link</button>
+  <span role="status"></span>
+</p>

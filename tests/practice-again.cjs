@@ -27,6 +27,13 @@ const hostingBeacon = value => {
       });
       await context.addInitScript(() => {
         window.privacyCalls = [];
+        window.practiceCopyWrites = [];
+        Object.defineProperty(navigator, 'clipboard', { value: {
+          async writeText(value) {
+            if (window.rejectPracticeCopy) throw new DOMException('Copy blocked for test', 'NotAllowedError');
+            window.practiceCopyWrites.push(value);
+          }
+        } });
         for (const key of ['localStorage', 'sessionStorage', 'indexedDB', 'caches']) Object.defineProperty(window, key, { get() { window.privacyCalls.push(key); throw new Error('Persistence forbidden'); } });
         Object.defineProperty(document, 'cookie', { get() { window.privacyCalls.push('cookie'); return ''; }, set() { window.privacyCalls.push('cookie'); } });
         navigator.sendBeacon = () => { window.privacyCalls.push('beacon'); return false; };
@@ -136,6 +143,41 @@ const hostingBeacon = value => {
       assert.equal(await applyPractice.locator('form, input, textarea, [contenteditable]').count(), 0);
       await page.locator('#practice-again').getByRole('link', { name: 'Take one step in your search', exact: true }).click();
       assert.equal(new URL(page.url()).hash, '#take-one-step-in-your-search');
+      const publicPractice = 'https://jobplorer.com' + route;
+      const returnLinks = page.locator('[data-practice-return-link]');
+      const anchors = ['week-1', 'week-2', 'week-3', 'week-4', 'challenge-1', 'challenge-2', 'challenge-3', 'challenge-4'];
+      assert.deepEqual(await returnLinks.evaluateAll(rows => rows.map(row => row.dataset.practiceReturnLink)), anchors.map(anchor => publicPractice + '#' + anchor));
+      assert.deepEqual(await returnLinks.locator('a').evaluateAll(links => links.map(link => link.getAttribute('href'))), anchors.map(anchor => route + '#' + anchor));
+      const weekCopy = page.locator('#week-2 .jp-weekly-copy-link');
+      const challengeCopy = page.locator('#challenge-4 .jp-weekly-copy-link');
+      if (javascript) {
+        assert.deepEqual(await page.evaluate(() => window.practiceCopyWrites), [], 'No automatic clipboard writes');
+        await page.evaluate(() => history.replaceState(null, '', '?qa=synthetic#week-4'));
+        const button = weekCopy.getByRole('button', { name: 'Copy return link to week 2', exact: true });
+        await button.focus();
+        await page.keyboard.press('Enter');
+        await weekCopy.getByRole('status').filter({ hasText: /^Link copied\.$/ }).waitFor();
+        assert.deepEqual(await page.evaluate(() => window.practiceCopyWrites), [publicPractice + '#week-2']);
+        assert.equal(new URL(page.url()).hash, '#week-4', 'Copy must not change the current section');
+        await page.evaluate(() => { window.rejectPracticeCopy = true; });
+        const challengeButton = challengeCopy.getByRole('button', { name: 'Copy return link to challenge 4', exact: true });
+        await challengeButton.click();
+        await challengeCopy.getByRole('status').filter({ hasText: 'Copy unavailable.' }).waitFor();
+        assert.equal(await challengeCopy.getByRole('link', { name: 'Open link to challenge 4', exact: true }).isVisible(), true);
+        await page.evaluate(() => {
+          window.rejectPracticeCopy = false;
+          history.replaceState(null, '', location.pathname + location.hash);
+        });
+        await challengeButton.click();
+        await challengeCopy.getByRole('status').filter({ hasText: /^Link copied\.$/ }).waitFor();
+        assert.deepEqual(await page.evaluate(() => window.practiceCopyWrites), [publicPractice + '#week-2', publicPractice + '#challenge-4']);
+      } else {
+        assert.equal(await returnLinks.getByRole('button').count(), 0);
+        await weekCopy.getByRole('link', { name: 'Open link to week 2', exact: true }).click();
+        assert.equal(new URL(page.url()).hash, '#week-2');
+        await challengeCopy.getByRole('link', { name: 'Open link to challenge 4', exact: true }).click();
+        assert.equal(new URL(page.url()).hash, '#challenge-4');
+      }
       assert.equal(requests.length, baseline, 'Challenge and action navigation/disclosures send no requests');
       if (javascript) assert.deepEqual(await page.evaluate(() => window.privacyCalls), []);
       const cookieMetadata = (await context.cookies()).map(({ name, domain, httpOnly, secure }) => ({ name, domain, httpOnly, secure }));
@@ -170,6 +212,7 @@ const hostingBeacon = value => {
           await page.locator('#practice-again').screenshot({ path: path.join(output, `practice-again-${width}.png`) });
           await page.locator('#week-1').screenshot({ path: path.join(output, `week-followup-${width}.png`) });
           await applyPractice.screenshot({ path: path.join(output, `take-one-step-${width}.png`) });
+          await weekCopy.screenshot({ path: path.join(output, `return-link-${width}.png`) });
         }
       }
       assert.equal(await page.locator('.jp-weekly-pair-download').count(), 4);

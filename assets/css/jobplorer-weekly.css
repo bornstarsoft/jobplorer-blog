@@ -58,6 +58,13 @@
 .jp-weekly-plan-body [role="status"] { min-height: 3em; }
 .jp-weekly-return { font-size: 15px; margin: 0 0 24px; }
 .jp-weekly-return a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.jp-weekly-copy-link { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 16px; margin: 0; }
+.jp-weekly-copy-link :is(a, button) { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.jp-weekly-copy-link [hidden] { display: none; }
+.jp-weekly-copy-link button { padding: 0 10px; border: 1px solid var(--jp-line); border-radius: 4px; background: transparent; color: var(--jp-blue); font: inherit; cursor: pointer; }
+.jp-weekly-copy-link button:hover { background: var(--jp-blue-soft); }
+.jp-weekly-copy-link button:focus-visible { outline: 3px solid #3775bd; outline-offset: 4px; }
+.jp-weekly-copy-link [role="status"] { color: var(--jp-muted); font-size: 14px; }
 .jp-weekly-revisit-chooser { margin-bottom: 24px; }
 .jp-weekly-revisit-chooser > summary { padding: 12px 0; min-height: 44px; cursor: pointer; color: var(--jp-green); font-size: 15px; line-height: 1.5; font-weight: 600; }
 .jp-weekly-challenge-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px; padding: 16px 0; }
@@ -97,7 +104,7 @@
 }
 @media print {
   .jp-weekly-revisit-chooser, .jp-weekly-challenge-nav { display: none; }
-  .jp-weekly-return { display: none; }
+  .jp-weekly-return, .jp-weekly-copy-link { display: none; }
   .jp-weekly-challenges { display: block; }
   .jp-challenge-answer > div { display: block !important; }
   .jp-challenge-answer::details-content { content-visibility: visible; }

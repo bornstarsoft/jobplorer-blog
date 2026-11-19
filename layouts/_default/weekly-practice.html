@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{ $series := site.Data.weekly_practice }}
+{{ $practicePath := .RelPermalink }}
 {{ $pack := printf "%s\n%s\n\nAll scenarios are fictional. Work in your own private notes; this pack does not submit or store answers in Jobplorer. No live employer assessment or outcome guarantee is implied.\n\n" .Title $series.edition }}
 {{ $intro := $pack }}
 {{ $weekTexts := dict }}
@@ -113,6 +114,7 @@
       {{ end }}
       {{ $pair := index $pairDownloads (printf "%v" .number) }}
       <p class="jp-weekly-return"><a class="jp-weekly-pair-download" href="{{ $pair.RelPermalink }}" download="{{ path.Base $pair.RelPermalink }}"><i data-lucide="download" aria-hidden="true"></i> Download week {{ .number }} + follow-up (.txt)</a></p>
+      {{ partial "weekly-practice-return-link.html" (dict "path" $practicePath "anchor" (printf "week-%v" .number) "label" (printf "week %v" .number)) }}
       <nav class="jp-weekly-next" aria-label="After week {{ .number }}">
         <a href="#weekly-top"><i data-lucide="arrow-up" aria-hidden="true"></i> Back to overview</a>
         {{ if lt .number 4 }}
@@ -147,6 +149,7 @@
               <h4>Compare the two situations</h4><p class="jp-challenge-comparison">{{ .compare }}</p>
             </div>
           </details>
+          {{ partial "weekly-practice-return-link.html" (dict "path" $practicePath "anchor" (printf "challenge-%v" .number) "label" (printf "challenge %v" .number)) }}
           <nav class="jp-weekly-next" aria-label="After challenge {{ .number }}">
             <a href="#week-{{ .review }}">Review week {{ .review }} <i data-lucide="arrow-up" aria-hidden="true"></i></a>
             {{ if lt .number 4 }}<a href="#challenge-{{ add .number 1 }}">Next challenge <i data-lucide="arrow-right" aria-hidden="true"></i></a>{{ else }}<a href="#practice-again">Choose another challenge <i data-lucide="arrow-up" aria-hidden="true"></i></a>{{ end }}
