@@ -97,7 +97,7 @@ Match the message to the role or reference and the employer's stated channel. An
 
 - **Interview invitation:** Check whether you need to pick or confirm a slot. Verify the date, time zone, format, and any requested preparation. Once the arrangements are clear, [prepare for the interview](/guides/prepare-for-an-interview/#start-with-the-posting).
 - **Additional materials requested:** Note the exact item, format, destination, and any stated deadline. [Run the final file check](#before-you-submit) and send only what was verified and requested. If the instructions are incomplete, clarify the missing detail through the stated channel before sending.
-- **Process closed for this application:** If the employer explicitly says your application will not progress, move it out of your active list. Record the outcome as stated. Do not guess why; carry one question or example you want to improve into another application.
+- **Process closed for this application:** If the employer explicitly says your application will not progress, move it out of your active list. Record the outcome as stated. [Choose one thing to carry into your next application](#carry-one-lesson-into-your-next-application) without guessing why the process ended.
 
 **Fictional next review:** Last week, `DEMO-204` was waiting. This week, the verified portal asks you to choose an interview slot. Replace "check for a reply" with "choose a slot and confirm the time zone." Leave the interview marked as not booked until the employer's channel confirms it.
 
@@ -106,6 +106,16 @@ If the invitation is later updated, [recheck what changed before rehearsing](/gu
 If a reply points to a new contact or upload page, [verify the changed route](/guides/check-job-offers-and-recruiters/#recheck-a-changed-contact-or-submission-link) before following it.
 
 In your own notes, keep **what changed / next action / what to verify next time**. When you [return to the weekly review](#your-weekly-job-search-review), check whether that action is complete before choosing another. For a closed application, bring forward the preparation note, not another status check.
+
+#### Carry One Lesson Into Your Next Application
+
+In this fictional example, the employer confirms that the application for `DEMO-305` will not progress and gives no reason. You notice that your draft says "improved setup instructions" but never explains how you checked them. That's something you can improve, not evidence of why the application ended.
+
+- **Close the old application:** Keep "not progressing; no reason given" in your own notes and stop carrying over its status reminder.
+- **Check the next posting:** If it asks for clear user instructions and you've actually tested yours, describe what you did. For example: "I wrote the setup steps and asked a teammate to try them without my help. I clarified the step they couldn't finish." If the new role asks for different work, choose a different example.
+- **Next weekly review:** Read the new posting and your revised sentence side by side. Check that it answers one responsibility and says how you verified your work, without claiming an outcome you didn't measure.
+
+Keep only the next action in your [weekly review note](#keep-one-note-for-next-time). If you need help choosing what to reuse, [adapt one example for another role](/guides/write-a-focused-cover-letter/#adapt-one-example-for-another-role).
 
 ## Application Record Template
 

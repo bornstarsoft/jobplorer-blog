@@ -640,15 +640,41 @@ const routes = [
     ]);
     assert.match(await replyActions.locator('li').last().textContent(), /move it out of your active list/);
     assert.match(await page.locator('#act-on-an-application-reply + p + ul + p').textContent(), /DEMO-204.*not booked/);
+    const closedApplicationRoute = '/job-seeker-tools/#carry-one-lesson-into-your-next-application';
+    const closedApplicationLink = replyActions.getByRole('link', { name: 'Choose one thing to carry into your next application', exact: true });
+    await closedApplicationLink.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(base + closedApplicationRoute);
+    const closedApplicationHeading = page.locator('#carry-one-lesson-into-your-next-application');
+    await closedApplicationHeading.waitFor({ state: 'visible' });
+    assert.match(await closedApplicationHeading.locator('+ p').textContent(), /DEMO-305.*gives no reason.*not evidence of why/);
+    assert.deepEqual(await closedApplicationHeading.locator('+ p + ul li > strong').allTextContents(), [
+      'Close the old application:', 'Check the next posting:', 'Next weekly review:'
+    ]);
+    assert.match(await closedApplicationHeading.locator('+ p + ul > li').last().textContent(), /without claiming an outcome you didn.t measure/);
+    const carryForwardLinks = closedApplicationHeading.locator('+ p + ul + p');
+    await carryForwardLinks.getByRole('link', { name: 'weekly review note', exact: true }).click();
+    await page.waitForURL(base + '/job-seeker-tools/#keep-one-note-for-next-time');
+    await page.goBack();
+    await page.waitForURL(base + closedApplicationRoute);
+    await carryForwardLinks.getByRole('link', { name: 'adapt one example for another role', exact: true }).click();
+    await page.waitForURL(base + '/guides/write-a-focused-cover-letter/#adapt-one-example-for-another-role');
+    await page.locator('#adapt-one-example-for-another-role').waitFor({ state: 'visible' });
+    await page.goBack();
+    await page.waitForURL(base + closedApplicationRoute);
     assert.equal(await page.locator('main input, main textarea, main form, main [contenteditable]').count(), 0);
+    assert.deepEqual(await page.evaluate(() => window.storageCalls), []);
     for (const width of [1440, 390, 320]) {
       await page.setViewportSize({ width, height: 960 });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Reply review overflow: ' + width);
       if (width !== 320) {
+        await closedApplicationHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
+        await page.screenshot({ path: path.join(output, 'closed-application-review-' + width + '.png') });
         await replyHeading.evaluate(el => el.scrollIntoView({ block: 'start' }));
         await page.screenshot({ path: path.join(output, 'application-reply-review-' + width + '.png') });
       }
     }
+    await page.goto(base + '/job-seeker-tools/#act-on-an-application-reply');
     await replyActions.getByRole('link', { name: 'prepare for the interview', exact: true }).click();
     await page.waitForURL(base + '/guides/prepare-for-an-interview/#start-with-the-posting');
     await page.locator('#start-with-the-posting').waitFor({ state: 'visible' });
@@ -903,6 +929,11 @@ const routes = [
     await plain.waitForURL(base + '/job-seeker-tools/#choose-the-next-application-action');
     await plain.getByRole('link', { name: 'choose what to do with the reply', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#act-on-an-application-reply');
+    await plain.getByRole('link', { name: 'Choose one thing to carry into your next application', exact: true }).click();
+    await plain.waitForURL(base + closedApplicationRoute);
+    await plain.locator('#carry-one-lesson-into-your-next-application + p + ul + p').getByRole('link', { name: 'weekly review note', exact: true }).click();
+    await plain.waitForURL(base + '/job-seeker-tools/#keep-one-note-for-next-time');
+    await plain.goto(base + '/job-seeker-tools/#act-on-an-application-reply');
     await plain.getByRole('link', { name: 'Run the final file check', exact: true }).click();
     await plain.waitForURL(base + '/job-seeker-tools/#before-you-submit');
     await plain.goBack();
